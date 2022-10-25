@@ -1,11 +1,11 @@
 import React from 'react';
-
+import Image from 'next/image';
 
 const Github = () => {
   return (
     <div>
       <button type="signin">
-      <img src="./image/Github.png" />
+      <Image src="/images/g.png" alt="google" width="15" height="15"/>
        Sign in with Github
        </button>
       <style jsx>
@@ -17,6 +17,11 @@ const Github = () => {
           padding: 7px 0px 7px 0px;
           cursor: pointer;
           border-radius: 5px;
+          border: 0.5px solid black;
+        }
+        img {
+          weight: 10px;
+          height: 10px;
         }
         `}
       </style>

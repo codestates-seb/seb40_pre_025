@@ -1,7 +1,13 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-}
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   reactStrictMode: true,
+//   swcMinify: true,
+// }
 
-module.exports = nextConfig
+import withImages from 'next-images'
+modules.exports = withImages({
+  webpack(config, options){
+    return config
+  }
+})
+export default nextConfig
