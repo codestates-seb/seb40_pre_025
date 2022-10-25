@@ -5,7 +5,7 @@ export default function Home() {
   console.log(testState);
   return (
     <div>
-      <button type="button">버튼</button>
+      <button type="button">버튼2</button>
     </div>
   );
 }
