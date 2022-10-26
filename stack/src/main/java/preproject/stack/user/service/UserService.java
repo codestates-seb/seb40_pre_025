@@ -1,6 +1,8 @@
 package preproject.stack.user.service;
 
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -14,12 +16,10 @@ import java.util.Optional;
 
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
     //회원가입로직
     public User createUser(User user) {
         verifyExistsEmail(user.getEmail());
@@ -31,11 +31,8 @@ public class UserService {
     public User updateUser(User user) {
         User findUser = findVerifiedUser(user.getUserId());
 
-        Optional.ofNullable(user.getName())
-                .ifPresent(name -> findUser.setName(name));
-        Optional.ofNullable(user.getPassword())
-                .ifPresent(password -> findUser.setPassword(password));// 분명 이렇게 하는게 아닐것같은데 ,,,,
-
+        Optional.ofNullable(user.getUserName())
+                .ifPresent(name -> findUser.setUserName(name));
         return userRepository.save(findUser);
     }
 
@@ -56,6 +53,7 @@ public class UserService {
         userRepository.delete(findUser);
     }
 
+    // 로그인 할떄 중복회원 검사
     private User findVerifiedUser(long userId) {
         Optional<User> optionalUser =
                 userRepository.findById(userId);
@@ -65,7 +63,6 @@ public class UserService {
 
     }
 
-
     //email은 고유값이기 때문에 이미 가입된 이메일인지 먼저 확인후 회원가입가능하게 만듬
     private void verifyExistsEmail(String email) {
         Optional<User> user = userRepository.findByEmail(email);
@@ -73,3 +70,4 @@ public class UserService {
             throw new BusinessLogicException(ExceptionCode.MEMBER_EXIST);
     }
 }
+

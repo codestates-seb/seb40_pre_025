@@ -26,4 +26,6 @@ public class UserPostDto {
 
     @NotBlank
     private String password;
+
 }
+

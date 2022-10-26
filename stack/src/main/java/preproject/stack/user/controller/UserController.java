@@ -1,6 +1,10 @@
 package preproject.stack.user.controller;
 
 
+<<<<<<< HEAD
+=======
+import lombok.RequiredArgsConstructor;
+>>>>>>> hyo
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,15 +26,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 @Validated
+@RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
     private final UserMapper mapper;
 
-
-    public UserController(UserService userService, UserMapper mapper) {
-        this.userService = userService;
-        this.mapper = mapper;
-    }
     //회원가입 핸들러
     @PostMapping
     public ResponseEntity postUser(@Valid @RequestBody UserPostDto userPostDto) {
@@ -74,5 +74,5 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-
 }
+

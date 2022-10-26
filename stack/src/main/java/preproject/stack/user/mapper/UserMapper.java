@@ -14,4 +14,5 @@ public interface UserMapper {
     User userPatchDtoToUser(UserPatchDto userPatchDto);
     UserResponseDto userToUserResponseDto(User user);
     List<UserResponseDto> usersToUserResponseDto(List<User> users);
+
 }

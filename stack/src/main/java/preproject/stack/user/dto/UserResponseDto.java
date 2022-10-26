@@ -12,6 +12,5 @@ public class UserResponseDto {
 
     private String name;
 
-
-
 }
+

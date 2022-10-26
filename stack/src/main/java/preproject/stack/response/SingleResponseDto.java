@@ -7,4 +7,5 @@ import lombok.Getter;
 @AllArgsConstructor
 public class SingleResponseDto<T> {
     private T data;
+
 }
