@@ -1,5 +1,9 @@
 package preproject.stack.user.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import preproject.stack.answers.entity.Answers;
 import preproject.stack.post.entity.Post;
 import preproject.stack.saved.entity.Saved;
@@ -9,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id @GeneratedValue
@@ -34,5 +41,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
-
+    public User(String userName, String email) {
+        this.userName = userName;
+        this.email = email;
+    }
 }

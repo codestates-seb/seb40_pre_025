@@ -1,5 +1,6 @@
 package preproject.stack.post.entity;
 
+import lombok.Getter;
 import preproject.stack.answers.entity.Answers;
 import preproject.stack.user.entity.User;
 
@@ -8,10 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
 public class Post {
 
     @Id @GeneratedValue
     private Long postId;
+
+    private String body;
+
+    private String title;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
