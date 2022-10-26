@@ -1,30 +1,39 @@
 package preproject.stack.post.entity;
 
-import lombok.*;
+import lombok.Getter;
+import preproject.stack.answer.entity.Answer;
+import preproject.stack.user.entity.User;
 
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
-@Getter
-@Setter
-@AllArgsConstructor
 @Entity
-@NoArgsConstructor
+@Getter
 public class Post {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String title;
+    @Id @GeneratedValue
+    private Long postId;
+
     private String body;
 
-    private Integer vote_count;
-    private Integer read_count;
+    private String title;
 
-    private Integer attached_list;
-    private Integer answer_list_id;
-    private Integer tag_list_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
+    private List<Answer> answers = new ArrayList<>();
+
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
+    private List<PostTag> postTags = new ArrayList<>();
+
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
+    private List<PostSaved> postSaveds = new ArrayList<>();
+
+    private Long Pictures;
+
+    @Embedded
+    private Address address;
 }

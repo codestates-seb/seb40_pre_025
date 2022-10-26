@@ -1,30 +1,32 @@
 package preproject.stack.answer.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import preproject.stack.post.entity.Address;
+import preproject.stack.post.entity.Post;
+import preproject.stack.user.entity.User;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
 @Getter
 @Setter
-@AllArgsConstructor
-@Entity
-@NoArgsConstructor
 public class Answer {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String title;
-    private String body;
+    @Id @GeneratedValue
+    private Integer answerId;
 
-    private Integer vote_count;
-    private Integer read_count;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    private Integer attached_list;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_id")
+    private Post post;
+
+    private String content;
+
+    @Embedded
+    private Address address;
+
 }
