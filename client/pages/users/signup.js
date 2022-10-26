@@ -6,7 +6,7 @@ export default function SignUp() {
         <div className="d-flex ai-center">
           <div id="information" className="d-flex fd-column">
             <h1>Join the Stack Overflow community</h1>
-            <div>
+            <div className="d-flex ai-center margin-B">
               <div className="icon">
                 <svg width="26" height="26">
                   <path
@@ -22,7 +22,7 @@ export default function SignUp() {
               </div>
               <div>Get unstuck — ask a question</div>
             </div>
-            <div>
+            <div className="d-flex ai-center margin-B">
               <div className="icon">
                 <svg width="26" height="26" fill="#3399ff">
                   <path d="M12 .7a2 2 0 013 0l8.5 9.6a1 1 0 01-.7 1.7H4.2a1 1 0 01-.7-1.7L12 .7z"></path>
@@ -34,7 +34,7 @@ export default function SignUp() {
               </div>
               <div>Unlock new privileges like voting and commenting</div>
             </div>
-            <div>
+            <div className="d-flex ai-center margin-B">
               <div className="icon">
                 <svg width="26" height="26" fill="#3399ff">
                   <path d="M14.8 3a2 2 0 00-1.4.6l-10 10a2 2 0 000 2.8l8.2 8.2c.8.8 2 .8 2.8 0l10-10c.4-.4.6-.9.6-1.4V5a2 2 0 00-2-2h-8.2zm5.2 7a2 2 0 110-4 2 2 0 010 4z"></path>
@@ -43,20 +43,22 @@ export default function SignUp() {
                     d="M13 0a2 2 0 00-1.4.6l-10 10a2 2 0 000 2.8c.1-.2.3-.6.6-.8l10-10a2 2 0 011.4-.6h9.6a2 2 0 00-2-2H13z"
                   ></path>
                 </svg>
-                <div>Save your favorite tags, filters, and jobs</div>
               </div>
+              <div>Save your favorite tags, filters, and jobs</div>
+            </div>
+            <div className="d-flex ai-center margin-B">
               <div>
                 <div className="icon">
                   <svg width="26" height="26" fill="#3399ff">
                     <path d="M21 4V2H5v2H1v5c0 2 2 4 4 4v1c0 2.5 3 4 7 4v3H7s-1.2 2.3-1.2 3h14.4c0-.6-1.2-3-1.2-3h-5v-3c4 0 7-1.5 7-4v-1c2 0 4-2 4-4V4h-4zM5 11c-1 0-2-1-2-2V6h2v5zm11.5 2.7l-3.5-2-3.5 1.9L11 9.8 7.2 7.5h4.4L13 3.8l1.4 3.7h4L15.3 10l1.4 3.7h-.1zM23 9c0 1-1 2-2 2V6h2v3z"></path>
                   </svg>
                 </div>
-                <div>Earn reputation and badges</div>
               </div>
+              <div>Earn reputation and badges</div>
             </div>
             <div>
-              Collaborate and share knowledge with a private group for FREE. Get
-              Stack Overflow for Teams free for up to 50 users.
+              Collaborate and share knowledge with a private group for FREE.
+              <br></br> Get Stack Overflow for Teams free for up to 50 users.
             </div>
           </div>
           <div id="flexItem">
@@ -79,7 +81,10 @@ export default function SignUp() {
                     at least 1 letter and 1 number.
                   </p>
                 </div>
-                <div id="option" className="d-flex">
+                <div className="d-flex flex_center m-tb6">
+                  <div id="captcha"></div>
+                </div>
+                <div id="option" className="d-flex m-tb6">
                   <div>
                     <input name="EmailOptIn" type="checkbox"></input>
                   </div>
@@ -106,17 +111,53 @@ export default function SignUp() {
                 </div>
                 <button className="s-btn margin-T-B">Sign up</button>
               </form>
-              <div>
-                <p>
-                  By clicking “Sign up”, you agree to our terms of service,
-                  privacy policy and cookie policy
+              <div className="margin-T">
+                <p className="d-ib">
+                  {`By clicking “Sign up”, you agree to our `}
+                  <Link className="d-ib" href="/">
+                    <a>terms of serviceprivacy policy</a>
+                  </Link>
+                  {` and `}
+                  <Link href="/">
+                    <a>cookie policy</a>
+                  </Link>
                 </p>
+              </div>
+            </div>
+            <div className="assistance">
+              <div className="margin-T-B">
+                Already have an account?
+                <Link href="/">
+                  <a href="/">Sign up</a>
+                </Link>
+              </div>
+              <div className="margin-T-B">
+                Are you an employer?
+                <Link href="/">
+                  <a>
+                    Sign up on Talent
+                    <svg
+                      id="footIcon"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                    >
+                      <path
+                        d="M5 1H3a2 2 0 0 0-2 2v8c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V9h-2v2H3V3h2V1Zm2 0h6v6h-2V4.5L6.5 9 5 7.5 9.5 3H7V1Z"
+                        fill="#3399ff"
+                      ></path>
+                    </svg>
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
       <style jsx>{`
+        .d-ib {
+          display: inline-block;
+        }
         .fw-normal {
           font-weight: 400 !important;
           font-size: 15px;
@@ -138,6 +179,19 @@ export default function SignUp() {
         .margin-T-B {
           margin-top: 5px;
           margin-bottom: 15px;
+        }
+        .m-tb6 {
+          margin-top: 6px;
+          margin-bottom: 6px;
+        }
+        .margin-T {
+          margin-top: 18px;
+        }
+        .margin-B {
+          margin-bottom: 24px;
+        }
+        .icon {
+          margin-right: 8px;
         }
         .ta-center {
           text-align: center !important;
@@ -165,6 +219,11 @@ export default function SignUp() {
           display: flex;
           justify-content: center;
           margin: 0;
+        }
+        #information {
+          margin-right: 48px;
+          margin-bottom: 128px;
+          font-size: 1.15384615rem;
         }
         #content {
           width: 100%;
@@ -223,6 +282,28 @@ export default function SignUp() {
           text-decoration: none;
           cursor: pointer;
           user-select: none;
+        }
+        .assistance {
+          width: 290px;
+          height: 78px;
+          text-align: center;
+          font-size: 15px;
+          padding: 16px;
+          margin-bottom: 24px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        #captcha {
+          background-color: hsl(210, 8%, 95%);
+          width: 290px;
+          height: 156px;
+        }
+        h1 {
+          color: rgb(82, 82, 82);
+          line-height: 1;
+          font-size: 2rem;
+          margin: 0;
+          margin-bottom: 32px;
         }
       `}</style>
     </div>
