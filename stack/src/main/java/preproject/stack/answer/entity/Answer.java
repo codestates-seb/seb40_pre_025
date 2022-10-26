@@ -1,5 +1,8 @@
-package preproject.stack.answers.entity;
+package preproject.stack.answer.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import preproject.stack.post.entity.Address;
 import preproject.stack.post.entity.Post;
 import preproject.stack.user.entity.User;
@@ -7,21 +10,25 @@ import preproject.stack.user.entity.User;
 import javax.persistence.*;
 
 @Entity
-public class Answers {
+@Getter
+@Setter
+@NoArgsConstructor
+public class Answer {
 
     @Id @GeneratedValue
-    private Long answersId;
+    private Integer answerId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_id")
+    @JoinColumn(name = "postId")
     private Post post;
 
-    private String content;
+    private String body;
 
     @Embedded
     private Address address;
+
 }

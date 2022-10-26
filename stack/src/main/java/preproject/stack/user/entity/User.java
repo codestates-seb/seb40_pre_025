@@ -4,11 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import preproject.stack.answers.entity.Answers;
+import preproject.stack.answer.entity.Answer;
 import preproject.stack.post.entity.Post;
 import preproject.stack.saved.entity.Saved;
-import preproject.stack.user.entity.UserRole;
-import preproject.stack.user.entity.UserStatus;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -32,7 +30,7 @@ public class User {
 
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    private List<Answers> answers = new ArrayList<>();
+    private List<Answer> answers = new ArrayList<>();
 
     private String userName;
 

@@ -3,8 +3,10 @@ package preproject.stack.exception;
 import lombok.Getter;
 
 public enum ExceptionCode {
-    MEMBER_NOT_FOUND(404, "USER NOT FOUND");
-    MEMBER_EXIST
+    USER_NOT_FOUND(404, "USER NOT FOUND"),
+    USER_EXIST(405,"USER EXIST" );
+
+
     @Getter
     private int status;
     @Getter

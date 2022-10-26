@@ -1,7 +1,7 @@
 package preproject.stack.post.entity;
 
 import lombok.Getter;
-import preproject.stack.answers.entity.Answers;
+import preproject.stack.answer.entity.Answer;
 import preproject.stack.user.entity.User;
 
 import javax.persistence.*;
@@ -24,7 +24,7 @@ public class Post {
     private User user;
 
     @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
-    private List<Answers> answers = new ArrayList<>();
+    private List<Answer> answers = new ArrayList<>();
 
     @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
     private List<PostTag> postTags = new ArrayList<>();

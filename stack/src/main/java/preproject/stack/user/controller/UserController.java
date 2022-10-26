@@ -1,10 +1,7 @@
 package preproject.stack.user.controller;
 
 
-<<<<<<< HEAD
-=======
 import lombok.RequiredArgsConstructor;
->>>>>>> hyo
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
