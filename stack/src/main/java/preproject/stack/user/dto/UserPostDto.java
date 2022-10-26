@@ -17,7 +17,6 @@ public class UserPostDto {
 
     @NotBlank
     @Email
-    @UniqueElements
     private String email;
 
     @NotBlank
