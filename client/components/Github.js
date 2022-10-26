@@ -5,7 +5,7 @@ const Github = () => {
   return (
     <div>
       <button type="signin">
-      <Image src="/images/g.png" alt="google" width="15" height="15"/>
+      <Image src="/images/g.png" alt="google" width="15" height="15" margin-right= "5px"/>
        Sign in with Github
        </button>
       <style jsx>
@@ -18,6 +18,9 @@ const Github = () => {
           cursor: pointer;
           border-radius: 5px;
           border: 0.5px solid black;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
         img {
           weight: 10px;
