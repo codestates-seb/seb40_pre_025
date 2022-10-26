@@ -5,6 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import preproject.stack.exception.BusinessLogicException;
+import preproject.stack.exception.ExceptionCode;
 import preproject.stack.user.entity.User;
 import preproject.stack.user.repository.UserRepository;
 
