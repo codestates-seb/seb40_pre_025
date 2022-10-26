@@ -1,5 +1,3 @@
-import { useSelector } from "react-redux";
-
 export default function Home() {
   const testState = useSelector((state) => state);
   console.log(testState);
