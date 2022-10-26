@@ -1,6 +1,7 @@
 package preproject.stack.post.entity;
 
 import lombok.Getter;
+import lombok.Setter;
 import preproject.stack.answers.entity.Answers;
 import preproject.stack.user.entity.User;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
+@Getter @Setter
 public class Post {
 
     @Id @GeneratedValue

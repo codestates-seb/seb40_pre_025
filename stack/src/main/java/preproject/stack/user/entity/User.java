@@ -21,18 +21,13 @@ public class User {
     @Id @GeneratedValue
     private Long userId;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     private List<Post> posts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    private List<Saved> saveds = new ArrayList<>();
-
-
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     private List<Answers> answers = new ArrayList<>();
 
     private String userName;
-
     private String email;
 
     @Enumerated(EnumType.STRING)
