@@ -1,14 +1,40 @@
-import { useSelector } from "react-redux";
-import Head from 'next/head'
+import { useEffect, useState } from 'react';
+import Header from '../components/Header';
+import NavBar from '../components/NavBar';
+import Questions from '../components/Questions';
+import Seo from '../components/Seo';
+import SideBar from '../components/SideBar';
+
+
+
 
 export default function Home() {
-  // const testState = useSelector((state) => state);
-  // console.log(testState);
+
+
   return (
-    <Head>
-        <title>Stack Overflow - Where Developers Learn, Share, & Build Careers</title>
-        <meta name="description" content="Stack Overflow is the largest, most trusted online community for developers to learn, share their programming knowledge, and build their careers." />
-        <link rel="icon" href="/Stack_Overflow_icon.svg.png" />
-      </Head>
-  );
+      <>
+     <Seo/>
+    <Header/>
+ <div className='container'>
+     <NavBar/>
+    {/* 메인  */}
+   <div id="content">
+    <Questions/>
+      <SideBar/>
+    </div>
+    <style jsx>{`
+      .container {
+         flex: 1 1 0;
+          width: 100%;
+        display: flex;
+        }
+        #content {
+          flex: 1 2 0;
+          display: flex;
+        }
+      `}</style>
+    </div>
+    </>
+    
+  )
 }
