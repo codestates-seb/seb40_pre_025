@@ -1,30 +1,34 @@
 import React from 'react';
 import Image from 'next/image';
 
-const Google = () => {
+const Github = () => {
   return (
     <div>
       <button type="signin">
-      <Image src="/images/google.png" alt="google" width="15" height="15"/>
-      Sign in with Google
+      <Image src="/images/g.png" alt="google" width="15" height="15" margin-right= "5px"/>
+       Log in with Github
        </button>
       <style jsx>
         {`
         button {
-          background: white;
-          color: black;
+          background: rgb(36,38,42);
+          color: white;
           width: 290px;
           padding: 7px 0px 7px 0px;
           cursor: pointer;
           border-radius: 5px;
-          border: 0.5px solid grey;
+          border: 0.5px solid black;
           display: flex;
           justify-content: center;
           align-items: center;
           font-size: 10px;
         }
         button :hover {
-          background: rgb(246,248,247);
+          background: black;
+        }
+        img {
+          weight: 10px;
+          height: 10px;
         }
         `}
       </style>
@@ -32,4 +36,5 @@ const Google = () => {
   );
 };
 
-export default Google;
+export default Github;
+

@@ -11,7 +11,7 @@ const Github = () => {
       <style jsx>
         {`
         button {
-          background: black;
+          background: rgb(36,38,42);
           color: white;
           width: 290px;
           padding: 7px 0px 7px 0px;
@@ -21,6 +21,10 @@ const Github = () => {
           display: flex;
           justify-content: center;
           align-items: center;
+          font-size: 10px;
+        }
+        button :hover {
+          background: black;
         }
         img {
           weight: 10px;

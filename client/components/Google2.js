@@ -6,7 +6,7 @@ const Google = () => {
     <div>
       <button type="signin">
       <Image src="/images/google.png" alt="google" width="15" height="15"/>
-      Sign in with Google
+      Log in with Google
        </button>
       <style jsx>
         {`

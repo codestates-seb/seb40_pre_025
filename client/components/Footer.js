@@ -14,14 +14,14 @@ const Footer = () => {
                 </div>
             <nav class="site-footer--nav">
                     <div class="site-footer--col">
-                        <h5 class="-title">Stack Overflow</h5>
+                        <h5 class="-title">STACK OVERFLOW</h5>
                         <ul class="-list js-primary-footer-links">
                             <li>Questions</li>
                                 <li>Help</li>
                         </ul>
                     </div>
                     <div class="site-footer--col">
-                        <h5 class="-title">Products</h5>
+                        <h5 class="-title">PRODUCTS</h5>
                         <ul class="-list">
                             <li>Teams</li>
                             <li>Advertising</li>
@@ -30,7 +30,7 @@ const Footer = () => {
                         </ul>
                     </div>
                 <div class="site-footer--col">
-                    <h5 class="-title">Company</h5>
+                    <h5 class="-title">COMPANY</h5>
                     <ul class="-list">
                             <li>About</li>
                         <li>Press</li>
@@ -45,7 +45,7 @@ const Footer = () => {
                 </div>
                 <div class="site-footer--col site-footer--categories-nav">
                     <div>
-                        <h5 class="-title">Stack Exchange Network</h5>
+                        <h5 class="-title">STACK EXCHANGE NETWORK</h5>
                         <ul class="-list">
                             <li>Technology</li>
                             <li>Culture &amp; recreation</li>
@@ -53,6 +53,7 @@ const Footer = () => {
                             <li>Science</li>
                             <li>Professional</li>
                             <li>Business</li>
+                            <br />
                             <li class="mt16 md:mt0">API</li>
                             <li>Data</li>
                         </ul>
@@ -77,20 +78,26 @@ const Footer = () => {
     </footer>
     <style jsx>
       {`
+      .site-footer--container {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+      }
+      svg{
+        margin-left: 10px;
+        margin-top: 10px;
+      }
       ul{
         list-style: none;
+        padding-left: 0;
       }
       li{
         margin-top: 5px;
-      }
-      .site-footer--col{
-        float: left;
       }
       .site-footer {
         box-sizing: border-box;
       }
       footer {
-        display: block;
         margin: 0;
         padding: 0;
         border: 0;
@@ -98,10 +105,11 @@ const Footer = () => {
         background: rgb(29,29,31);
         color: rgb(172,178,183);
         font-size: 10px;
+        
       }
-        h5{
-          font-weight: bold;
-          font-size: 12px;
+      h5{
+        font-weight: bold;
+        font-size: 12px;
         }
       `}
     </style>
