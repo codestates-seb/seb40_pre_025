@@ -4,6 +4,7 @@ import Google from "../components/Google";
 import Header from "../components/Header";
 import Header2 from "../components/Header2";
 import SideBar from "../components/SideBar";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const testState = useSelector((state) => state);
@@ -14,7 +15,8 @@ export default function Home() {
       <Header2 />
       <Google />
       <Github />
-      <SideBar />
+      {/* <SideBar /> */}
+      <Footer />
     </div>
   );
 }
