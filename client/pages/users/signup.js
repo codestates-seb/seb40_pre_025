@@ -275,9 +275,7 @@ export default function SignUp() {
           border-radius: 3px;
           outline: none;
           font-family: inherit;
-          font-size: var(--fs-body1);
           font-weight: normal;
-          line-height: var(--lh-sm);
           text-align: center;
           text-decoration: none;
           cursor: pointer;
@@ -296,7 +294,7 @@ export default function SignUp() {
         #captcha {
           background-color: hsl(210, 8%, 95%);
           width: 290px;
-          height: 156px;
+          height: 7rem;
         }
         h1 {
           color: rgb(82, 82, 82);
