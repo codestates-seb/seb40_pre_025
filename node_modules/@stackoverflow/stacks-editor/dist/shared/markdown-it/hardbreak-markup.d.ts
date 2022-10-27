@@ -1,0 +1,6 @@
+import MarkdownIt from "markdown-it";
+/**
+ * Adds markup to differentiate between doublespace/backslash hardbreaks
+ * TODO UPSTREAM
+ */
+export declare function hardbreak_markup(md: MarkdownIt): void;

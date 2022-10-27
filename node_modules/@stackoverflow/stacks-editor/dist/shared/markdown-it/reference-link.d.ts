@@ -1,0 +1,5 @@
+import MarkdownIt from "markdown-it";
+/**
+ * Searches for and marks links that point to a reference with a "reference" meta data
+ */
+export declare function reference_link(md: MarkdownIt): void;

@@ -1,45 +1,10 @@
 import { useRouter } from "next/router";
-<<<<<<< HEAD
 import SubTap from "./subTap";
-=======
-import Link from "next/link";
->>>>>>> kms
 export default function saves_qustions() {
   const router = useRouter();
   return (
     <div id="main-content">
-<<<<<<< HEAD
       <SubTap></SubTap>
-=======
-      <div id="subTap">
-        <Link href={"/users/123/saves/qustions"}>
-          <a>
-            <div
-              className={
-                router.pathname === `/users/[id]/saves/qustions`
-                  ? "currentTap"
-                  : "notCurrentTap"
-              }
-            >
-              Questions
-            </div>
-          </a>
-        </Link>
-        <Link href={`/users/123/saves/ansers`}>
-          <a>
-            <div
-              className={
-                router.pathname === `/users/[id]/saves/ansers`
-                  ? "currentTap"
-                  : "notCurrentTap"
-              }
-            >
-              Anser
-            </div>
-          </a>
-        </Link>
-      </div>
->>>>>>> kms
       <div id="questions">
         <label className="lable">My Anser</label>
         <div className="contentBox">"bbbbbbbb"</div>

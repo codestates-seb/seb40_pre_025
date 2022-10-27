@@ -1,0 +1,27 @@
+function addHardbreakMarkup(tokens, parent = null) {
+    for (let i = 0; i < tokens.length; i++) {
+        const token = tokens[i];
+        if (token.children) {
+            addHardbreakMarkup(token.children, token);
+        }
+        if (token.type !== "hardbreak") {
+            continue;
+        }
+        if (/\s\s\n/.test(parent === null || parent === void 0 ? void 0 : parent.content)) {
+            token.markup = "  \n";
+        }
+        else if (/\\\n/.test(parent === null || parent === void 0 ? void 0 : parent.content)) {
+            token.markup = "\\\n";
+        }
+    }
+}
+/**
+ * Adds markup to differentiate between doublespace/backslash hardbreaks
+ * TODO UPSTREAM
+ */
+export function hardbreak_markup(md) {
+    md.core.ruler.push("hardbreak-markup", function (state) {
+        addHardbreakMarkup(state.tokens);
+        return false;
+    });
+}
