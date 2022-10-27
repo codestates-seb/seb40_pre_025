@@ -1,9 +1,6 @@
 import Link from "next/link";
-<<<<<<< HEAD
 import Google from "../../components/Google";
 import Github from "../../components/Github";
-=======
->>>>>>> kms
 
 export default function Login() {
   return (
@@ -30,7 +27,6 @@ export default function Login() {
               </Link>
             </div>
           </div>
-<<<<<<< HEAD
           <div className="socialLogin">
             <div className="socialLoginBtn">
               <Google></Google>
@@ -39,9 +35,6 @@ export default function Login() {
               <Github></Github>
             </div>
           </div>
-=======
-          <div className="socialLoginBtn"></div>
->>>>>>> kms
           <div className="formContainer">
             <form id="login-form" className="d-flex fd-column">
               <div id="test" className="d-flex fd-column margin-T-B">
@@ -64,21 +57,13 @@ export default function Login() {
           </div>
           <div className="assistance">
             <div className="margin-T-B">
-<<<<<<< HEAD
               {`Don't have an account? `}
-=======
-              Don't have an account?
->>>>>>> kms
               <Link href="/">
                 <a href="/">Sign up</a>
               </Link>
             </div>
             <div className="margin-T-B">
-<<<<<<< HEAD
               {`Are you an employer? `}
-=======
-              Are you an employer?
->>>>>>> kms
               <Link href="/">
                 <a>
                   Sign up on Talent
@@ -95,7 +80,6 @@ export default function Login() {
         </div>
       </div>
       <style jsx>{`
-<<<<<<< HEAD
         .socialLogin {
           display: flex;
           flex-direction: column;
@@ -106,8 +90,6 @@ export default function Login() {
           margin-top: 4px;
           margin-bottom: 4px;
         }
-=======
->>>>>>> kms
         #footIcon {
           text-align: center;
           color: hsl(206, 100%, 40%);
@@ -130,11 +112,7 @@ export default function Login() {
         }
         .ta-center {
           text-align: center !important;
-<<<<<<< HEAD
           font-size: 1rem;
-=======
-          font-size: 1.61538462rem;
->>>>>>> kms
           margin-bottom: 24px;
           margin-left: auto;
           margin-right: auto;
@@ -160,12 +138,9 @@ export default function Login() {
           margin: 0;
         }
         #content {
-<<<<<<< HEAD
           display: flex;
           align-items: center;
           justify-content: center;
-=======
->>>>>>> kms
           width: 100%;
           padding: 24px;
           margin: 0;
@@ -173,25 +148,15 @@ export default function Login() {
           border-bottom-width: 0;
           border-radius: 0;
           box-sizing: border-box;
-<<<<<<< HEAD
         }
         .formContainer {
           box-sizing: border-box;
-=======
-          border: 1px solid var(--theme-content-border-color);
-        }
-        .formContainer {
->>>>>>> kms
           box-shadow: 1px 1px 10px 2px rgb(233, 233, 233);
           width: 290px;
           background-color: white;
           border-radius: 7px;
-<<<<<<< HEAD
           padding: 12px;
           margin-top: 4px;
-=======
-          padding: 24px;
->>>>>>> kms
           margin-bottom: 24px;
           margin-left: auto;
           margin-right: auto;
@@ -206,11 +171,7 @@ export default function Login() {
           margin: 4px;
           margin-right: 0;
           margin-left: 0;
-<<<<<<< HEAD
           font-size: 1rem;
-=======
-          font-size: 1.15384615rem;
->>>>>>> kms
           font-family: inherit;
           color: black;
           font-weight: 600;
@@ -218,20 +179,12 @@ export default function Login() {
         }
         .input {
           -webkit-appearance: none;
-<<<<<<< HEAD
           width: auto;
-=======
-          width: auto%;
->>>>>>> kms
           margin: 0;
           padding: 0.6em 0.7em;
           border: 1px solid rgb(192, 191, 191);
           border-radius: 3px;
-<<<<<<< HEAD
           font-size: 1rem;
-=======
-          font-size: 13px;
->>>>>>> kms
         }
         .s-btn {
           color: white;
@@ -247,13 +200,7 @@ export default function Login() {
           border-radius: 3px;
           outline: none;
           font-family: inherit;
-<<<<<<< HEAD
           font-weight: normal;
-=======
-          font-size: var(--fs-body1);
-          font-weight: normal;
-          line-height: var(--lh-sm);
->>>>>>> kms
           text-align: center;
           text-decoration: none;
           cursor: pointer;
@@ -263,11 +210,7 @@ export default function Login() {
           width: 290px;
           height: 78px;
           text-align: center;
-<<<<<<< HEAD
           font-size: 1rem;
-=======
-          font-size: 15px;
->>>>>>> kms
           padding: 16px;
           margin-bottom: 24px;
           margin-left: auto;

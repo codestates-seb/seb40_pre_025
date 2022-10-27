@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import Saves_ansers from "../../../../components/userPageComponents/saves_ansers";
 import UserIdLayout from "../User_Id_Layout";
 
@@ -6,17 +5,6 @@ export default function saves_ansers() {
   return (
     <div className="container">
       <div className="content">
-=======
-import CoreInfo from "../coreInfo";
-import Saves_ansers from "../../../../components/userPageComponents/saves_ansers";
-import { useRouter } from "next/router";
-export default function saves_ansers() {
-  const router = useRouter();
-  return (
-    <div className="container">
-      <div className="content">
-        <CoreInfo></CoreInfo>
->>>>>>> kms
         <Saves_ansers></Saves_ansers>
         <style jsx>{`
           .container {
@@ -43,10 +31,7 @@ export default function saves_ansers() {
     </div>
   );
 }
-<<<<<<< HEAD
 
 saves_ansers.getLayout = function getLayout(page) {
   return <UserIdLayout>{page}</UserIdLayout>;
 };
-=======
->>>>>>> kms

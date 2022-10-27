@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import Saves_qustions from "../../../../components/userPageComponents/saves_qustions";
 import UserIdLayout from "../User_Id_Layout";
 
@@ -36,40 +35,3 @@ export default function saves_qustions() {
 saves_qustions.getLayout = function getLayout(page) {
   return <UserIdLayout>{page}</UserIdLayout>;
 };
-=======
-import CoreInfo from "../coreInfo";
-import Saves_qustions from "../../../../components/userPageComponents/saves_qustions";
-import { useRouter } from "next/router";
-export default function saves_qustions() {
-  const router = useRouter();
-  return (
-    <div className="container">
-      <div className="content">
-        <CoreInfo></CoreInfo>
-        <Saves_qustions></Saves_qustions>
-        <style jsx>{`
-          .container {
-            height: 100vh;
-            width: 100vh;
-            display: flex;
-            justify-content: space-between;
-            flex: 1 0 auto;
-            position: relative;
-            margin: 0;
-            text-align: left;
-          }
-          .content {
-            width: 50%;
-            min-width: 515px;
-            padding: 24px;
-            margin: 0;
-            border-radius: 0;
-            border-top-width: 0;
-            border-bottom-width: 0;
-          }
-        `}</style>
-      </div>
-    </div>
-  );
-}
->>>>>>> kms
