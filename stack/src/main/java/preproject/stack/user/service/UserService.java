@@ -32,7 +32,7 @@ public class UserService {
         User findUser = findVerifiedUser(user.getUserId());
 
         Optional.ofNullable(user.getUserName())
-                .ifPresent(name -> findUser.setUserName(name));
+                .ifPresent(userName -> findUser.setUserName(userName));
         return userRepository.save(findUser);
     }
 
