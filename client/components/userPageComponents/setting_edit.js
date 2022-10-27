@@ -1,5 +1,22 @@
+import { useState, useRef } from "react";
 import SubTap from "./subTap";
 export default function saves_qustions() {
+  const fileInputRef = useRef(null);
+  const [profileImage, setProfileImage] = useState(null);
+  const handleClickFileInput = () => {
+    console.log(profileImage);
+    fileInputRef.current.click();
+  };
+  const onImgChange = async (event) => {
+    const fileList = event.target.files;
+    const url = URL.createObjectURL(fileList[0]);
+    setProfileImage({
+      file: fileList[0],
+      thumbnail: url,
+      type: fileList[0].type.slice(0, 5),
+    });
+  };
+  console.log(profileImage);
   return (
     <div id="main-content">
       <SubTap></SubTap>
@@ -14,18 +31,77 @@ export default function saves_qustions() {
                 width="100%"
                 height="100%"
               ></img>
-              <div>Change picture</div>
+              <div className="changePicure">
+                <div>Change picture</div>
+                <input
+                  type="file"
+                  className="upload"
+                  ref={fileInputRef}
+                  onChange={onImgChange}
+                />
+              </div>
             </div>
           </div>
+          <div id="inputBox">
+            <label className="lable" for="email">
+              Dispaly name
+            </label>
+            <input className="input"></input>
+          </div>
+          <button onClick={handleClickFileInput}>aaaaaaa</button>
         </div>
       </div>
       <style jsx>{`
+        .lable {
+          margin: 4px;
+          margin-right: 0;
+          margin-left: 0;
+          font-size: 1rem;
+          font-family: inherit;
+          color: black;
+          font-weight: 600;
+          padding: 0;
+        }
+        .input {
+          border: 1px solid rgba(111, 111, 111, 0.497);
+          border-radius: 3px;
+          width: 70%;
+          height: 25px;
+        }
+        #prifileImgBox {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+        #inputBox {
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .upload {
+          color: white;
+          background-color: rgba(255, 255, 255, 0);
+          height: 100%;
+          width: 100%;
+          border: none;
+        }
+        .changePicure {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: rgba(58, 58, 58, 0.497);
+          position: relative;
+          height: 1.5rem;
+          bottom: 18%;
+        }
         #imgBox {
+          position: relative;
           height: 10rem;
           width: 10rem;
           border-radius: 5px;
-
-          background-color: hsl(27, 90%, 55%);
+           {
+            /* background-color: hsl(27, 90%, 55%); */
+          }
         }
         a {
           color: hsl(210, 8%, 45%);

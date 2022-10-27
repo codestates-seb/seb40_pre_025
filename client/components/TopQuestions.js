@@ -4,7 +4,6 @@ import Header from "../components/Header";
 import Questions from "../components/Questions";
 import Seo from "../components/Seo";
 
-
 export default function TopQuestions() {
   return (
     <>
@@ -14,7 +13,6 @@ export default function TopQuestions() {
         {/* 메인  */}
         <div id="content">
           <Questions />
-          
         </div>
         <style jsx>{`
           .container {

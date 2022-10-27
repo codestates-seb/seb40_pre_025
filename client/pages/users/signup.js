@@ -5,7 +5,7 @@ export default function SignUp() {
   return (
     <div className="container">
       <div id="content" className="d-flex flex_center">
-        <div className="d-flex ai-center">
+        <div className="d-flex ai-center h100">
           <div id="information" className="d-flex fd-column">
             <h1>Join the Stack Overflow community</h1>
             <div className="d-flex ai-center margin-B">
@@ -164,6 +164,12 @@ export default function SignUp() {
         </div>
       </div>
       <style jsx>{`
+        #flexItem {
+          height: 100%;
+        }
+        .h100 {
+          height: 100%;
+        }
         .helf {
           font-size: 0.8rem;
           color: gray;
@@ -182,7 +188,7 @@ export default function SignUp() {
           display: inline-block;
         }
         .fw-normal {
-          font-weight: 400 !important;
+          font-weight: 400;
           font-size: 0.8rem;
         }
         .fc-light {
@@ -219,7 +225,7 @@ export default function SignUp() {
         .ta-center {
           text-align: center !important;
           font-size: 1rem;
-          margin-bottom: 24px;
+          margin-bottom: 5rem;
           margin-left: auto;
           margin-right: auto;
         }
@@ -237,9 +243,10 @@ export default function SignUp() {
           align-items: center;
         }
         .container {
-          height: 100vh;
+          height: 100%;
           background-color: rgb(241 242 243);
           display: flex;
+          align-items: center;
           justify-content: center;
           margin: 0;
         }
@@ -249,7 +256,8 @@ export default function SignUp() {
           font-size: 1rem;
         }
         #content {
-          width: 100vh;
+          width: 100%;
+          height: 100%;
           padding: 24px;
           margin: 0;
           border-top-width: 0;
