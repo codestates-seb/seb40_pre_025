@@ -2,6 +2,7 @@ package preproject.stack.post.dto;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class PostResponseDto {
@@ -12,8 +13,8 @@ public class PostResponseDto {
 
     private String body;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
+
+    private LocalDateTime createdAt;
 
 
 }

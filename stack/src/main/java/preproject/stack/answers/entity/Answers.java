@@ -1,6 +1,5 @@
 package preproject.stack.answers.entity;
 
-import preproject.stack.post.entity.Address;
 import preproject.stack.post.entity.Post;
 import preproject.stack.user.entity.User;
 
