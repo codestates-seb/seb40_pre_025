@@ -1,6 +1,5 @@
 package preproject.stack.user.controller;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -40,7 +39,7 @@ public class UserController {
     @PatchMapping("/{user-id}")
     public ResponseEntity patchUser(@PathVariable("user-id") long userId, @Valid @RequestBody UserPatchDto userPatchDto) {
         User user = mapper.userPatchDtoToUser(userPatchDto);
-        User response = userService.findUser(userId);
+        User response = userService.updateUser(user);
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.userToUserResponseDto(response)), HttpStatus.OK);
     }

@@ -1,10 +1,12 @@
 package preproject.stack.advice;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import preproject.stack.exception.BusinessLogicException;
 import preproject.stack.response.ErrorResponse;
 
 import javax.validation.ConstraintViolationException;
@@ -24,5 +26,10 @@ public class GlobalExceptionAdvice {
         final ErrorResponse response = ErrorResponse.of(e.getConstraintViolations());
 
         return response;
+    }
+
+    @ExceptionHandler
+    public ResponseEntity handleBusinessLogicException(BusinessLogicException e) {
+        return new ResponseEntity(HttpStatus.valueOf(e.getExceptionCode().getStatus()));
     }
 }

@@ -16,9 +16,4 @@ public class PostPatchDto {
 
     private String body;
 
-    private Long tagId;
-
-    private String tagName;
-
-
 }

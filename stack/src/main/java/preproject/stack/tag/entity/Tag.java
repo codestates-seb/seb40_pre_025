@@ -12,7 +12,7 @@ public class Tag {
     @Id @GeneratedValue
     private Long tagId;
 
-    @OneToMany(mappedBy = "tag",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tag")
     private List<PostTag> postTags = new ArrayList<>();
 
     private String tagName;

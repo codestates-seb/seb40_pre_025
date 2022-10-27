@@ -17,11 +17,10 @@ public class UserPostDto {
 
     @NotBlank
     @Email
-    @UniqueElements
     private String email;
 
     @NotBlank
-    private String name;
+    private String userName;
 
 
     @NotBlank
