@@ -5,11 +5,14 @@ const Github = () => {
   return (
     <div>
       <button type="signin">
-      <Image src="/images/g.png" alt="google" width="15" height="15" margin-right= "5px"/>
-       Sign in with Github
+      <Image src="/images/g.png" alt="google" width="15" height="15"/>
+       <a>Sign in with Github</a>
        </button>
       <style jsx>
         {`
+        a {
+          margin-left: 5px;
+        }
         button {
           background: rgb(36,38,42);
           color: white;
@@ -25,11 +28,7 @@ const Github = () => {
         }
         button :hover {
           background: black;
-        }
-        img {
-          weight: 10px;
-          height: 10px;
-        }
+        }    
         `}
       </style>
     </div>

@@ -6,10 +6,16 @@ const Google = () => {
     <div>
       <button type="signin">
       <Image src="/images/google.png" alt="google" width="15" height="15"/>
-      Sign in with Google
+      <a>Sign in with Google</a>
        </button>
       <style jsx>
         {`
+        a {
+          margin-left: 5px;
+        }
+        .image{
+          margin-right: 5px;
+        }
         button {
           background: white;
           color: black;

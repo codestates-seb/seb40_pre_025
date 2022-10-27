@@ -17,7 +17,7 @@ export default function Home() {
       <Google2 />
       <Github />
       <Github2 />
-      {/* <SideBar /> */}
+      <SideBar />
       <Footer />
     </div>
   );
