@@ -1,9 +1,3 @@
-import { useEffect, useState } from "react";
-import Header from "../components/Header";
-
-import Questions from "../components/Questions";
-import Seo from "../components/Seo";
-import SideBar from "../components/SideBar";
 import TopQuestions from "../components/TopQuestions";
 
 export default function Home() {
@@ -11,5 +5,6 @@ export default function Home() {
     <>
       <TopQuestions />
     </>
+
   );
 }
