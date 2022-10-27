@@ -5,15 +5,15 @@ const Header = () => {
   return <div className="page">
     <header>
       <nav>
-        <ul>
+        <ul className="navbar__menu">
         <li><a href="/"><Image src="/images/s.png" alt="stackoverflow" width="150" height="30"/></a></li>
         <li><a href=""><input type="text" placeholder="  🔍 Search..." onClick=""  /></a></li>
-        <li><a href="../users/login"><button className="login" onClick="{()=>{}}">Log in</button></a></li>
+        <li><a href="../users/login"><button className="login">Log in</button></a></li>
         <li><a href="../users/signup"><button className="signup">Sign up</button></a></li>
         </ul>
     <style jsx>
       
-      {`
+      {` 
       Image :hover{
         background: rgb(221,224,227);
       }
@@ -24,7 +24,7 @@ const Header = () => {
         cursor: pointer;
         background: rgb(218,232,241);
         color: rgb(45,95,139);
-        padding: 5px 10px 5px 10px;
+        padding: 7px 12px 7px 12px;
         border: 1px solid rgb(158,190,214);
         border-radius: 3px;
         box-shadow: 0.5px black;
@@ -40,7 +40,7 @@ const Header = () => {
         cursor: pointer;
         background: rgb(19,127,254);
         color: rgb(255,255,255);
-        padding: 5px 10px 5px 10px;
+        padding: 7px 12px 7px 12px;
         border: 1px solid rgb(158,190,214);
         border-radius: 3px;
         box-shadow: 0.5px black;
@@ -53,8 +53,8 @@ const Header = () => {
       }
       input {
         width: 950px;
-        height: 16px;
-        font-size:10px;
+        height: 25px;
+        font-size: 13px;
         margin-left: 60px;
         margin-right: 50px;
       }
@@ -70,12 +70,19 @@ const Header = () => {
         list-style-type: none;
         display: flex;
         align-items: center;
+        margin: 0;
+        height: 3.2rem;
       }
       li {
         display: inline-block;
       }
       nav {
         background: rgb(246,248,247);
+      }
+      @media screen and (max-width: 968px){
+        .navbar__menu{
+          flex-direction: column;
+        }
       }
       `}
     </style>

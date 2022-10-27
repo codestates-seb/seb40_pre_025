@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Header from "../components/Header";
 import Questions from "../components/Questions";
 import Seo from "../components/Seo";
 
@@ -9,7 +8,6 @@ export default function TopQuestions() {
   return (
     <>
       <Seo />
-      <Header />
       <div className="container">
         {/* 메인  */}
         <div id="content">
