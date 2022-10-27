@@ -17,7 +17,7 @@ const Header = () => {
         cursor: pointer;
         background: rgb(218,232,241);
         color: rgb(45,95,139);
-        padding: 5px 10px 5px 10px;
+        padding: 7px 12px 7px 12px;
         border: 1px solid rgb(158,190,214);
         border-radius: 3px;
         box-shadow: 0.5px black;
@@ -31,10 +31,10 @@ const Header = () => {
       }
       input {
         width: 950px;
-        height: 16px;
-        font-size:10px;
+        height: 25px;
+        font-size: 13px;
         margin-left: 60px;
-        margin-right: 70px;
+        margin-right: 50px;
       }
       header {
         background: rgb(246,248,247);
