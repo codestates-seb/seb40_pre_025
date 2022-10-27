@@ -6,10 +6,10 @@ const Header = () => {
     <header>
       <nav>
         <ul>
-        <li><a href=""><Image src="/images/s.png" alt="stackoverflow" width="150" height="30"/></a></li>
+        <li><a href="/"><Image src="/images/s.png" alt="stackoverflow" width="150" height="30"/></a></li>
         <li><a href=""><input type="text" placeholder="  🔍 Search..." onClick=""  /></a></li>
-        <li><a href=""><button className="login" onClick="{()=>{}}">Log in</button></a></li>
-        <li><a href=""><button className="signup">Sign up</button></a></li>
+        <li><a href="../users/login"><button className="login" onClick="{()=>{}}">Log in</button></a></li>
+        <li><a href="../users/signup"><button className="signup">Sign up</button></a></li>
         </ul>
     <style jsx>
       
