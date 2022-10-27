@@ -1,16 +1,50 @@
-import CoreInfo from "./coreInfo";
+import Link from "next/link";
+import UserIdLayout from "./User_Id_Layout";
 export default function profile() {
   return (
     <div className="container">
       <div className="content">
-        <CoreInfo></CoreInfo>
+        {/* <CoreInfo></CoreInfo> */}
         <div id="main-content">
+          <div id="State">
+            <label className="lable">Stats</label>
+            <div className="statsBox">
+              <div className="state">
+                <div className="color-B">1</div>requtation
+              </div>
+              <div className="state">
+                <div className="color-B">1</div>answers
+              </div>
+              <div className="state">
+                <div className="color-B">1</div>qustions
+              </div>
+            </div>
+          </div>
           <div id="about">
             <label className="lable">About</label>
-            <div className="contentBox"></div>
+            <div className="contentBox">
+              <div>
+                <div>
+                  {`Your about me section is currently blank. Would you like to
+                  add one? `}
+                  <Link href={"/users/123/setting/edit"}>
+                    <a>Edit profile</a>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <style jsx>{`
+          .color-B {
+            color: black;
+            font-weight: 600;
+            margin-bottom: 5px;
+          }
+          a {
+            color: hsl(206, 100%, 40%);
+            text-decoration: none;
+          }
           #main-content {
             margin: 0;
             margin-top: 40px;
@@ -43,14 +77,18 @@ export default function profile() {
             margin: 4px;
             margin-right: 0;
             margin-left: 0;
-            font-size: 2.2rem;
+
+            font-size: 1.5rem;
             font-family: inherit;
             color: rgb(57, 57, 57);
             font-weight: 600;
             padding: 0;
           }
           .contentBox {
-            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
             color: hsl(210, 8%, 45%);
             text-align: center;
             width: auto;
@@ -61,8 +99,29 @@ export default function profile() {
             border: 1px solid hsl(0, 0%, 78%);
             border-radius: 5px;
           }
+          .statsBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid hsl(0, 0%, 78%);
+            border-radius: 5px;
+            margin-top: 5px;
+            width: auto;
+            height: 4rem;
+            margin-bottom: 50px;
+            display: grid;
+            grid-template-columns: 33% 33% 33%;
+          }
+          .state {
+            margin: 10px;
+            color: gray;
+          }
         `}</style>
       </div>
     </div>
   );
 }
+
+profile.getLayout = function getLayout(page) {
+  return <UserIdLayout>{page}</UserIdLayout>;
+};

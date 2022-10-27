@@ -1,12 +1,10 @@
-import Header from "../components/Header";
-import Header2 from "../components/Header2";
-import Sidebar from "../components/SideBar"
+import TopQuestions from "../components/TopQuestions";
 
 export default function Home() {
   return (
-    <div>
-      
-      <Sidebar />
-    </div>
+    <>
+      <TopQuestions />
+    </>
+
   );
 }

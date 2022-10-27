@@ -1,3 +1,5 @@
+import Google from "../../components/Google";
+import Github from "../../components/Github";
 import Link from "next/link";
 export default function SignUp() {
   return (
@@ -62,7 +64,14 @@ export default function SignUp() {
             </div>
           </div>
           <div id="flexItem">
-            <div className="socialLoginBtn"></div>
+            <div className="socialLogin">
+              <div className="socialLoginBtn">
+                <Google></Google>
+              </div>
+              <div className="socialLoginBtn">
+                <Github></Github>
+              </div>
+            </div>
             <div className="formContainer">
               <form id="login-form" className="d-flex fd-column">
                 <div className="d-flex fd-column margin-T-B">
@@ -111,7 +120,7 @@ export default function SignUp() {
                 </div>
                 <button className="s-btn margin-T-B">Sign up</button>
               </form>
-              <div className="margin-T">
+              <div className="margin-T helf">
                 <p className="d-ib">
                   {`By clicking “Sign up”, you agree to our `}
                   <Link className="d-ib" href="/">
@@ -126,13 +135,13 @@ export default function SignUp() {
             </div>
             <div className="assistance">
               <div className="margin-T-B">
-                Already have an account?
+                {`Already have an account? `}
                 <Link href="/">
-                  <a href="/">Sign up</a>
+                  <a href="/">Log in</a>
                 </Link>
               </div>
               <div className="margin-T-B">
-                Are you an employer?
+                {`Are you an employer? `}
                 <Link href="/">
                   <a>
                     Sign up on Talent
@@ -155,16 +164,30 @@ export default function SignUp() {
         </div>
       </div>
       <style jsx>{`
+        .helf {
+          font-size: 0.8rem;
+          color: gray;
+        }
+        .socialLogin {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 16px;
+        }
+        .socialLoginBtn {
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
         .d-ib {
           display: inline-block;
         }
         .fw-normal {
           font-weight: 400 !important;
-          font-size: 15px;
+          font-size: 0.8rem;
         }
         .fc-light {
           color: hsl(210, 8%, 45%);
-          font-size: 15px;
+          font-size: 0.8rem;
         }
         a {
           color: hsl(206, 100%, 40%);
@@ -185,7 +208,7 @@ export default function SignUp() {
           margin-bottom: 6px;
         }
         .margin-T {
-          margin-top: 18px;
+          margin-top: 1px;
         }
         .margin-B {
           margin-bottom: 24px;
@@ -195,7 +218,7 @@ export default function SignUp() {
         }
         .ta-center {
           text-align: center !important;
-          font-size: 1.61538462rem;
+          font-size: 1rem;
           margin-bottom: 24px;
           margin-left: auto;
           margin-right: auto;
@@ -223,20 +246,20 @@ export default function SignUp() {
         #information {
           margin-right: 48px;
           margin-bottom: 128px;
-          font-size: 1.15384615rem;
+          font-size: 1rem;
         }
         #content {
-          width: 100%;
+          width: 100vh;
           padding: 24px;
           margin: 0;
           border-top-width: 0;
           border-bottom-width: 0;
           border-radius: 0;
           box-sizing: border-box;
-          border: 1px solid var(--theme-content-border-color);
+          border: 1px solid rgb(223, 223, 223);
         }
         .formContainer {
-          box-shadow: 1px 1px 10px 2px rgb(233, 233, 233);
+          box-shadow: 1px 1px 15px 3px rgb(212, 212, 212);
           width: 290px;
           background-color: white;
           border-radius: 7px;
@@ -244,12 +267,13 @@ export default function SignUp() {
           margin-bottom: 24px;
           margin-left: auto;
           margin-right: auto;
+          box-sizing: border-box;
         }
         .lable {
           margin: 4px;
           margin-right: 0;
           margin-left: 0;
-          font-size: 1.15384615rem;
+          font-size: 1rem;
           font-family: inherit;
           color: black;
           font-weight: 600;
@@ -285,7 +309,7 @@ export default function SignUp() {
           width: 290px;
           height: 78px;
           text-align: center;
-          font-size: 15px;
+          font-size: 0.85rem;
           padding: 16px;
           margin-bottom: 24px;
           margin-left: auto;
@@ -299,7 +323,7 @@ export default function SignUp() {
         h1 {
           color: rgb(82, 82, 82);
           line-height: 1;
-          font-size: 2rem;
+          font-size: 1.6rem;
           margin: 0;
           margin-bottom: 32px;
         }

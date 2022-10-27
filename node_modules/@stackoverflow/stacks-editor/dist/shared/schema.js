@@ -1,0 +1,17 @@
+import { DOMParser, } from "prosemirror-model";
+import { escapeHTML } from "./utils";
+/** Parses out a Prosemirror document from a code (markdown) string */
+export class CodeStringParser extends DOMParser {
+    parseCode(content, options) {
+        const node = document.createElement("div");
+        node.innerHTML = escapeHTML `<pre>${content}</pre>`;
+        return super.parse(node, options);
+    }
+    static fromSchema(schema) {
+        return (schema.cached.domParser ||
+            (schema.cached.domParser = new CodeStringParser(schema, CodeStringParser.schemaRules(schema))));
+    }
+    static toString(node) {
+        return node.textBetween(0, node.content.size, "\n\n");
+    }
+}
