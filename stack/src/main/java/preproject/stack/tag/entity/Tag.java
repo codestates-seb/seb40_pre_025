@@ -1,5 +1,6 @@
 package preproject.stack.tag.entity;
 
+<<<<<<< HEAD
 import preproject.stack.post.entity.PostTag;
 
 import javax.persistence.*;
@@ -17,4 +18,14 @@ public class Tag {
 
     private String tagName;
 
+=======
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Tag {
+    @Id
+    private int tagId;
+    private String name;
+>>>>>>> kjm
 }

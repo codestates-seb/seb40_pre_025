@@ -1,5 +1,6 @@
 package preproject.stack.post.service;
 
+<<<<<<< HEAD
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -61,4 +62,7 @@ public class PostService {
         return post;
     }
 
+=======
+public class PostService {
+>>>>>>> kjm
 }
