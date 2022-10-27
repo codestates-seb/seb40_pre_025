@@ -1,7 +1,5 @@
 package preproject.stack.user.controller;
 
-
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;

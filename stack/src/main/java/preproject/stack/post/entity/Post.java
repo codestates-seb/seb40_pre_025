@@ -27,7 +27,7 @@ public class Post {
     private User user;
 
     @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
-    private List<Answers> answers = new ArrayList<>();
+    private List<Answer> answers = new ArrayList<>();
 
     @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
     private List<PostTag> postTags = new ArrayList<>();
