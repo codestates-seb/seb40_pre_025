@@ -20,7 +20,7 @@ public class UserPostDto {
     private String email;
 
     @NotBlank
-    private String name;
+    private String userName;
 
 
     @NotBlank
