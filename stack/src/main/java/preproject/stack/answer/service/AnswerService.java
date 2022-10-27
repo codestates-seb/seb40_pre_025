@@ -1,7 +1,6 @@
 package preproject.stack.answer.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -9,6 +8,8 @@ import preproject.stack.answer.entity.Answer;
 import preproject.stack.answer.repository.AnswerRepository;
 
 import javax.validation.constraints.Positive;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,37 +19,43 @@ public class AnswerService {
     // DI
     private final AnswerRepository answerRepository;
 
-    // 질문 등록
+    // 답변 등록
     public Answer createAnswer(Answer answer){
+        answer.setReadCount(0L);
+        answer.setVoteCount(0L);
+
         return answerRepository.save(answer);
     }
 
-    // 질문 업데이트
+    // 답변 업데이트
     public Answer updateAnswer(Answer answer){
         Answer findAnswer = answerRepository.findById(answer.getAnswerId()).orElseThrow(IllegalArgumentException::new);
 
+        findAnswer.setBody(answer.getBody());
+        findAnswer.setModifiedAt(LocalDateTime.now());
+
         return answerRepository.save(findAnswer);
     }
-
-    // 질문 찾기
-    public Answer findAnswer(Integer answerId){
+    // 답변 찾기
+    public Answer findAnswer(Long answerId){
         Answer findAnswer = answerRepository.findById(answerId).orElseThrow(IllegalArgumentException::new);
         return findAnswer;
     }
 
-    // 질문 전체 페이징 보기
-    public Page<Answer> findAnswers(int page , int size){
-        return answerRepository.findAll(PageRequest.of(page,size, Sort.by("answerId").descending()));
+    // 답변 전체 페이징 보기
+    public List<Answer> findAnswers(Integer page , Integer size){
+        PageRequest pageRequest = PageRequest.of(page, size, Sort.by("createdAt").descending());
+        return answerRepository.findAll(pageRequest).getContent();
     }
 
-    // 질문 존재 여부 확인
-    private Optional<Answer> findVerifiedAnswer(Integer answerId) {
+    // 답변 존재 여부 확인
+    private Optional<Answer> findVerifiedAnswer(Long answerId) {
         Optional<Answer> findAnswer = answerRepository.findById(answerId);
 
         return findAnswer;
     }
-
-    public void deleteAnswer(@Positive Integer answerId) {
+    // 답변 삭제
+    public void deleteAnswer(@Positive Long answerId) {
         answerRepository.deleteById(answerId);
     }
 

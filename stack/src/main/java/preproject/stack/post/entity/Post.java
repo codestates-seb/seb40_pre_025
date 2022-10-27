@@ -2,7 +2,7 @@ package preproject.stack.post.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import preproject.stack.answers.entity.Answers;
+import preproject.stack.answer.entity.Answer;
 import preproject.stack.user.entity.User;
 
 import javax.persistence.*;
@@ -15,7 +15,7 @@ import java.util.List;
 @Getter @Setter
 public class Post {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
     private String body;

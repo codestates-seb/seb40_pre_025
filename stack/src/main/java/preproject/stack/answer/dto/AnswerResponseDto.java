@@ -1,17 +1,19 @@
 package preproject.stack.answer.dto;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import java.util.Date;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
 public class AnswerResponseDto {
 
-    private Integer answerId;
-
+    private long answerId;
     private String body;
+    private Integer voteCount;
+    private Integer readCount;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
-
-
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
 }
