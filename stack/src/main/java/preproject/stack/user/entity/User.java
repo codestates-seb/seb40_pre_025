@@ -6,9 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import preproject.stack.answers.entity.Answers;
 import preproject.stack.post.entity.Post;
-import preproject.stack.saved.entity.Saved;
-import preproject.stack.user.entity.UserRole;
-import preproject.stack.user.entity.UserStatus;
+//import preproject.stack.saved.entity.Saved;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -27,8 +25,8 @@ public class User {
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Post> posts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    private List<Saved> saveds = new ArrayList<>();
+   // @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    //private List<Saved> saveds = new ArrayList<>();
 
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
@@ -38,11 +36,19 @@ public class User {
 
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    private UserStatus status;
+    @Getter
+    public enum UserStatus {
+        USER_ACTIVE("활동중"),
+        USER_SLEEP("휴면 상태");
 
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
+        private String status;
+
+        UserStatus(String status) {
+            this.status = status;
+        }
+
+    }
+
 
     public User(String userName, String email) {
         this.userName = userName;
