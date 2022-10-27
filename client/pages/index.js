@@ -1,11 +1,7 @@
-import { useSelector } from "react-redux";
-
 export default function Home() {
-  const testState = useSelector((state) => state);
-  console.log(testState);
   return (
     <div>
-      <button type="button">버튼</button>
+      <button type="button">버튼43333333</button>
     </div>
   );
 }
