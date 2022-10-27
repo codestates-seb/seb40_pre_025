@@ -1,0 +1,3 @@
+import { Plugin } from "prosemirror-state";
+/** Plugin that forces the `revealed` attr on "spoiler" nodes on selection and removes it on de-selection */
+export declare const spoilerToggle: Plugin<any>;

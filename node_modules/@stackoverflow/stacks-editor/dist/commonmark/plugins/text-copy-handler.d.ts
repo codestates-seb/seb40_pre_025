@@ -1,0 +1,3 @@
+import { Plugin } from "prosemirror-state";
+/** Plugin that ensures that all commonmark editor contents are copied as plain text, not as code */
+export declare const textCopyHandlerPlugin: Plugin<any>;

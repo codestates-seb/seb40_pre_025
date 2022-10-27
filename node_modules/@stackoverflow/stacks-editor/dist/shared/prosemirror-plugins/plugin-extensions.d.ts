@@ -1,0 +1,55 @@
+import { Plugin, PluginSpec, PluginKey, Transaction, StateField, EditorState, EditorStateConfig } from "prosemirror-state";
+import { EditorView } from "prosemirror-view";
+/**
+ * Extended StateField that overrides the `this` of all methods to be `StatefulPlugin` instead of just `Plugin`
+ */
+interface StatefulPluginStateField<T, TThis extends StatefulPlugin<T> = StatefulPlugin<T>> extends StateField<T> {
+    /** @inheritdoc */
+    init(this: TThis, config: EditorStateConfig, instance: EditorState): T;
+    /** @inheritdoc */
+    apply(this: TThis, tr: Transaction, value: T, oldState: EditorState, newState: EditorState): T;
+    /** @inheritdoc */
+    toJSON?: (this: TThis, value: T) => unknown;
+    /** @inheritdoc */
+    fromJSON?: (this: TThis, config: EditorStateConfig, value: unknown, state: EditorState) => T;
+}
+export interface StatefulPluginSpec<T, TThis extends StatefulPlugin<T> = StatefulPlugin<T>> extends PluginSpec<T> {
+    /** @inheritdoc */
+    key: StatefulPluginKey<T>;
+    /** @inheritdoc */
+    state: StatefulPluginStateField<T, TThis> | null;
+}
+export declare class StatefulPluginKey<T> extends PluginKey<T> {
+    constructor(name?: string);
+    /** @inheritdoc */
+    get(state: EditorState): StatefulPlugin<T> | null | undefined;
+    setMeta(tr: Transaction, data: T): Transaction;
+}
+export declare class StatefulPlugin<T> extends Plugin<T> {
+    spec: StatefulPluginSpec<T>;
+    constructor(spec: StatefulPluginSpec<T>);
+    get transactionKey(): StatefulPluginKey<T>;
+    getMeta(tr: Transaction): T;
+}
+export declare class AsyncPluginKey<T, TCallback> extends StatefulPluginKey<T> {
+    constructor(name?: string);
+    /** @inheritdoc */
+    setMeta(tr: Transaction, data: T): Transaction;
+    setCallbackData(tr: Transaction, data: TCallback): Transaction;
+    dispatchCallbackData(view: EditorView, data: TCallback): Transaction;
+}
+export interface AsyncPluginSpec<T, TCallback> extends StatefulPluginSpec<T, AsyncPlugin<T, TCallback>> {
+    key: AsyncPluginKey<T, TCallback>;
+    asyncCallback: (view: EditorView, prevState: EditorState) => Promise<TCallback>;
+}
+/**
+ * Shortcut wrapper for a plugin with async functionality;
+ * Overrides the spec's `view` property to manually handle async functionality
+ */
+export declare class AsyncPlugin<T, TCallback> extends StatefulPlugin<T> {
+    constructor(spec: AsyncPluginSpec<T, TCallback>);
+    /** @inheritdoc */
+    getMeta(tr: Transaction): T;
+    getCallbackData(tr: Transaction): TCallback;
+}
+export {};

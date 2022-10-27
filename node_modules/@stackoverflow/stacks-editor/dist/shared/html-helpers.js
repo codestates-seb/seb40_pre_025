@@ -1,0 +1,68 @@
+/**
+ * Describes the supported html tags
+ * @see {@link https://meta.stackexchange.com/questions/1777/what-html-tags-are-allowed-on-stack-exchange-sites|Supported tags}
+ */
+export var TagType;
+(function (TagType) {
+    // Uncategorized
+    TagType[TagType["unknown"] = 0] = "unknown";
+    TagType[TagType["comment"] = 1] = "comment";
+    // Inline items
+    TagType[TagType["strike"] = 2] = "strike";
+    TagType[TagType["strong"] = 3] = "strong";
+    TagType[TagType["emphasis"] = 4] = "emphasis";
+    TagType[TagType["hardbreak"] = 5] = "hardbreak";
+    TagType[TagType["code"] = 6] = "code";
+    TagType[TagType["link"] = 7] = "link";
+    TagType[TagType["image"] = 8] = "image";
+    TagType[TagType["keyboard"] = 9] = "keyboard";
+    TagType[TagType["pre"] = 10] = "pre";
+    TagType[TagType["sup"] = 11] = "sup";
+    TagType[TagType["sub"] = 12] = "sub";
+    // Block items
+    TagType[TagType["heading"] = 13] = "heading";
+    TagType[TagType["paragraph"] = 14] = "paragraph";
+    TagType[TagType["horizontal_rule"] = 15] = "horizontal_rule";
+    TagType[TagType["blockquote"] = 16] = "blockquote";
+    TagType[TagType["list_item"] = 17] = "list_item";
+    TagType[TagType["ordered_list"] = 18] = "ordered_list";
+    TagType[TagType["unordered_list"] = 19] = "unordered_list";
+    // Description lists
+    TagType[TagType["description_details"] = 20] = "description_details";
+    TagType[TagType["description_list"] = 21] = "description_list";
+    TagType[TagType["description_term"] = 22] = "description_term";
+})(TagType || (TagType = {}));
+/**
+ * Describes the supported attributes for each html tag
+ * @see {@link https://meta.stackexchange.com/questions/1777/what-html-tags-are-allowed-on-stack-exchange-sites|Supported tags}
+ */
+export const supportedTagAttributes = {
+    [TagType.link]: ["href", "title"],
+    [TagType.image]: ["alt", "height", "src", "title", "width"],
+};
+/**
+ * Collection of elements that are counted as "block" level elements
+ * TODO change to a map for fast lookup?
+ */
+export const blockElements = [
+    TagType.blockquote,
+    TagType.heading,
+    TagType.list_item,
+    TagType.ordered_list,
+    TagType.unordered_list,
+    TagType.description_details,
+    TagType.description_list,
+    TagType.description_term,
+    TagType.paragraph,
+    TagType.horizontal_rule,
+    TagType.pre,
+];
+/**
+ * Collection of elements that are self-closing (e.g. <br/>)
+ * TODO change to a map for fast lookup?
+ */
+export const selfClosingElements = [
+    TagType.hardbreak,
+    TagType.image,
+    TagType.horizontal_rule,
+];

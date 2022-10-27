@@ -1,0 +1,8 @@
+import { Plugin, EditorState, Transaction } from "prosemirror-state";
+export declare function editableCheck(state: EditorState): boolean;
+/**
+ * Toggles the stored `readonly` plugin state
+ * @param isReadonly Whether to toggle readonly on or not
+ */
+export declare function toggleReadonly(isReadonly: boolean, state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+export declare function readonlyPlugin(): Plugin;

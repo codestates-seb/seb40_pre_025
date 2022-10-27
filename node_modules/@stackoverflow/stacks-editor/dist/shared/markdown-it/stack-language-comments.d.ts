@@ -1,0 +1,6 @@
+import MarkdownIt from "markdown-it/lib";
+/**
+ * Parses out `<!-- language: lang-* -->` and `<!-- language-all -->` comments and applies to the targeted code_block tokens
+ * @param md
+ */
+export declare function stackLanguageComments(md: MarkdownIt): void;

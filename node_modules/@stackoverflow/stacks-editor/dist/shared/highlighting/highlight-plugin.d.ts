@@ -1,0 +1,11 @@
+import { Node as ProsemirrorNode } from "prosemirror-model";
+import { Plugin } from "prosemirror-state";
+/**
+ * Gets the language string from a code_block node
+ * @param block The block to get the language string from
+ */
+export declare function getBlockLanguage(block: ProsemirrorNode, fallback?: string): string;
+/**
+ * Plugin that highlights all code within all code_blocks in the parent
+ */
+export declare function CodeBlockHighlightPlugin(defaultFallbackLanguage: string): Plugin;

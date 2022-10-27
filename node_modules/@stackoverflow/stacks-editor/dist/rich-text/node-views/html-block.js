@@ -1,0 +1,32 @@
+export class HtmlBlock {
+    constructor(node) {
+        // TODO
+        this.dom = document.createElement("div");
+        this.dom.className = "html_block ProseMirror-widget";
+        // TODO need to indicate that this can't be edited
+        //this.dom.classList.add("bg-red-100");
+        // NOTE XSS safe, content is sanitized before getting here
+        // eslint-disable-next-line no-unsanitized/property
+        this.dom.innerHTML = node.attrs.content;
+    }
+}
+export class HtmlBlockContainer {
+    constructor(node) {
+        // TODO
+        this.dom = document.createElement("div");
+        this.dom.className = "html_block_container ProseMirror-widget";
+        // check for children, just to be safe
+        if (!node.childCount) {
+            this.dom.innerHTML = "invalid html_block_container";
+            return;
+        }
+        const contentDomPlaceholder = `<div class="ProseMirror-contentdom"></div>`;
+        const wrappingHtmlString = node.attrs.contentOpen +
+            contentDomPlaceholder +
+            node.attrs.contentClose;
+        // NOTE XSS safe, content is sanitized before getting here
+        // eslint-disable-next-line no-unsanitized/property
+        this.dom.innerHTML = wrappingHtmlString;
+        this.contentDOM = this.dom.querySelector(".ProseMirror-contentdom");
+    }
+}
