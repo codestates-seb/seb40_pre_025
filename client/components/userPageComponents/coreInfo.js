@@ -10,30 +10,34 @@ export default function User() {
       ? 1
       : router.pathname === `/users/[id]/saves/ansers`
       ? 1
-      : router.pathname === `/users/[id]/setting`
+      : router.pathname === `/users/[id]/setting/edit`
+      ? 2
+      : router.pathname === `/users/[id]/setting/delete`
       ? 2
       : null;
   return (
-    <div id="mainbar-full">
-      <div id="coreprofile">
-        <div id="name-photo">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/146/146007.png"
-            width="96px"
-            height="96px"
-          ></img>
-          <div>
-            <div id="userName">편범준</div>
-            <div className="margin-L">
-              <ul className="subimfo">
-                <li>기타 정보...</li>
-                <li>기타 정보...</li>
-                <li>기타 정보...</li>
-              </ul>
+    <div className="container">
+      <div className="content">
+        <div id="mainbar-full">
+          <div id="coreprofile">
+            <div id="name-photo">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/146/146007.png"
+                width="96px"
+                height="96px"
+              ></img>
+              <div>
+                <div id="userName">편범준</div>
+                <div className="margin-L">
+                  <ul className="subimfo">
+                    <li>기타 정보...</li>
+                    <li>기타 정보...</li>
+                    <li>기타 정보...</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        {router.pathname === `/users/[id]/profile` ? (
+            {/* {router.pathname === `/users/[id]/profile` ? (
           <div id="editBtn">
             <Link href={"/"}>
               <a>
@@ -51,37 +55,59 @@ export default function User() {
               </a>
             </Link>
           </div>
-        ) : null}
-      </div>
-      <div id="tapContainer">
-        <div id="tap">
-          {tapMenuList.map((name, idx) => {
-            return (
-              <Link
-                key={idx}
-                href={
-                  idx === 0
-                    ? `/users/${"123"}/profile`
-                    : idx === 1
-                    ? `/users/${"123"}/saves/qustions`
-                    : idx === 2
-                    ? `/users/${"123"}/setting`
-                    : null
-                }
-              >
-                <a
-                  className={isCurrent === idx ? "currentTap" : "notCurrentTap"}
-                  idx={idx}
-                >
-                  <div>{name}</div>
-                </a>
-              </Link>
-            );
-          })}
+        ) : null} */}
+          </div>
+          <div id="tapContainer">
+            <div id="tap">
+              {tapMenuList.map((name, idx) => {
+                return (
+                  <Link
+                    key={idx}
+                    href={
+                      idx === 0
+                        ? `/users/${"123"}/profile`
+                        : idx === 1
+                        ? `/users/${"123"}/saves/qustions`
+                        : idx === 2
+                        ? `/users/${"123"}/setting/edit`
+                        : null
+                    }
+                  >
+                    <a
+                      className={
+                        isCurrent === idx ? "currentTap" : "notCurrentTap"
+                      }
+                      idx={idx}
+                    >
+                      <div>{name}</div>
+                    </a>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
-
       <style jsx>{`
+        .container {
+          width: 100vh;
+          display: flex;
+          justify-content: space-between;
+          flex: 1 0 auto;
+          position: relative;
+          margin: 0;
+          text-align: left;
+        }
+        .content {
+          width: 50%;
+          min-width: 515px;
+          padding: 24px;
+          padding-bottom: 0;
+          margin: 0;
+          border-radius: 0;
+          border-top-width: 0;
+          border-bottom-width: 0;
+        }
         img {
           margin: 10px;
         }

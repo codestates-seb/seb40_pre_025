@@ -7,7 +7,7 @@ export default function saves_qustions() {
     <div id="main-content">
       <SubTap></SubTap>
       <div id="questions">
-        <label className="lable">My Questions</label>
+        <label className="lable">My Anser</label>
         <div className="contentBox">"bbbbbbbb"</div>
       </div>
       <style jsx>{`
@@ -58,6 +58,7 @@ export default function saves_qustions() {
           font-size: 18px;
           margin-right: 15px;
           border-radius: 33px;
+          margin-bottom: 25px;
         }
         .currentTap {
           display: flex;

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Google from "../../components/Google";
+import Github from "../../components/Github";
 
 export default function Login() {
   return (
@@ -25,7 +27,14 @@ export default function Login() {
               </Link>
             </div>
           </div>
-          <div className="socialLoginBtn"></div>
+          <div className="socialLogin">
+            <div className="socialLoginBtn">
+              <Google></Google>
+            </div>
+            <div className="socialLoginBtn">
+              <Github></Github>
+            </div>
+          </div>
           <div className="formContainer">
             <form id="login-form" className="d-flex fd-column">
               <div id="test" className="d-flex fd-column margin-T-B">
@@ -48,13 +57,13 @@ export default function Login() {
           </div>
           <div className="assistance">
             <div className="margin-T-B">
-              Don't have an account?
+              {`Don't have an account? `}
               <Link href="/">
                 <a href="/">Sign up</a>
               </Link>
             </div>
             <div className="margin-T-B">
-              Are you an employer?
+              {`Are you an employer? `}
               <Link href="/">
                 <a>
                   Sign up on Talent
@@ -71,6 +80,16 @@ export default function Login() {
         </div>
       </div>
       <style jsx>{`
+        .socialLogin {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 16px;
+        }
+        .socialLoginBtn {
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
         #footIcon {
           text-align: center;
           color: hsl(206, 100%, 40%);
@@ -93,7 +112,7 @@ export default function Login() {
         }
         .ta-center {
           text-align: center !important;
-          font-size: 1.61538462rem;
+          font-size: 1rem;
           margin-bottom: 24px;
           margin-left: auto;
           margin-right: auto;
@@ -119,6 +138,9 @@ export default function Login() {
           margin: 0;
         }
         #content {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           width: 100%;
           padding: 24px;
           margin: 0;
@@ -126,14 +148,15 @@ export default function Login() {
           border-bottom-width: 0;
           border-radius: 0;
           box-sizing: border-box;
-          border: 1px solid var(--theme-content-border-color);
         }
         .formContainer {
+          box-sizing: border-box;
           box-shadow: 1px 1px 10px 2px rgb(233, 233, 233);
           width: 290px;
           background-color: white;
           border-radius: 7px;
-          padding: 24px;
+          padding: 12px;
+          margin-top: 4px;
           margin-bottom: 24px;
           margin-left: auto;
           margin-right: auto;
@@ -148,7 +171,7 @@ export default function Login() {
           margin: 4px;
           margin-right: 0;
           margin-left: 0;
-          font-size: 1.15384615rem;
+          font-size: 1rem;
           font-family: inherit;
           color: black;
           font-weight: 600;
@@ -156,12 +179,12 @@ export default function Login() {
         }
         .input {
           -webkit-appearance: none;
-          width: auto%;
+          width: auto;
           margin: 0;
           padding: 0.6em 0.7em;
           border: 1px solid rgb(192, 191, 191);
           border-radius: 3px;
-          font-size: 13px;
+          font-size: 1rem;
         }
         .s-btn {
           color: white;
@@ -177,9 +200,7 @@ export default function Login() {
           border-radius: 3px;
           outline: none;
           font-family: inherit;
-          font-size: var(--fs-body1);
           font-weight: normal;
-          line-height: var(--lh-sm);
           text-align: center;
           text-decoration: none;
           cursor: pointer;
@@ -189,7 +210,7 @@ export default function Login() {
           width: 290px;
           height: 78px;
           text-align: center;
-          font-size: 15px;
+          font-size: 1rem;
           padding: 16px;
           margin-bottom: 24px;
           margin-left: auto;
