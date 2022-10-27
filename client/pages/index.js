@@ -1,18 +1,15 @@
-import Google from "../components/Google";
-import Google2 from "../components/Google2";
-import Github from "../components/Github";
-import Github2 from "../components/Github2";
-import Header2 from "../components/Header2";
-import Sidebar from "../components/SideBar";
+import { useEffect, useState } from "react";
+import Header from "../components/Header";
+import NavBar from "../components/NavBar";
+import Questions from "../components/Questions";
+import Seo from "../components/Seo";
+import SideBar from "../components/SideBar";
+import TopQuestions from "../components/TopQuestions";
+
 export default function Home() {
   return (
-    <div>
-      <Google></Google>
-      <Google2></Google2>
-      <Github></Github>
-      <Github2></Github2>
-      <Header2></Header2>
-      <Sidebar></Sidebar>
-    </div>
+    <>
+      <TopQuestions />
+    </>
   );
 }
