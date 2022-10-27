@@ -31,8 +31,7 @@ public class User {
     private String userName;
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    private UserStatus status;
+
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
@@ -41,5 +40,18 @@ public class User {
         this.userName = userName;
         this.email = email;
     }
+    public enum UserStatus {
+        USER_ACTIVE("활동중"),
+        USER_SLEEP("휴면 상태");
+
+        @Getter
+        private String status;
+
+        UserStatus(String status) {
+            this.status = status;
+        }
+        }
+
+
 }
 
