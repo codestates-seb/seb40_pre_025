@@ -1,12 +1,10 @@
-import CoreInfo from "../coreInfo";
 import Saves_ansers from "../../../../components/userPageComponents/saves_ansers";
-import { useRouter } from "next/router";
+import UserIdLayout from "../User_Id_Layout";
+
 export default function saves_ansers() {
-  const router = useRouter();
   return (
     <div className="container">
       <div className="content">
-        <CoreInfo></CoreInfo>
         <Saves_ansers></Saves_ansers>
         <style jsx>{`
           .container {
@@ -33,3 +31,7 @@ export default function saves_ansers() {
     </div>
   );
 }
+
+saves_ansers.getLayout = function getLayout(page) {
+  return <UserIdLayout>{page}</UserIdLayout>;
+};
