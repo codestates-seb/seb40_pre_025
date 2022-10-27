@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Google from "../components/Google";
 import Google2 from "../components/Google2";
 import Github from "../components/Github";
@@ -13,6 +14,12 @@ export default function Home() {
       <Github2></Github2>
       <Header2></Header2>
       <Sidebar></Sidebar>
+=======
+export default function Home() {
+  return (
+    <div>
+      <button type="button">버튼43333333</button>
+>>>>>>> kms
     </div>
   );
 }

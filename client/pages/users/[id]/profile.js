@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 import Link from "next/link";
 import UserIdLayout from "./User_Id_Layout";
+=======
+import CoreInfo from "./coreInfo";
+>>>>>>> kms
 export default function profile() {
   return (
     <div className="container">
       <div className="content">
+<<<<<<< HEAD
         {/* <CoreInfo></CoreInfo> */}
         <div id="main-content">
           <div id="State">
@@ -45,6 +50,16 @@ export default function profile() {
             color: hsl(206, 100%, 40%);
             text-decoration: none;
           }
+=======
+        <CoreInfo></CoreInfo>
+        <div id="main-content">
+          <div id="about">
+            <label className="lable">About</label>
+            <div className="contentBox"></div>
+          </div>
+        </div>
+        <style jsx>{`
+>>>>>>> kms
           #main-content {
             margin: 0;
             margin-top: 40px;
@@ -77,18 +92,26 @@ export default function profile() {
             margin: 4px;
             margin-right: 0;
             margin-left: 0;
+<<<<<<< HEAD
 
             font-size: 1.5rem;
+=======
+            font-size: 2.2rem;
+>>>>>>> kms
             font-family: inherit;
             color: rgb(57, 57, 57);
             font-weight: 600;
             padding: 0;
           }
           .contentBox {
+<<<<<<< HEAD
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 5px;
+=======
+            margin-top: 20px;
+>>>>>>> kms
             color: hsl(210, 8%, 45%);
             text-align: center;
             width: auto;
@@ -99,6 +122,7 @@ export default function profile() {
             border: 1px solid hsl(0, 0%, 78%);
             border-radius: 5px;
           }
+<<<<<<< HEAD
           .statsBox {
             display: flex;
             align-items: center;
@@ -116,12 +140,17 @@ export default function profile() {
             margin: 10px;
             color: gray;
           }
+=======
+>>>>>>> kms
         `}</style>
       </div>
     </div>
   );
 }
+<<<<<<< HEAD
 
 profile.getLayout = function getLayout(page) {
   return <UserIdLayout>{page}</UserIdLayout>;
 };
+=======
+>>>>>>> kms

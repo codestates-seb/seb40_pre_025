@@ -3,7 +3,10 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
 };
+<<<<<<< HEAD
 
+=======
+>>>>>>> kms
 // import withImages from "next-images";
 // modules.exports = withImages({
 //   webpack(config, options) {
