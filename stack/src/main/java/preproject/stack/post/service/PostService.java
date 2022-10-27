@@ -25,12 +25,14 @@ public class PostService {
     }
 
     public Post updatePost(Post post){
-        Post findPost = post;
+        Post findPost = findVerifiedQuestion(post.getPostId());
 
+        Optional.ofNullable(findPost.getCreateAt()) //업데이트 날짜 수정
+                .ifPresent(createAt->findPost.setCreateAt(createAt));
         Optional.ofNullable(post.getTitle())
                 .ifPresent(title ->findPost.setTitle(title));
         Optional.ofNullable(post.getBody())
-                .ifPresent();
+                .ifPresent(body -> findPost.setBody(body));
 
         return postRepository.save(findPost);
     }
@@ -51,6 +53,12 @@ public class PostService {
         Optional<Post> optionalPost = postRepository.findById(postId);
         Post post = optionalPost.orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
         postRepository.delete(post);
+    }
+
+    public Post findVerifiedQuestion(long postId){
+        Optional<Post> optionalPost = postRepository.findById(postId);
+        Post post = optionalPost.orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
+        return post;
     }
 
 }
