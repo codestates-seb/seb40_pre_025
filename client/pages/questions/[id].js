@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header2";
-import SideBar from "../../components/SideBar";
+
 
 const Editor = dynamic(() => import("../../components/Editor.js"), {
   ssr: false,
@@ -15,7 +15,7 @@ export default function AskDetail() {
   return (
     <>
       <Header />
-      <SideBar />
+      
       <div className="container">
         <h1 className="questionTitle">질문 제목</h1>
         <div className="questionContainer">

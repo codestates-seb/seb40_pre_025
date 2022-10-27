@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Questions from "../components/Questions";
 import Seo from "../components/Seo";
-import SideBar from "../components/SideBar";
+
 
 export default function TopQuestions() {
   return (
@@ -14,7 +14,7 @@ export default function TopQuestions() {
         {/* 메인  */}
         <div id="content">
           <Questions />
-          <SideBar />
+          
         </div>
         <style jsx>{`
           .container {
