@@ -5,20 +5,20 @@ const Header = () => {
   return <div className="page">
     <header>
       <nav>
-    <ul>
-    
-    <li><a href=""><Image src="/images/s.png" alt="stackoverflow" width="150" height="30"/></a></li>
-    <li><a href=""><input type="text" placeholder="🔍 Search..." onClick=""  /></a></li>
-    <li><a href=""><button className="login" onClick="{()=>{}}">Log in</button></a></li>
-    <li><a href=""><button className="signup">Sign up</button></a></li>
-    </ul>
+        <ul>
+        <li><a href=""><Image src="/images/s.png" alt="stackoverflow" width="150" height="30"/></a></li>
+        <li><a href=""><input type="text" placeholder="🔍 Search..." onClick=""  /></a></li>
+        <li><a href=""><button className="login" onClick="{()=>{}}">Log in</button></a></li>
+        <li><a href=""><button className="signup">Sign up</button></a></li>
+        </ul>
     <style jsx>
+      
       {`
       Image :hover{
         background: rgb(221,224,227);
       }
       input:focus{
-        border-color: 1#0982f0;   
+        border-color: #0982f0;   
       }
       .login {
         cursor: pointer;
@@ -57,21 +57,20 @@ const Header = () => {
       }
       header {
         background: rgb(246,248,247);
+        display: flex;
+        margin: 0px 80.5px 0px 80.5px;
         align-items: center;
         position: sticky;
         top: 0;
-        display: flex;
-        justify-content: space-around;
       }
       ul {
         list-style-type: none;
-        padding: 0;
         display: flex;
-        
+        justify-content: center;
         align-items: center;
       }
       li {
-        display: inline;
+        display: inline-block;
       }
       nav {
         background: rgb(246,248,247);

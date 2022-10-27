@@ -13,7 +13,7 @@ const Footer = () => {
                           <path d="m21.5 0-2.7 2 9.9 13.3 2.7-2L21.5 0ZM26 18.4 13.3 7.8l2.1-2.5 12.7 10.6-2.1 2.5ZM9.1 15.2l15 7 1.4-3-15-7-1.4 3Zm14 10.79.68-2.95-16.1-3.35L7 23l16.1 2.99ZM23 30H7v-3h16v3Z" fill="#F48024"></path></svg></a>
                 </div>
             <nav class="site-footer--nav">
-              <div className="test">
+              <div className="group">
                     <div class="site-footer--col">
                         <h5 class="-title">STACK OVERFLOW</h5>
                         <ul class="-list js-primary-footer-links">
@@ -61,15 +61,16 @@ const Footer = () => {
                     </div>
                 </div>
                 <div class="site-footer--copyright fs-fine md:mt24">
-                <ul className="test2">
-                    <li>Blog</li>
-                    <li>Facebook</li>
-                    <li>Twitter</li>
-                    <li>LinkedIn</li>
-                    <li>Instagram</li>
+                <ul className="group2">
+                    <li className="group3">Blog</li>
+                    <li className="group3">Facebook</li>
+                    <li className="group3">Twitter</li>
+                    <li className="group3">LinkedIn</li>
+                    <li className="group3">Instagram</li>
                 </ul>
-                <p class="md:mb0">
-              Site design / logo © 2022 Stack Exchange Inc; user contributions licensed under 
+                <p className="md">
+              Site design / logo © 2022 Stack Exchange Inc; user <br/>
+              contributions licensed under
               <span class="td-underline">CC BY-SA</span>.                    
               <span id="svnrev">rev&nbsp;2022.10.25.33519</span>
                 </p>
@@ -81,16 +82,21 @@ const Footer = () => {
     </footer>
     <style jsx>
       {`
-      .test2 {
-        border: 1px solid blue;
+      .md{
+        margin-top: 170px;
+      }
+      .group3{
+        margin-top: 10px;
+        margin-right: 10px;
+      }
+      .group2{
         display: flex;
       }
-      .test {
-        border: solid 1px red;
+      .group {
         display: flex;
         width: 1264px;
-        margin: 0 auto;
-        padding: 32px 12px 12px 12px;
+        margin: 0 auto;     
+        padding: 0px 12px 42px 12px;
         justify-content: space-between;
       }
       .site-footer--container {
@@ -99,14 +105,13 @@ const Footer = () => {
         flex-direction: row;
       }
       svg{
-        margin-left: 10px;
+        margin-left: 40px;
         margin-top: 10px;
       }
       ul{
         list-style: none;
         padding-left: 0;
       }
-      
       li{
         margin-top: 5px;
       }
@@ -120,11 +125,11 @@ const Footer = () => {
         vertical-align: baseline;
         background: rgb(29,29,31);
         color: rgb(172,178,183);
-        font-size: 10px;
+        font-size: 12px;
       }
       h5{
         font-weight: bold;
-        font-size: 12px;
+        font-size: 15px;
         }
       `}
     </style>
