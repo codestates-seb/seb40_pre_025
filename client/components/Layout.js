@@ -4,10 +4,34 @@ import Seo from "./TopQuestion/Seo";
 import SideBar from "./SideBar";
 export default function Layout({ children }) {
   return (
-    <>
-      <Seo/>
-      <div>{children}</div>
-      <Footer />
-    </>
+    <div className="container">
+      <Seo />
+      <Header></Header>
+
+      <div className="content">
+        <div className="sideBarBox"></div>
+        <SideBar></SideBar>
+        <div className="children">{children}</div>
+      </div>
+      <Footer></Footer>
+      <style jsx>{`
+        .container {
+          height: 100vh;
+          width: 100%;
+          margin: 0;
+        }
+        .content {
+          display: flex;
+        }
+        .children {
+          display: inline-block;
+          margin: 5rem;
+        }
+        .sideBarBox {
+          display: inline-block;
+          top: 0;
+        }
+      `}</style>
+    </div>
   );
 }
