@@ -1,29 +1,33 @@
 import { useState, useRef } from "react";
+import FormData from "form-data";
 import SubTap from "./subTap";
+import dynamic from "next/dynamic";
 export default function saves_qustions() {
   const fileInputRef = useRef(null);
   const [profileImage, setProfileImage] = useState(null);
+
   const handleClickFileInput = () => {
-    console.log(profileImage);
     fileInputRef.current.click();
   };
-  const onImgChange = async (event) => {
-    const fileList = event.target.files;
-    const url = URL.createObjectURL(fileList[0]);
-    setProfileImage({
-      file: fileList[0],
-      thumbnail: url,
-      type: fileList[0].type.slice(0, 5),
-    });
+  const onImgSubmit = async (e) => {
+    console.dir(e.target.files[0]);
+    const formData = new FormData(); // formData 객체를 생성한다.
+    formData.append("File", files[0]);
+    console.log(formData);
+    setProfileImage(formData);
   };
-  console.log(profileImage);
+
+  const Editor = dynamic(() => import("../../components/Editor.js"), {
+    ssr: false,
+  });
   return (
     <div id="main-content">
       <SubTap></SubTap>
+
       <div id="EditFrofile">
         <label className="Title">Edit Frofile</label>
         <div className="contentBox">
-          <div id="prifileImgBox" className="d-flex_f-d">
+          <div id="profileImgBox" className="d-flex_f-d">
             <div className="lable">Profile Image</div>
             <div id="imgBox">
               <img
@@ -31,27 +35,58 @@ export default function saves_qustions() {
                 width="100%"
                 height="100%"
               ></img>
-              <div className="changePicure">
-                <div>Change picture</div>
+              <div onSubmit={(e) => onImgSubmit(e)} className="changePicure">
                 <input
                   type="file"
                   className="upload"
                   ref={fileInputRef}
-                  onChange={onImgChange}
+                  onChange={onImgSubmit}
                 />
+                <button
+                  type="submit"
+                  className="uploadBtn"
+                  onClick={handleClickFileInput}
+                >
+                  Change picture
+                </button>
               </div>
             </div>
           </div>
           <div id="inputBox">
-            <label className="lable" for="email">
+            <label className="lable" form="email">
               Dispaly name
             </label>
             <input className="input"></input>
           </div>
-          <button onClick={handleClickFileInput}>aaaaaaa</button>
+          <div className="editorbox">
+            <div className="lable">About</div>
+            <div className="editor">
+              <Editor></Editor>
+            </div>
+          </div>
         </div>
       </div>
       <style jsx>{`
+        #EditFrofile {
+          width: 100%;
+        }
+        .editorbox {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          margin-top: 40px;
+        }
+        .editor {
+          width: auto;
+        }
+        .uploadBtn {
+          color: white;
+          background-color: rgba(255, 255, 255, 0);
+          height: 100%;
+          width: 100%;
+          border: none;
+          cursor: pointer;
+        }
         .lable {
           margin: 4px;
           margin-right: 0;
@@ -68,22 +103,18 @@ export default function saves_qustions() {
           width: 70%;
           height: 25px;
         }
-        #prifileImgBox {
+        #profileImgBox {
           width: 100%;
-          margin-bottom: 10px;
         }
         #inputBox {
           display: flex;
           width: 100%;
           flex-direction: column;
           align-items: flex-start;
+          margin-top: 30px;
         }
         .upload {
-          color: white;
-          background-color: rgba(255, 255, 255, 0);
-          height: 100%;
-          width: 100%;
-          border: none;
+          display: none;
         }
         .changePicure {
           display: flex;
@@ -121,6 +152,7 @@ export default function saves_qustions() {
         }
         #main-content {
           display: flex;
+          width: 100%;
           margin: 0;
           margin-top: 40px;
           padding: 0;
@@ -143,15 +175,12 @@ export default function saves_qustions() {
           border-bottom: 1px solid hsl(0, 0%, 78%);
         }
         .contentBox {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
           margin-top: 20px;
-          color: hsl(210, 8%, 45%);
           text-align: center;
-          width: auto;
-          min-width: 450px;
+          width: 100%;
           height: auto;
+          min-width: 450px;
+
           padding: 32px;
           border: 1px solid hsl(0, 0%, 78%);
           border-radius: 5px;

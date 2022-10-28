@@ -9,7 +9,7 @@ export default function edit() {
       <style jsx>{`
         .container {
           height: 100vh;
-          width: 100vh;
+          width: 100%;
           display: flex;
           justify-content: space-between;
           flex: 1 0 auto;

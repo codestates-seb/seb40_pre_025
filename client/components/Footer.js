@@ -23,7 +23,7 @@ const Footer = () => {
             </a>
           </div>
           <nav className="site-footer--nav">
-            <div classNameName="group">
+            <div className="group">
               <div className="site-footer--col">
                 <h5 className="-title">STACK OVERFLOW</h5>
                 <ul className="-list js-primary-footer-links">
@@ -71,14 +71,14 @@ const Footer = () => {
                 </div>
               </div>
               <div className="site-footer--copyright fs-fine md:mt24">
-                <ul classNameName="group2">
-                  <li classNameName="group3">Blog</li>
-                  <li classNameName="group3">Facebook</li>
-                  <li classNameName="group3">Twitter</li>
-                  <li classNameName="group3">LinkedIn</li>
-                  <li classNameName="group3">Instagram</li>
+                <ul className="group2">
+                  <li className="group3">Blog</li>
+                  <li className="group3">Facebook</li>
+                  <li className="group3">Twitter</li>
+                  <li className="group3">LinkedIn</li>
+                  <li className="group3">Instagram</li>
                 </ul>
-                <p classNameName="md">
+                <p className="md">
                   Site design / logo © 2022 Stack Exchange Inc; user <br />
                   contributions licensed under
                   <span className="td-underline">CC BY-SA</span>.
