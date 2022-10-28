@@ -40,11 +40,11 @@ export default function Ask() {
         display: flex;
         width: 100vw;
         overflow-x: hidden;
-        margin-top: -5.4%;
+        margin-top: -4.3%;
         margin-left: -5.2%;
       }
       .content {
-        width: 75rem;
+        width: 80vw;
         height: 100%;
         overflow-y: auto;
 

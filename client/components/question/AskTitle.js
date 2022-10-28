@@ -56,7 +56,7 @@ export default function AskTitle() {
         }
         .title-box{
             border: 1px solid #e3e6e8;
-            width: 70%;
+            width: 72%;
             background-color: #ffffff;
             padding-top: 1.5%;
             padding-left: 1.5%;
