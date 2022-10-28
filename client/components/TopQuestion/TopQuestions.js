@@ -18,8 +18,8 @@ export default function TopQuestions() {
         width: 100%;
         overflow-x: hidden;
         display: flex;
-      margin-left: -7%;
-      margin-top: -3%;
+       padding-left: -7%;
+       padding-top: -3%;
       }
       #top_content{
         display: flex;
