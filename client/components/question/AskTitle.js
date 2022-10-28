@@ -138,10 +138,10 @@ export default function AskTitle() {
             flex-direction: column-reverse;
           }
           .title-box {
-            width: 90%;
+            width: 93%;
           }
           .writing-box {
-            width: 90%;
+            width: 93%;
             margin-bottom: 3%;
           }
           .writing-name {

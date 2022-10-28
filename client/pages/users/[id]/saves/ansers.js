@@ -18,7 +18,7 @@ export default function saves_ansers() {
             text-align: left;
           }
           .content {
-            width: 50%;
+            width: 100%;
             min-width: 515px;
             padding: 24px;
             margin: 0;

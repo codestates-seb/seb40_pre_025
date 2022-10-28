@@ -84,13 +84,17 @@ export default function Notices() {
             justify-content: flex-start;
             border-radius: 10px;
             background-color: #fdf7e2;
-            margin-top: 4%;
+            margin-top: 30%;
             border: 1px solid #f1e5bc;
+      
+  
          
         }
         .ul {
-          margin-left: -13%;
+          list-style: none;
           margin-top: 0%;
+          margin: 0;padding: 0; border: 0 none;
+
         }
         .li-title {
             border: 1px solid #f1e5bc;
