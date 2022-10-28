@@ -8,8 +8,8 @@ const Header = () => {
     <ul>
     <li><a href="/"><Image src="/images/s.png" alt="stackoverflow" width="150" height="30"/></a></li>
     <li><a href=""><input type="text" placeholder="  🔍 Search..." onClick=""  /></a></li>
-    <li><a href="../users/login"><Image src="/images/user.png" alt="stackoverflow" width="20" height="20"/></a></li>
-    <li><a href="../users/signup"><button className="logout">Log out</button></a></li>
+    <li><a href="/users/login"><Image src="/images/user.png" alt="stackoverflow" width="20" height="20"/></a></li>
+    <li><a href="/users/signup"><button className="logout">Log out</button></a></li>
     </ul>
     <style jsx>
       {`
