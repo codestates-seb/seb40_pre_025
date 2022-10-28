@@ -121,7 +121,7 @@ const Footer = () => {
             vertical-align: baseline;
             font-size: 12px;
             bottom: 0;
-            width: 100%;
+            width: auto;
           }
           svg {
             margin-left: 40px;
