@@ -16,6 +16,7 @@ export default function TopQuestions() {
   <style jsx>{`
     .container {
         width: 100%;
+        overflow-x: hidden;
       display: flex;
       margin-top: -5%;
       margin-left: -7%;

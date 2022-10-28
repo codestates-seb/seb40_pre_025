@@ -6,8 +6,7 @@ import AskTry from '../../../components/question/AskTry'
 import AskTags from '../../../components/question/AskTags'
 import SubmissionBtn from '../../../components/question/SubmissionBtn'
 import AskSeo from '../../../components/question/AskSeo'
-import Header from '../../../components/Header'
-import SideBar from '../../../components/SideBar'
+
 
 
 export default function Ask() {
@@ -39,14 +38,19 @@ export default function Ask() {
         background-color: rgb(248, 249, 249);
         flex: 1 1 0;
         display: flex;
-        width: 100%;
+        width: 100vw;
         overflow-x: hidden;
+        margin-top: -5.4%;
+        margin-left: -5.2%;
       }
       .content {
         width: 75rem;
         height: 100%;
         overflow-y: auto;
 
+      }
+      .sidebar{
+        background-color: red;
       }
   
         `}</style>

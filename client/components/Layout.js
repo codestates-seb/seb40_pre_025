@@ -21,6 +21,7 @@ export default function Layout({ children }) {
           height: 100vh;
           width: 100%;
           margin: 0;
+          overflow-x: hidden;
         }
         .content {
           display: flex;

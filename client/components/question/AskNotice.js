@@ -36,12 +36,14 @@ export default function Notice() {
         display: flex;
         flex-direction: column;
         width: 100%;
+        margin-left: 3%;
       }
       .ask-question {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
+        
       }
       .question {
         font-size: 1.8rem;

@@ -35,10 +35,11 @@ export default function AskTry() {
               height: 100%;
               margin-top:  2.5%;
               border-radius: 3px;
+              margin-left: 3%;
 
           }
           .try-outer {
-            margin: 3%;
+            margin: 3% 3% 1% 3%;
           }
           .try-title {
             margin-bottom: 1.5%;

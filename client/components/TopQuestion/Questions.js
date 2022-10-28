@@ -205,6 +205,7 @@ export default function Questions() {
           }
           .post-main {
             justify-content: space-around;
+            
           }
          
         } 

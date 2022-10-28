@@ -52,6 +52,7 @@ export default function AskTitle() {
          display: flex;
          justify-content: space-between;
          margin-top: 2.5%;
+         margin-left: 3%;
         }
         .title-box{
             border: 1px solid #e3e6e8;
