@@ -35,13 +35,12 @@ export default function Notice() {
       .ask {
         display: flex;
         flex-direction: column;
-        width: 75rem;
+        width: 100%;
       }
       .ask-question {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 8.5rem;
         width: 100%;
       }
       .question {
@@ -56,31 +55,47 @@ export default function Notice() {
         background: rgb(224, 238, 248);
         border: 1px solid rgb(156, 181, 250);
         border-radius: 3px;
-        width: 53rem;
-        height: 16rem;
+        width: 70%;
+        height: 40%;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 2rem;
+        padding: 3%;
 
       }
       .good-question {
         font-size: 1.4rem;
         font-weight: 400;
-        padding-bottom: 0.8rem;
+        padding-bottom: 2%;
       }
       .p2 {
-        padding-bottom: 0.8rem;
+        padding-bottom: 2%;
       }
       .steps-title {
         font-weight: 600;
-        padding-bottom: 0.4rem;
+        padding-bottom: 2%;
       }
       ul {
-        margin-left: 2rem;
+        margin-left: 4%;
         font-size: 0.9rem;
       }
-    
+      @media screen (max-width: 1340px) {
+        .notice {
+          width: 90%;
+        }
+
+      }
+      @media screen (max-width: 1000px) {
+        img {
+         display: none;
+        }
+        .ask-question {
+          padding-bottom: 7%;
+          display: inline-block;
+          margin-top: 5%;
+        }
+
+      }
         `}</style>
     </div>
   )

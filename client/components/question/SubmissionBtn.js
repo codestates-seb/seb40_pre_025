@@ -13,8 +13,8 @@ export default function SubmissionBtn() {
     </div>
     <style jsx>{`
         .button-box{ 
-        margin-bottom: 3rem;
-        margin-top: 1rem;
+        margin-bottom: 5%;
+        margin-top: 2%;
         display: flex;
         flex-direction: column;
         }
@@ -25,8 +25,8 @@ export default function SubmissionBtn() {
             color: #ffffff;
             background-color: #0a95ff;
             box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
-            width: 10rem;
-            height: 2.2rem;
+            width: 100%;
+            height: 80%;
             font-size: 0.9rem;
             border-radius: 0.3rem;
             display: flex;
@@ -34,17 +34,26 @@ export default function SubmissionBtn() {
             justify-content: center;
 
         }
+        .nextbtn:hover{
+          background-color: #77c0f8;
+          transition: 0.5s;
+        }
         .draftbtn{
             color: #c22e32;
             background-color: #00000000;
             box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
-            width: 10rem;
-            height: 2.2rem;
+            width: 100%;
+            height: 80%;
+            margin-left: 25%;
             font-size: 0.9rem;
             border-radius: 0.3rem;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        .draftbtn:hover{
+          background-color: rgb(244, 219, 219);
+          transition: 0.5s;
         }
         
         `}</style>

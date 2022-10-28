@@ -1,4 +1,5 @@
 import React from 'react'
+import NextBtn from './NextBtn'
 
 export default function AskTags() {
   return (
@@ -18,11 +19,10 @@ export default function AskTags() {
                 </div>
               {/* tags 내용  */}
               <div className='tags-body-box'>
-                <div className='tags-body'>
-                  이게문제야 
-                </div>
+                <input className='tags-body' placeholder='태그를 써주세요'>
+                </input>
               </div>
-              <button className='nextbtn s-btn'>Next</button>
+              <NextBtn/>
           </div>
         </div>
       </div>
@@ -31,17 +31,17 @@ export default function AskTags() {
     .tags-box {
         border: 1px solid #e3e6e8;
         background-color: white;
-        width: 53rem;
-        height: 10rem;
-        margin-top: 1rem;
+        width: 70%;
+        height: 100%;
+        margin-top:  2.5%;
         border-radius: 3px;
 
     }
     .tags-outer {
-        margin: 1.5rem;
+       margin: 3%;
     }
     .tags-title {
-      margin-bottom: 0.4rem;
+      margin-bottom: 1.5%;
     }
     .tags-name {
         font-weight: 600;
@@ -51,23 +51,30 @@ export default function AskTags() {
         font-size: 0.8rem;
         font-weight: 400;
         color: gray;
-        margin-top: 0.2rem;
+        margin-top: 0.5%;
+    }
+    .try-content {
+      height: 100%;
     }
     .tags-body-box{
         border: 1px solid #e3e6e8;
-        height: 2rem;
+        height: 100%;
         color: white;
         
     }
-    .nextbtn{
-            color: #ffffff;
-            background-color: #0a95ff;
-            box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
-            width: 3rem;
-            height: 2.2rem;
-            font-size: 0.8rem;
-            margin-top: 0.5rem;
+    .tags-body {
+      height: 100%;
+      width: 100%;
+      border: 1px solid #e3e6e8;
+      padding: 1% 1%;
+    }
+    
+        @media screen (max-width: 1340px) {
+          .tags-box {
+            width: 90%;
+          }
         }
+      
     `}</style>
   </div>
   )
