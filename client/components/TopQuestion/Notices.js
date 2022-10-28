@@ -5,7 +5,7 @@ export default function Notices() {
     <div className='sidebar'>
     <div className='main-sidebar'>
       <div className='sidebar-box'>
-          <ul>
+          <ul className='ul'>
 
             <li className='li-title'>The Overflow Blog</li>
             
@@ -77,18 +77,20 @@ export default function Notices() {
         </div>
         <style jsx>{`
         .sidebar-box {
-            border:1px solid red;
-            width: 70%;
-           
+            width: 80%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-
-            border-color: #f1e5bc;
+            border-radius: 10px;
             background-color: #fdf7e2;
-            margin-top: 8%;
-            border-radius: 5px;
+            margin-top: 4%;
+            border: 1px solid #f1e5bc;
+         
+        }
+        .ul {
+          margin-left: -13%;
+          margin-top: 0%;
         }
         .li-title {
             border: 1px solid #f1e5bc;
@@ -127,7 +129,7 @@ export default function Notices() {
           padding: 0.3rem;
         }
       
-        @media screen (max-width:1100px ) {
+        @media screen and (max-width:1300px ) {
           .sidebar-box {
             display: none;
           }

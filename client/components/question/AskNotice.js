@@ -36,12 +36,14 @@ export default function Notice() {
         display: flex;
         flex-direction: column;
         width: 100%;
+        margin-left: 3%;
       }
       .ask-question {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
+        
       }
       .question {
         font-size: 1.8rem;
@@ -79,13 +81,13 @@ export default function Notice() {
         margin-left: 4%;
         font-size: 0.9rem;
       }
-      @media screen (max-width: 1340px) {
+      @media screen and (max-width: 1340px) {
         .notice {
           width: 90%;
         }
 
       }
-      @media screen (max-width: 1000px) {
+      @media screen and (max-width: 1000px) {
         img {
          display: none;
         }

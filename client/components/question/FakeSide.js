@@ -16,7 +16,7 @@ export default function FakeSide() {
 
             height:40rem
         }
-        @media screen (max-width: 1340px) {
+        @media screen and (max-width: 1340px) {
           .nav{
            width: 5%;
           }

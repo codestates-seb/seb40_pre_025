@@ -52,10 +52,11 @@ export default function AskTitle() {
          display: flex;
          justify-content: space-between;
          margin-top: 2.5%;
+         margin-left: 3%;
         }
         .title-box{
             border: 1px solid #e3e6e8;
-            width: 70%;
+            width: 72%;
             background-color: #ffffff;
             padding-top: 1.5%;
             padding-left: 1.5%;
@@ -131,7 +132,7 @@ export default function AskTitle() {
           margin-left: 23%;
           margin-top: -4%;
         }
-        @media screen (max-width: 1340px) {
+        @media screen and (max-width: 1340px) {
           .title {
             display:flex;
             flex-direction: column-reverse;

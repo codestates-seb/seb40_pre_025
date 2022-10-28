@@ -2,6 +2,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Seo from "./TopQuestion/Seo";
 import SideBar from "./SideBar";
+
+
 export default function Layout({ children }) {
   return (
     <div className="container">
@@ -19,6 +21,7 @@ export default function Layout({ children }) {
           height: 100vh;
           width: 100%;
           margin: 0;
+          overflow-x: hidden;
         }
         .content {
           display: flex;
