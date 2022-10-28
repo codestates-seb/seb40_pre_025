@@ -16,7 +16,7 @@ export default function AskDetail() {
   return (
     <>
       
-      <div className="container">
+      <div className="answermaincontainer">
         <h1 className="questionTitle">질문 제목</h1>
         <div className="questionContainer">
           <div className="qusetionInfoContainer">
@@ -70,7 +70,6 @@ export default function AskDetail() {
           <button className="answerPostButton">Post Your Answer</button>
         </div>
       </div>
-       
       <style jsx>{`
         {
           /* isBtnClick 상태의 따라 색상이 바뀌도록 삼항 연산자로 작성. */
@@ -120,8 +119,8 @@ export default function AskDetail() {
           margin-top: 20px;
         }
         .bar {
-          width: 110%;
-          margin: 20px 0px;
+          width: 70%;
+          margin: 5px 95px;
         }
         .answerContainer {
           display: flex;
@@ -131,19 +130,19 @@ export default function AskDetail() {
           width: 70%;
         }
         .answerCount {
-          margin-left: -950px;
+          margin-left: -650px;
           font-weight: 300;
         }
         .icon {
           width: 13%;
           height: 100%;
-          margin-left: -70%;
+          margin-left: -30%;
           
           fill: ${isBtnClick ? "green" : "gray"};
           cursor: pointer;
         }
         .answerCommentBox {
-          width: 700px;
+          width: 550px;
           height: 200px;
           background-color: #ecf0f1;
         }
@@ -189,9 +188,10 @@ export default function AskDetail() {
           border: solid #67b9f3 1px;
           background-color: #67b9f3;
           padding: 1% 3%;
-          margin-left: 2%;
+          margin-left: 17%;
           border-radius: 7px;
           cursor: pointer;
+          margin-bottom: 20px;
         }
       `}</style>
     </>
