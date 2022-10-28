@@ -30,7 +30,7 @@ export default function Layout({ children }) {
         .children {
           display: inline-block;
           width: 100%;
-          margin: 1rem;
+          margin: 5rem;
         }
         .sideBarBox {
           display: inline-block;
