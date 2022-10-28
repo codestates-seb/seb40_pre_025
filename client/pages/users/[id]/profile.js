@@ -36,6 +36,9 @@ export default function profile() {
           </div>
         </div>
         <style jsx>{`
+          #about {
+            margin-bottom: 5rem;
+          }
           .color-B {
             color: black;
             font-weight: 600;

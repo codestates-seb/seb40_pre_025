@@ -37,8 +37,8 @@ export default function Login() {
           </div>
           <div className="formContainer">
             <form id="login-form" className="d-flex fd-column">
-              <div id="test" className="d-flex fd-column margin-T-B">
-                <label className="lable" for="email">
+              <div id="input" className="d-flex fd-column margin-T-B">
+                <label className="lable" form="email">
                   Email
                 </label>
                 <input className="input"></input>
@@ -164,7 +164,7 @@ export default function Login() {
         #login-form {
           margin: 12px;
         }
-        .test {
+        .input {
           margin: 0;
         }
         .lable {
