@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Google from "../../components/Google";
-import Github from "../../components/Github";
+import Google from "../../components/social/Google";
+import Github from "../../components/social/Github";
 
 export default function Login() {
   return (

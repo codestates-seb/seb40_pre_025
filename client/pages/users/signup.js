@@ -1,5 +1,5 @@
-import Google from "../../components/Google";
-import Github from "../../components/Github";
+import Google from "../../components/social/Google";
+import Github from "../../components/social/Github";
 import Link from "next/link";
 export default function SignUp() {
   return (
