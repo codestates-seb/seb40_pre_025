@@ -201,7 +201,7 @@ export default function Questions() {
         } 
         @media screen and (max-width:1100px ) {
          #mainbar {
-            width: 100%;
+            width: 90%;
           }
           .post-main {
             justify-content: space-around;
@@ -220,6 +220,9 @@ export default function Questions() {
             justify-content: space-around;
           }
          
+        } 
+        @media screen  and (min-width:830px ) {
+        
         } 
         `}</style>
     </div>

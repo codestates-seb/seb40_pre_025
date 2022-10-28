@@ -35,17 +35,12 @@ export default function Ask() {
       <style jsx>{`
        
       .container {
-        background-color: rgb(248, 249, 249);
-        flex: 1 1 0;
-        display: flex;
         width: 100vw;
         overflow-x: hidden;
-        margin-top: -4.3%;
-        margin-left: -5.2%;
+   
       }
       .content {
         width: 80vw;
-        height: 100%;
         overflow-y: auto;
 
       }
