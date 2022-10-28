@@ -37,6 +37,7 @@ export default function Ask() {
       .container {
         width: 100vw;
         overflow-x: hidden;
+        background-color: rgb(248, 249, 249);
    
       }
       .content {

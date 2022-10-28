@@ -2,9 +2,11 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Seo from "./TopQuestion/Seo";
 import SideBar from "./SideBar";
-
+import { useRouter } from "next/router";
 
 export default function Layout({ children }) {
+  const router = useRouter();
+  console.log(router.pathname);
   return (
     <div className="container">
       <Seo />
@@ -12,10 +14,17 @@ export default function Layout({ children }) {
 
       <div className="content">
         <div className="sideBarBox"></div>
-        <SideBar></SideBar>
+        {router.pathname === "/users/login" ? null : router.pathname ===
+          "/users/signup" ? null : (
+          <SideBar></SideBar>
+        )}
         <div className="children">{children}</div>
       </div>
-      <Footer></Footer>
+      {router.pathname === "/users/login" ? null : router.pathname ===
+        "/users/signup" ? null : (
+        <Footer></Footer>
+      )}
+
       <style jsx>{`
         .container {
           height: 100vh;
@@ -30,7 +39,6 @@ export default function Layout({ children }) {
         .children {
           display: inline-block;
           width: 100%;
-          margin: 5rem;
         }
         .sideBarBox {
           display: inline-block;

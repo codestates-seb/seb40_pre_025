@@ -84,8 +84,9 @@ export default function Notices() {
             justify-content: flex-start;
             border-radius: 10px;
             background-color: #fdf7e2;
-            margin-top: 4%;
+            margin-top: 30%;
             border: 1px solid #f1e5bc;
+      
   
          
         }

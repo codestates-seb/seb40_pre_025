@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
 import SubTap from "./subTap";
-import dynamic from "next/dynamic";
 export default function saves_qustions() {
   const fileInputRef = useRef(null);
+
   const [profileImage, setProfileImage] = useState(null);
+  const [aboutText, setAboutText] = useState("");
 
   const handleClickFileInput = () => {
     fileInputRef.current.click();
@@ -16,9 +17,6 @@ export default function saves_qustions() {
     setProfileImage(formData);
   };
 
-  const Editor = dynamic(() => import("../../components/Editor.js"), {
-    ssr: false,
-  });
   return (
     <div id="main-content">
       <SubTap></SubTap>
@@ -60,8 +58,13 @@ export default function saves_qustions() {
           <div className="editorbox">
             <div className="lable">About</div>
             <div className="editor">
-              <Editor></Editor>
+              <textarea
+                value={aboutText}
+                className="aboutInput"
+                onChange={(e) => setAboutText(e.target.value)}
+              />
             </div>
+            <div>{aboutText}</div>
           </div>
           <div className="btnBox">
             <button className="saveBtn">Save profile</button>
@@ -70,6 +73,15 @@ export default function saves_qustions() {
         </div>
       </div>
       <style jsx>{`
+        .aboutInput {
+          width: 100%;
+          height: 300px;
+          vertical-align: top;
+          padding: 10px;
+          font-size: 1rem;
+          font-weight: 600;
+          text-indent: 5px;
+        }
         .btnBox {
           display: flex;
           margin-top: 4rem;
@@ -132,10 +144,12 @@ export default function saves_qustions() {
         }
         .input {
           border: 1px solid rgba(111, 111, 111, 0.497);
+          padding: 10px;
           border-radius: 3px;
           min-width: 300px;
           width: 40%;
           height: 30px;
+          box-sizing: border-box;
         }
         #profileImgBox {
           width: 100%;

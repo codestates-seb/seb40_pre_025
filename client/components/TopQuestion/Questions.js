@@ -81,6 +81,7 @@ export default function Questions() {
           flex-direction: column;
           padding: 1.5%;
           width: 100%;
+          margin: 5rem;
         
         }
         .qlist-wrapper{

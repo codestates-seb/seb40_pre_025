@@ -10,20 +10,24 @@ export default function SideBar() {
       </div>
       <br />
       <div className="qusetions">
-        <a href="../questions/ask">Qusetions</a>
+        <a href="/questions/ask">Qusetions</a>
       </div>
       <div className="tags">
-        <a href="../users/[id]/profile">Tags</a>
+        <a href="/users/[id]/profile">Tags</a>
       </div>
       <div className="users">
-        <a href="../">Users</a>
+        <a href="">Users</a>
       </div>
       <style jsx>
         {`
           .sidebar {
             display: inline-block;
             height: 100vh;
+<<<<<<< HEAD
             width: 23%;
+=======
+            width: 25%;
+>>>>>>> c9b3977cd497cdc7065d52031a4dff23c42f865a
             position: sticky;
             top: 0;
             left: 0;
