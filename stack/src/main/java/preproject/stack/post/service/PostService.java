@@ -1,6 +1,5 @@
 package preproject.stack.post.service;
 
-<<<<<<< HEAD
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,17 +20,15 @@ public class PostService {
 
     private final PostRepository postRepository;
 
-    public Post createPost(Post post){
+    public Post createPost(Post post) {
         return postRepository.save(post);
     }
 
-    public Post updatePost(Post post){
-        Post findPost = findVerifiedQuestion(post.getPostId());
+    public Post updatePost(Post post) {
+        Post findPost = findVerifiedPost(post.getPostId());
 
-        Optional.ofNullable(findPost.getCreateAt()) //업데이트 날짜 수정
-                .ifPresent(createAt->findPost.setCreateAt(createAt));
         Optional.ofNullable(post.getTitle())
-                .ifPresent(title ->findPost.setTitle(title));
+                .ifPresent(title -> findPost.setTitle(title));
         Optional.ofNullable(post.getBody())
                 .ifPresent(body -> findPost.setBody(body));
 
@@ -39,30 +36,25 @@ public class PostService {
     }
 
     // 찾는 게시글이 없는 경우 오류 발생
-    public Post findPost(long postId){
-
-        Optional<Post> optionalPost = postRepository.findById(postId);
-        Post findPost = optionalPost.orElseThrow(() -> new RuntimeException(ExceptionCode.MEMBER_NOT_FOUND.getMessage()));
+    public Post findPost(long postId) {
+        Post findPost = findVerifiedPost(postId);
         return findPost;
     }
 
-    public Page<Post> findPosts(int page , int size){
-        return postRepository.findAll(PageRequest.of(page,size, Sort.by("postId").descending()));
+    public Page<Post> findPosts(int page, int size) {
+        return postRepository.findAll(PageRequest.of(page, size,
+                Sort.by("postId").descending()));
     }
 
-    public void deletePost(long postId){
-        Optional<Post> optionalPost = postRepository.findById(postId);
-        Post post = optionalPost.orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
-        postRepository.delete(post);
+    public void deletePost(long postId) {
+        Post findPost = findVerifiedPost(postId);
+        postRepository.delete(findPost);
     }
 
-    public Post findVerifiedQuestion(long postId){
+    public Post findVerifiedPost(long postId) {
         Optional<Post> optionalPost = postRepository.findById(postId);
-        Post post = optionalPost.orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
+        Post post = optionalPost.orElseThrow(() -> new BusinessLogicException(ExceptionCode.POST_NOT_FOUND));
         return post;
     }
 
-=======
-public class PostService {
->>>>>>> kjm
 }

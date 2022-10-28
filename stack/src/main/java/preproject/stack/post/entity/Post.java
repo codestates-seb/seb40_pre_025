@@ -3,7 +3,6 @@ package preproject.stack.post.entity;
 import lombok.Getter;
 
 import lombok.Setter;
-import preproject.stack.answers.entity.Answers;
 import preproject.stack.user.entity.User;
 
 import javax.persistence.*;
@@ -21,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
+@Getter @Setter
 public class Post {
 
     @Id @GeneratedValue
@@ -40,7 +39,6 @@ public class Post {
 
     @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
     private List<PostTag> postTags = new ArrayList<>();
-
 
     private Long Pictures;
 

@@ -17,6 +17,6 @@ public interface PostMapper {
 
     Post postPostDtoToPost(PostPostDto postPostDto);
     Post postPatchDtoToPost(PostPatchDto postPatchDto);
-    PostResponseDto postToPostResponseDto(Post Post);
+    PostResponseDto postToResponseDto(Post post);
     List<PostResponseDto> postsToPostResponseDto(List<Post> posts);
 }

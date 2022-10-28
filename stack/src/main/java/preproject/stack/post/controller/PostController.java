@@ -34,20 +34,21 @@ public class PostController {
     public ResponseEntity postPost(@Valid @RequestBody PostPostDto postPostDto){
         Post post = mapper.postPostDtoToPost(postPostDto);
         Post response = postService.createPost(post);
-        return new ResponseEntity<>(new SingleResponseDto<>(mapper.postToPostResponseDto(response)), HttpStatus.CREATED);
+        return new ResponseEntity<>(mapper.postToResponseDto(response), HttpStatus.CREATED);
     }
 
     @PatchMapping("/{post-id}")
     public ResponseEntity patchPost(@PathVariable("post-id") long postId , @Valid @RequestBody PostPatchDto postPatchDto){
+        postPatchDto.setPostId(postId);
         Post post = mapper.postPatchDtoToPost(postPatchDto);
         Post response = postService.updatePost(post);
-        return new ResponseEntity<>(new SingleResponseDto<>(mapper.postToPostResponseDto(response)),HttpStatus.OK);
+        return new ResponseEntity<>(new SingleResponseDto<>(mapper.postToResponseDto(response)),HttpStatus.OK);
 
     }
 
     @GetMapping
-    public ResponseEntity getPost(@Positive @RequestParam int page,
-                                  @Positive @RequestParam int size){
+    public ResponseEntity getPost( @RequestParam int page,
+                                   @RequestParam int size){
         Page<Post> pagePosts = postService.findPosts(page - 1, size);
         List<Post> posts = pagePosts.getContent();
 
@@ -59,7 +60,7 @@ public class PostController {
     @GetMapping("/{post-id}")
     public ResponseEntity getPost(@PathVariable("post-id") long postId){
         Post post = postService.findPost(postId);
-        return new ResponseEntity<>(new SingleResponseDto<>(mapper.postToPostResponseDto(post)),HttpStatus.OK);
+        return new ResponseEntity<>(new SingleResponseDto<>(mapper.postToResponseDto(post)),HttpStatus.OK);
     }
 
     @DeleteMapping("/{post-id}")

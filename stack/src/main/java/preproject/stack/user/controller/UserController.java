@@ -40,6 +40,7 @@ public class UserController {
     //회원정보 수정 핸들러
     @PatchMapping("/{user-id}")
     public ResponseEntity patchUser(@PathVariable("user-id") long userId, @Valid @RequestBody UserPatchDto userPatchDto) {
+        userPatchDto.setUserId(userId);
         User user = mapper.userPatchDtoToUser(userPatchDto);
         User response = userService.updateUser(user);
         return new ResponseEntity<>(
