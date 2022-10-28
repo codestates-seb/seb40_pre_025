@@ -83,10 +83,10 @@ export default function Notices() {
             align-items: center;
             justify-content: flex-start;
             border-radius: 10px;
-            border-color: #f1e5bc;
             background-color: #fdf7e2;
             margin-top: 4%;
-            margin-left: 3%;
+            border: 1px solid #f1e5bc;
+         
         }
         .ul {
           margin-left: -13%;
