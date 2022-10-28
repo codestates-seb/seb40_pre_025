@@ -18,7 +18,7 @@ export default function Questions() {
   // }, [])
   
   return (
-    <div id="mainbar">
+    <div className="top_mainbar">
     {/* Top Questions 부분  */}
       <TopHeader/>
     {/* Interesting, Hot~ 버튼들  */}
@@ -76,7 +76,7 @@ export default function Questions() {
        </div>
       </div>
       <style jsx>{`
-      #mainbar{
+      .top_mainbar{
           display: flex;
           flex-direction: column;
           padding: 1.5%;
@@ -93,7 +93,7 @@ export default function Questions() {
        .flush-left{
         margin-top: 2%;
         border-top: 1px solid #e3e6e8; 
-        margin-left: -2%;
+ 
        }
       .votes-status {
           gap: 10;

@@ -13,8 +13,8 @@ export default function Ask() {
   return (
     <>
     <AskSeo/>
-    <div className='container'>
-      <div className='content'>
+    <div className='ask_container'>
+      <div className='ask_content'>
         <div className='box-border'>
             <form className='post-form'>
               <main className='question-form'>
@@ -34,20 +34,18 @@ export default function Ask() {
       </div>
       <style jsx>{`
        
-      .container {
+      .ask_container {
         width: 100vw;
         overflow-x: hidden;
         background-color: rgb(248, 249, 249);
    
       }
-      .content {
+      .ask_content {
         width: 80vw;
         overflow-y: auto;
 
       }
-      .sidebar{
-        background-color: red;
-      }
+    
   
         `}</style>
     </div>
