@@ -23,7 +23,7 @@ export default function SideBar() {
           .sidebar {
             display: inline-block;
             height: 100vh;
-            width: 15rem;
+            width: 23%;
             position: sticky;
             top: 0;
             left: 0;

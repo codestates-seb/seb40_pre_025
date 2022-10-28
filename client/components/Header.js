@@ -6,7 +6,7 @@ const Header = () => {
     <div className="page">
       <header>
         <nav>
-          <ul className="navbar__menu">
+          <ul>
             <li>
               <a href="/">
                 <Image
@@ -23,18 +23,26 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a href="../users/login">
+              <a href="/users/login">
                 <button className="login">Log in</button>
               </a>
             </li>
             <li>
-              <a href="../users/signup">
+              <a href="/users/signup">
                 <button className="signup">Sign up</button>
               </a>
             </li>
           </ul>
           <style jsx>
             {`
+            .nav{
+              background: blue;
+              justify-content: center;
+            }
+            .navbar__menu{
+              flex-direction: center;
+              border: 1px solid red;
+            }
               Image :hover {
                 background: rgb(221, 224, 227);
               }
