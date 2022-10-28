@@ -11,9 +11,7 @@ export default function Layout({ children }) {
     <div className="layout-container">
       <Seo />
       <Header></Header>
-
       <div className="content">
-        <div className="sideBarBox"></div>
         {router.pathname === "/users/login" ? null : router.pathname ===
           "/users/signup" ? null : (
           <SideBar></SideBar>

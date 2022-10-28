@@ -16,28 +16,26 @@ export default function User() {
       ? 2
       : null;
   return (
-    <div className="container">
-      <div className="content">
-        <div id="mainbar-full">
-          <div id="coreprofile">
-            <div id="name-photo">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/146/146007.png"
-                width="96px"
-                height="96px"
-              ></img>
-              <div>
-                <div id="userName">편범준</div>
-                <div className="margin-L">
-                  <ul className="subimfo">
-                    <li>기타 정보...</li>
-                    <li>기타 정보...</li>
-                    <li>기타 정보...</li>
-                  </ul>
-                </div>
-              </div>
+    <div id="mainbar-full">
+      <div id="coreprofile">
+        <div id="name-photo">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/146/146007.png"
+            width="96px"
+            height="96px"
+          ></img>
+          <div>
+            <div id="userName">편범준</div>
+            <div className="margin-L">
+              <ul className="subimfo">
+                <li>기타 정보...</li>
+                <li>기타 정보...</li>
+                <li>기타 정보...</li>
+              </ul>
             </div>
-            {/* {router.pathname === `/users/[id]/profile` ? (
+          </div>
+        </div>
+        {/* {router.pathname === `/users/[id]/profile` ? (
           <div id="editBtn">
             <Link href={"/"}>
               <a>
@@ -56,38 +54,35 @@ export default function User() {
             </Link>
           </div>
         ) : null} */}
-          </div>
-          <div id="tapContainer">
-            <div id="tap">
-              {tapMenuList.map((name, idx) => {
-                return (
-                  <Link
-                    key={idx}
-                    href={
-                      idx === 0
-                        ? `/users/${"123"}/profile`
-                        : idx === 1
-                        ? `/users/${"123"}/saves/qustions`
-                        : idx === 2
-                        ? `/users/${"123"}/setting/edit`
-                        : null
-                    }
-                  >
-                    <a
-                      className={
-                        isCurrent === idx ? "currentTap" : "notCurrentTap"
-                      }
-                      idx={idx}
-                    >
-                      <div>{name}</div>
-                    </a>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
+      </div>
+      <div id="tapContainer">
+        <div id="tap">
+          {tapMenuList.map((name, idx) => {
+            return (
+              <Link
+                key={idx}
+                href={
+                  idx === 0
+                    ? `/users/${"123"}/profile`
+                    : idx === 1
+                    ? `/users/${"123"}/saves/qustions`
+                    : idx === 2
+                    ? `/users/${"123"}/setting/edit`
+                    : null
+                }
+              >
+                <a
+                  className={isCurrent === idx ? "currentTap" : "notCurrentTap"}
+                  idx={idx}
+                >
+                  <div>{name}</div>
+                </a>
+              </Link>
+            );
+          })}
         </div>
       </div>
+
       <style jsx>{`
         .container {
           width: 100vh;
