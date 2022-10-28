@@ -7,20 +7,21 @@ export default function TopQuestions() {
   return (
     <>
 
-<div className='container'>
+<div className='top_container'>
   {/* 메인  */}
- <div id="content">
+ <div id="top_content">
   <Questions/>
     <Notices/>
   </div>
   <style jsx>{`
-    .container {
+    .top_container {
         width: 100%;
         overflow-x: hidden;
         display: flex;
       margin-left: -7%;
+      margin-top: -3%;
       }
-      #content {
+      #top_content{
         display: flex;
         width: 100%;
       } 

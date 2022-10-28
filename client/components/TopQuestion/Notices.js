@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Notices() {
   return (
-    <div className='sidebar'>
+    <div className='notice_sidebar'>
     <div className='main-sidebar'>
       <div className='sidebar-box'>
           <ul className='ul'>
@@ -125,7 +125,7 @@ export default function Notices() {
             display: flex;
             flex-direction: column;
         }
-        .sidebar {
+        .notice_sidebar {
           display: flex;
         }
         .blog-content {
