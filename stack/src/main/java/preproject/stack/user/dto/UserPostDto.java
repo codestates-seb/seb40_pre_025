@@ -22,9 +22,5 @@ public class UserPostDto {
     @NotBlank
     private String userName;
 
-
-    @NotBlank
-    private String password;
-
 }
 

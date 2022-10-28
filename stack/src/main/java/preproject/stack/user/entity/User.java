@@ -4,8 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import preproject.stack.answer.entity.Answer;
 import preproject.stack.post.entity.Post;
+
+import preproject.stack.user.entity.UserRole;
+import preproject.stack.user.entity.UserStatus;
 
 import javax.persistence.*;
 import java.util.ArrayList;

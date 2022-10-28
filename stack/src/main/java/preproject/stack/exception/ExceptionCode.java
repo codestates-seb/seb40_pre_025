@@ -5,8 +5,9 @@ import lombok.Getter;
 public enum ExceptionCode {
     USER_NOT_FOUND(404, "USER NOT FOUND"),
     USER_EXIST(409, "USER EXIST"),
-    MEMBER_NOT_FOUND(409, "MEMER_NOT_FOUND"),
-    QUESTION_NOT_FOUND(409, "QUESTION_NOT_FOUND");
+
+    TAG_NOT_FOUND(404,"TAG NOT FOUND"),
+    POST_NOT_FOUND(404,"POST NOT FOUND");
     @Getter
     private int status;
     @Getter

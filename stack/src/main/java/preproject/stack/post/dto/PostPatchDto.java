@@ -16,4 +16,7 @@ public class PostPatchDto {
 
     private String body;
 
+    public void setPostId(long postId){
+        this.postId = postId;
+    }
 }

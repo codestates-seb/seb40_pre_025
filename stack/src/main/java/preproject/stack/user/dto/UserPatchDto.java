@@ -14,8 +14,9 @@ public class UserPatchDto {
     private String email;
     @NotBlank
     private String userName;
-    @NotBlank
-    private String password;
 
+    public void setUserId(long userId){
+        this.userId = userId;
+    }
 }
 

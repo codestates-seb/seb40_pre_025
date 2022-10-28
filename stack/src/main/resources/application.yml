@@ -1,6 +1,4 @@
 spring:
-  jpa:
-    defer-datasource-initialization: true
   h2:
     console:
       enabled: true
@@ -11,6 +9,7 @@ spring:
     init:
       schema-locations:
       data-locations:
+    jpa:
   hibernate:
     ddl-auto: create
   properties:
@@ -22,5 +21,3 @@ logging:
       springframework:
         jdbc:
           core: TRACE
-
-
