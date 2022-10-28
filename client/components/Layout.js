@@ -7,7 +7,7 @@ export default function Layout({ children }) {
     <>
       <Seo/>
       <div>{children}</div>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 }
