@@ -3,11 +3,12 @@ const userIdLayout = ({ children }) => {
   return (
     <div className="test">
       <CoreInof></CoreInof>
-      {children}
+      <div>{children}</div>
       <style jsx>{`
         .test {
           margin: 0;
-          margin-left: 1rem;
+          margin-top: 2rem;
+          margin-left: 3rem;
         }
       `}</style>
     </div>
