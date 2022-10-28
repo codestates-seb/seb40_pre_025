@@ -8,7 +8,7 @@ export default function Layout({ children }) {
   const router = useRouter();
   console.log(router.pathname);
   return (
-    <div className="container">
+    <div className="layout-container">
       <Seo />
       <Header></Header>
 
@@ -26,7 +26,7 @@ export default function Layout({ children }) {
       )}
 
       <style jsx>{`
-        .container {
+        .layout-container {
           height: 100vh;
           width: 100%;
           margin: 0;
