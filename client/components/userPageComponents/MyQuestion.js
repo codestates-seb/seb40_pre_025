@@ -66,7 +66,7 @@ export default function MyQusticon({ data }) {
           margin-bottom: 1.5rem;
         }
         .votes-status {
-          margin-right: 10px;
+          margin-right: 20px;
           margin-bottom: 6px;
           width: 3.5rem;
           display: flex;

@@ -14,6 +14,7 @@ export default function saves_qustions() {
       <style jsx>{`
         #questions {
           width: 100%;
+          margin-left: 1rem;
         }
         a {
           color: hsl(210, 8%, 45%);
@@ -45,7 +46,7 @@ export default function saves_qustions() {
           justify-content: flex-start;
           margin-top: 20px;
           text-align: center;
-          width: 50%;
+          width: 65%;
           min-width: 700px;
           height: auto;
           padding: 5px;

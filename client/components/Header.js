@@ -104,6 +104,12 @@ const Header = () => {
                 .navbar__menu {
                   flex-direction: column;
                 }
+                input {
+                  width: 800px;
+                }
+                button {
+                  display: none;
+                }
               }
             `}
           </style>
