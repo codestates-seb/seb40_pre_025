@@ -1,18 +1,17 @@
 import React from 'react'
-import NavBar from '../NavBarFake';
 import Questions from './Questions';
-import Seo from './Seo';
 import Notices from './Notices';
-import HeaderFake from '../HeaderFake';
+import SideBar from '../SideBar';
+import Header from '../Header';
+
 
 export default function TopQuestions() {
   return (
     <>
-    <Seo/>
-    <HeaderFake/>
+   <Header/>
 <div className='container'>
-   <NavBar/>
   {/* 메인  */}
+  <SideBar/>
  <div id="content">
   <Questions/>
     <Notices/>
@@ -26,6 +25,7 @@ export default function TopQuestions() {
         display: flex;
       }
     `}</style>
+    
   </div>
   </>
   )

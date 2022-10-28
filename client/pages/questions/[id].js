@@ -1,7 +1,8 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import Footer from "../../components/Footer";
-import Header from "../../components/Header2";
+import Header from "../../components/Header";
+import SideBar from "../../components/SideBar";
 
 
 const Editor = dynamic(() => import("../../components/Editor.js"), {
@@ -69,9 +70,9 @@ export default function AskDetail() {
         <div className="answerPostButtonContainer">
           <button className="answerPostButton">Post Your Answer</button>
         </div>
+        
       </div>
-      <Footer />
-
+          
       <style jsx>{`
         {
           /* isBtnClick 상태의 따라 색상이 바뀌도록 삼항 연산자로 작성. */
