@@ -9,7 +9,7 @@ const Footer = () => {
             <a href="https://stackoverflow.com" aria-label="Stack Overflow">
               <svg
                 aria-hidden="true"
-                class="native svg-icon iconLogoGlyphMd"
+                className="native svg-icon iconLogoGlyphMd"
                 width="32"
                 height="37"
                 viewBox="0 0 32 37"

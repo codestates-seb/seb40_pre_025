@@ -10,6 +10,7 @@ export default function edit() {
         .container {
           height: 100vh;
           width: 100%;
+
           display: flex;
           justify-content: space-between;
           flex: 1 0 auto;
@@ -18,7 +19,7 @@ export default function edit() {
           text-align: left;
         }
         .content {
-          width: 50%;
+          width: 65%;
           min-width: 515px;
           padding: 24px;
           margin: 0;

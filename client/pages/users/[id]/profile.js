@@ -110,7 +110,7 @@ export default function profile() {
             border-radius: 5px;
             margin-top: 5px;
             width: auto;
-            height: 4rem;
+            height: 4.5rem;
             margin-bottom: 50px;
             display: grid;
             grid-template-columns: 33% 33% 33%;

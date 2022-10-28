@@ -22,10 +22,12 @@ export default function Layout({ children }) {
         }
         .content {
           display: flex;
+          width: 100%;
         }
         .children {
           display: inline-block;
-          margin: 5rem;
+          width: 100%;
+          margin: 1rem;
         }
         .sideBarBox {
           display: inline-block;
