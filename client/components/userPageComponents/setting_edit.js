@@ -63,9 +63,43 @@ export default function saves_qustions() {
               <Editor></Editor>
             </div>
           </div>
+          <div className="btnBox">
+            <button className="saveBtn">Save profile</button>
+            <button className="cancelBtn">Cancel</button>
+          </div>
         </div>
       </div>
       <style jsx>{`
+        .btnBox {
+          display: flex;
+          margin-top: 4rem;
+        }
+        .saveBtn {
+          color: white;
+          margin-right: 0;
+          margin-left: 0;
+          margin: 1px;
+          background-color: hsl(206, 100%, 52%);
+          box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
+          padding: 0.8em;
+          border: 1px solid transparent;
+          border-radius: 3px;
+          outline: none;
+          font-family: inherit;
+          font-weight: normal;
+          text-align: center;
+          text-decoration: none;
+          cursor: pointer;
+          user-select: none;
+        }
+        .cancelBtn {
+          color: hsl(206, 100%, 52%);
+          padding-left: 20px;
+          padding-right: 20px;
+          border: 1px solid transparent;
+          cursor: pointer;
+          background-color: rgba(255, 255, 255, 0);
+        }
         #EditFrofile {
           width: 100%;
         }
@@ -76,7 +110,7 @@ export default function saves_qustions() {
           margin-top: 40px;
         }
         .editor {
-          width: auto;
+          width: 100%;
         }
         .uploadBtn {
           color: white;
@@ -99,8 +133,9 @@ export default function saves_qustions() {
         .input {
           border: 1px solid rgba(111, 111, 111, 0.497);
           border-radius: 3px;
-          width: 70%;
-          height: 25px;
+          min-width: 300px;
+          width: 40%;
+          height: 30px;
         }
         #profileImgBox {
           width: 100%;
