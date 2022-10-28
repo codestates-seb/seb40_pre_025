@@ -15,6 +15,7 @@ export default function AskDetail() {
 
   return (
     <>
+     
       <Header />
       
       <div className="container">
@@ -70,9 +71,8 @@ export default function AskDetail() {
         <div className="answerPostButtonContainer">
           <button className="answerPostButton">Post Your Answer</button>
         </div>
-        
       </div>
-          
+       
       <style jsx>{`
         {
           /* isBtnClick 상태의 따라 색상이 바뀌도록 삼항 연산자로 작성. */

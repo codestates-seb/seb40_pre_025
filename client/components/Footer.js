@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <footer id="footer" class="site-footer js-footer" role="contentinfo">
+      <footer id="footer" className="site-footer js-footer" role="contentinfo">
         <div className="site-footer--container">
           <div className="site-footer--logo">
             <a href="https://stackoverflow.com" aria-label="Stack Overflow">
@@ -121,7 +121,7 @@ const Footer = () => {
             vertical-align: baseline;
             font-size: 12px;
             bottom: 0;
-            width: 100%;
+            width: auto;
           }
           svg {
             margin-left: 40px;
