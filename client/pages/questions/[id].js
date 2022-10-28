@@ -8,7 +8,7 @@ import SideBar from "../../components/SideBar";
 const Editor = dynamic(() => import("../../components/Editor.js"), {
   ssr: false,
 });
-// editor server-side-rendering  off 로직??
+// editor server-side-rendering  off 로직
 
 export default function AskDetail() {
   const [isBtnClick, setIsBtnClick] = useState(false);
@@ -82,7 +82,7 @@ export default function AskDetail() {
           align-items: center;
         }
         .editorContainer {
-          width: 100%;
+          width: 68%;
           margin-left: 10%
         }
         .questionTitle {
@@ -104,7 +104,7 @@ export default function AskDetail() {
           margin-left: -150px;
         }
         .questionComentBox {
-          width: 90%;
+          width: 60%;
           height: 100%;
           background-color: #ecf0f1;
         }
@@ -128,10 +128,10 @@ export default function AskDetail() {
           justify-content: center;
           align-items: center;
           flex-direction: column;
-          width: 60%;
+          width: 70%;
         }
         .answerCount {
-          margin-left: -550px;
+          margin-left: -950px;
           font-weight: 300;
         }
         .icon {
@@ -143,7 +143,7 @@ export default function AskDetail() {
           cursor: pointer;
         }
         .answerCommentBox {
-          width: 600px;
+          width: 700px;
           height: 200px;
           background-color: #ecf0f1;
         }
@@ -189,7 +189,7 @@ export default function AskDetail() {
           border: solid #67b9f3 1px;
           background-color: #67b9f3;
           padding: 1% 3%;
-          margin-left: -25%;
+          margin-left: 2%;
           border-radius: 7px;
           cursor: pointer;
         }
