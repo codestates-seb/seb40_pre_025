@@ -29,10 +29,10 @@ export default function Login() {
           </div>
           <div className="socialLogin">
             <div className="socialLoginBtn">
-              <Google></Google>
+              <Google />
             </div>
             <div className="socialLoginBtn">
-              <Github></Github>
+              <Github />
             </div>
           </div>
           <div className="formContainer">

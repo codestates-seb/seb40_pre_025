@@ -1,10 +1,10 @@
-import Setting_edit from "../../../../components/userPageComponents/setting_edit";
+import Setting_delete from "../../../../components/userPageComponents/setting_delete";
 import UserIdLayout from "../User_Id_Layout";
 export default function deleteUsr() {
   return (
     <div className="container">
       <div className="content">
-        <Setting_edit></Setting_edit>
+        <Setting_delete></Setting_delete>
       </div>
       <style jsx>{`
         .container {
@@ -18,7 +18,7 @@ export default function deleteUsr() {
           text-align: left;
         }
         .content {
-          width: 50%;
+          width: 100%;
           min-width: 515px;
           padding: 24px;
           margin: 0;

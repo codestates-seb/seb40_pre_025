@@ -55,6 +55,11 @@ export default function FilterBtn() {
         display: flex;
         justify-content: flex-end;
     }
+      a{
+    text-align: center;
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    color: inherit;
+  }
             
             `}</style>
       </div>

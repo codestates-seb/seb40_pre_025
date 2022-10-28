@@ -1,6 +1,13 @@
+import dynamic from 'next/dynamic';
 import React from 'react'
 import NextBtn from './NextBtn'
 
+
+const Editor = dynamic(() => import ("../Editor.js"), {
+  ssr: false,
+});
+
+// editor server-side-rendering  off 로직??
 export default function AskTry() {
   return (
     <div className='try-box'>
@@ -35,10 +42,11 @@ export default function AskTry() {
               height: 100%;
               margin-top:  2.5%;
               border-radius: 3px;
+              margin-left: 3%;
 
           }
           .try-outer {
-            margin: 3%;
+            margin: 3% 3% 1% 3%;
           }
           .try-title {
             margin-bottom: 1.5%;
@@ -71,7 +79,7 @@ export default function AskTry() {
 
           }
     
-        @media screen (max-width: 1340px) {
+        @media screen and (max-width: 1340px) {
           .try-box {
             width: 90%;
           }

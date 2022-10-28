@@ -35,10 +35,11 @@ export default function AskTags() {
         height: 100%;
         margin-top:  2.5%;
         border-radius: 3px;
+        margin-left: 3%;
 
     }
     .tags-outer {
-       margin: 3%;
+      margin: 3% 3% 1% 3%;
     }
     .tags-title {
       margin-bottom: 1.5%;
@@ -69,7 +70,7 @@ export default function AskTags() {
       padding: 1% 1%;
     }
     
-        @media screen (max-width: 1340px) {
+        @media screen and (max-width: 1340px) {
           .tags-box {
             width: 90%;
           }

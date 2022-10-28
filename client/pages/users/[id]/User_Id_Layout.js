@@ -6,9 +6,8 @@ const userIdLayout = ({ children }) => {
       {children}
       <style jsx>{`
         .test {
-           {
-            /* background-color: red; */
-          }
+          margin: 0;
+          margin-left: 1rem;
         }
       `}</style>
     </div>
