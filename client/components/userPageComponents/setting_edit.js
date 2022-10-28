@@ -180,7 +180,6 @@ export default function saves_qustions() {
           width: 100%;
           height: auto;
           min-width: 450px;
-
           padding: 32px;
           border: 1px solid hsl(0, 0%, 78%);
           border-radius: 5px;

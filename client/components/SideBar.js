@@ -7,42 +7,55 @@ export default function SideBar() {
         <a href="/">
           <b>Home</b>
         </a>
-      </div>
+      </div><br />
       <div className="qusetions">
-        <a href="">Qusetions</a>
+        <a href="../questions/ask">Qusetions</a>
       </div>
       <div className="tags">
-        <a href="">Tags</a>
+        <a href="../users/[id]/profile">Tags</a>
       </div>
       <div className="users">
-        <a href="">Users</a>
+        <a href="../">Users</a>
       </div>
       <style jsx>
         {`
           .sidebar {
-            height: 100%;
-            width: 120px;
-            position: fixed;
+            height: 100vh;
+            width: 15rem;
+            position: sticky;
             top: 0;
             left: 0;
-            padding-top: 40px;
+            padding-top: 3rem;
             background: rgb(255, 255, 255);
-            border: 0.5px solid grey;
+            border-right: 0.5px solid grey;
+           
           }
           .sidebar div {
             padding: 8px;
-            font-size: 12px;
+            font-size: 15px;
             display: block;
           }
           a {
             text-decoration-line: none;
             color: rgb(64, 71, 77);
+            padding-left: 5rem;
           }
           a :hover {
             color: black;
-            font-weight: bold;
           }
-          .home {
+          .home:active, 
+          .qusetions:active,
+          .tags:active,
+          .users:active  {
+            color: black;
+            background: rgb(237, 239, 240);
+            border-right: 3px solid rgb(239, 109, 29);
+          }
+          .home:hover, 
+          .qusetions:hover,
+          .tags:hover,
+          .users:hover {
+            color: black;
             background: rgb(237, 239, 240);
             border-right: 3px solid rgb(239, 109, 29);
           }

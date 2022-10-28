@@ -1,4 +1,5 @@
 import React from 'react'
+import NextBtn from './NextBtn'
 
 export default function AskTitle() {
   return (
@@ -25,7 +26,7 @@ export default function AskTitle() {
              </div>
            </div>
 
-         <button className='nextbtn s-btn'>Next</button>
+         <NextBtn/>
        </div>
        {/* writing box  */}
        <div className='writing-box'>
@@ -33,29 +34,31 @@ export default function AskTitle() {
                   Writing a good title
              </div>
              <div className='writing-content'>
-               <div className='writing-img'>
-                  <img src="/good-title.png" width={70} height={60} />
-                  </div>
+              <img className='writing-img' src="/good-title.png" width={50} height={50} />
+               
+              <li className='writing-list'>
+                <div className='writing-body idea2'>Your title should summarize the problem.</div>
+              </li>
 
-                <div className='writing-content'>
-                <div>Your title should summarize the problem.
-         You might find that you have a better idea of your title after writing out the rest of the question.</div>
-                </div>
+              <li className='writing-list'>
+                <div className='writing-body idea'>You might find that you have a better idea of your title after writing out the rest of the question.</div>
+              </li>
+                
             </div>
          </div>
           <style jsx>{`
+
         .title {
          display: flex;
          justify-content: space-between;
-         margin-top: 2rem;
+         margin-top: 2.5%;
         }
         .title-box{
             border: 1px solid #e3e6e8;
-            width: 53rem;
-            height: 10rem;
+            width: 70%;
             background-color: #ffffff;
-            padding-top: 1rem;
-            padding-left: 1rem;
+            padding-top: 1.5%;
+            padding-left: 1.5%;
             border-radius: 3px;
          
         }
@@ -66,58 +69,117 @@ export default function AskTitle() {
         }
         .title-label {
             font-size: 1rem;
-            font-weight: 700;
+            font-weight: 800;
         }
         .detail-label{
             font-size: 0.8rem;
         }
         .title-input{
-            width: 45rem;
-            height: 2rem;
+            width: 95%;
             border: 1px solid #babfc4;
             color: black;
-            padding: 0.6rem 0.7rem;
+            padding: 1% 1%;
             border-radius: 2px;
-            margin-top: 0.3rem;
+            margin-top: 1%;
         }
         .nextbtn{
             color: #ffffff;
             background-color: #0a95ff;
             box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
-            width: 3rem;
-            height: 2.2rem;
+            width: 6%;
             font-size: 0.8rem;
-            margin-top: 0.5rem;
+            margin-top: 1.4%;
+            margin-bottom: 2%;
         }
-        
+        .nextbtn:hover{
+          background-color: #77c0f8;
+          transition: 0.5s;
+        }
         .writing-box{
             border: 1px solid #d6d9dc;
             border-radius: 2px;
             background-color: #ffffff;
-            width: 20rem;
-            height: 10rem;
+            width: 25%;
             display: flex;
-            flex-direction: column;
-            box-shadow: 0 1px 2pxhsla(0,0%,0%,0.05), 0 1px 4px hsla(0, 0%, 0%, 0.05), 0 2px 8px hsla(0, 0%, 0%, 0.05);
-        
+            flex-direction: column;        
         }
-     
+       
         .writing-name {
             background-color: #f8f9f9;
             border-bottom: 1px solid #d6d9dc;
-            height: 2.7rem;
-            padding: 0.5rem 1rem;
+            height: 30%;
+            padding: 5% 8%;
             display: flex;
             align-items: center;
+        }
+        .writing-body {
+          display: flex;
+        }
+        .writing-list {
+          list-style: none;
         }
         .writing-content {
             display: flex;
             font-size: 0.8rem;
             align-items: center;
             justify-content: center;
-            margin-top: 1rem;
+            padding-right: 2%;
+            flex-wrap: wrap;
 
         }
+        .idea {
+          margin-left: 23%;
+          margin-top: -4%;
+        }
+        @media screen (max-width: 1340px) {
+          .title {
+            display:flex;
+            flex-direction: column-reverse;
+          }
+          .title-box {
+            width: 90%;
+          }
+          .writing-box {
+            width: 90%;
+            margin-bottom: 3%;
+          }
+          .writing-name {
+            padding: 1% 2%;
+    
+          }
+          .writing-content {
+            padding: -4% -4%;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .writing-list {
+            padding: 3%;
+            font-size: 0.9rem;
+          }
+          .writing-body {
+            margin-bottom: -4%;
+
+          }
+          img {
+         display: none;
+        }
+      
+        .idea {
+          margin: 0;
+          padding: 0;
+        }
+        .idea2 {
+          margin: 0;
+          padding: 0;
+          margin-bottom: -10%;
+        }
+      
+        }
+
+      
+
           `}</style>
         </div>
 

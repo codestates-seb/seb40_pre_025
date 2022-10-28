@@ -140,8 +140,8 @@ export default function AskDetail() {
           font-weight: 300;
         }
         .icon {
-          width: 30px;
-          height: 30px;
+          width: 12%;
+          height: 150%;
           fill: ${isBtnClick ? "green" : "gray"};
           cursor: pointer;
         }
@@ -192,7 +192,7 @@ export default function AskDetail() {
           color: white;
           border: solid #67b9f3 1px;
           background-color: #67b9f3;
-          padding: 15px 20px;
+          padding: 1% 3%;
           border-radius: 7px;
           cursor: pointer;
         }

@@ -1,4 +1,5 @@
 import React from 'react'
+import NextBtn from './NextBtn'
 
 export default function AskTry() {
   return (
@@ -18,55 +19,62 @@ export default function AskTry() {
                 </div>
               {/* try 내용  */}
               <div className='try-body-box'>
-                <div className='try-body'>
-                  이게문제야 
-                </div>
+              <textarea className='try-body' placeholder='여기에 문제를 써주세요.'>
+                </textarea>
               </div>
-              <button className='nextbtn s-btn'>Next</button>
+              <NextBtn/>
           </div>
         </div>
       </div>
     </div>
     <style jsx>{`
-    .try-box {
-        border: 1px solid #e3e6e8;
-        background-color: white;
-        width: 53rem;
-        height: 18rem;
-        margin-top: 1rem;
-        border-radius: 3px;
+          .try-box {
+              border: 1px solid #e3e6e8;
+              background-color: white;
+              width: 70%;
+              height: 100%;
+              margin-top:  2.5%;
+              border-radius: 3px;
 
-    }
-    .try-outer {
-        margin: 1.5rem;
-    }
-    .try-title {
-      margin-bottom: 0.4rem;
-    }
-    .try-name {
-        font-weight: 600;
-        font-size: 1rem;
-    }
-    .try-p {
-        font-size: 0.8rem;
-        font-weight: 400;
-        color: gray;
-        margin-top: 0.2rem;
-    }
-    .try-body-box{
-        border: 1px solid #e3e6e8;
-        height: 10rem;
-        color: white;
-        
-    }
-    .nextbtn{
-            color: #ffffff;
-            background-color: #0a95ff;
-            box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
-            width: 3rem;
-            height: 2.2rem;
-            font-size: 0.8rem;
-            margin-top: 0.5rem;
+          }
+          .try-outer {
+            margin: 3%;
+          }
+          .try-title {
+            margin-bottom: 1.5%;
+          }
+          .try-name {
+              font-weight: 600;
+              font-size: 1rem;
+          }
+
+          .try-body {
+              border: 1px solid #e3e6e8;
+              height: 10rem;
+              
+          }
+          .try-p {
+              font-size: 0.8rem;
+              font-weight: 400;
+              color: gray;
+              margin-top: 0.5%;
+          }
+          .try-body-box{
+              border: 1px solid #e3e6e8;
+              height: 100%;
+          }
+          .try-body {
+            width: 100%;
+            border: 1px solid #e3e6e8;
+            height: 100%;
+            padding-bottom: 20%;
+
+          }
+    
+        @media screen (max-width: 1340px) {
+          .try-box {
+            width: 90%;
+          }
         }
     `}</style>
   </div>

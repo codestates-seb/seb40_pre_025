@@ -3,13 +3,13 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <footer id="footer" className="site-footer js-footer" role="contentinfo">
+      <footer id="footer" class="site-footer js-footer" role="contentinfo">
         <div className="site-footer--container">
           <div className="site-footer--logo">
             <a href="https://stackoverflow.com" aria-label="Stack Overflow">
               <svg
                 aria-hidden="true"
-                className="native svg-icon iconLogoGlyphMd"
+                class="native svg-icon iconLogoGlyphMd"
                 width="32"
                 height="37"
                 viewBox="0 0 32 37"
@@ -112,6 +112,16 @@ const Footer = () => {
             display: flex;
             align-items: flex-start;
             flex-direction: row;
+            background: rgb(29, 29, 31);
+            color: rgb(172, 178, 183);
+            margin: 0;
+            padding-top: 1rem;
+            padding-left: 1.3rem;
+            border: 0;
+            vertical-align: baseline;
+            font-size: 12px;
+            bottom: 0;
+            width: 100%;
           }
           svg {
             margin-left: 40px;
@@ -126,15 +136,6 @@ const Footer = () => {
           }
           .site-footer {
             box-sizing: border-box;
-          }
-          footer {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            vertical-align: baseline;
-            background: rgb(29, 29, 31);
-            color: rgb(172, 178, 183);
-            font-size: 12px;
           }
           h5 {
             font-weight: bold;
