@@ -1,4 +1,4 @@
-import TopQuestions from "../components/TopQuestions";
+import TopQuestions from "../components/TopQuestion/TopQuestions";
 
 
 

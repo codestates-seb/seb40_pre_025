@@ -1,24 +1,22 @@
 import React from 'react'
-import Header from '../../../components/HeaderFake'
 import AskNotice from '../../../components/question/AskNotice'
-import FakeSide from '../../../components/question/FakeSide'
 import AskTitle from '../../../components/question/AskTitle'
 import AskProblem from '../../../components/question/AskProblem'
 import AskTry from '../../../components/question/AskTry'
 import AskTags from '../../../components/question/AskTags'
 import SubmissionBtn from '../../../components/question/SubmissionBtn'
 import AskSeo from '../../../components/question/AskSeo'
-import FooterFake from '../../../components/FooterFake'
+import Header from '../../../components/Header'
+import SideBar from '../../../components/SideBar'
 
 
 export default function Ask() {
   return (
     <>
     <AskSeo/>
-     <Header/>
-
+   <Header/>
     <div className='container'>
-     <FakeSide/>
+      <SideBar/>
       <div className='content'>
         <div className='box-border'>
             <form className='post-form'>
@@ -55,7 +53,6 @@ export default function Ask() {
   
         `}</style>
     </div>
-    <FooterFake/>
     </>
   )
   
