@@ -7,7 +7,8 @@ export default function SideBar() {
         <a href="/">
           <b>Home</b>
         </a>
-      </div><br />
+      </div>
+      <br />
       <div className="qusetions">
         <a href="../questions/ask">Qusetions</a>
       </div>
@@ -20,6 +21,7 @@ export default function SideBar() {
       <style jsx>
         {`
           .sidebar {
+            display: inline-block;
             height: 100vh;
             width: 15rem;
             position: sticky;
@@ -28,7 +30,6 @@ export default function SideBar() {
             padding-top: 3rem;
             background: rgb(255, 255, 255);
             border-right: 0.5px solid grey;
-           
           }
           .sidebar div {
             padding: 8px;
@@ -43,15 +44,15 @@ export default function SideBar() {
           a :hover {
             color: black;
           }
-          .home:active, 
+          .home:active,
           .qusetions:active,
           .tags:active,
-          .users:active  {
+          .users:active {
             color: black;
             background: rgb(237, 239, 240);
             border-right: 3px solid rgb(239, 109, 29);
           }
-          .home:hover, 
+          .home:hover,
           .qusetions:hover,
           .tags:hover,
           .users:hover {
