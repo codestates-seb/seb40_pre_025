@@ -17,8 +17,7 @@ export default function TopQuestions() {
     .container {
         width: 100%;
         overflow-x: hidden;
-      display: flex;
-      margin-top: -5%;
+        display: flex;
       margin-left: -7%;
       }
       #content {
