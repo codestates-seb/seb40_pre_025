@@ -14,9 +14,7 @@ export default function Ask() {
   return (
     <>
     <AskSeo/>
-   <Header/>
     <div className='container'>
-      <SideBar/>
       <div className='content'>
         <div className='box-border'>
             <form className='post-form'>

@@ -69,7 +69,7 @@ export default function AskTags() {
       padding: 1% 1%;
     }
     
-        @media screen (max-width: 1340px) {
+        @media screen and (max-width: 1340px) {
           .tags-box {
             width: 90%;
           }

@@ -15,15 +15,19 @@ export default function TopHeader() {
             .top {
                 display:flex;
                 flex-direction: row;
-                margin-top: 2% ;
 
             }
             .top_h1 {
                 font-size: 1.6rem;
                 flex: 1 1 0;
                 font-weight:400;
+                margin-left: 3%;
             }
-            
+            a{
+            text-align: center;
+            text-decoration: none; /* 링크의 밑줄 제거 */
+            color: inherit;
+            }
             .ask {
                 flex-basis: auto;
                 width: 13%;
@@ -47,13 +51,13 @@ export default function TopHeader() {
                 font-size: 0.9rem;
         
             }
-        @media screen (max-width:1330px ) {
+        @media screen and (max-width:1330px ) {
             .ask {
                  width: 15%; 
             }
       
                  } 
-         @media screen (max-width:1200px ) {
+         @media screen and (max-width:1200px ) {
             .ask {
                  width: 17%; 
             }

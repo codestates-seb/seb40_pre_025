@@ -80,11 +80,10 @@ export default function Questions() {
           display: flex;
           flex-direction: column;
           padding: 1.5%;
-          width: 80%;
+          width: 100%;
         
         }
         .qlist-wrapper{
-          clear: both;
           width: 100%;
         }
         .question-mini-list{
@@ -183,8 +182,13 @@ export default function Questions() {
           color: gray;
           margin-left: 2%;
         }
+        a{
+        text-align: center;
+        text-decoration: none; /* 링크의 밑줄 제거 */
+        color: inherit;
+      }
       
-        @media screen (max-width:1300px ) {
+        @media screen and (max-width:1300px ) {
         .post-main {
           width: 100%;
           display: flex;
@@ -195,7 +199,7 @@ export default function Questions() {
         }
          
         } 
-        @media screen (max-width:1100px ) {
+        @media screen and (max-width:1100px ) {
          #mainbar {
             width: 100%;
           }
@@ -204,7 +208,7 @@ export default function Questions() {
           }
          
         } 
-        @media screen (max-width:700px ) {
+        @media screen  and (max-width:700px ) {
          #mainbar {
             width: 100%;
           }

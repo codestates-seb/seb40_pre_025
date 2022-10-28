@@ -131,7 +131,7 @@ export default function AskTitle() {
           margin-left: 23%;
           margin-top: -4%;
         }
-        @media screen (max-width: 1340px) {
+        @media screen and (max-width: 1340px) {
           .title {
             display:flex;
             flex-direction: column-reverse;

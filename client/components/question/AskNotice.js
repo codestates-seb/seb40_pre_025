@@ -79,13 +79,13 @@ export default function Notice() {
         margin-left: 4%;
         font-size: 0.9rem;
       }
-      @media screen (max-width: 1340px) {
+      @media screen and (max-width: 1340px) {
         .notice {
           width: 90%;
         }
 
       }
-      @media screen (max-width: 1000px) {
+      @media screen and (max-width: 1000px) {
         img {
          display: none;
         }

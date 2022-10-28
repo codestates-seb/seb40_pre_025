@@ -71,7 +71,7 @@ export default function AskTry() {
 
           }
     
-        @media screen (max-width: 1340px) {
+        @media screen and (max-width: 1340px) {
           .try-box {
             width: 90%;
           }

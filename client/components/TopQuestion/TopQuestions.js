@@ -1,17 +1,14 @@
 import React from 'react'
 import Questions from './Questions';
 import Notices from './Notices';
-import SideBar from '../SideBar';
-import Header from '../Header';
 
 
 export default function TopQuestions() {
   return (
     <>
-   <Header/>
+
 <div className='container'>
   {/* 메인  */}
-  <SideBar/>
  <div id="content">
   <Questions/>
     <Notices/>
@@ -20,10 +17,13 @@ export default function TopQuestions() {
     .container {
         width: 100%;
       display: flex;
+      margin-top: -5%;
+      margin-left: -7%;
       }
       #content {
         display: flex;
-      }
+        width: 100%;
+      } 
     `}</style>
     
   </div>

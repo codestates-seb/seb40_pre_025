@@ -69,7 +69,7 @@ export default function AskProblem() {
 
     }
   
-        @media screen (max-width: 1340px) {
+        @media screen and (max-width: 1340px) {
           .problem-box {
             width: 90%;
           }
