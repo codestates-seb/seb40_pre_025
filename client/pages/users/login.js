@@ -4,8 +4,8 @@ import Github from "../../components/social/Github";
 
 export default function Login() {
   return (
-    <div className="container">
-      <div id="content" className="d-flex flex_center">
+    <div className="logincontainer">
+      <div id="loginContent" className="d-flex flex_center">
         <div className="flexItem">
           <div className="ta-center">
             <div className="logo">
@@ -130,14 +130,14 @@ export default function Login() {
           justify-content: center;
           align-items: center;
         }
-        .container {
+        .logincontainer {
           height: 100vh;
           background-color: rgb(241 242 243);
           display: flex;
           justify-content: center;
           margin: 0;
         }
-        #content {
+        #loginContent {
           display: flex;
           align-items: center;
           justify-content: center;
