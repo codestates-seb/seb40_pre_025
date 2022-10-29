@@ -1,0 +1,2 @@
+import { Plugin } from "prosemirror-state";
+export declare const tables: Plugin<any>;

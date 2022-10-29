@@ -1,0 +1,17 @@
+import { Schema } from "prosemirror-model";
+import { CommonmarkParserFeatures } from "../shared/view";
+export declare const emphasisRegexAsterisk: RegExp;
+/**
+ * Defines all input rules we're using in our rich-text editor.
+ * Input rules are formatting operations that trigger as you type based on regular expressions
+ *
+ * Examples:
+ *      * starting a line with "# " will turn the line into a headline
+ *      * starting a line with "> " will insert a new blockquote in place
+ */
+export declare const richTextInputRules: (schema: Schema, features: CommonmarkParserFeatures) => import("prosemirror-state").Plugin<{
+    transform: import("prosemirror-state").Transaction;
+    from: number;
+    to: number;
+    text: string;
+}>;

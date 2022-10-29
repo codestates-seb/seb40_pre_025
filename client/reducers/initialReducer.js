@@ -14,4 +14,4 @@ const initialReducer = (state = initialState, action) => {
   }
 };
 
-export default initialReducer
+export default initialReducer;

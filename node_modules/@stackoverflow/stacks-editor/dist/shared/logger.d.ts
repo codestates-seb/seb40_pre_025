@@ -1,0 +1,12 @@
+/**
+ * Logs a message to the console with a styled "header" (development only)
+ * @param header The header of the log which will be styled to stand out
+ * @param message Any items to log in the message
+ */
+export declare function log(header: string, ...message: unknown[]): void;
+/**
+ * Logs an error to the console with a styled "header" (both development and prod)
+ * @param header The header of the log which will be styled to stand out
+ * @param error Any items to log in the error
+ */
+export declare function error(header: string, ...error: unknown[]): void;

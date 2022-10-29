@@ -1,0 +1,2 @@
+import { Plugin } from "prosemirror-state";
+export declare const plainTextPasteHandler: Plugin<any>;
