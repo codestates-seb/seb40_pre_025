@@ -28,7 +28,6 @@ export default function AskProblem() {
               <div className='problem-body-box'>
                 <Editor/>
               </div>
-              <NextBtn/>
           </div>
         </div>
       </div>
@@ -45,7 +44,7 @@ export default function AskProblem() {
 
     }
     .problem-outer {
-        margin: 3% 3% 1% 3%;
+        margin: 3% 3% 3% 3%;
     }
     .problem-title {
       margin-bottom: 1.5%;
