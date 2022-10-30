@@ -1,16 +1,15 @@
-import Saves_qustions from "../../../../components/userPageComponents/saves_qustions";
+import Setting_delete from "../../../components/userPageComponents/setting_delete";
 import UserIdLayout from "../User_Id_Layout";
-
-export default function saves_qustions() {
+export default function deleteUsr() {
   return (
-    <>
-      <Saves_qustions></Saves_qustions>
-
+    <div className="container">
+      <div className="content">
+        <Setting_delete></Setting_delete>
+      </div>
       <style jsx>{`
         .container {
           height: 100vh;
-          width: 100%;
-
+          width: 100vh;
           display: flex;
           justify-content: space-between;
           flex: 1 0 auto;
@@ -28,10 +27,10 @@ export default function saves_qustions() {
           border-bottom-width: 0;
         }
       `}</style>
-    </>
+    </div>
   );
 }
 
-saves_qustions.getLayout = function getLayout(page) {
+deleteUsr.getLayout = function getLayout(page) {
   return <UserIdLayout>{page}</UserIdLayout>;
 };

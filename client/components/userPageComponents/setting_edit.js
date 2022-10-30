@@ -208,6 +208,7 @@ export default function saves_qustions() {
           font: inherit;
           font-size: 100%;
           vertical-align: baseline;
+          margin-bottom: 50px;
         }
         .Title {
           display: block;

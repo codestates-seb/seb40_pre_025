@@ -1,11 +1,11 @@
-import Setting_edit from "../../../../components/userPageComponents/setting_edit";
+import Saves_qustions from "../../../components/userPageComponents/saves_qustions";
 import UserIdLayout from "../User_Id_Layout";
-export default function edit() {
+
+export default function saves_qustions() {
   return (
-    <div className="container">
-      <div className="content">
-        <Setting_edit></Setting_edit>
-      </div>
+    <>
+      <Saves_qustions></Saves_qustions>
+
       <style jsx>{`
         .container {
           height: 100vh;
@@ -19,7 +19,7 @@ export default function edit() {
           text-align: left;
         }
         .content {
-          width: 65%;
+          width: 100%;
           min-width: 515px;
           padding: 24px;
           margin: 0;
@@ -28,10 +28,10 @@ export default function edit() {
           border-bottom-width: 0;
         }
       `}</style>
-    </div>
+    </>
   );
 }
 
-edit.getLayout = function getLayout(page) {
+saves_qustions.getLayout = function getLayout(page) {
   return <UserIdLayout>{page}</UserIdLayout>;
 };

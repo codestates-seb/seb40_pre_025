@@ -1,4 +1,4 @@
-import CoreInof from "../../../components/userPageComponents/coreInfo";
+import CoreInof from "../../components/userPageComponents/coreInfo";
 const userIdLayout = ({ children }) => {
   return (
     <div className="test">

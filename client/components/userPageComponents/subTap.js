@@ -7,24 +7,24 @@ const subTap = () => {
       <div className="position">
         <Link
           href={
-            router.pathname === "/users/[id]/setting/delete"
-              ? `/users/123/setting/edit`
-              : `/users/123/saves/qustions`
+            router.pathname === "/users/setting/delete"
+              ? `/users/setting/edit`
+              : `/users/saves/qustions`
           }
         >
           <a>
             <div
               className={
-                router.pathname === `/users/[id]/setting/edit`
+                router.pathname === `/users/setting/edit`
                   ? "currentTap"
-                  : router.pathname === `/users/[id]/saves/qustions`
+                  : router.pathname === `/users/saves/qustions`
                   ? "currentTap"
                   : "notCurrentTap"
               }
             >
-              {router.pathname === `/users/[id]/setting/edit`
+              {router.pathname === `/users/setting/edit`
                 ? "Edit"
-                : router.pathname === `/users/[id]/setting/delete`
+                : router.pathname === `/users/setting/delete`
                 ? "Edite"
                 : "Qustions"}
             </div>
@@ -32,24 +32,24 @@ const subTap = () => {
         </Link>
         <Link
           href={
-            router.pathname === "/users/[id]/setting/edit"
-              ? "/users/123/setting/delete"
-              : `/users/123/saves/ansers`
+            router.pathname === "/users/setting/edit"
+              ? "/users/setting/delete"
+              : `/users/saves/ansers`
           }
         >
           <a>
             <div
               className={
-                router.pathname === `/users/[id]/setting/delete`
+                router.pathname === `/users/setting/delete`
                   ? "currentTap"
-                  : router.pathname === `/users/[id]/saves/ansers`
+                  : router.pathname === `/users/saves/ansers`
                   ? "currentTap"
                   : "notCurrentTap"
               }
             >
-              {router.pathname === `/users/[id]/setting/edit`
+              {router.pathname === `/users/setting/edit`
                 ? "Delete"
-                : router.pathname === `/users/[id]/setting/delete`
+                : router.pathname === `/users/setting/delete`
                 ? "Delete"
                 : "Ansers"}
             </div>
