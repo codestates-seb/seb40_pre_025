@@ -21,3 +21,11 @@ logging:
       springframework:
         jdbc:
           core: TRACE
+mail:
+  address:
+    admin: admin@gmail.com
+jwt:
+  key:
+    secret: ${APP.JWT_SECRET_KEY}
+  access-token-expiration-minutes: 30
+  refresh-token-expiration-minutes: 420

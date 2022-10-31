@@ -3,7 +3,6 @@ package preproject.stack.answer.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import preproject.stack.post.entity.Address;
 import preproject.stack.post.entity.Post;
 import preproject.stack.user.entity.User;
 

@@ -1,5 +1,6 @@
 package preproject.stack.response;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 
 import javax.validation.ConstraintViolation;
@@ -16,7 +17,7 @@ public class ErrorResponse {
         this.violationErrors = violationErrors;
     }
 
-    public static ErrorResponse of(BindingResult bindingResult) {
+    public static ErrorResponse of(HttpStatus bindingResult) {
         return new ErrorResponse(FieldError.of(bindingResult), null);
     }
 

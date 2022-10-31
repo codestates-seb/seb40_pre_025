@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import preproject.stack.answer.entity.Answer;
 import preproject.stack.post.entity.Post;
-import preproject.stack.saved.entity.Saved;
+
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -26,15 +26,17 @@ public class User {
     private List<Post> posts = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
-    private List<Answers> answers = new ArrayList<>();
+    private List<Answer> answers = new ArrayList<>();
 
     private String userName;
     private String email;
 
+    @Column(length = 100)
+    private String password;
 
 
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles = new ArrayList<>();
 
     public User(String userName, String email) {
         this.userName = userName;
