@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
-    "@stackoverflow/stacks-editor": "^0.8.2"
+    "@stackoverflow/stacks-editor": "^0.8.2",
+    "axios": "^1.1.3"
   }
 }
