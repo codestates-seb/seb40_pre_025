@@ -16,7 +16,7 @@ export default function Notice() {
          <div className='notice'>  
              <h2 className='good-question'>Writing a good question</h2>
                 <p>
-                You’re ready to ask a programming-related question and this form will help guide you through the process.
+                You’re ready to ask a programming-related question and this form will help guide you through the process..
                 </p>
                 <p className='p2'>
                 Looking to ask a non-programming question? See the topics here to find a relevant site.
