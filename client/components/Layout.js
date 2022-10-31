@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 
 export default function Layout({ children }) {
   const router = useRouter();
-  console.log(router.pathname);
   return (
     <div className="layout-container">
       <Seo />
