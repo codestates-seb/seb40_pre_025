@@ -1,112 +1,217 @@
-import dynamic from "next/dynamic";
-import { useState } from "react";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import SideBar from "../../components/SideBar";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
 
+import {
+  changeInputAction,
+  resetInputAction,
+} from "../../reducers/answerReducer";
+import dummydata from "../../static/dummydata";
 
-const Editor = dynamic(() => import("../../components/Editor.js"), {
-  ssr: false,
-});
-// editor server-side-rendering  off 로직
 
 export default function AskDetail() {
-  const [isBtnClick, setIsBtnClick] = useState(false);
+  // state
+  const [admit, setAdmit] = useState([]);
+  const [contents, setContents] = useState({});
+  const [answers, setAnswers] = useState({
+    answers: [],
+  });
+
+  //redux
+  const dispatch = useDispatch();
+  const { value } = useSelector(state => state.anwserReducer);
+
+  //router
+  const router = useRouter();
+
+  // 리덕스 이용해서 답글 내용 저장
+  const onChangeTextarea = e => {
+    dispatch(changeInputAction(e.target.value));
+  };
+
+  // 답글 추가히기
+  const postAnswer = e => {
+    setAnswers(prev => ({
+      ...prev,
+      answers: [...prev.answers, e],
+    }));
+
+    // 답글 추가하고 textarea글 비워주기
+    dispatch(resetInputAction());
+  };
+
+  // 답글 삭제하기
+  const deleteAnswer = index => {
+    setAnswers(prev => {
+      answers.answers.splice(index, 1);
+
+      return {
+        ...prev,
+        answers: answers.answers,
+      };
+    });
+  };
+  useEffect(() => {
+    const data = dummydata.filter(dummy => dummy.id === router.query.id);
+    setContents(data[0]);
+  }, [router]);
 
   return (
     <>
-      
       <div className="answermaincontainer">
-        <h1 className="questionTitle">질문 제목</h1>
-        <div className="questionContainer">
+        <div>
+          <h1 className="questionTitle">{contents?.title}</h1>
           <div className="qusetionInfoContainer">
-            <span> Asked day</span>
-            <span> Modified today</span>
-            <span>Viewed 1 times </span>
-          </div>
-          <div className="questionComentBox">
-            <span className="questionComent">질문 내용</span>
-          </div>
-          <div className="questionUpdate">
-            <span>edited 1 min ago</span>
+            <div className="sub-c">
+              <span className="fc-light">Asked</span>
+              
+            </div>
+            <div>
+              <span className="fc-light">Vote</span>
+              {/* vote가 dummyData 존재하지 않을때 1 넣어줌 */}
+              <span>{contents?.vote ?? "1"}</span>
+            </div>
+            <div>
+              <span className="fc-light">Read</span>
+              {/* read dummyData 존재하지 않을때 1 넣어줌 */}
+              <span>{contents?.read ?? "1"}</span>
+            </div>
           </div>
         </div>
         <hr className="bar" />
+        <div className="questionContainer">
+          <div className="questionComentBox">
+            <div dangerouslySetInnerHTML={{ __html: contents?.bodyHTML }} />
+          </div>
+          <div className="questionUpdate"></div>
+        </div>
+        <hr className="bar" />
         <div className="answerContainer">
-          <h1 className="answerCount">1 Answer</h1>
-          <div
-            className="iconContainer"
-            onClick={() => setIsBtnClick((prev) => !prev)}
-          >
-            {/* useState 훅의 두번째 인자인 set()은 함수로 사용할때 첫번째 
-          인자로 기존 값을 제공한다... 반전하는 간단한 함수로 토글모드 만들었다. */}
-            <i>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-                className="icon"
-              >
-                <path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
-              </svg>
-            </i>
-          </div>
-          <div className="answerCommentBox">
-            <span className="answerComment">답변 내용</span>
-          </div>
-          <div className="answerGroup">
-            <div className="answerButtonContainer">
-              <button className="editButton">Edit</button>
-              <button className="deleteButton">Delete</button>
-            </div>
-            <span className="answerUpdate">edited 2 min ago</span>
+          <h1 className="answerCount">{`Answer`}</h1>
+          <div className="answerCommentBoxs">
+            {/* contents에 answer이 null or undefined가 아니면 보여주기 */}
+            {contents?.answer && (
+              <>
+                {/* 답글 구분선 */}
+                <hr className="bar" />
+                <div className="answerBox">
+                  <div
+                    className="iconContainer"
+                    onClick={() => {
+                      // 인증글 변경 가능하게 바꿈
+                      setAdmit([0]);
+                    }}
+                  >
+                    <i>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512"
+                        style={{ fill: admit[0] === 0 ? "green" : "gray" }}
+                        className="icon"
+                      >
+                        <path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+                      </svg>
+                    </i>
+                  </div>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: contents?.answer?.bodyHTML,
+                    }}
+                  />
+                </div>
+              </>
+            )}
+            {answers.answers ? (
+              answers?.answers?.map((answer, i) => (
+                <>
+                  {/* 답글 구분선 */}
+                  <hr className="bar" />
+                  <div key={`answer: ${i}`} className="answerBox">
+                    <div
+                      className="iconContainer"
+                      onClick={() => {
+                        // 인증글 변경 가능하게 바꿈
+                        // 0번째는 dummydata answer입니다
+                        setAdmit([i + 1]);
+                      }}
+                    >
+                      <i>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 512 512"
+                          style={{
+                            fill: admit[0] === i + 1 ? "green" : "gray",
+                          }}
+                          className="icon"
+                        >
+                          <path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+                        </svg>
+                      </i>
+                    </div>
+                    <Answer
+                      i={i}
+                      setAnswers={setAnswers}
+                      answer={answer}
+                      deleteAnswer={deleteAnswer}
+                    />
+                  </div>
+                </>
+              ))
+            ) : (
+              <></>
+            )}
           </div>
         </div>
         <hr className="bar" />
         <div className="editorContainer">
           <span className="editorTitle">Your Answer</span>
-          <Editor />
-        </div>
-        <div className="answerPostButtonContainer">
-          <button className="answerPostButton">Post Your Answer</button>
+          <textarea
+            value={value}
+            onChange={onChangeTextarea}
+            className="editor"
+          />
+          <div>
+            <button
+              onClick={() => postAnswer(value)}
+              className="answerPostButton"
+            >
+              Post Your Answer
+            </button>
+          </div>
         </div>
       </div>
       <style jsx>{`
-        {
+         {
           /* isBtnClick 상태의 따라 색상이 바뀌도록 삼항 연산자로 작성. */
         }
-        .container {
+        .answermaincontainer {
           display: flex;
           justify-content: center;
           flex-direction: column;
-          align-items: center;
-        }
-        .editorContainer {
-          width: 68%;
-          margin-left: 10%
+          align-items: flex-start;
+          padding: 3%;
         }
         .questionTitle {
           font-weight: 400;
-          margin-left: -550px;
         }
+
         .questionContainer {
           display: flex;
           flex-direction: column;
           align-items: center;
           width: 80%;
-          height: 300px;
         }
         .qusetionInfoContainer {
           display: flex;
           justify-content: space-between;
           width: 50%;
           margin-bottom: 40px;
-          margin-left: -150px;
         }
         .questionComentBox {
-          width: 60%;
-          height: 100%;
-          background-color: #ecf0f1;
+          width: 100%;
+          height: auto;
         }
+
         .questionComent {
           font-size: 20px;
           margin: 20px;
@@ -115,36 +220,41 @@ export default function AskDetail() {
           display: flex;
           justify-content: end;
           width: 100%;
-          margin-right: 300px;
-          margin-top: 20px;
         }
         .bar {
-          width: 70%;
-          margin: 5px 95px;
+          width: 100%;
         }
+
+        .sub-c {
+          margin-right: 10px;
+        }
+
+        .fc-light {
+          color: gray;
+          margin-right: 10px;
+        }
+
         .answerContainer {
           display: flex;
           justify-content: center;
-          align-items: center;
+          align-items: flex-start;
           flex-direction: column;
           width: 70%;
         }
         .answerCount {
-          margin-left: -650px;
           font-weight: 300;
         }
         .icon {
-          width: 13%;
-          height: 100%;
-          margin-left: -30%;
-          
-          fill: ${isBtnClick ? "green" : "gray"};
+          width: 40px;
           cursor: pointer;
         }
-        .answerCommentBox {
+        .answerCommentBoxs {
           width: 550px;
-          height: 200px;
-          background-color: #ecf0f1;
+        }
+
+        .answerBox {
+          display: flex;
+          width: 100%;
         }
         .answerComment {
           font-size: 16px;
@@ -152,48 +262,156 @@ export default function AskDetail() {
         }
         .answerGroup {
           display: flex;
-          justify-content: space-between;
+          flex-direction: column;
           width: 60%;
           margin-top: 20px;
           margin-bottom: 20px;
         }
-        .answerButtonContainer {
-          display: flex;
-          justify-content: start;
-          width: 50%;
-        
-        }
         .deleteButton {
           margin-left: 10px;
         }
+
         .iconContainer {
           display: flex;
           justify-content: start;
-          width: 75%;
+          width: auto;
         }
+
+        .editorContainer {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .editor {
+          width: 100%;
+          min-width: 10rem;
+          height: 15rem;
+          resize: none;
+          margin-bottom: 10px;
+        }
+
         .editorTitle {
           font-size: 22px;
-          height: 10px;
         }
+
         .answerPostButtonContainer {
           display: flex;
           justify-content: start;
           width: 60%;
           margin-top: 30px;
         }
+
         .answerPostButton {
           font-size: 24px;
           font-weight: 400;
           color: white;
+          width: auto;
           border: solid #67b9f3 1px;
           background-color: #67b9f3;
           padding: 1% 3%;
-          margin-left: 17%;
           border-radius: 7px;
           cursor: pointer;
-          margin-bottom: 20px;
+        }
+
+        .answerPostButton:hover {
+          background-color: hsl(206deg 100% 40%);
         }
       `}</style>
     </>
+  );
+}
+
+// props로 index, answer = 답글 내용, setAnswers = 답글글 수정, deleteAnswer 답글삭제 함수
+function Answer({ i, answer, setAnswers, deleteAnswer }) {
+  //state
+  const [isEdit, setIsEdit] = useState(false);
+  const [value, setValue] = useState(answer);
+
+  const onChangeTextarea = e => {
+    setValue(e.target.value);
+  };
+
+  return (
+    <div className="answerContainer">
+      <div className="answer">{answer}</div>
+      <button
+        onClick={() => {
+          setIsEdit(prev => !prev);
+        }}
+        className="btn"
+      >
+        Edit
+      </button>
+      <button onClick={() => deleteAnswer(i)} className="btn">
+        Delete
+      </button>
+      {/* 수정하기 클릭하면 보여주고 아닐때는 안보여주기 */}
+      {isEdit ? (
+        <div className="editorContainer">
+          <textarea
+            value={value}
+            onChange={onChangeTextarea}
+            className="editor"
+          />
+          <div>
+            <button
+              onClick={() => {
+                setAnswers(prev => {
+                  prev.answers.splice(i, 1, value);
+
+                  return {
+                    ...prev,
+                    answers: prev.answers,
+                  };
+                });
+                setIsEdit(false);
+              }}
+              className="answerPostButton"
+            >
+              submit
+            </button>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
+      <style jsx>{`
+         {
+          .editorContainer {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+          }
+
+          .editor {
+            width: 100%;
+            min-width: 10rem;
+            height: 15rem;
+            resize: none;
+            margin-bottom: 10px;
+          }
+          .answerContainer {
+            flex: 1;
+            padding: 3%;
+          }
+
+          .btn {
+            width: 3rem;
+            height: 2rem;
+            background-color: #67b9f3;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            margin-right: 10px;
+            cursor: pointer;
+          }
+
+          .btn:hover {
+            background-color: hsl(206deg 100% 40%);
+          }
+        }
+      `}</style>
+    </div>
   );
 }
