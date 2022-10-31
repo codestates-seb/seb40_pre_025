@@ -11,7 +11,7 @@ import preproject.stack.post.entity.Post;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-10-27T16:27:43+0900",
+    date = "2022-10-28T15:36:45+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.14 (Oracle Corporation)"
 )
 @Component
@@ -47,7 +47,7 @@ public class PostMapperImpl implements PostMapper {
     }
 
     @Override
-    public PostResponseDto postToPostResponseDto(Post post) {
+    public PostResponseDto postToResponseDto(Post post) {
         if ( post == null ) {
             return null;
         }
@@ -57,7 +57,6 @@ public class PostMapperImpl implements PostMapper {
         postResponseDto.setPostId( post.getPostId() );
         postResponseDto.setTitle( post.getTitle() );
         postResponseDto.setBody( post.getBody() );
-        postResponseDto.setCreatedDate( post.getCreatedDate() );
 
         return postResponseDto;
     }
@@ -70,7 +69,7 @@ public class PostMapperImpl implements PostMapper {
 
         List<PostResponseDto> list = new ArrayList<PostResponseDto>( posts.size() );
         for ( Post post : posts ) {
-            list.add( postToPostResponseDto( post ) );
+            list.add( postToResponseDto( post ) );
         }
 
         return list;

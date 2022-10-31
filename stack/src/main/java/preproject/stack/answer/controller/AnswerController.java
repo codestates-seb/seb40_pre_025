@@ -1,8 +1,5 @@
 package preproject.stack.answer.controller;
 
-import lombok.RequiredArgsConstructor;
-import org.mapstruct.Mapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -17,11 +14,10 @@ import preproject.stack.answer.service.AnswerService;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/answer")
+@RequestMapping
 @Validated
 public class AnswerController {
 
@@ -34,34 +30,31 @@ public class AnswerController {
     }
 
     // 답변 등록
+    @PostMapping("answer")
+    public ResponseEntity postAnswer(@RequestBody AnswerPostDto answerPostDto) {
 
-    @PostMapping
-    public ResponseEntity postAnswer(@Valid @RequestBody AnswerPostDto answerDto) {
+        Answer answer = answerService.createAnswer(mapper.answerPostDtoToAnswer(answerPostDto));
 
-        Answer answer = mapper.answerPostDtoToAnswer(answerDto);
-        Answer response = answerService.createAnswer(answer);
+        return new ResponseEntity<>(mapper.answerToAnswerResponseDto(answer), HttpStatus.CREATED);
 
-        return new ResponseEntity<>(mapper.answerToAnswerResponseDto(response), HttpStatus.CREATED);
     }
 
     // 답변 수정
-
-    @PatchMapping("/{answer-id}")
+    @PatchMapping("/answer/{answer-id}")
     public ResponseEntity updateAnswer(
-            @PathVariable("answer-id") @Positive Integer answerId,
+            @PathVariable("answer-id") @Positive long answerId,
             @Valid @RequestBody AnswerPatchDto answerPatchDto) {
         answerPatchDto.setAnswerId(answerId);
 
-        Answer reponse = answerService.updateAnswer(mapper.answerPatchDtoToAnswer(answerPatchDto));
+        Answer response = answerService.updateAnswer(mapper.answerPatchDtoToAnswer(answerPatchDto));
 
-        return new ResponseEntity<>(mapper.answerToAnswerResponseDto(reponse), HttpStatus.OK);
+        return new ResponseEntity<>(mapper.answerToAnswerResponseDto(response), HttpStatus.OK);
     }
 
     // 답변 한 개 조회
-
-    @GetMapping("/{answer-id}")
+    @GetMapping("/answer/{answer-id}")
     public ResponseEntity getAnswer(
-            @PathVariable("answer-id") @Positive Integer answerId) {
+            @PathVariable("answer-id") @Positive Long answerId) {
 
         Answer response = answerService.findAnswer(answerId);
 
@@ -69,11 +62,10 @@ public class AnswerController {
     }
 
     // 답변 여러 개 조회
+    @GetMapping("/answer")
+    public ResponseEntity getAnswers(@RequestParam Integer page, @RequestParam Integer size ) {
 
-    @GetMapping
-    public ResponseEntity getAnswers() {
-
-        List<Answer> answers = (List<Answer>) answerService.findAnswers(1,10);
+        List<Answer> answers = answerService.findAnswers(page,size);
 
         List<AnswerResponseDto> response =
                 answers.stream()
@@ -85,9 +77,9 @@ public class AnswerController {
 
     // 답변 삭제
 
-    @DeleteMapping("/{answer-id}")
+    @DeleteMapping("/answer/{answer-id}")
     public ResponseEntity deleteAnswer(
-            @PathVariable("answer-id") @Positive Integer answerId) {
+            @PathVariable("answer-id") @Positive Long answerId) {
 
         answerService.deleteAnswer(answerId);
 

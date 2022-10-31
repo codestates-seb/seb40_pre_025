@@ -1,7 +1,5 @@
 package preproject.stack.answer.entity;
 
-import preproject.stack.post.entity.Post;
-import preproject.stack.saved.entity.Saved;
 
 import javax.persistence.*;
 
@@ -16,7 +14,7 @@ public class AnswerSaved {
     @JoinColumn(name = "post_id")
     private Answer answer;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+/*    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "saved_id")
-    private Saved saved;
+    private Saved saved;*/
 }

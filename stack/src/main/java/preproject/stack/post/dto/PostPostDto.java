@@ -17,4 +17,6 @@ public class PostPostDto {
 
     @NotBlank
     private String body;
+
+
 }
