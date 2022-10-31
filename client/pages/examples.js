@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 
 export default function examples() {
-  const [profile, setProfile] = useState([]);
+  const [profile, setProfile] = useState(null);
   const clientId =
     "148328336256-djjpl3gcj1cqvtsqspkp2404s9tbs37q.apps.googleusercontent.com";
   useEffect(() => {
