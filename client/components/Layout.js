@@ -10,7 +10,7 @@ export default function Layout({ children }) {
   return (
     <div className="layout-container">
       <Seo />
-      <Header />
+      <Header/>
 
       <div className="content">
         <div className="sideBarBox"></div>
