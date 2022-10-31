@@ -64,7 +64,7 @@ export default function AskDetail() {
         <hr className="bar" />
         <div className="editorContainer">
           <span className="editorTitle">Your Answer</span>
-          <Editor />
+         
         </div>
         <div className="answerPostButtonContainer">
           <button className="answerPostButton">Post Your Answer</button>
