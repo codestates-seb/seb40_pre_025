@@ -1,6 +1,7 @@
 import Google from "../../components/social/Google";
 import Github from "../../components/social/Github";
 import Link from "next/link";
+
 export default function SignUp() {
   return (
     <div className="container">
@@ -66,10 +67,10 @@ export default function SignUp() {
           <div id="flexItem">
             <div className="socialLogin">
               <div className="socialLoginBtn">
-                <Google></Google>
+                <Google />
               </div>
               <div className="socialLoginBtn">
-                <Github></Github>
+                <Github />
               </div>
             </div>
             <div className="formContainer">
