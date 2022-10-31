@@ -1,11 +1,10 @@
-import Setting_delete from "../../../../components/userPageComponents/setting_delete";
+import Saves_ansers from "../../../components/userPageComponents/saves_ansers";
 import UserIdLayout from "../User_Id_Layout";
-export default function deleteUsr() {
+
+export default function saves_ansers() {
   return (
-    <div className="container">
-      <div className="content">
-        <Setting_delete></Setting_delete>
-      </div>
+    <>
+      <Saves_ansers></Saves_ansers>
       <style jsx>{`
         .container {
           height: 100vh;
@@ -27,10 +26,10 @@ export default function deleteUsr() {
           border-bottom-width: 0;
         }
       `}</style>
-    </div>
+    </>
   );
 }
 
-deleteUsr.getLayout = function getLayout(page) {
+saves_ansers.getLayout = function getLayout(page) {
   return <UserIdLayout>{page}</UserIdLayout>;
 };

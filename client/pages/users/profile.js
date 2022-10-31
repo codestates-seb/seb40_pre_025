@@ -6,12 +6,9 @@ export default function profile() {
       <div className="content">
         {/* <CoreInfo></CoreInfo> */}
         <div id="main-content">
-          <div id="State">
+          <div id="states">
             <label className="lable">Stats</label>
             <div className="statsBox">
-              <div className="state">
-                <div className="color-B">1</div>requtation
-              </div>
               <div className="state">
                 <div className="color-B">1</div>answers
               </div>
@@ -103,9 +100,8 @@ export default function profile() {
             border-radius: 5px;
           }
           .statsBox {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 50% 50%;
             border: 1px solid hsl(0, 0%, 78%);
             border-radius: 5px;
             margin-top: 5px;
@@ -113,9 +109,12 @@ export default function profile() {
             height: 4.5rem;
             margin-bottom: 50px;
             display: grid;
-            grid-template-columns: 33% 33% 33%;
           }
           .state {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             margin: 10px;
             color: gray;
           }

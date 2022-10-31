@@ -9,18 +9,17 @@ export default function saves_qustions() {
   const handleClickFileInput = () => {
     fileInputRef.current.click();
   };
-  const onImgSubmit = async (e) => {
+  const onImgSubmit = (e) => {
     console.dir(e.target.files[0]);
     const formData = new FormData(); // formData 객체를 생성한다.
-    formData.append("File", files[0]);
-    console.log(formData);
-    setProfileImage(formData);
+    formData.append("File", e.target.files[0]);
+    setProfileImage(formData.get("File"));
+    console.log(profileImage);
   };
 
   return (
     <div id="main-content">
       <SubTap></SubTap>
-
       <div id="EditFrofile">
         <label className="Title">Edit Frofile</label>
         <div className="contentBox">
@@ -200,7 +199,7 @@ export default function saves_qustions() {
         }
         #main-content {
           display: flex;
-          width: 100%;
+          width: auto;
           margin: 0;
           margin-top: 40px;
           padding: 0;
@@ -208,6 +207,7 @@ export default function saves_qustions() {
           font: inherit;
           font-size: 100%;
           vertical-align: baseline;
+          margin-bottom: 50px;
         }
         .Title {
           display: block;
@@ -225,7 +225,6 @@ export default function saves_qustions() {
         .contentBox {
           margin-top: 20px;
           text-align: center;
-          width: 100%;
           height: auto;
           min-width: 450px;
           padding: 32px;

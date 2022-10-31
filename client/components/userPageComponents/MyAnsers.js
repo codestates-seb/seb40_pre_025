@@ -11,6 +11,7 @@ export default function MyQusticons() {
       <style jsx>{`
         .MyQusticons {
           width: 80%;
+          height: 100%;
         }
       `}</style>
     </div>
