@@ -1,5 +1,5 @@
 import React from "react";
-import Image from 'next/image';
+import Image from "next/image";
 
 const Header2 = () => {
   return (
@@ -20,6 +20,12 @@ const Header2 = () => {
             <input type="text" placeholder="  🔍 Search..." onClick="" />
           </div>
           <div className="center">
+            <img
+              src="https://lh3.googleusercontent.com/a/ALm5wu3uoqaqs5jc7qsYVm3j1JkS0pfT2rxtFvCgQmEZ=s96-c"
+              alt="profileImg"
+              width="50"
+              height="50"
+            ></img>
             <a href="/users/login">
               <button className="login">Log in</button>
             </a>
