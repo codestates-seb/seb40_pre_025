@@ -22,8 +22,6 @@ export default function Ask() {
               {/* Writing a good title, title 부분  */}
                 <AskTitle/>
                 <AskProblem/>
-                {/* try box 부분  */}
-                <AskTry/>
                 {/* 태그 달수 있는 곳 */}
                 <AskTags/>
                 {/* 버튼부분  */}
