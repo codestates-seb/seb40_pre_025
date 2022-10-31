@@ -4,8 +4,6 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import SideBar from "../../components/SideBar";
 
-
-
 export default function AskDetail() {
   const [isBtnClick, setIsBtnClick] = useState(false);
 

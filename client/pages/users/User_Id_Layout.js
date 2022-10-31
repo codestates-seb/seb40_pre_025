@@ -1,4 +1,4 @@
-import CoreInof from "../../../components/userPageComponents/coreInfo";
+import CoreInof from "../../components/userPageComponents/coreInfo";
 const userIdLayout = ({ children }) => {
   return (
     <div className="test">
@@ -7,6 +7,7 @@ const userIdLayout = ({ children }) => {
       <style jsx>{`
         .test {
           margin: 0;
+          padding: 0;
           margin-top: 2rem;
           margin-left: 3rem;
         }

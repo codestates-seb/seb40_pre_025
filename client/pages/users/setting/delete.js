@@ -1,16 +1,15 @@
-import Setting_edit from "../../../../components/userPageComponents/setting_edit";
+import Setting_delete from "../../../components/userPageComponents/setting_delete";
 import UserIdLayout from "../User_Id_Layout";
-export default function edit() {
+export default function deleteUsr() {
   return (
     <div className="container">
       <div className="content">
-        <Setting_edit></Setting_edit>
+        <Setting_delete></Setting_delete>
       </div>
       <style jsx>{`
         .container {
           height: 100vh;
-          width: 100%;
-
+          width: 100vh;
           display: flex;
           justify-content: space-between;
           flex: 1 0 auto;
@@ -19,7 +18,7 @@ export default function edit() {
           text-align: left;
         }
         .content {
-          width: 65%;
+          width: 100%;
           min-width: 515px;
           padding: 24px;
           margin: 0;
@@ -32,6 +31,6 @@ export default function edit() {
   );
 }
 
-edit.getLayout = function getLayout(page) {
+deleteUsr.getLayout = function getLayout(page) {
   return <UserIdLayout>{page}</UserIdLayout>;
 };
