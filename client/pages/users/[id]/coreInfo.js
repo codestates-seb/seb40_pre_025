@@ -23,7 +23,7 @@ export default function User() {
             height="96px"
           ></img>
           <div>
-            <div id="userName">편범준</div>
+            <div id="userName"></div>
             <div className="margin-L">
               <ul className="subimfo">
                 <li>기타 정보...</li>

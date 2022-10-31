@@ -5,10 +5,6 @@ import Header from "../../components/Header";
 import SideBar from "../../components/SideBar";
 
 
-const Editor = dynamic(() => import("../../components/Editor.js"), {
-  ssr: false,
-});
-// editor server-side-rendering  off 로직
 
 export default function AskDetail() {
   const [isBtnClick, setIsBtnClick] = useState(false);
@@ -20,15 +16,15 @@ export default function AskDetail() {
         <h1 className="questionTitle">질문 제목</h1>
         <div className="questionContainer">
           <div className="qusetionInfoContainer">
-            <span> Asked day</span>
-            <span> Modified today</span>
-            <span>Viewed 1 times </span>
+            <span>CreateAt</span>
+            <span>VoteCount</span>
+            <span>ReadCount</span>
           </div>
           <div className="questionComentBox">
             <span className="questionComent">질문 내용</span>
           </div>
           <div className="questionUpdate">
-            <span>edited 1 min ago</span>
+            
           </div>
         </div>
         <hr className="bar" />
@@ -58,13 +54,13 @@ export default function AskDetail() {
               <button className="editButton">Edit</button>
               <button className="deleteButton">Delete</button>
             </div>
-            <span className="answerUpdate">edited 2 min ago</span>
+            
           </div>
         </div>
         <hr className="bar" />
         <div className="editorContainer">
           <span className="editorTitle">Your Answer</span>
-          <Editor />
+        
         </div>
         <div className="answerPostButtonContainer">
           <button className="answerPostButton">Post Your Answer</button>
@@ -74,7 +70,7 @@ export default function AskDetail() {
         {
           /* isBtnClick 상태의 따라 색상이 바뀌도록 삼항 연산자로 작성. */
         }
-        .container {
+        .answermaincontainer {
           display: flex;
           justify-content: center;
           flex-direction: column;
