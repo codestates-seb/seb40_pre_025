@@ -18,4 +18,5 @@ const Myapp = ({ Component, pageProps }) => {
 Myapp.propTypes = {
   Component: PropTypes.elementType.isRequired,
 };
-export default wrapper.withRedux(Myapp);
+// export default wrapper.withRedux(Myapp);
+export default Myapp;
