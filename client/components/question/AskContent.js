@@ -62,7 +62,7 @@ export default function AskContent() {
             {/* problem 제목 */}
               <div className='problem-title'>
                 <label className='title-name'>
-                What are the details of your problem?
+                What are the details of your problem??
                 <p className='problem-p'>
                 Introduce the problem and expand on what you put in the title. Minimum 20 characters.
                 </p>
