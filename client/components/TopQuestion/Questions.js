@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import dummysample from "../../static/dummysample";
+import agoraStatesDiscussions from "../../static/dummydata";
 import FilterBtn from "./FilterBtn";
 import TopHeader from "./TopHeader";
 
@@ -16,6 +16,7 @@ export default function Questions() {
   //     setMovies(results)
   //   })()
   // }, [])
+  
 
   return (
     <div className="top_mainbar">
@@ -27,7 +28,7 @@ export default function Questions() {
       <div id="qlist-wrapper" className="flush-left">
         <div id="question-mini-list">
           <div>
-            {dummysample.map(tweet => (
+            {agoraStatesDiscussions.map(tweet => (
               <div key={tweet.id} className="post-main">
                 {/* 투표수, 답변수, views 일단 하드코딩  */}
                 <div className="votes-status">

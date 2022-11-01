@@ -1,13 +1,51 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
+
+
+
+
 
 export default function SubmissionBtn() {
+
+  
+  // const onInsertQuestion = (title, tags) => {
+  //   if(title === "" || body === "" || tags === "" ) {
+  //     // 만약 셋중 하나 안쓰면 
+  //   } else {
+  //     const askQuestion = {
+  //       id: nextId,
+  //       title
+  //     }
+  //     setQuestion(question => question.concat(askQuestion))
+  //     nextId++;
+  //   }
+
+  // }
+
+  // const onSubmit = (e) => {
+  //   // submit 새로고침을 막아준다. 
+  //   e.preventDefault();
+  //   // 받아온 함수의 value를 받아오고
+  //   onInsertQuestion(value);
+  //   //value값을 다시 빈문자열로
+  //   setValue("");
+  // }
+ 
+  // const dispatch = useDispatch()
+
+  // const selector = useSelector(state => state.questionReducer.list)
+  // console.log(selector)
+
   return (
     <div className='button-box'>
-    <div className='button-list'>
+    <form className='button-list'>
         <div className='reviewbtn'>
         <Link href="/">
-      <button className='s-btn nextbtn'>Review your queston</button>
+      <button 
+      type='button'
+      className='s-btn nextbtn'>
+        Review your queston
+        </button>
         </Link>
       </div>
       <div className='reviewbtn'>
@@ -15,7 +53,7 @@ export default function SubmissionBtn() {
       <a className='s-btn draftbtn'>Discard draft</a>
       </Link>
       </div>
-    </div>
+    </form>
     <style jsx>{`
         .button-box{ 
         margin-bottom: 5%;
