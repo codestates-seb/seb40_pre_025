@@ -129,7 +129,7 @@ export default function AskDetail() {
                       className="iconContainer"
                       onClick={() => {
                         // 인증글 변경 가능하게 바꿈
-                        // 0번째는 dummydata answer입니다
+                        // 0번째는 dummydata answer
                         setAdmit([i + 1]);
                       }}
                     >
