@@ -42,6 +42,10 @@ public class UserService {
 
     }
 
+    public User findUserName(String username){
+        return userRepository.findByUserName(username);
+    }
+
     //전체 유저 조회 기능
     public Page<User> findUsers(int page, int size) {
         return userRepository.findAll(PageRequest.of(page,size, Sort.by("userId").descending()));

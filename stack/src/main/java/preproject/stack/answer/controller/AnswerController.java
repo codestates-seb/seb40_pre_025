@@ -1,5 +1,7 @@
 package preproject.stack.answer.controller;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -10,6 +12,11 @@ import preproject.stack.answer.dto.AnswerResponseDto;
 import preproject.stack.answer.entity.Answer;
 import preproject.stack.answer.mapper.AnswerMapper;
 import preproject.stack.answer.service.AnswerService;
+import preproject.stack.post.entity.Post;
+import preproject.stack.post.service.PostService;
+import preproject.stack.response.MultiResponseDto;
+import preproject.stack.user.entity.User;
+import preproject.stack.user.service.UserService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
@@ -19,23 +26,28 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping
 @Validated
+@RequiredArgsConstructor
 public class AnswerController {
 
     private final AnswerService answerService;
+
+    private final UserService userService;
+    private final PostService postService;
     private final AnswerMapper mapper;
 
-    public AnswerController(AnswerService answerService, AnswerMapper mapper) {
-        this.answerService = answerService;
-        this.mapper = mapper;
-    }
+
 
     // 답변 등록
-    @PostMapping("answer")
-    public ResponseEntity postAnswer(@RequestBody AnswerPostDto answerPostDto) {
+    @PostMapping("/answer/{user-id}/{post-id}")
+    public ResponseEntity postAnswer(@PathVariable("post-id") long postId,
+                                     @PathVariable("user-id") long userId,
+                                     @Valid @RequestBody AnswerPostDto answerPostDto) {
 
-        Answer answer = answerService.createAnswer(mapper.answerPostDtoToAnswer(answerPostDto));
+        Answer answer = mapper.answerPostDtoToAnswer(answerPostDto);
 
-        return new ResponseEntity<>(mapper.answerToAnswerResponseDto(answer), HttpStatus.CREATED);
+        Answer response = answerService.createAnswer(userId,postId,answer);
+
+        return new ResponseEntity<>(mapper.answerToAnswerResponseDto(response), HttpStatus.CREATED);
 
     }
 
@@ -60,19 +72,26 @@ public class AnswerController {
 
         return new ResponseEntity<>(mapper.answerToAnswerResponseDto(response),HttpStatus.OK);
     }
+    // 자기가 작성한 답변 전체 조회
+    @GetMapping("/answer/user/{user-id}")
+    public ResponseEntity getUserPost(@PathVariable("user-id") long userId,
+                                      @RequestParam int page,
+                                      @RequestParam int size){
+        Page<Answer> answers = answerService.findUserAnswers(userId, page - 1, size);
+        List<Answer> content = answers.getContent();
 
-    // 답변 여러 개 조회
-    @GetMapping("/answer")
-    public ResponseEntity getAnswers(@RequestParam Integer page, @RequestParam Integer size ) {
+        return new ResponseEntity<>(new MultiResponseDto<>(mapper.answersToAnswerResponseDto(content),answers),HttpStatus.OK);
+    }
 
-        List<Answer> answers = answerService.findAnswers(page,size);
+    // 포스트에 답변 모두 조회
+    @GetMapping("/answer/{post-id}/answer")
+    public ResponseEntity getAnswers(@PathVariable("post-id") long postId,
+            @RequestParam Integer page, @RequestParam Integer size ) {
 
-        List<AnswerResponseDto> response =
-                answers.stream()
-                        .map(answer -> mapper.answerToAnswerResponseDto(answer))
-                        .collect(Collectors.toList());
+        Page<Answer> answers = answerService.findAnswers(postId, page - 1, size);
+        List<Answer> response = answers.getContent();
 
-        return new ResponseEntity<>(response,HttpStatus.OK);
+        return new ResponseEntity<>(new MultiResponseDto<>(response,answers),HttpStatus.OK);
     }
 
     // 답변 삭제

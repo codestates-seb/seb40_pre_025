@@ -13,4 +13,5 @@ public class AnswerPatchDto {
     private Integer voteCount;
     private Integer readCount;
 
+
 }

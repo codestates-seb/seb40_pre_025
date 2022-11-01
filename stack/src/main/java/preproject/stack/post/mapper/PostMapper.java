@@ -1,6 +1,7 @@
 package preproject.stack.post.mapper;
 
 import org.mapstruct.Mapper;
+import preproject.stack.post.dto.PostAnswerResponseDto;
 import preproject.stack.post.dto.PostPatchDto;
 import preproject.stack.post.dto.PostPostDto;
 import preproject.stack.post.dto.PostResponseDto;
@@ -18,5 +19,7 @@ public interface PostMapper {
     Post postPostDtoToPost(PostPostDto postPostDto);
     Post postPatchDtoToPost(PostPatchDto postPatchDto);
     PostResponseDto postToResponseDto(Post post);
+
+
     List<PostResponseDto> postsToPostResponseDto(List<Post> posts);
 }

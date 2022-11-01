@@ -1,5 +1,6 @@
 package preproject.stack.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +31,10 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Answer> answers = new ArrayList<>();
+
+    @Column(length = 100)
+    private String password;
+
 
     private String userName;
     private String email;
