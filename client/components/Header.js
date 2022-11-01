@@ -17,15 +17,9 @@ const Header2 = () => {
             </a>
           </div>
           <div className="center w100">
-            <input type="text" placeholder="  🔍 Search..." onClick="" />
+            <input type="text" placeholder="  🔍 Search..." />
           </div>
           <div className="center">
-            <img
-              src="https://lh3.googleusercontent.com/a/ALm5wu3uoqaqs5jc7qsYVm3j1JkS0pfT2rxtFvCgQmEZ=s96-c"
-              alt="profileImg"
-              width="50"
-              height="50"
-            ></img>
             <a href="/users/login">
               <button className="login">Log in</button>
             </a>

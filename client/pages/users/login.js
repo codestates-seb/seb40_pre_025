@@ -58,8 +58,8 @@ export default function Login() {
           <div className="assistance">
             <div className="margin-T-B">
               {`Don't have an account? `}
-              <Link href="/">
-                <a href="/">Sign up</a>
+              <Link href="/users/signup">
+                <a>Sign up</a>
               </Link>
             </div>
             <div className="margin-T-B">

@@ -93,6 +93,12 @@ const subTap = () => {
           border-radius: 33px;
           background-color: hsl(27, 90%, 55%);
         }
+
+        @media screen and (max-width: 1100px) {
+          #subTap {
+            display: none;
+          }
+        }
       `}</style>
     </div>
   );
