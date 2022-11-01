@@ -22,7 +22,7 @@ export default function AskTags() {
                 <input className='tags-body' placeholder='태그를 써주세요'>
                 </input>
               </div>
-              <NextBtn/>
+
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@ export default function AskTags() {
 
     }
     .tags-outer {
-      margin: 3% 3% 1% 3%;
+      margin: 3% 3% 3% 3%;
     }
     .tags-title {
       margin-bottom: 1.5%;
@@ -58,7 +58,6 @@ export default function AskTags() {
       height: 100%;
     }
     .tags-body-box{
-        border: 1px solid #e3e6e8;
         height: 100%;
         color: white;
         
