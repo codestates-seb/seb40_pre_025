@@ -9,7 +9,7 @@ export default function Layout({ children }) {
   return (
     <div className="layout-container">
       <Seo />
-      <Header/>
+      <Header />
       <div className="content">
         {router.pathname === "/users/login" ? null : router.pathname ===
           "/users/signup" ? null : (
@@ -31,7 +31,6 @@ export default function Layout({ children }) {
         }
         .content {
           display: flex;
-          height: 100%;
           width: 100%;
         }
         .children {
