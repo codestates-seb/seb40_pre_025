@@ -4,7 +4,7 @@ import { GoogleLogin, GoogleLogout } from "react-google-login";
 export default function examples() {
   const [profile, setProfile] = useState(null);
   const clientId =
-    "148328336256-djjpl3gcj1cqvtsqspkp2404s9tbs37q.apps.googleusercontent.com";
+    "348796123545-cu5d85hhiu4uk2e1dnne51dapc0anlcl.apps.googleusercontent.com";
   useEffect(() => {
     const gapi = import("gapi-script").then((pack) => pack.gapi);
     const initClient = async () => {
