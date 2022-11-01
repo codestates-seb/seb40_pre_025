@@ -31,6 +31,7 @@ export default function Layout({ children }) {
         }
         .content {
           display: flex;
+          height: 100%;
           width: 100%;
         }
         .children {
