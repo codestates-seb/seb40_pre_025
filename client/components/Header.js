@@ -17,7 +17,11 @@ const Header2 = () => {
             </a>
           </div>
           <div className="center w100">
-            <input type="text" placeholder="  🔍 Search..." />
+            <input
+              type="text"
+              placeholder="  🔍 Search..."
+              onClick={() => {}}
+            />
           </div>
           <div className="center">
             <a href="/users/login">
