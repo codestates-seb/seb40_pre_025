@@ -16,7 +16,7 @@ export default function AskContent() {
             <div className='title-detail'>
               <div>
                 <label className='detail-label'>
-                Be specific and imagine you’re asking a question to another person.
+                Be specific and imagine you’re asking a question to another person..
                 </label>
               </div>
 
