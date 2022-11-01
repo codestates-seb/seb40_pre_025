@@ -26,7 +26,7 @@ export default function AskTitle() {
              </div>
            </div>
 
-         <NextBtn/>
+
        </div>
        {/* writing box  */}
        <div className='writing-box'>
@@ -61,6 +61,7 @@ export default function AskTitle() {
             padding-top: 1.5%;
             padding-left: 1.5%;
             border-radius: 3px;
+            padding-bottom: 2%;
          
         }
         .title-content {
@@ -82,6 +83,7 @@ export default function AskTitle() {
             padding: 1% 1%;
             border-radius: 2px;
             margin-top: 1%;
+    
         }
         .nextbtn{
             color: #ffffff;

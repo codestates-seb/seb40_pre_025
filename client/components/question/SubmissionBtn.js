@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 export default function SubmissionBtn() {
@@ -5,10 +6,14 @@ export default function SubmissionBtn() {
     <div className='button-box'>
     <div className='button-list'>
         <div className='reviewbtn'>
+        <Link href="/">
       <button className='s-btn nextbtn'>Review your queston</button>
+        </Link>
       </div>
-      <div>
-      <button className='s-btn draftbtn'>Discard draft</button>
+      <div className='reviewbtn'>
+        <Link href="/">
+      <a className='s-btn draftbtn'>Discard draft</a>
+      </Link>
       </div>
     </div>
     <style jsx>{`
@@ -30,7 +35,7 @@ export default function SubmissionBtn() {
             background-color: #0a95ff;
             box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
             width: 10vw;
-            height: 90%;
+            flex-basis: auto;
             font-size: 0.9rem;
             border-radius: 0.3rem;
             display: flex;
@@ -39,6 +44,8 @@ export default function SubmissionBtn() {
             border: 0;
            outline: 0;
            padding: 5%;
+           text-decoration: none;
+           cursor: pointer;    
          
 
         }
@@ -50,8 +57,7 @@ export default function SubmissionBtn() {
             color: #c22e32;
             background-color: #00000000;
             box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
-            width: 9vw;
-            height: 90%;
+            width: 10vw;
             margin-left: 25%;
             font-size: 0.9rem;
             border-radius: 0.3rem;
@@ -60,12 +66,26 @@ export default function SubmissionBtn() {
             justify-content: center;
             border: 0;
            outline: 0;
+           padding: 5%;
+           text-decoration: none;
+            cursor: pointer;
         }
         .draftbtn:hover{
           background-color: rgb(253, 238, 238);
           transition: 0.5s;
         }
-        
+        @media screen and (max-width: 1280px)  {
+          .nextbtn, .draftbtn{
+            width: 14vw;
+          }
+          
+        }
+        @media screen and (max-width: 900px)  {
+          .nextbtn, .draftbtn{
+            width: 17vw;
+          }
+          
+        }
         `}</style>
   </div>
   )
