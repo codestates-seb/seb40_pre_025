@@ -27,9 +27,9 @@ export default function Login() {
       </div>
       <div className="socialLogin">
         <div className="socialLoginBtn">
-          <Google />
+          <Google/>
         </div>
-        <div className="socialLoginBtn">
+        <div className="socialLoginBtn2">
           <Github />
         </div>
       </div>
@@ -84,7 +84,7 @@ export default function Login() {
         }
         .socialLoginBtn {
           margin-top: 4px;
-          margin-bottom: 4px;
+          margin-bottom: 8px;
         }
         #footIcon {
           text-align: center;

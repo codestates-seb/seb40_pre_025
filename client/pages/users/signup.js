@@ -1,4 +1,4 @@
-import Google from "../../components/social/Google";
+import Google from "../../components/social/GoogleLogin";
 import Github from "../../components/social/Github";
 import Link from "next/link";
 

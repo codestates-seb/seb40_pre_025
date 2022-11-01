@@ -6,7 +6,7 @@ const Github = () => {
     <div>
       <button type="signin">
       <Image src="/images/g.png" alt="google" width="15" height="15"/>
-       <a href="https://github.com/login/oauth/authorize?client_id=2279e95e66c9924578c7&scope=repo:status read:repo_hook user:email&redirect_uri=http://localhost:3000/callback">Sign in with Github</a>
+       <a href="https://github.com/login/oauth/authorize?client_id=2279e95e66c9924578c7&scope=repo:status read:repo_hook user:email&redirect_uri=http://localhost:3000/users/login">Sign in with Github</a>
        </button>
       <style jsx>
         {`

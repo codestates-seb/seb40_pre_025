@@ -60,6 +60,11 @@ export default function SideBar() {
             background: rgb(237, 239, 240);
             border-right: 3px solid rgb(239, 109, 29);
           }
+          @media screen and (max-width: 667px) {
+              .sidebar {
+                display: none;
+              }
+            }
         `}
       </style>
     </div>

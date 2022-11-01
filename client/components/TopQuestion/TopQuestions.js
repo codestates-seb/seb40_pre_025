@@ -1,6 +1,6 @@
-import React from 'react'
-import Questions from './Questions';
-import Notices from './Notices';
+import React from "react";
+import Questions from "./Questions";
+import Notices from "./Notices";
 
 
 export default function TopQuestions() {
