@@ -14,7 +14,6 @@ export default function saves_qustions() {
     const formData = new FormData(); // formData 객체를 생성한다.
     formData.append("File", e.target.files[0]);
     setProfileImage(formData.get("File"));
-    console.log(profileImage);
   };
 
   return (
@@ -41,7 +40,7 @@ export default function saves_qustions() {
                 <button
                   type="submit"
                   className="uploadBtn"
-                  onClick={handleClickFileInput}
+                  onClick={() => handleClickFileInput}
                 >
                   Change picture
                 </button>

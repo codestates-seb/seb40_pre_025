@@ -137,8 +137,8 @@ export default function SignUp() {
             <div className="assistance">
               <div className="margin-T-B">
                 {`Already have an account? `}
-                <Link href="/">
-                  <a href="/">Log in</a>
+                <Link href="/users/login">
+                  <a>Log in</a>
                 </Link>
               </div>
               <div className="margin-T-B">
@@ -335,6 +335,11 @@ export default function SignUp() {
           font-size: 1.6rem;
           margin: 0;
           margin-bottom: 32px;
+        }
+        @media screen and (max-width: 1100px) {
+          #information {
+            display: none;
+          }
         }
       `}</style>
     </div>

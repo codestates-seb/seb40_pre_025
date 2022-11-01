@@ -79,6 +79,8 @@ export default function MyQusticon({ data }) {
         }
         .votes-list {
           color: black;
+          width: 100%;
+          height: 15px;
           font-size: 0.8rem;
           margin-bottom: 0.3rem;
         }
@@ -105,6 +107,14 @@ export default function MyQusticon({ data }) {
           text-align: left;
           font-weight: 500;
           margin-bottom: 1rem;
+        }
+        @media screen and (max-width: 1300px) {
+        }
+        @media screen and (max-width: 1100px) {
+        }
+        @media screen and (max-width: 700px) {
+        }
+        @media screen and (min-width: 830px) {
         }
       `}</style>
     </div>

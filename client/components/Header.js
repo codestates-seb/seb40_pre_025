@@ -1,5 +1,5 @@
 import React from "react";
-import Image from 'next/image';
+import Image from "next/image";
 
 const Header2 = () => {
   return (
@@ -17,7 +17,11 @@ const Header2 = () => {
             </a>
           </div>
           <div className="center w100">
-            <input type="text" placeholder="  🔍 Search..." onClick="" />
+            <input
+              type="text"
+              placeholder="  🔍 Search..."
+              onClick={() => {}}
+            />
           </div>
           <div className="center">
             <a href="/users/login">
