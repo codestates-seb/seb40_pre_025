@@ -3,9 +3,7 @@ import React from 'react'
 import NextBtn from './NextBtn'
 
 
-const Editor = dynamic(() => import ("../Editor.js"), {
-  ssr: false,
-});
+
 
 // editor server-side-rendering  off 로직??
 export default function AskTry() {
