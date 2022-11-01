@@ -8,7 +8,6 @@ import {
 } from "../../reducers/answerReducer";
 import dummydata from "../../static/dummydata";
 
-
 export default function AskDetail() {
   // state
   const [admit, setAdmit] = useState([]);
@@ -64,7 +63,6 @@ export default function AskDetail() {
           <div className="qusetionInfoContainer">
             <div className="sub-c">
               <span className="fc-light">Asked</span>
-              
             </div>
             <div>
               <span className="fc-light">Vote</span>
@@ -123,7 +121,7 @@ export default function AskDetail() {
             )}
             {answers.answers ? (
               answers?.answers?.map((answer, i) => (
-                <>
+                <div key={`답변: ${i}`}>
                   {/* 답글 구분선 */}
                   <hr className="bar" />
                   <div key={`answer: ${i}`} className="answerBox">
@@ -155,7 +153,7 @@ export default function AskDetail() {
                       deleteAnswer={deleteAnswer}
                     />
                   </div>
-                </>
+                </div>
               ))
             ) : (
               <></>

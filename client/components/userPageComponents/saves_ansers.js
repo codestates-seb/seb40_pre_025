@@ -4,7 +4,6 @@ export default function saves_qustions() {
   return (
     <div id="main-content">
       <SubTap></SubTap>
-
       <div id="ansers">
         <label className="lable">My Ansers</label>
         <div className="contentBox">
@@ -44,12 +43,10 @@ export default function saves_qustions() {
           display: flex;
           align-items: center;
           justify-content: flex-start;
-          margin-top: 20px;
           text-align: center;
-          width: 65%;
+          width: 100%;
           min-width: 700px;
           height: auto;
-          padding: 5px;
         }
         #subTap {
           margin-right: 20px;

@@ -4,12 +4,9 @@ export default function saves_qustions() {
   return (
     <div id="main-content">
       <SubTap></SubTap>
-
       <div id="questions">
         <label className="lable">My Questions</label>
-        <div className="contentBox">
-          <MyQusticons></MyQusticons>
-        </div>
+        <MyQusticons></MyQusticons>
       </div>
       <style jsx>{`
         #questions {
@@ -22,6 +19,7 @@ export default function saves_qustions() {
         }
         #main-content {
           display: flex;
+          height: -webkit-fill-available;
           margin: 0;
           margin-top: 40px;
           padding: 0;

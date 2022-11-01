@@ -4,6 +4,7 @@ import agoraStatesDiscussions from "../../static/dummydata";
 import FilterBtn from "./FilterBtn";
 import TopHeader from "./TopHeader";
 
+
 export default function Questions() {
   // const [movies, setMovies] = useState([])
   // useEffect(()=> {
@@ -31,7 +32,7 @@ export default function Questions() {
                 {/* 투표수, 답변수, views 일단 하드코딩  */}
                 <div className="votes-status">
                   <div className="votes-list vote">
-                    <span className="votes-item">{`\*10\*`}</span>
+                    <span className="votes-item">10</span>
                     <span className="votes-name">votes</span>
                   </div>
                   <div className="votes-list plus">
@@ -82,7 +83,8 @@ export default function Questions() {
           flex-direction: column;
           padding: 1.5%;
           width: 100%;
-          margin: 5rem;
+          
+        
         }
         .qlist-wrapper {
           width: 100%;

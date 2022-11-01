@@ -25,7 +25,7 @@ const Google = () => {
           border-radius: 5px;
           border: 0.5px solid grey;
           display: flex;
-          justify-content: center;
+          justify-content: center;  
           align-items: center;
           font-size: 10px;
         }
