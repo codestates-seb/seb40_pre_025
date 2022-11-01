@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NextBtn from './NextBtn'
 
 export default function AskTitle() {
+
+
+
+
   return (
     <div className='title'>
           {/* Title 글씨 */}
@@ -22,7 +26,10 @@ export default function AskTitle() {
              </div>
             {/* Title input*/}
               <div>
-                 <input className='title-input' placeholder='e.g. Is there an R function for finding the index of an element in a vector?'></input>
+                 <input 
+                 className='title-input'
+                 type="text"
+                 placeholder='e.g. Is there an R function for finding the index of an element in a vector?'></input>
              </div>
            </div>
 

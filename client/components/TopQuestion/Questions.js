@@ -1,22 +1,20 @@
+import next from 'next';
 import Link  from 'next/link';
 import React, { useEffect, useState } from 'react'
-import agoraStatesDiscussions from '../../static/dummydata';
+
+import dummysample from '../../static/dummysample';
 import FilterBtn from './FilterBtn';
 import TopHeader from './TopHeader';
 
 
 export default function Questions() {
-  // const [movies, setMovies] = useState([])
-  // useEffect(()=> {
-  //   (async () => {
-  //    const {results} = await (
-  //     await fetch('/api/movies'
-  //     )
-  //     ).json()
-  //     setMovies(results)
-  //   })()
-  // }, [])
-  
+
+// // useSelector 로 boardReducer 에 있는 inputData 값을 가져온다.
+// const {inputData} = useSelector(state => state.questionReducer)
+// // useSelector 로 boardReducer 에 있는 lastId 값을 가져온다.
+// const {lastId} = useSelector(state => state.questionReducer)
+
+
   return (
     <div className="top_mainbar">
     {/* Top Questions 부분  */}
@@ -27,8 +25,10 @@ export default function Questions() {
     <div id="qlist-wrapper" className='flush-left'>
       <div id="question-mini-list">
            <div>
-               {agoraStatesDiscussions.map((tweet) => (
-               <div key={tweet.id} className="post-main">
+              
+              { dummysample.map((tweet) => (
+                  tweet.id!=='' && 
+               <div key={tweet.userId} className="post-main">
                 {/* 투표수, 답변수, views 일단 하드코딩  */}
                  <div className='votes-status'>
                   <div className='votes-list vote'>
@@ -48,7 +48,9 @@ export default function Questions() {
                 {/* 질문들 나오는 곳  */}
                 <div className='post-content'>
                   <h3 className='post-title'>
-                    <Link href="">
+                    <Link href={{
+                      pathname: `/questions/${tweet.id}`
+                    }}>
                   <a className='post-link'>{tweet.title}</a>
                     </Link>
                   </h3>
@@ -63,15 +65,18 @@ export default function Questions() {
                             <div className='human_img'> 
                             <img src="/human.png" width={15} height={15}></img>
                             </div>
-                        {tweet.author}
+                        {tweet.userId}
                         <div className='asked'>
                          1,339 asked 52 secs ago
                          </div>
                         </div>
                     </div>
                   </div>
-                </div>
-               ))}
+                </div> 
+          
+               ))
+               
+               }
           </div> 
        </div>
       </div>
