@@ -5,7 +5,6 @@ import { createWrapper } from "next-redux-wrapper";
 import rootReducer from "../reducers/index";
 
 const isProduction = process.env.NODE_ENV === "production";
-
 const makeStore = () => {
   const enhancer = isProduction
     ? compose(applyMiddleware(thunk))

@@ -17,7 +17,7 @@ const Header = () => {
             </a>
           </div>
           <div className="center w100">
-            <input type="text" placeholder="  🔍 Search..." onClick="" />
+            <input type="text" placeholder="  🔍 Search..."  />
           </div>
           <div className="center">
             <a href="/users/signup">
