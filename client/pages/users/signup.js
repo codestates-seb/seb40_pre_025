@@ -1,4 +1,4 @@
-import Google from "../../components/social/GoogleLogin";
+import Google2 from "../../components/social/GoogleLogin2";
 import Github from "../../components/social/Github";
 import Link from "next/link";
 
@@ -67,7 +67,7 @@ export default function SignUp() {
           <div id="flexItem">
             <div className="socialLogin">
               <div className="socialLoginBtn">
-                <Google />
+                <Google2 />
               </div>
               <div className="socialLoginBtn">
                 <Github />
@@ -290,7 +290,7 @@ export default function SignUp() {
         }
         .input {
           -webkit-appearance: none;
-          width: auto%;
+          width: auto;
           margin: 0;
           padding: 0.6em 0.7em;
           border: 1px solid rgb(192, 191, 191);

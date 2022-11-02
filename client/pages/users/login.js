@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Google from "../../components/social/GoogleLogin";
-import Github from "../../components/social/Github";
+import Github2 from "../../components/social/Github2";
 
 export default function Login() {
   return (
@@ -30,7 +30,7 @@ export default function Login() {
           <Google/>
         </div>
         <div className="socialLoginBtn2">
-          <Github />
+          <Github2 />
         </div>
       </div>
       <div className="formContainer">
