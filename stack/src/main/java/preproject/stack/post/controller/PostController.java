@@ -73,6 +73,7 @@ public class PostController {
         postAnswerResponseDto.setCreatedAt(post.getCreatedAt());
         postAnswerResponseDto.setModifiedAt(post.getModifiedAt());
         User user = post.getUser();
+     // UseResponseDto 연결
         postAnswerResponseDto.setUserResponseDto(userMapper.userToUserResponseDto(user));
 
         Page<Answer> answers = answerService.findAnswers(postId, page - 1, size);

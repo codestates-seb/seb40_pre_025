@@ -1,7 +1,7 @@
 package preproject.stack.post.mapper;
 
 import org.mapstruct.Mapper;
-import preproject.stack.post.dto.PostAnswerResponseDto;
+// import preproject.stack.post.dto.PostAnswerResponseDto;
 import preproject.stack.post.dto.PostPatchDto;
 import preproject.stack.post.dto.PostPostDto;
 import preproject.stack.post.dto.PostResponseDto;
