@@ -111,7 +111,7 @@ export default function SignUp() {
               <div className="failedWord">
                 {userNameReg
                   ? null
-                  : "The length of the name must be greater than 3 and less than 10 characters"}
+                  : "Please enter no more than 3 to 10 characters"}
               </div>
             </div>
             <div className="d-flex fd-column">
@@ -140,12 +140,8 @@ export default function SignUp() {
               <div className="failedWord">
                 {userPwReg
                   ? null
-                  : "The length of the name must be greater than 3 and less than 10 characters"}
+                  : "Please enter no more than 8 to 20 characters"}
               </div>
-              <p className="fc-light">
-                Passwords must contain at least eight characters, including at
-                least 1 letter and 1 number.
-              </p>
             </div>
             <div className="d-flex flex_center m-tb6">
               <div id="captcha"></div>
@@ -258,10 +254,6 @@ export default function SignUp() {
         }
         .fw-normal {
           font-weight: 400;
-          font-size: 0.8rem;
-        }
-        .fc-light {
-          color: hsl(210, 8%, 45%);
           font-size: 0.8rem;
         }
         a {
