@@ -24,7 +24,7 @@ export default function profile() {
                 <div>
                   {`Your about me section is currently blank. Would you like to
                   add one? `}
-                  <Link href={"/users/123/setting/edit"}>
+                  <Link href={"/users/setting/edit"}>
                     <a>Edit profile</a>
                   </Link>
                 </div>
