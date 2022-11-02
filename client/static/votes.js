@@ -1,4 +1,4 @@
- const dummyVotes = [
+const dummyVotes = [
     {
         votes: 1,
         answers: 1,
