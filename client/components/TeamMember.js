@@ -100,6 +100,16 @@ const TeamMember = () => {
           border-radius: 10px;
           font-size: 10px;
         }
+        .velog:hover,
+        .github:hover
+        {
+          background: rgb(2, 102, 216);
+        }
+        .velog2:hover,
+        .github2:hover
+        {
+          background: rgb(207, 72, 0);
+        }
         .velog2, .github2{
           background:rgb(236,94,15);
           color: white;
@@ -129,6 +139,12 @@ const TeamMember = () => {
           align-items: center;
           justify-content: center;
           
+        }
+        .member:hover{
+          border: 2px solid rgb(2, 102, 216);
+        }
+        .member2:hover{
+          border: 2px solid  rgb(207, 72, 0);
         }
         p{
           color:white;
