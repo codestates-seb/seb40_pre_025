@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Google from "../../components/social/GoogleLogin";
-import Github from "../../components/social/Github";
+import Github2 from "../../components/social/Github2";
 
 export default function Login() {
   return (
@@ -27,10 +27,10 @@ export default function Login() {
       </div>
       <div className="socialLogin">
         <div className="socialLoginBtn">
-          <Google />
+          <Google/>
         </div>
-        <div className="socialLoginBtn">
-          <Github />
+        <div className="socialLoginBtn2">
+          <Github2 />
         </div>
       </div>
       <div className="formContainer">
@@ -84,7 +84,7 @@ export default function Login() {
         }
         .socialLoginBtn {
           margin-top: 4px;
-          margin-bottom: 4px;
+          margin-bottom: 8px;
         }
         #footIcon {
           text-align: center;

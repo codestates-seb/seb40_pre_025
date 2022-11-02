@@ -22,6 +22,7 @@ const Footer = () => {
               </svg>
             </a>
           </div>
+          <div className="grid">
           <nav className="site-footer--nav">
             <div className="group">
               <div className="site-footer--col">
@@ -54,7 +55,7 @@ const Footer = () => {
                   <li>Cookie Policy</li>
                 </ul>
               </div>
-              <div className="site-footer--col site-footer--categories-nav">
+              <div className="site-footer--col">
                 <div>
                   <h5 className="-title">STACK EXCHANGE NETWORK</h5>
                   <ul className="-list">
@@ -70,7 +71,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className="site-footer--copyright fs-fine md:mt24">
+              <div className="site-footer--col">
                 <ul className="group2">
                   <li className="group3">Blog</li>
                   <li className="group3">Facebook</li>
@@ -87,10 +88,17 @@ const Footer = () => {
               </div>
             </div>
           </nav>
+          </div>
         </div>
       </footer>
       <style jsx>
         {`
+          .grid{
+            display: grid;
+            min-width: 1380px;
+            width: 100%;
+            grid-template-columns: 20% 20% 20% 20% 20%;
+          }
           .md {
             margin-top: 170px;
           }
@@ -101,14 +109,16 @@ const Footer = () => {
           .group2 {
             display: flex;
           }
-          .group {
-            display: flex;
-            width: 1264px;
+          .group { 
             margin: 0 auto;
             padding: 0px 12px 42px 12px;
-            justify-content: space-between;
+            display: grid;
+            min-width: 1380px;
+            width: 100%;
+            grid-template-columns: 20% 20% 20% 20% 20%;
           }
           .site-footer--container {
+        
             display: flex;
             align-items: flex-start;
             flex-direction: row;

@@ -50,7 +50,7 @@ export default function examples() {
       ) : (
         <GoogleLogin
           clientId={clientId}
-          buttonText="Log in with Google"
+          buttonText="Sign in with Google"
           onSuccess={onSuccess}
           onFailure={onFailure}
           cookiePolicy={"single_host_origin"}
@@ -62,12 +62,12 @@ export default function examples() {
             disabled={renderProps.disabled}
             >
             <Image className="image" src="/images/google.png" alt="google" width="15" height="15"/>
-              <a>Log in with Google</a>
+              <a>Sign in with Google</a>
             </button>
           )}
         />
       )}
-       <style jsx>{`
+      <style jsx>{`
       a {
           margin-left: 5px;
       }

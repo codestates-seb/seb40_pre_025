@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 const Header2 = () => {
+  let [modal, setModal] = useState(false);
+  function Modal(){
+    return (
+      <div className="modal">
+        <p>[tag] search within a tag</p>
+        <p>user:1234 search by author</p>
+        <p>"words here" exact phrase</p>
+        <p>collective:"Name" collective content</p>
+        <p>answers:0 unanswered questions</p>
+        <p>score:3 posts with a 3+ score</p>
+        <p>is:question type of post</p>
+        <p>isaccepted:yes search within status</p>
+        <button>Ask a question</button>
+      </div>
+    )
+  }
   return (
     <header>
       <div className="center">
@@ -17,7 +33,13 @@ const Header2 = () => {
             </a>
           </div>
           <div className="center w100">
-            <input type="text" placeholder="  🔍 Search..."  />
+            <input 
+            type="text" 
+            placeholder="  🔍 Search..."
+            onClick={()=>{setModal(!modal)}} />
+            {
+              modal == true ? <Modal /> : null
+            }
           </div>
           <div className="center">
             <a href="/users/login">
@@ -30,6 +52,12 @@ const Header2 = () => {
         </div>
         <style jsx>
           {`
+          .modal{
+            background: white;
+            border: 1px solid grey;
+            display: flex;
+            flex-direction: row;
+          }
             .div {
               justify-content: center;
             }
