@@ -1,4 +1,4 @@
-import Google from "../../components/social/Google";
+import Google2 from "../../components/social/GoogleLogin2";
 import Github from "../../components/social/Github";
 import Link from "next/link";
 import { useState } from "react";

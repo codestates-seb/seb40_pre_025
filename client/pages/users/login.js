@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Google from "../../components/social/GoogleLogin";
-import Github from "../../components/social/Github";
+import Github2 from "../../components/social/Github2";
 import { useState } from "react";
 export default function Login() {
   const [userEmail, setUserEmail] = useState("");
@@ -45,8 +45,8 @@ export default function Login() {
         <div className="socialLoginBtn">
           <Google />
         </div>
-        <div className="socialLoginBtn">
-          <Github />
+        <div className="socialLoginBtn2">
+          <Github2 />
         </div>
       </div>
       <div className="formContainer">
@@ -133,7 +133,7 @@ export default function Login() {
         }
         .socialLoginBtn {
           margin-top: 4px;
-          margin-bottom: 4px;
+          margin-bottom: 8px;
         }
         #footIcon {
           text-align: center;
