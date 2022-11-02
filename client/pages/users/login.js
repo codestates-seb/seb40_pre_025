@@ -1,8 +1,24 @@
 import Link from "next/link";
 import Google from "../../components/social/GoogleLogin";
 import Github from "../../components/social/Github";
-
+import { useState } from "react";
 export default function Login() {
+  const [userEmail, setUserEmail] = useState("");
+  const [userEmailReg, setUserEmailReg] = useState(true);
+  const [userPw, setUserPw] = useState("");
+  const [userPwReg, setUserPwReg] = useState(true);
+  const emailReg = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+  const validation = () => {
+    emailReg.test(userEmail) ? setUserEmailReg(true) : setUserEmailReg(false);
+    userPw.length > 0 ? setUserPwReg(true) : setUserPwReg(false);
+    if (emailReg.test(userEmail) & (userPw.length > 0)) {
+      alert("로그인 요청");
+    }
+  };
+  const handleClickSignUp = (e) => {
+    e.preventDefault();
+    validation();
+  };
   return (
     <div id="loginBox" className="flexItem">
       <div className="ta-center">
@@ -35,22 +51,40 @@ export default function Login() {
       </div>
       <div className="formContainer">
         <form id="login-form" className="d-flex fd-column">
-          <div id="input" className="d-flex fd-column margin-T-B">
+          <div id="input" className="d-flex fd-column">
             <label className="lable" form="email">
               Email
             </label>
-            <input className="input"></input>
+            <input
+              className={userEmailReg ? "input" : "failed"}
+              onChange={(e) => setUserEmail(e.target.value)}
+            ></input>
+            <div className="failedWord">
+              {userEmailReg
+                ? null
+                : userEmail.length > 0
+                ? "The email is not a valid email address."
+                : "Email cannot be empty."}
+            </div>
           </div>
-          <div className="d-flex fd-column margin-T-B">
+          <div className="d-flex fd-column">
             <div className="d-flex ai-center jc-space-between">
               <label className="lable">Password</label>
               <Link href="/">
                 <a>Forgot password?</a>
               </Link>
             </div>
-            <input className="input"></input>
+            <input
+              className={userPwReg ? "input" : "failed"}
+              onChange={(e) => setUserPw(e.target.value)}
+            ></input>
+            <div className="failedWord">
+              {userPwReg ? null : "Password cannot be empty."}
+            </div>
           </div>
-          <button className="s-btn">Log in</button>
+          <button className="s-btn" onClick={handleClickSignUp}>
+            Log in
+          </button>
         </form>
       </div>
       <div className="assistance">
@@ -76,6 +110,21 @@ export default function Login() {
         </div>
       </div>
       <style jsx>{`
+        .failedWord {
+          color: red;
+          height: 15px;
+          margin-top: 5px;
+          font-size: small;
+        }
+        .failed {
+          -webkit-appearance: none;
+          width: auto;
+          margin: 0;
+          padding: 0.6em 0.7em;
+          border-radius: 3px;
+          border: 1px solid red;
+          font-size: 1rem;
+        }
         .socialLogin {
           display: flex;
           flex-direction: column;
@@ -160,9 +209,6 @@ export default function Login() {
         #login-form {
           margin: 12px;
         }
-        .input {
-          margin: 0;
-        }
         .lable {
           margin: 4px;
           margin-right: 0;
@@ -184,9 +230,9 @@ export default function Login() {
         }
         .s-btn {
           color: white;
+          margin-top: 10px;
           margin-right: 0;
           margin-left: 0;
-          margin: 1px;
           background-color: hsl(206, 100%, 52%);
           box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
           position: relative;

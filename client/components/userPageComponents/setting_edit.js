@@ -3,17 +3,23 @@ import SubTap from "./subTap";
 export default function saves_qustions() {
   const fileInputRef = useRef(null);
 
-  const [profileImage, setProfileImage] = useState(null);
   const [aboutText, setAboutText] = useState("");
+  let files = "";
 
-  const handleClickFileInput = () => {
+  const handleClickFileInput = (e) => {
     fileInputRef.current.click();
   };
-  const onImgSubmit = (e) => {
-    console.dir(e.target.files[0]);
-    const formData = new FormData(); // formData 객체를 생성한다.
-    formData.append("File", e.target.files[0]);
-    setProfileImage(formData.get("File"));
+
+  const handleChangeFile = (e) => {
+    files = e.target.files;
+  };
+
+  const handleClickSubmit = () => {
+    const fd = new FormData();
+    fd.append("file", files[0]);
+    for (let key of fd.values()) {
+      console.log(key);
+    }
   };
 
   return (
@@ -30,18 +36,14 @@ export default function saves_qustions() {
                 width="100%"
                 height="100%"
               ></img>
-              <div onSubmit={(e) => onImgSubmit(e)} className="changePicure">
+              <div className="changePicure">
                 <input
                   type="file"
                   className="upload"
                   ref={fileInputRef}
-                  onChange={onImgSubmit}
+                  onChange={handleChangeFile}
                 />
-                <button
-                  type="submit"
-                  className="uploadBtn"
-                  onClick={() => handleClickFileInput}
-                >
+                <button className="uploadBtn" onClick={handleClickFileInput}>
                   Change picture
                 </button>
               </div>
@@ -65,7 +67,9 @@ export default function saves_qustions() {
             <div>{aboutText}</div>
           </div>
           <div className="btnBox">
-            <button className="saveBtn">Save profile</button>
+            <button className="saveBtn" onClick={handleClickSubmit}>
+              Save profile
+            </button>
             <button className="cancelBtn">Cancel</button>
           </div>
         </div>

@@ -86,6 +86,7 @@ export default function MyQusticon({ data }) {
         }
         .plus {
           color: #2f6f44;
+          text-align: center;
           border: 1px solid #2f6f44;
           padding: 0.2rem;
         }

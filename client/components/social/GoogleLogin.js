@@ -4,7 +4,7 @@ import { GoogleLogin, GoogleLogout } from "react-google-login";
 export default function examples() {
   const [profile, setProfile] = useState(null);
   const clientId =
-    "148328336256-djjpl3gcj1cqvtsqspkp2404s9tbs37q.apps.googleusercontent.com";
+    "348796123545-cu5d85hhiu4uk2e1dnne51dapc0anlcl.apps.googleusercontent.com";
   useEffect(() => {
     const gapi = import("gapi-script").then((pack) => pack.gapi);
     const initClient = async () => {
@@ -54,8 +54,27 @@ export default function examples() {
           onFailure={onFailure}
           cookiePolicy={"single_host_origin"}
           isSignedIn={true}
+          render={(renderProps) => (
+            <button
+              className="googleLoginBox"
+              onClick={renderProps.onClick}
+              disabled={renderProps.disabled}
+            >
+              Sign in with Google
+            </button>
+          )}
         />
       )}
+      <style jsx>{`
+         
+          .googleLoginBox {
+          width: 290px;
+          height: 40px;
+          flex-flow: column wrap;
+          background-color: red;
+         
+        
+      `}</style>
     </div>
   );
 }
