@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
-import Image from "next/image";
+import Image from 'next/image';
 
 export default function examples() {
   const [profile, setProfile] = useState(null);
@@ -50,34 +50,28 @@ export default function examples() {
       ) : (
         <GoogleLogin
           clientId={clientId}
-          buttonText="Log in with Google"
+          buttonText="Sign in with Google"
           onSuccess={onSuccess}
           onFailure={onFailure}
           cookiePolicy={"single_host_origin"}
           isSignedIn={true}
           render={(renderProps) => (
             <button
-              className="googleLoginBox"
-              onClick={renderProps.onClick}
-              disabled={renderProps.disabled}
+            className="googleLoginBox"
+            onClick={renderProps.onClick}
+            disabled={renderProps.disabled}
             >
-              <Image
-                className="image"
-                src="/images/google.png"
-                alt="google"
-                width="15"
-                height="15"
-              />
-              <a>Log in with Google</a>
+            <Image className="image" src="/images/google.png" alt="google" width="15" height="15"/>
+              <a>Sign in with Google</a>
             </button>
           )}
         />
       )}
       <style jsx>{`
-        a {
+      a {
           margin-left: 5px;
-        }
-        .googleLoginBox {
+      }
+        .googleLoginBox{
           background: white;
           color: black;
           width: 290px;
@@ -85,17 +79,19 @@ export default function examples() {
           cursor: pointer;
           border-radius: 5px;
           display: flex;
-          justify-content: center;
+          justify-content: center;  
           align-items: center;
           font-size: 13px;
-          border: 0.5px solid rgb(208, 211, 215);
-          color: rgb(66, 67, 68);
+          border: 0.5px solid rgb(208,211,215);
+          color:rgb(66,67,68);
         }
         .googleLoginBox:hover {
-          background: rgb(247, 247, 247);
+          background: rgb(247,247,247);
           color: black;
         }
-      `}</style>
+        `}</style>
     </div>
+
+   
   );
 }

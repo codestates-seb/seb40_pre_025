@@ -122,7 +122,7 @@ export default function AskDetail() {
             )}
             {answers.answers ? (
               answers?.answers?.map((answer, i) => (
-                <>
+                <div key ={`답변: ${i}`}>
                   {/* 답글 구분선 */}
                   <hr className="bar" />
                   <div key={`answer: ${i}`} className="answerBox">
@@ -154,7 +154,7 @@ export default function AskDetail() {
                       deleteAnswer={deleteAnswer}
                     />
                   </div>
-                </>
+                </div>
               ))
             ) : (
               <></>

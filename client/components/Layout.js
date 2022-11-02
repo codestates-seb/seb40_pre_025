@@ -9,7 +9,7 @@ export default function Layout({ children }) {
   return (
     <div className="layout-container">
       <Seo />
-      <Header/>
+      <Header />
       <div className="content">
         {router.pathname === "/users/login" ? null : router.pathname ===
           "/users/signup" ? null : (

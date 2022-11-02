@@ -1,6 +1,6 @@
 const dummysample = [
-  {
-      id:1,
+    {
+      id: "1",
       userId : "sharon",
       title : "koans 과제 진행 중 npm install 오류로 인해 정상 작동 되지 않습니다",
       body  : "이거를 모르겠어요",
@@ -15,12 +15,11 @@ const dummysample = [
           avatarUrl:
             "https://avatars.githubusercontent.com/u/86960007?s=64&u=4863a873d78f406d658e8a50d9b91f3045006920&v=4",
        
-
       }
-
+  
   },
   {
-      id:2,
+      id: "2",
       userId : "mike",
       title :"반복되는 문자 리턴 문제에서 ' '(공백하나인 문자열)입력시 오류가 발생합니다.",
       body  : "이상해요",
@@ -35,11 +34,11 @@ const dummysample = [
           avatarUrl:
             "https://avatars.githubusercontent.com/u/86960007?s=64&u=4863a873d78f406d658e8a50d9b91f3045006920&v=4",
        
-
+  
       }
   },
   {
-      id:3,
+      id:"3",
       userId : "peter",
       title :"JavaScript Koans 04_Scope 문제의 innerFn()에 대하여 질문드립니다!",
       body  : "질문이요",
@@ -54,10 +53,10 @@ const dummysample = [
           avatarUrl:
             "https://avatars.githubusercontent.com/u/86960007?s=64&u=4863a873d78f406d658e8a50d9b91f3045006920&v=4",
        
-
+  
       }
   },
+  ];
   
-]
-
-export default dummysample;
+  export default dummysample;
+  
