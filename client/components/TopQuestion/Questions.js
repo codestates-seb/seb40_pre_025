@@ -1,34 +1,35 @@
-import next from 'next';
-import Link  from 'next/link';
-import React, { useEffect, useState } from 'react'
-
-import dummysample from '../../static/dummysample';
-import FilterBtn from './FilterBtn';
-import TopHeader from './TopHeader';
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import agoraStatesDiscussions from "../../static/dummydata";
+import FilterBtn from "./FilterBtn";
+import TopHeader from "./TopHeader";
 
 
 export default function Questions() {
-
-// // useSelector 로 boardReducer 에 있는 inputData 값을 가져온다.
-// const {inputData} = useSelector(state => state.questionReducer)
-// // useSelector 로 boardReducer 에 있는 lastId 값을 가져온다.
-// const {lastId} = useSelector(state => state.questionReducer)
-
+  // const [movies, setMovies] = useState([])
+  // useEffect(()=> {
+  //   (async () => {
+  //    const {results} = await (
+  //     await fetch('/api/movies'
+  //     )
+  //     ).json()
+  //     setMovies(results)
+  //   })()
+  // }, [])
+  
 
   return (
     <div className="top_mainbar">
-    {/* Top Questions 부분  */}
-      <TopHeader/>
-    {/* Interesting, Hot~ 버튼들  */}
-     <FilterBtn/>
-    {/* 밑에 질문들 map으로 깔아주기  */}
-    <div id="qlist-wrapper" className='flush-left'>
-      <div id="question-mini-list">
-           <div>
-              
-              { dummysample.map((tweet) => (
-                  tweet.id!=='' && 
-               <div key={tweet.userId} className="post-main">
+      {/* Top Questions 부분  */}
+      <TopHeader />
+      {/* Interesting, Hot~ 버튼들  */}
+      <FilterBtn />
+      {/* 밑에 질문들 map으로 깔아주기  */}
+      <div id="qlist-wrapper" className="flush-left">
+        <div id="question-mini-list">
+          <div>
+            {agoraStatesDiscussions.map(tweet => (
+              <div key={tweet.id} className="post-main">
                 {/* 투표수, 답변수, views 일단 하드코딩  */}
                 <div className="votes-status">
                   <div className="votes-list vote">
@@ -46,39 +47,36 @@ export default function Questions() {
                 </div>
 
                 {/* 질문들 나오는 곳  */}
-                <div className='post-content'>
-                  <h3 className='post-title'>
-                    <Link href={{
-                      pathname: `/questions/${tweet.id}`
-                    }}>
-                  <a className='post-link'>{tweet.title}</a>
+                <div className="post-content">
+                  <h3 className="post-title">
+                    <Link
+                      href={{
+                        pathname: `/questions/${tweet.id}`,
+                      }}
+                    >
+                      <a className="post-link">{tweet.title}</a>
                     </Link>
                   </h3>
                   {/* 태그, 작성자 */}
-                  <div className='post-meta'>
-                      <div className='post-tags'>
-                          <Link href="">
-                          <a className='tags'>tags</a>
-                          </Link>
-                        </div>
-                        <div className='usercard'>
-                            <div className='human_img'> 
-                            <img src="/human.png" width={15} height={15}></img>
-                            </div>
-                        {tweet.userId}
-                        <div className='asked'>
-                         1,339 asked 52 secs ago
-                         </div>
-                        </div>
+                  <div className="post-meta">
+                    <div className="post-tags">
+                      <Link href="">
+                        <a className="tags">tags</a>
+                      </Link>
+                    </div>
+                    <div className="usercard">
+                      <div className="human_img">
+                        <img src="/human.png" width={15} height={15}></img>
+                      </div>
+                      {tweet.author}
+                      <div className="asked">1,339 asked 52 secs ago</div>
                     </div>
                   </div>
-                </div> 
-          
-               ))
-               
-               }
-          </div> 
-       </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
       <style jsx>{`
         .top_mainbar {
