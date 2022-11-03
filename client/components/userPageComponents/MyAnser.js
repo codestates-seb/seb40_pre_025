@@ -1,32 +1,17 @@
 import Link from "next/link";
 
-export default function MyQusticon({ data }) {
+export default function MyAnser({ data }) {
   return (
-    <div className="qusticonBox">
+    <div className="anser">
       <div className="votes-status">
-        <div className="votes-list">{`${data.votes} votes`}</div>
-        <div className="votes-list plus">{`${data.ansers} ansers`}</div>
-        <div className="votes-list">{`${data.views} views`}</div>
+        <div className="votes-list">{`${data.voteCount} votes`}</div>
+        <div className="votes-list">{`${data.readCount} views`}</div>
       </div>
       <div className="qusticon">
-        <div className="title">
+        <div className="content">
           <Link href={"/questions/123123"}>
-            <a>{data.title}</a>
+            <a>{data.body}</a>
           </Link>
-        </div>
-        <div className="d-flex">
-          <div className="post-tags">
-            <Link href="">
-              <a className="tags">tags</a>
-            </Link>
-          </div>
-          <div className="d-flex">
-            <img src="/human.png" width={15} height={15}></img>
-            <Link href={""}>
-              <a className="userName">{data.author}</a>
-            </Link>
-            <div className="asked">1,339 asked 52 secs ago</div>
-          </div>
         </div>
       </div>
       <style jsx>{`
@@ -50,7 +35,7 @@ export default function MyQusticon({ data }) {
           align-items: center;
           justify-content: flex-end;
         }
-        .qusticonBox {
+        .anser {
           display: flex;
           align-items: center;
           justify-content: flex-start;
@@ -101,7 +86,7 @@ export default function MyQusticon({ data }) {
           border-style: solid;
           border-radius: 2px;
         }
-        .title {
+        .content {
           text-align: left;
           font-weight: 500;
           margin-bottom: 1rem;

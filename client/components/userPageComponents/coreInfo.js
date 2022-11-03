@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 export default function User() {
+  const [userData, setUserData] = useState("");
   const tapMenuList = ["Profile", "Saves", "Setting"];
   const router = useRouter();
   const isCurrent =
@@ -15,6 +17,18 @@ export default function User() {
       : router.pathname === `/users/setting/delete`
       ? 2
       : null;
+  useEffect(() => {
+    const headers = new Headers({
+      "Content-Type": "text/xml",
+    });
+    fetch("http://54.180.175.144:8080/user/1", {
+      headers,
+    })
+      .then((res) => res.json())
+      .then((ansers) => setUserData(ansers.data))
+      .catch((err) => console.log(err));
+  }, []);
+  console.log(userData);
   return (
     <div id="mainbar-full">
       <div id="coreprofile">
@@ -25,7 +39,7 @@ export default function User() {
             height="96px"
           ></img>
           <div>
-            <div id="userName">편범준</div>
+            <div id="userName">{userData.userName}</div>
             <div className="margin-L">
               <ul className="subimfo">
                 <li className="d-flex">

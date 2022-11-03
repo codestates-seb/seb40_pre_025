@@ -12,7 +12,7 @@ export default function Layout({ children }) {
       <Header />
       <div className="content">
         {router.pathname === "/users/login" ? null : router.pathname ===
-          "/users/signup" ? null : (
+          "/users/signup" ? null : router.pathname === "/hello/start" ? null : (
           <SideBar />
         )}
         <div className="children">{children}</div>
