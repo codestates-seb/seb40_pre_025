@@ -43,7 +43,7 @@ export default function MyAnsers() {
       "Content-Type": "text/xml",
     });
     fetch(
-      `http://54.180.175.144:8080/answer/user/1?page=${crrentPage}&size=3`,
+      `http://54.180.175.144:8080/answer/user/1?page=${crrentPage}&size=5`,
       {
         headers,
       }
@@ -53,23 +53,27 @@ export default function MyAnsers() {
       .catch((err) => console.log(err));
   }, [crrentPage]);
   return (
-    <div className="MyAnsers">
-      {myAnsers.data === 0 ? (
-        <div id="null">답변한 내역이 없습니다.</div>
-      ) : (
-        myAnsers.data.map((data) => {
-          return <MyAnser key={data.answerId} data={data}></MyAnser>;
-        })
-      )}
+    <div>
+      <div className="MyAnsers">
+        {myAnsers.data === 0 ? (
+          <div id="null">답변한 내역이 없습니다.</div>
+        ) : (
+          myAnsers.data.map((data) => {
+            return <MyAnser key={data.answerId} data={data}></MyAnser>;
+          })
+        )}
+      </div>
       <div id="pageNavs">{pageNavRender()}</div>
       <style jsx>{`
         #pageNavs {
           display: flex;
           width: 100%;
         }
-        .MyQusticons {
-          width: 80%;
-          height: 100%;
+        .MyAnsers {
+          display: flex;
+          flex-direction: column;
+          justify-content: start;
+          height: 450px;
         }
         #null {
           margin-top: 40px;

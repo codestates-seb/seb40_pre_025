@@ -13,6 +13,7 @@ export default function saves_qustions() {
       <style jsx>{`
         #ansers {
           width: 100%;
+          height: 600px;
           margin-left: 1rem;
         }
         a {
@@ -41,12 +42,12 @@ export default function saves_qustions() {
         }
         .contentBox {
           display: flex;
-          align-items: center;
+          align-items: flex-end;
           justify-content: flex-start;
           text-align: center;
           width: 100%;
+          height: 500px;
           min-width: 700px;
-          height: auto;
         }
         #subTap {
           margin-right: 20px;
