@@ -1,5 +1,7 @@
 # 📍 Team 25 - Pre Project
+![](https://t1.daumcdn.net/cfile/tistory/9933A13359EAC02836)
 
+---
 
 ## 🏪 팀명
 ![cs25](https://user-images.githubusercontent.com/102123710/199809893-99135005-f7a2-4b17-a59b-726045f197f4.png)
