@@ -6,6 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import preproject.stack.answer.dto.AnswerUserResponseDto;
 import preproject.stack.answer.entity.Answer;
 import preproject.stack.answer.repository.AnswerRepository;
 import preproject.stack.exception.BusinessLogicException;
@@ -14,6 +15,7 @@ import preproject.stack.post.entity.Post;
 import preproject.stack.post.repository.PostRepository;
 import preproject.stack.user.entity.User;
 import preproject.stack.user.repository.UserRepository;
+import preproject.stack.user.service.UserService;
 
 import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
@@ -28,12 +30,13 @@ public class AnswerService {
     private final AnswerRepository answerRepository;
     private final PostRepository postRepository;
     private final UserRepository userRepository;
+    private final UserService userService;
 
 
     // 답변 등록
     public Answer createAnswer(long userId ,long postId ,Answer answer){
         Post post = postRepository.findByPostId(postId);
-        User user = userRepository.findByUserId(userId);
+        User user = userService.findUser(userId);
         answer.setPost(post);
         answer.setReadCount(0L);
         answer.setVoteCount(0L);
@@ -54,16 +57,25 @@ public class AnswerService {
         return answerRepository.save(findAnswer);
     }
     // 답변 찾기
-    public Answer findAnswer(Long answerId){
+    public AnswerUserResponseDto findAnswer(Long answerId){
         Answer findAnswer = findVerifiedAnswer(answerId);
-        return findAnswer;
+        User user = findAnswer.getUser();
+        User findUser = userService.findUser(user.getUserId());
+        AnswerUserResponseDto answerUserResponseDto = new AnswerUserResponseDto();
+        answerUserResponseDto.setAnswerId(findAnswer.getAnswerId());
+        answerUserResponseDto.setUserName(findUser.getUserName());
+        answerUserResponseDto.setModifiedAt(findAnswer.getModifiedAt());
+        answerUserResponseDto.setReadCount(findAnswer.getReadCount());
+        answerUserResponseDto.setBody(findAnswer.getBody());
+        answerUserResponseDto.setCreatedAt(findAnswer.getCreatedAt());
+        answerUserResponseDto.setVoteCount(findAnswer.getVoteCount());
+        return answerUserResponseDto;
     }
 
 
     // 답변 전체 페이징 보기
     public Page<Answer> findAnswers(long postId ,int page , int size){
         return answerRepository.findByPost_PostId(postId, PageRequest.of(page,size,Sort.by("answerId").descending()));
-
     }
 
     // 답변 존재 여부 확인

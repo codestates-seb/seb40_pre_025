@@ -9,12 +9,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import preproject.stack.answer.dto.AnswerPageDto;
 import preproject.stack.answer.entity.Answer;
 import preproject.stack.answer.mapper.AnswerMapper;
 import preproject.stack.answer.service.AnswerService;
 import preproject.stack.post.dto.PostAnswerResponseDto;
 import preproject.stack.post.dto.PostPatchDto;
 import preproject.stack.post.dto.PostPostDto;
+import preproject.stack.post.dto.PostUserResponseDto;
 import preproject.stack.post.entity.Post;
 import preproject.stack.post.mapper.PostMapper;
 import preproject.stack.post.service.PostService;
@@ -108,5 +110,21 @@ public class PostController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("/user/{user-id}")
+    public ResponseEntity getUserPost(@PathVariable("user-id") long userId,
+                                      @RequestParam int page,
+                                      @RequestParam int size){
+        Page<Post> userPosts = postService.findUserPosts(userId, page - 1, size);
+        List<Post> content = userPosts.getContent();
+
+
+        PostUserResponseDto postUserResponseDto = new PostUserResponseDto();
+        postUserResponseDto.setPosts(new MultiResponseDto<>(mapper.postsToPostResponseDto(content),userPosts));
+
+        User user = userService.findUser(userId);
+        postUserResponseDto.setUserResponseDto(userMapper.userToUserResponseDto(user));
+
+        return new ResponseEntity<>(new SingleResponseDto<>(postUserResponseDto),HttpStatus.OK);
+    }
 
 }
