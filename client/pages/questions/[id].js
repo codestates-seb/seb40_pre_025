@@ -58,6 +58,7 @@ export default function AskDetail() {
   }, [router]);
 
   const [question, setQuestion] = useState([])
+  const [answer, setAnswer] = useState([])
 
   
   useEffect(()=> {
@@ -68,8 +69,11 @@ export default function AskDetail() {
       )
       ).json()
       setQuestion(data)
+      setAnswer(data.answers.data)
+      console.log(data.answers.data)
     })()
   }, [])
+
 
 
   return (
@@ -137,6 +141,7 @@ export default function AskDetail() {
                       </svg>
                     </i>
                   </div>
+                  
                   <div
                     dangerouslySetInnerHTML={{
                       __html: contents?.answer?.bodyHTML,
@@ -145,12 +150,15 @@ export default function AskDetail() {
                 </div>
               </>
             )}
+          
             {answers.answers ? (
               answers?.answers?.map((answer, i) => (
                 <div key={`답변: ${i}`}>
                   {/* 답글 구분선 */}
+          
                   <hr className="bar" />
                   <div key={`answer: ${i}`} className="answerBox">
+                    
                     <div
                       className="iconContainer"
                       onClick={() => {
@@ -172,17 +180,22 @@ export default function AskDetail() {
                         </svg>
                       </i>
                     </div>
-                    <Answer
+                  안녕하세요
+                  {}
+                    {/* <Answer
                       i={i}
                       setAnswers={setAnswers}
                       answer={answer}
                       deleteAnswer={deleteAnswer}
-                    />
+                    /> */}
+                  
                   </div>
                 </div>
               ))
             ) : (
-              <></>
+              <>
+  
+              </>
             )}
           </div>
         </div>
