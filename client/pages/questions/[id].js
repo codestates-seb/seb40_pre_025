@@ -375,7 +375,7 @@ function Answer({ i, answer, setAnswers, deleteAnswer }) {
         <></>
       )}
       <style jsx>{`
-         {
+          {
           .editorContainer {
             display: flex;
             flex-direction: column;
@@ -413,3 +413,4 @@ function Answer({ i, answer, setAnswers, deleteAnswer }) {
     </div>
   );
 }
+
