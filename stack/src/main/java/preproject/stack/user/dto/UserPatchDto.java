@@ -11,9 +11,9 @@ import java.time.LocalDateTime;
 public class UserPatchDto {
 
     private long userId;
-    @NotBlank
+
     private String email;
-    @NotBlank
+
     private String userName;
 
     private String about;

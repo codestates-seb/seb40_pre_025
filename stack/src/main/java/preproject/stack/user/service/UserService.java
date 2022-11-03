@@ -33,6 +33,8 @@ public class UserService {
 
         Optional.ofNullable(user.getUserName())
                 .ifPresent(userName -> findUser.setUserName(userName));
+        Optional.ofNullable(user.getAbout())
+                .ifPresent(about -> findUser.setAbout(about));
         return userRepository.save(findUser);
     }
 
