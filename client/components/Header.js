@@ -4,7 +4,7 @@ import Image from "next/image";
 const Header2 = () => {
   return (
     <header>
-      <div className="center">
+      <div className="center border-B start">
         <div className="grid">
           <div className="center">
             <a href="/">
@@ -17,11 +17,7 @@ const Header2 = () => {
             </a>
           </div>
           <div className="center w100">
-            <input 
-            type="text" 
-            placeholder="  🔍 Search..."
-             />
-        
+            <input type="text" placeholder="  🔍 Search..." />
           </div>
           <div className="center">
             <a href="/users/login">
@@ -34,12 +30,15 @@ const Header2 = () => {
         </div>
         <style jsx>
           {`
-          .modal{
-            background: white;
-            border: 1px solid grey;
-            display: flex;
-            flex-direction: row;
-          }
+            .border-B {
+              box-shadow: 1px 1px 10px 1px rgb(228, 228, 228);
+            }
+            .modal {
+              background: white;
+              border: 1px solid grey;
+              display: flex;
+              flex-direction: row;
+            }
             .div {
               justify-content: center;
             }
