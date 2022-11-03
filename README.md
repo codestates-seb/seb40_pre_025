@@ -8,7 +8,7 @@
 <table>
   <tbody>
     <tr>
-      <td align="center"><a href="https://github.com/haileyport"><img src="https://avatars.githubusercontent.com/u/50188104?v=4" width="100px;" alt=""/><br /><sub><b>Eunhye Jeon</b></sub></a><br /><a href="https://github.com/haileyport/CS-Bbosugi/commits?author=haileyport" title="Documentation">📖</a> </td>
+      <a>FE</a><<td align="center"><a href="https://github.com/anjigu"><img src="https://avatars.githubusercontent.com/u/50188104?v=4" width="100px;" alt=""/><br /><sub><b>안지수</b></sub></a><br /><a href="https://github.com/haileyport/CS-Bbosugi/commits?author=haileyport" title="Documentation">📖</a> </td>
       
     </tr>
   </tbody>
