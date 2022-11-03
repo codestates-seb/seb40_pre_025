@@ -1,6 +1,7 @@
-import Google2 from "../../components/social/GoogleLogin2";
 import Github from "../../components/social/Github";
+import Google from "../../components/social/GoogleLogin";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function SignUp() {
@@ -10,6 +11,7 @@ export default function SignUp() {
   const [userEmailReg, setUserEmailReg] = useState(true);
   const [userPw, setUserPw] = useState("");
   const [userPwReg, setUserPwReg] = useState(true);
+  const router = useRouter();
 
   const validation = () => {
     const nameReg = new RegExp("[ㄱ-ㅎ|가-힣|a-z|A-Z|]{2,10}");
@@ -23,7 +25,18 @@ export default function SignUp() {
       emailReg.test(userEmail) &&
       pwReg.test(userPw)
     ) {
-      alert("회원가입 신청");
+      const body = {
+        userName: userName,
+        email: userEmail,
+        password: userPw,
+      };
+      fetch("http://54.180.175.144:8080/user", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      })
+        .then(() => router.push("./login"))
+        .catch((err) => console.log(err));
     }
   };
 

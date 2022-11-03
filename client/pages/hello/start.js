@@ -1,3 +1,4 @@
+import TeamMemberFe from "../../components/TeamMemberFe";
 export default function Hello() {
   return (
     <div className="mainContant">
@@ -63,6 +64,7 @@ export default function Hello() {
           </div>
         </div>
       </div>
+      <TeamMemberFe></TeamMemberFe>
       <style jsx>{`
         .labelBox {
           margin-top: 30px;

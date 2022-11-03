@@ -1,4 +1,4 @@
-import MyQusticons from "./MyQuestions";
+import MyAnsers from "./MyAnsers";
 import SubTap from "./subTap";
 export default function saves_qustions() {
   return (
@@ -7,7 +7,7 @@ export default function saves_qustions() {
       <div id="ansers">
         <label className="lable">My Ansers</label>
         <div className="contentBox">
-          <MyQusticons></MyQusticons>
+          <MyAnsers></MyAnsers>
         </div>
       </div>
       <style jsx>{`
