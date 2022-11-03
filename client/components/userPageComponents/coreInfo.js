@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 export default function User() {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState("");
   const tapMenuList = ["Profile", "Saves", "Setting"];
   const router = useRouter();
   const isCurrent =
