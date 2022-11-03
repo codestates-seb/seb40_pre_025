@@ -11,7 +11,7 @@ import preproject.stack.user.entity.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-10-28T15:36:45+0900",
+    date = "2022-11-03T17:11:56+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.14 (Oracle Corporation)"
 )
 @Component
@@ -25,6 +25,8 @@ public class UserMapperImpl implements UserMapper {
 
         User user = new User();
 
+        user.setPassword( userPostDto.getPassword() );
+        user.setAbout( userPostDto.getAbout() );
         user.setUserName( userPostDto.getUserName() );
         user.setEmail( userPostDto.getEmail() );
 
@@ -40,6 +42,7 @@ public class UserMapperImpl implements UserMapper {
         User user = new User();
 
         user.setUserId( userPatchDto.getUserId() );
+        user.setAbout( userPatchDto.getAbout() );
         user.setUserName( userPatchDto.getUserName() );
         user.setEmail( userPatchDto.getEmail() );
 
@@ -59,6 +62,7 @@ public class UserMapperImpl implements UserMapper {
         }
         userResponseDto.setEmail( user.getEmail() );
         userResponseDto.setUserName( user.getUserName() );
+        userResponseDto.setAbout( user.getAbout() );
 
         return userResponseDto;
     }

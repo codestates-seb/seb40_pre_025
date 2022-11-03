@@ -15,6 +15,8 @@ public class UserPatchDto {
     @NotBlank
     private String userName;
 
+    private String about;
+
     public void setUserId(long userId){
         this.userId = userId;
     }
