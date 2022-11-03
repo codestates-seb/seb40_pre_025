@@ -29,7 +29,7 @@ const TeamMemberBe = () => {
         </div>
         </div>
         <div className='member2'>
-        <img src="/.jpg" alt="profileimage" width="70" height="70"/>
+        <img src="/hjo.jpg" alt="profileimage" width="70" height="70"/>
           <div>
           <b><p>🧑🏻‍💻 허준오</p></b>
           <a href="https://github.com/junohheo">

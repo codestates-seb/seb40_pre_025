@@ -36,8 +36,8 @@ const TeamMemberFe = () => {
           <a href="https://github.com/sharon-youn">
               <button className="github">🖥 Github</button>
           </a>
-          <a href="https://www.notion.so/e5b1b134d83c4ab59e44a3bc1ee69c00">
-              <button className="velog">📕 Notion</button>
+          <a href="https://velog.io/@jos9187">
+              <button className="velog">📗 Velog</button>
           </a>
           </div>
         </div>

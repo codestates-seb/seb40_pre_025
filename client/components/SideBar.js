@@ -13,7 +13,7 @@ export default function SideBar() {
         <a href="/questions/ask">Qusetions</a>
       </div>
       <div className="users">
-        <a href="">Users</a>
+        <a href="/users/user">Users</a>
       </div>
       <style jsx>
         {`
