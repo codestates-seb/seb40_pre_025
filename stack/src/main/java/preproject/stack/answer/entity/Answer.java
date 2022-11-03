@@ -23,6 +23,8 @@ public class Answer extends Timestamped {
     @JoinColumn(name = "user_id")
     private User user;
 
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
     private Post post;

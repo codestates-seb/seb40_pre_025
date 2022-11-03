@@ -10,6 +10,7 @@ import lombok.Getter;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import preproject.stack.auth.userdetails.UsersDetailsService;
 
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
@@ -22,6 +23,8 @@ import static org.springframework.security.config.Elements.JWT;
 @Component
 public class JwtTokenizer {
 //이부분 이해 아예못함 도움받을것
+
+    private UsersDetailsService usersDetailsService;
     @Getter
     @Value("${jwt.secret-key}")
     private String secretKey;

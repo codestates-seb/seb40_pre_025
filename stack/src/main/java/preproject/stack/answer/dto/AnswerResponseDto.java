@@ -2,6 +2,7 @@ package preproject.stack.answer.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import preproject.stack.user.dto.UserResponseDto;
 
 import java.time.LocalDateTime;
 
