@@ -22,6 +22,8 @@ export default function AskDetail() {
 
   //router
   const router = useRouter();
+  const {id} = router.query
+  console.log(id)
 
   // 리덕스 이용해서 답글 내용 저장
   const onChangeTextarea = e => {
@@ -62,7 +64,7 @@ export default function AskDetail() {
     (async () => {
      const {data} = await (
       await fetch(
-        `http://54.180.175.144:8080/post/3/3?page=1&size=5`
+        `http://54.180.175.144:8080/post/${id}?page=1&size=5`
       )
       ).json()
       setQuestion(data)
