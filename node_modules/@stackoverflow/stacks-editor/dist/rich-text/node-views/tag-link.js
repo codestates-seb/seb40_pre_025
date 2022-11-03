@@ -1,0 +1,24 @@
+import { error } from "../../shared/logger";
+// TODO instead of a NodeView, should we use marks and an editor like `link-tooltip`?
+export class TagLink {
+    constructor(node, options) {
+        this.dom = document.createElement("a");
+        this.dom.setAttribute("href", "#");
+        this.dom.setAttribute("rel", "tag");
+        this.dom.classList.add("s-tag");
+        this.dom.innerText = node.attrs.tagName;
+        if (options === null || options === void 0 ? void 0 : options.render) {
+            const rendered = options.render(node.attrs.tagName, node.attrs.tagType === "meta-tag");
+            // the renderer failed to return the bare minimum necessary to link the tag
+            // log an error to the console, but don't crash the user input
+            if (!rendered || !(rendered === null || rendered === void 0 ? void 0 : rendered.link)) {
+                error("TagLink NodeView", "Unable to render taglink due to invalid response from options.renderer: ", rendered);
+                return;
+            }
+            const additionalClasses = rendered.additionalClasses || [];
+            additionalClasses.forEach((c) => this.dom.classList.add(c));
+            this.dom.setAttribute("href", rendered.link);
+            this.dom.setAttribute("title", rendered.linkTitle);
+        }
+    }
+}

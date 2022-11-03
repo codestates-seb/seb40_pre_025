@@ -6,14 +6,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import preproject.stack.answer.entity.Answer;
 import preproject.stack.audit.TimestampedUser;
 import preproject.stack.post.entity.Post;
 
-import preproject.stack.user.entity.UserRole;
-import preproject.stack.user.entity.UserStatus;
+
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,15 +41,29 @@ public class User extends TimestampedUser {
     private String userName;
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    private UserStatus status;
 
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles = new ArrayList<>();
 
-    public User(String userName, String email) {
+
+
+    public User(String userName, String email, String password) {
         this.userName = userName;
         this.email = email;
+        this.password = password;
     }
+    public enum UserStatus {
+        USER_ACTIVE("활동중"),
+        USER_SLEEP("휴면 상태");
+
+        @Getter
+        private String status;
+
+        UserStatus(String status) {
+            this.status = status;
+        }
+        }
+
+
 }
 

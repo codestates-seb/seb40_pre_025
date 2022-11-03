@@ -1,0 +1,11 @@
+import { Schema } from "prosemirror-model";
+import { CommonViewOptions, EditorType } from "../view";
+import { MenuBlock } from "./helpers";
+/**
+ * Creates all menu entries for both the rich-text and commonmark editors
+ * @param schema The finalized schema for the current editor
+ * @param options The options for the editor
+ * @param editorType The current editor type
+ * @internal
+ */
+export declare const createMenuEntries: (schema: Schema, options: CommonViewOptions, editorType: EditorType) => MenuBlock[];

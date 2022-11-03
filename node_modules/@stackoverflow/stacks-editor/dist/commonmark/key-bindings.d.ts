@@ -1,0 +1,3 @@
+import type { CommonmarkParserFeatures } from "../shared/view";
+import type { Plugin } from "prosemirror-state";
+export declare function allKeymaps(parserFeatures: CommonmarkParserFeatures): Plugin[];

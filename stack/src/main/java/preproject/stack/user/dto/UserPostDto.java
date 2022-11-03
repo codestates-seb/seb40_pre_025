@@ -27,9 +27,11 @@ public class UserPostDto {
     @NotBlank
     private String password;
 
+
     private String about;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 
 }
+
 

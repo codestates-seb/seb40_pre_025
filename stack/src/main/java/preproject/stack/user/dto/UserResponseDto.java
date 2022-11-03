@@ -2,6 +2,7 @@ package preproject.stack.user.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import preproject.stack.user.entity.User;
 
 import java.time.LocalDateTime;
 
@@ -14,9 +15,17 @@ public class UserResponseDto {
 
     private String userName;
 
+
     private String about;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
+
+    private User.UserStatus userStatus;
+
+    public String getUserStatus() {
+        return userStatus.getStatus();
+    }
+
 
 }
 

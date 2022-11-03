@@ -1,0 +1,7 @@
+import MarkdownIt from "markdown-it/lib";
+import type { TagLinkOptions } from "../view";
+/**
+ * Parses [tag:FOO] and [meta-tag:FOO] links
+ * @param md
+ */
+export declare function tagLinks(md: MarkdownIt, options: TagLinkOptions): void;

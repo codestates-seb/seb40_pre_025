@@ -1,0 +1,3 @@
+import { Plugin } from "prosemirror-state";
+/** Plugin that restores browser default triple-click handling behavior */
+export declare const tripleClickHandler: Plugin<boolean>;

@@ -1,0 +1,48 @@
+import MarkdownIt from "markdown-it/lib";
+import Token from "markdown-it/lib/token";
+import { MarkdownParser } from "prosemirror-markdown";
+import { NodeType, Schema } from "prosemirror-model";
+import { IExternalPluginProvider } from "./editor-plugin";
+import type { CommonmarkParserFeatures } from "./view";
+interface MarkdownParserState {
+    openNode(nodeType: NodeType, attrs: Record<string, unknown>): void;
+    parseTokens(tokens: Token[]): void;
+    closeNode(): void;
+    addText(content: string): void;
+}
+/**
+ * Custom MarkdownParser that manually adds a low-level handler for `html_inline`.
+ * We do this because we need some special functionality that is not exposed by default with the existing
+ * handler generation code (from adding tokens)
+ */
+declare class SOMarkdownParser extends MarkdownParser {
+    tokenizer: MarkdownIt;
+    tokenHandlers: {
+        [key: string]: (state: MarkdownParserState, tok: Token) => void;
+    };
+    schema: Schema;
+    tokens: MarkdownParser["tokens"];
+    constructor(schema: Schema, tokenizer: MarkdownIt, tokens: MarkdownParser["tokens"]);
+}
+/**
+ * Extended MarkdownIt so we can peek into the tokens during parse
+ * TODO we can likely remove this extended version now that we've moved internal items to plugins
+ */
+declare class SOMarkdownIt extends MarkdownIt {
+    constructor(presetName: MarkdownIt.PresetName, options?: MarkdownIt.Options);
+    parse(src: string, env: unknown): Token[];
+}
+/**
+ * Creates a MarkdownIt instance with default properties
+ * @param features The features to toggle on/off
+ * @param externalPluginProvider The external plugin provider TODO should not be optional
+ */
+export declare function createDefaultMarkdownItInstance(features: CommonmarkParserFeatures, externalPluginProvider?: IExternalPluginProvider): SOMarkdownIt;
+/**
+ * Builds a custom markdown parser with the passed features toggled
+ * @param features The features to toggle on/off
+ * @param schema The finalized schema to use
+ * @param externalPluginProvider The external plugin provider to use
+ */
+export declare function buildMarkdownParser(features: CommonmarkParserFeatures, schema: Schema, externalPluginProvider: IExternalPluginProvider): SOMarkdownParser;
+export {};
