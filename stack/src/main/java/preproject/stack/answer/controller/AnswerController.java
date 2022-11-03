@@ -94,7 +94,7 @@ public class AnswerController {
         return new ResponseEntity<>(new SingleResponseDto<>(answerPageDto),HttpStatus.OK);
     }
 
-    // 포스트에 답변 모두 조회
+    // 특정 포스트에 대한 답변만 조회, 불필요한듯?
     @GetMapping("/answer/{post-id}/answer")
     public ResponseEntity getAnswers(@PathVariable("post-id") long postId,
             @RequestParam Integer page, @RequestParam Integer size ) {

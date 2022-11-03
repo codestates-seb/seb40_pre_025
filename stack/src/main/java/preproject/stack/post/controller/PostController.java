@@ -44,6 +44,7 @@ public class PostController {
     private final AnswerMapper answerMapper;
     private final PostMapper mapper;
 
+    // 질문 등록
     @PostMapping("/{user-id}")
     public ResponseEntity postPost(@PathVariable("user-id") long userId,
             @Valid @RequestBody PostPostDto postPostDto){
@@ -53,6 +54,7 @@ public class PostController {
         return new ResponseEntity<>(mapper.postToResponseDto(response), HttpStatus.CREATED);
     }
 
+    // 질문 수정
     @PatchMapping("/{post-id}")
     public ResponseEntity patchPost(@PathVariable("post-id") long postId , @Valid @RequestBody PostPatchDto postPatchDto){
         postPatchDto.setPostId(postId);
@@ -61,10 +63,9 @@ public class PostController {
         return new ResponseEntity<>(new SingleResponseDto<>(mapper.postToResponseDto(response)),HttpStatus.OK);
 
     }
-
-    @GetMapping("/{user-id}/{post-id}")
-    public ResponseEntity getUserPost(@PathVariable("user-id") long userId,
-                                      @PathVariable("post-id") long postId,
+    //질문 하나와 달린 답변 노출, user-id 값은 불필요?
+    @GetMapping("/{post-id}")
+    public ResponseEntity getPost(@PathVariable("post-id") long postId,
                                       @RequestParam int page,
                                       @RequestParam int size){
         Post post = postService.findPost(postId);
@@ -86,7 +87,7 @@ public class PostController {
         return new ResponseEntity<>(new SingleResponseDto<>(postAnswerResponseDto),HttpStatus.OK);
     }
 
-
+// 전체 질문 목록
     @GetMapping
     public ResponseEntity getPost( @RequestParam int page,
                                    @RequestParam int size){
@@ -97,12 +98,12 @@ public class PostController {
                 new MultiResponseDto<>(mapper.postsToPostResponseDto(posts),pagePosts),HttpStatus.OK
         );
     }
-
-    @GetMapping("/{post-id}")
-    public ResponseEntity getPost(@PathVariable("post-id") long postId){
+// 답변 없이 질문 내용 한개만 조회는 불필요, 질문+답변으로 대체
+/*    @GetMapping("/{post-id}")
+    public ResponseEntity getOnePost(@PathVariable("post-id") long postId){
         Post post = postService.findPost(postId);
         return new ResponseEntity<>(new SingleResponseDto<>(mapper.postToResponseDto(post)),HttpStatus.OK);
-    }
+    }*/
 
     @DeleteMapping("/{post-id}")
     public ResponseEntity deletePost(@PathVariable("post-id") long postId){
