@@ -12,9 +12,6 @@ export default function SideBar() {
       <div className="qusetions">
         <a href="/questions/ask">Qusetions</a>
       </div>
-      <div className="tags">
-        <a href="/users/profile">Tags</a>
-      </div>
       <div className="users">
         <a href="">Users</a>
       </div>
