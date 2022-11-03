@@ -15,6 +15,9 @@ export default function SideBar() {
       <div className="users">
         <a href="/users/user">Users</a>
       </div>
+      <div className="mypage">
+        <a href="/users/user">My page</a>
+      </div>
       <style jsx>
         {`
           .sidebar {
@@ -41,6 +44,7 @@ export default function SideBar() {
           a :hover {
             color: black;
           }
+          .mypage:active,
           .home:active,
           .qusetions:active,
           .tags:active,
@@ -49,6 +53,7 @@ export default function SideBar() {
             background: rgb(237, 239, 240);
             border-right: 3px solid rgb(239, 109, 29);
           }
+          .mypage:hover,
           .home:hover,
           .qusetions:hover,
           .tags:hover,
