@@ -55,11 +55,29 @@ export default function AskDetail() {
     setContents(data[0]);
   }, [router]);
 
+  const [question, setQuestion] = useState([])
+
+  
+  useEffect(()=> {
+    (async () => {
+     const {data} = await (
+      await fetch(
+        `http://54.180.175.144:8080/post/3/3?page=1&size=5`
+      )
+      ).json()
+      setQuestion(data)
+    })()
+  }, [])
+
+
   return (
     <>
       <div className="answermaincontainer">
-        <div>
-          <h1 className="questionTitle">{contents?.title}</h1>
+        
+          <div>
+          <h1 className="questionTitle">
+            {question.title}
+          </h1>
           <div className="qusetionInfoContainer">
             <div className="sub-c">
               <span className="fc-light">Asked</span>
@@ -75,10 +93,16 @@ export default function AskDetail() {
               <span>{contents?.read ?? "1"}</span>
             </div>
           </div>
-        </div>
+          </div>
+      
+       
+
+
         <hr className="bar" />
         <div className="questionContainer">
           <div className="questionComentBox">
+            
+            {question.body}
             <div dangerouslySetInnerHTML={{ __html: contents?.bodyHTML }} />
           </div>
           <div className="questionUpdate"></div>

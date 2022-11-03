@@ -20,10 +20,6 @@ export default function Questions() {
     })()
   }, [])
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(e.type)
-  }
 
   return (
     <div className="top_mainbar">
@@ -68,16 +64,14 @@ export default function Questions() {
                   {/* 태그, 작성자 */}
                   <div className="post-meta">
                     <div className="post-tags">
-                      <Link href="">
-                        <a className="tags">tags</a>
-                      </Link>
+                    
                     </div>
                     <div className="usercard">
                       <div className="human_img">
                         <img src="/human.png" width={15} height={15}></img>
                       </div>
                       {tweet.author}
-                      <div className="asked">1,339 asked 52 secs ago</div>
+                      <div className="asked">{new Date(tweet.createdAt).toLocaleString()}</div>
                     </div>
                   </div>
                 </div>
