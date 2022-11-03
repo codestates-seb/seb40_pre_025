@@ -6,17 +6,24 @@ import TopHeader from "./TopHeader";
 
 
 export default function Questions() {
-  // const [movies, setMovies] = useState([])
-  // useEffect(()=> {
-  //   (async () => {
-  //    const {results} = await (
-  //     await fetch('/api/movies'
-  //     )
-  //     ).json()
-  //     setMovies(results)
-  //   })()
-  // }, [])
-  
+
+  const [question, setQuestion] = useState([])
+
+  useEffect(()=> {
+    (async () => {
+     const {data} = await (
+      await fetch(
+        `http://54.180.175.144:8080/post?page=1&size=30`
+      )
+      ).json()
+     setQuestion(data)
+    })()
+  }, [])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.type)
+  }
 
   return (
     <div className="top_mainbar">
@@ -28,8 +35,9 @@ export default function Questions() {
       <div id="qlist-wrapper" className="flush-left">
         <div id="question-mini-list">
           <div>
-            {agoraStatesDiscussions.map(tweet => (
-              <div key={tweet.id} className="post-main">
+            
+            { question.map(tweet => (
+              <div key={tweet.postId} className="post-main">
                 {/* 투표수, 답변수, views 일단 하드코딩  */}
                 <div className="votes-status">
                   <div className="votes-list vote">
@@ -51,7 +59,7 @@ export default function Questions() {
                   <h3 className="post-title">
                     <Link
                       href={{
-                        pathname: `/questions/${tweet.id}`,
+                        pathname: `/questions/${tweet.postId}`,
                       }}
                     >
                       <a className="post-link">{tweet.title}</a>
