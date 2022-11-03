@@ -9,7 +9,6 @@
   <tbody>
     <tr>
       <td align="center"><a href="https://github.com/anjigu"><img src="https://avatars.githubusercontent.com/u/102123710?v=4" width="100px;" alt=""/><br /><sub><b>팀장 - 안지수</b></sub></a><br /></td>
-      
     </tr>
   </tbody>
 </table>
