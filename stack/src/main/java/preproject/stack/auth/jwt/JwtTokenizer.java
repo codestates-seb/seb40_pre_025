@@ -23,15 +23,15 @@ import static org.springframework.security.config.Elements.JWT;
 public class JwtTokenizer {
 //이부분 이해 아예못함 도움받을것
     @Getter
-    @Value("${app.jwt.secret-key}")
+    @Value("${jwt.secret-key}")
     private String secretKey;
 
     @Getter
-    @Value("${app.jwt.expiration-time-millis}")
+    @Value("30")
     private int accessTokenExpirationMinutes;
 
     @Getter
-    @Value("${app.jwt.refresh-token-expiration-minutes}")
+    @Value("420")
     private int refreshTokenExpirationMinutes;
 
     public String encodeBase64SecretKey(String secretKey) {

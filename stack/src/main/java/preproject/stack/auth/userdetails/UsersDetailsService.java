@@ -3,6 +3,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 import preproject.stack.auth.CustomAuthorityUtils;
 import preproject.stack.exception.BusinessLogicException;
 import preproject.stack.exception.ExceptionCode;
@@ -12,6 +13,7 @@ import preproject.stack.user.repository.UserRepository;
 import java.util.Collection;
 import java.util.Optional;
 //클래스이름이 겹쳐서 Users로 함. 여기서 클래스나 메서드명의 들어간 users는 우리가 만든 user엔티티 그냥 user는 security에서 나타내는 user를 의미
+@Component
 public class UsersDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
     private final CustomAuthorityUtils authorityUtils;
