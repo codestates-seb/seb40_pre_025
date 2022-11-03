@@ -1,10 +1,12 @@
 // import TopQuestions from "../components/TopQuestion/TopQuestions";
-import TeamMember from "../components/TeamMember";
+import TeamMemberFe from "../components/TeamMemberFe";
+import TeamMemberBe from "../components/TeamMemberBe";
 
 export default function Home() {
   return (
     <>
-    <TeamMember />
+    <TeamMemberFe />
+    <TeamMemberBe />
       {/* <TopQuestions /> */}
     </>
   );
