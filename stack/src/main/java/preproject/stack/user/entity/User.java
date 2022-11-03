@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import preproject.stack.answer.entity.Answer;
+import preproject.stack.audit.TimestampedUser;
 import preproject.stack.post.entity.Post;
 
 import preproject.stack.user.entity.UserRole;
@@ -21,7 +22,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User extends TimestampedUser {
 
     @Id @GeneratedValue
     private Long userId;

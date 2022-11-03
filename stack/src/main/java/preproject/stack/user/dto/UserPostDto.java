@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -27,6 +28,8 @@ public class UserPostDto {
     private String password;
 
     private String about;
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
 
 }
 
