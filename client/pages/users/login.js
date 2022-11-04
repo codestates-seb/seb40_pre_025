@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Google from "../../components/social/GoogleLogin";
-import Github2 from "../../components/social/Github2";
+// import Google from "../../components/social/GoogleLogin";
+// import Github2 from "../../components/social/Github2";
 import { useRouter } from "next/router";
 import { useState } from "react";
 export default function Login() {
@@ -73,10 +73,10 @@ export default function Login() {
       </div>
       <div className="socialLogin">
         <div className="socialLoginBtn">
-          <Google />
+          {/* <Google /> */}
         </div>
         <div className="socialLoginBtn2">
-          <Github2 />
+          {/* <Github2 /> */}
         </div>
       </div>
       <div className="formContainer">

@@ -1,5 +1,5 @@
-import Github from "../../components/social/Github";
-import Google from "../../components/social/GoogleLogin";
+// import Github from "../../components/social/Github";
+// import Google from "../../components/social/GoogleLogin";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -30,7 +30,7 @@ export default function SignUp() {
         email: userEmail,
         password: userPw,
       };
-      fetch("http://54.180.175.144:8080/user", {
+      fetch("/user", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -107,10 +107,10 @@ export default function SignUp() {
       <div id="flexItem" className="margin-T">
         <div className="socialLogin">
           <div className="socialLoginBtn">
-            <Google />
+            {/* <Google /> */}
           </div>
           <div className="socialLoginBtn">
-            <Github />
+            {/* <Github /> */}
           </div>
         </div>
         <div className="formContainer">

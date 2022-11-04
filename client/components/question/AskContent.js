@@ -60,7 +60,7 @@ export default function AskContent() {
                   <div>
                     <label className="detail-label">
                       Be specific and imagine you’re asking a question to
-                      another person.
+                      another person..
                     </label>
                   </div>
                 </div>
