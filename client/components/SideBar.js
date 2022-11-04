@@ -16,7 +16,10 @@ export default function SideBar() {
         <a href="../users/[id]/profile">Tags</a>
       </div>
       <div className="users">
-        <a href="../">Users</a>
+        <a href="/users/user">Users</a>
+      </div>
+      <div className="mypage">
+        <a href="/users/profile">My page</a>
       </div>
       <style jsx>
         {`
