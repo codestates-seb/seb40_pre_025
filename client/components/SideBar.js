@@ -10,17 +10,20 @@ export default function SideBar() {
       </div>
       <br />
       <div className="qusetions">
-        <a href="/questions/ask">Qusetions</a>
+        <a href="../questions/ask">Qusetions</a>
+      </div>
+      <div className="tags">
+        <a href="../users/[id]/profile">Tags</a>
       </div>
       <div className="users">
-        <a href="/users/user">Users</a>
+        <a href="../">Users</a>
       </div>
       <style jsx>
         {`
           .sidebar {
             display: inline-block;
             height: 100vh;
-            width: 23%;
+            width: 15rem;
             position: sticky;
             top: 0;
             left: 0;
@@ -57,11 +60,6 @@ export default function SideBar() {
             background: rgb(237, 239, 240);
             border-right: 3px solid rgb(239, 109, 29);
           }
-          @media screen and (max-width: 667px) {
-              .sidebar {
-                display: none;
-              }
-            }
         `}
       </style>
     </div>

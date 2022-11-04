@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Google from "../../components/social/GoogleLogin";
 import Github2 from "../../components/social/Github2";
+import { useRouter } from "next/router";
 import { useState } from "react";
 export default function Login() {
   const [userEmail, setUserEmail] = useState("");
@@ -8,17 +9,46 @@ export default function Login() {
   const [userPw, setUserPw] = useState("");
   const [userPwReg, setUserPwReg] = useState(true);
   const emailReg = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+  const router = useRouter();
+
   const validation = () => {
     emailReg.test(userEmail) ? setUserEmailReg(true) : setUserEmailReg(false);
     userPw.length > 0 ? setUserPwReg(true) : setUserPwReg(false);
     if (emailReg.test(userEmail) & (userPw.length > 0)) {
-      alert("로그인 요청");
+      const body = {
+        email: userEmail,
+        password: userPw,
+      };
+      fetch("/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+        credentials: "include",
+      })
+        .then((res) => {
+          console.log(res);
+          if (res.status === 401) {
+            alert("등록된 회원이 아닙니다.");
+          }
+          localStorage.setItem("accessToken", res.headers.get("authorization"));
+          const base64Payload = localStorage
+            .getItem("accessToken")
+            .split(".")[1];
+          const payload = Buffer.from(base64Payload, "base64");
+          const result = payload.toString();
+
+          const userID = JSON.parse(result).userId;
+          localStorage.setItem("user", userID);
+        })
+        .then(() => router.push("../../"))
+        .catch((err) => console.log(err));
     }
   };
   const handleClickSignUp = (e) => {
     e.preventDefault();
     validation();
   };
+
   return (
     <div id="loginBox" className="flexItem">
       <div className="ta-center">

@@ -1,36 +1,56 @@
 import Link from "next/link";
 
 export default function MyQusticon({ data }) {
+  console.log(data);
+  const handleClickDeletePost = () => {
+    const headers = new Headers({
+      Authorization: localStorage.getItem("accessToken"),
+    });
+    fetch(`/post/${data.postId}`, {
+      method: "DELETE",
+      headers,
+    })
+      .then((res) => {
+        console.log(res);
+        location.reload();
+      })
+
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="qusticonBox">
-      <div className="votes-status">
-        <div className="votes-list">{`${data.votes} votes`}</div>
-        <div className="votes-list plus">{`${data.ansers} ansers`}</div>
-        <div className="votes-list">{`${data.views} views`}</div>
-      </div>
       <div className="qusticon">
         <div className="title">
-          <Link href={"/questions/123123"}>
+          <Link href={`/questions/${data.postId}`}>
             <a>{data.title}</a>
           </Link>
-        </div>
-        <div className="d-flex">
-          <div className="post-tags">
-            <Link href="">
-              <a className="tags">tags</a>
-            </Link>
+          <div className="deletePost" onClick={handleClickDeletePost}>
+            <div>삭제</div>
           </div>
+        </div>
+        <div className="body">{data.body}</div>
+        <div className="d-flex">
           <div className="d-flex">
-            <img src="/human.png" width={15} height={15}></img>
-            <Link href={""}>
-              <a className="userName">{data.author}</a>
-            </Link>
-            <div className="asked">1,339 asked 52 secs ago</div>
+            <div className="createdAt">{`${data.createdAt.date.year}.${data.createdAt.date.month}.${data.createdAt.date.day}`}</div>
           </div>
         </div>
       </div>
       <style jsx>{`
-        .asked {
+        .deletePost {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 40px;
+          height: 25px;
+          color: rgb(255, 128, 128);
+          border: 1.5px solid rgb(255, 128, 128);
+          border-radius: 10px;
+        }
+        .deletePost:hover {
+          background-color: rgba(255, 197, 197, 0.502);
+          cursor: pointer;
+        }
+        .createdAt {
           color: gray;
         }
         .userName {
@@ -105,9 +125,21 @@ export default function MyQusticon({ data }) {
           border-radius: 2px;
         }
         .title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
           text-align: left;
           font-weight: 500;
           margin-bottom: 1rem;
+        }
+        .body {
+          color: gray;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: auto;
+          height: 18px;
+          margin-bottom: 10px;
         }
         @media screen and (max-width: 1300px) {
         }

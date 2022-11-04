@@ -7,38 +7,10 @@ import React, { useState } from 'react'
 
 export default function SubmissionBtn() {
 
-  
-  // const onInsertQuestion = (title, tags) => {
-  //   if(title === "" || body === "" || tags === "" ) {
-  //     // 만약 셋중 하나 안쓰면 
-  //   } else {
-  //     const askQuestion = {
-  //       id: nextId,
-  //       title
-  //     }
-  //     setQuestion(question => question.concat(askQuestion))
-  //     nextId++;
-  //   }
-
-  // }
-
-  // const onSubmit = (e) => {
-  //   // submit 새로고침을 막아준다. 
-  //   e.preventDefault();
-  //   // 받아온 함수의 value를 받아오고
-  //   onInsertQuestion(value);
-  //   //value값을 다시 빈문자열로
-  //   setValue("");
-  // }
- 
-  // const dispatch = useDispatch()
-
-  // const selector = useSelector(state => state.questionReducer.list)
-  // console.log(selector)
 
   return (
     <div className='button-box'>
-    <form className='button-list'>
+    <div className='button-list'>
         <div className='reviewbtn'>
         <Link href="/">
       <button 
@@ -53,11 +25,11 @@ export default function SubmissionBtn() {
       <a className='s-btn draftbtn'>Discard draft</a>
       </Link>
       </div>
-    </form>
+    </div>
     <style jsx>{`
         .button-box{ 
         margin-bottom: 5%;
-        margin-top: 2%;
+        margin-top: 4%;
         display: flex;
         flex-direction: column;
         margin-left: 3%;
@@ -72,7 +44,7 @@ export default function SubmissionBtn() {
             color: #ffffff;
             background-color: #0a95ff;
             box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
-            width: 10vw;
+            width: 13vw;
             flex-basis: auto;
             font-size: 0.9rem;
             border-radius: 0.3rem;
@@ -95,7 +67,7 @@ export default function SubmissionBtn() {
             color: #c22e32;
             background-color: #00000000;
             box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
-            width: 10vw;
+            width: 13vw;
             margin-left: 25%;
             font-size: 0.9rem;
             border-radius: 0.3rem;
@@ -114,14 +86,32 @@ export default function SubmissionBtn() {
         }
         @media screen and (max-width: 1280px)  {
           .nextbtn, .draftbtn{
-            width: 14vw;
+            width: 17vw;
           }
           
         }
         @media screen and (max-width: 900px)  {
-          .nextbtn, .draftbtn{
-            width: 17vw;
+          .nextbtn{
+            width: 22vw;
           }
+          
+          .draftbtn{
+            width: 17vw;
+
+          }
+         
+          
+        }
+        @media screen and (max-width: 700px)  {
+          .nextbtn{
+            width: 29vw;
+          }
+          
+          .draftbtn{
+            width: 17vw;
+
+          }
+         
           
         }
         `}</style>
