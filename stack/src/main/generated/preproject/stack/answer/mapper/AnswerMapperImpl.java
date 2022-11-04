@@ -1,5 +1,7 @@
 package preproject.stack.answer.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 import preproject.stack.answer.dto.AnswerPatchDto;
@@ -9,7 +11,7 @@ import preproject.stack.answer.entity.Answer;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-10-28T15:36:45+0900",
+    date = "2022-11-02T13:35:17+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.14 (Oracle Corporation)"
 )
 @Component
@@ -72,5 +74,19 @@ public class AnswerMapperImpl implements AnswerMapper {
         answerResponseDto.setModifiedAt( answer.getModifiedAt() );
 
         return answerResponseDto;
+    }
+
+    @Override
+    public List<AnswerResponseDto> answersToAnswerResponseDto(List<Answer> answers) {
+        if ( answers == null ) {
+            return null;
+        }
+
+        List<AnswerResponseDto> list = new ArrayList<AnswerResponseDto>( answers.size() );
+        for ( Answer answer : answers ) {
+            list.add( answerToAnswerResponseDto( answer ) );
+        }
+
+        return list;
     }
 }

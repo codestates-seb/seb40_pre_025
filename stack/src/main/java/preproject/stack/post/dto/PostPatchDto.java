@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter @Setter
@@ -16,7 +17,5 @@ public class PostPatchDto {
 
     private String body;
 
-    public void setPostId(long postId){
-        this.postId = postId;
-    }
+
 }

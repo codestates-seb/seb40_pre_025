@@ -1,0 +1,6 @@
+import MarkdownIt from "markdown-it/lib";
+/**
+ * Parses out spoiler `>!` blocks
+ * @param md
+ */
+export declare function spoiler(md: MarkdownIt): void;

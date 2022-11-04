@@ -1,0 +1,71 @@
+import { EditorState, Transaction } from "prosemirror-state";
+import { EditorView } from "prosemirror-view";
+import { MenuCommand } from "../shared/menu";
+import type { TagLinkOptions } from "../shared/view";
+/**
+ * Shortcut binding that takes in a formatting string and returns a matching setBlockType command
+ * @param formattingText
+ */
+export declare const setBlockTypeCommand: (formattingText: string) => MenuCommand;
+/**
+ * Shortcut binding that takes in a formatting string and returns a matching wrapIn command
+ * @param leadingText the text to place before the selected text
+ * @param trailingText the text to place after the selected text; if null, then the leadingText is used
+ * @internal
+ */
+export declare const wrapInCommand: (leadingText: string, trailingText: string | null) => MenuCommand;
+export declare const blockWrapInCommand: (formattingText: string) => MenuCommand;
+export declare const insertRawTextCommand: (text: string, selectFrom?: number, selectTo?: number) => MenuCommand;
+/**
+ * Returns any block formatting characters (plus trailing space) at the very start of the passed text
+ * @param text The text to check for leading block characters
+ * @internal
+ */
+export declare function matchLeadingBlockCharacters(text: string): string;
+/**
+ * Inserts a link at the cursor, optionally placing it around the currently selected text if able
+ * @param state The current editor state
+ * @param dispatch the dispatch function used to dispatch the transaction, set to "null" if you don't want to dispatch
+ */
+export declare function insertCommonmarkLinkCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+/**
+ * Inserts a tagLink at the cursor, optionally placing it around the currently selected text if able
+ * @param options The passed TagLinkOptions
+ * @param isMetaTag Whether or not the inserted tagLink is for a meta tag
+ */
+export declare function insertTagLinkCommand(options: TagLinkOptions, isMetaTag: boolean): MenuCommand;
+/**
+ * Inserts a basic table at the cursor
+ * @param state The current editor state
+ * @param dispatch the dispatch function used to dispatch the transaction, set to "null" if you don't want to dispatch
+ */
+export declare function insertCommonmarkTableCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+/**
+ * Inserts a horizontal rule at the cursor
+ * @param state The current editor state
+ * @param dispatch the dispatch function used to dispatch the transaction, set to "null" if you don't want to dispatch
+ */
+export declare function insertCommonmarkHorizontalRuleCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+declare function indentBlockCommand(): boolean;
+declare function unIndentBlockCommand(): boolean;
+/**
+ * Selects all text in the document's root node, rather than the node itself
+ */
+export declare function selectAllTextCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+export declare const boldCommand: MenuCommand;
+export declare const emphasisCommand: MenuCommand;
+export declare const inlineCodeCommand: MenuCommand;
+export declare const indentCommand: typeof indentBlockCommand;
+export declare const unindentBlock: typeof unIndentBlockCommand;
+export declare const headerCommand: MenuCommand;
+export declare const strikethroughCommand: MenuCommand;
+export declare const blockquoteCommand: MenuCommand;
+export declare const orderedListCommand: MenuCommand;
+export declare const unorderedListCommand: MenuCommand;
+export declare const insertCodeblockCommand: MenuCommand;
+export declare const spoilerCommand: MenuCommand;
+export declare const supCommand: MenuCommand;
+export declare const subCommand: MenuCommand;
+export declare const kbdCommand: MenuCommand;
+export declare function insertCommonmarkImageCommand(state: EditorState, dispatch: (tr: Transaction) => void, view: EditorView): boolean;
+export {};

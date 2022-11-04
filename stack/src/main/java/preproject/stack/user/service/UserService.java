@@ -6,12 +6,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import preproject.stack.auth.CustomAuthorityUtils;
 import preproject.stack.exception.BusinessLogicException;
 import preproject.stack.exception.ExceptionCode;
 import preproject.stack.user.entity.User;
 import preproject.stack.user.repository.UserRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -19,10 +22,18 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final CustomAuthorityUtils authorityUtils;
 
     //회원가입로직
     public User createUser(User user) {
         verifyExistsEmail(user.getEmail());
+        //패스워드 암호화
+        String encryptedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encryptedPassword);
+        //db에 유저role 저장
+        List<String> roles = authorityUtils.createRoles(user.getEmail());
+        user.setRoles(roles);
         return userRepository.save(user);
     }
 
@@ -33,6 +44,8 @@ public class UserService {
 
         Optional.ofNullable(user.getUserName())
                 .ifPresent(userName -> findUser.setUserName(userName));
+        Optional.ofNullable(user.getAbout())
+                .ifPresent(about -> findUser.setAbout(about));
         return userRepository.save(findUser);
     }
 
@@ -40,6 +53,10 @@ public class UserService {
     public User findUser(long userId) {
         return findVerifiedUser(userId);
 
+    }
+
+    public User findUserName(String username){
+        return userRepository.findByUserName(username);
     }
 
     //전체 유저 조회 기능
