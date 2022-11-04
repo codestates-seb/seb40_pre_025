@@ -7,21 +7,22 @@ export default function MyAnsers() {
   const [crrentPage, setCrrentPage] = useState(1);
   const pageNavRender = () => {
     const result = [];
+<<<<<<< HEAD
 
     for (let i = 1; i <= myAnsers.data.answers.pageInfo.totalPages; i++) {
+=======
+    for (let i = 1; i <= myAnsers.pageInfo.totalPages; i++) {
+>>>>>>> 6024a6593e5c201f36ee7d1010f4a68168a01e55
       result.push(
         <div
           key={i}
-          className={Number(crrentPage) === i ? "pageNav creetPage" : "pageNav"}
+          className="pageNav"
           onClick={(e) => {
             setCrrentPage(e.target.innerText);
           }}
         >
           <span>{i}</span>
           <style jsx>{`
-            .creetPage {
-              background-color: #8080805f;
-            }
             .pageNav {
               display: flex;
               justify-content: center;
@@ -56,9 +57,15 @@ export default function MyAnsers() {
       .catch((err) => console.log(err));
   }, [crrentPage]);
   return (
+<<<<<<< HEAD
     <div className="MyAnsers">
       <div>
         {myAnsers.data.answers.data.length === 0 ? (
+=======
+    <div>
+      <div className="MyAnsers">
+        {myAnsers.data === 0 ? (
+>>>>>>> 6024a6593e5c201f36ee7d1010f4a68168a01e55
           <div id="null">답변한 내역이 없습니다.</div>
         ) : (
           myAnsers.data.answers.data.map((data) => {
@@ -77,7 +84,6 @@ export default function MyAnsers() {
           flex-direction: column;
           justify-content: start;
           height: 450px;
-          width: 80%;
         }
         #null {
           margin-top: 40px;

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import UserIdLayout from "./User_Id_Layout";
 export default function profile() {
+<<<<<<< HEAD
   const [anserCount, setAnserCount] = useState(0);
   const [qustionCount, setQustionCount] = useState(0);
   const [about, setAbout] = useState("");
@@ -29,6 +29,8 @@ export default function profile() {
       .catch((err) => console.log(err));
   }, []);
 
+=======
+>>>>>>> 6024a6593e5c201f36ee7d1010f4a68168a01e55
   return (
     <div className="container">
       <div className="content">
@@ -37,7 +39,7 @@ export default function profile() {
             <label className="lable">Stats</label>
             <div className="statsBox">
               <div className="state">
-                <div className="color-B">{anserCount}</div>answers
+                <div className="color-B">1</div>answers
               </div>
               <div className="state">
                 <div className="color-B">{qustionCount}</div>qustions
