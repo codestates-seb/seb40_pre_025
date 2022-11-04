@@ -1,10 +1,9 @@
-import Image from 'next/image'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react'
 
 export default function AskContent() {
-  const router = useRouter();
+  // const router = useRouter();
 
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
@@ -28,7 +27,7 @@ export default function AskContent() {
     console.log(res)
     // router.push("/")
 
-    // window.location.reload();
+
   })
   .catch((error)=> {
     console.log('Error', error)
@@ -40,9 +39,9 @@ export default function AskContent() {
 
 
   return (
-    <>
     
-  <form onSubmit={handleSubmit}>
+    
+  <div onSubmit={handleSubmit}>
     <div className='title'>
     {/* Title 글씨 */}
   <div className='title-box'>
@@ -147,7 +146,7 @@ export default function AskContent() {
               </div>
             </div>
           </div>
-        </form>
+        
 
   <style jsx>{`
 
@@ -466,6 +465,6 @@ export default function AskContent() {
         }
 
     `}</style>
-  </>
+    </div>
   )
 }
