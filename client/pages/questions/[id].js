@@ -8,6 +8,7 @@ import {
 } from "../../reducers/answerReducer";
 import dummydata from "../../static/dummydata";
 
+
 export default function AskDetail() {
   // state
   const [admit, setAdmit] = useState([]);
@@ -153,7 +154,7 @@ export default function AskDetail() {
           
             {answers.answers ? (
               answers?.answers?.map((answer, i) => (
-                <div key={`답변: ${i}`}>
+                <div key ={`답변: ${i}`}>
                   {/* 답글 구분선 */}
           
                   <hr className="bar" />
@@ -288,7 +289,6 @@ export default function AskDetail() {
         .answerCommentBoxs {
           width: 550px;
         }
-
         .answerBox {
           display: flex;
           width: 100%;
@@ -414,7 +414,7 @@ function Answer({ i, answer, setAnswers, deleteAnswer }) {
         <></>
       )}
       <style jsx>{`
-         {
+          {
           .editorContainer {
             display: flex;
             flex-direction: column;
@@ -452,3 +452,4 @@ function Answer({ i, answer, setAnswers, deleteAnswer }) {
     </div>
   );
 }
+

@@ -2,6 +2,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react'
 
+
+
+
 export default function AskContent() {
   // const router = useRouter();
 
@@ -40,7 +43,7 @@ export default function AskContent() {
 
   return (
     
-    
+    <div>
   <div onSubmit={handleSubmit}>
     <div className='title'>
     {/* Title 글씨 */}
@@ -146,7 +149,7 @@ export default function AskContent() {
               </div>
             </div>
           </div>
-        
+          </div>
 
   <style jsx>{`
 
