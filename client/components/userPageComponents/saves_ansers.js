@@ -46,7 +46,7 @@ export default function saves_qustions() {
           justify-content: flex-start;
           text-align: center;
           width: 100%;
-          height: 500px;
+          height: auto;
           min-width: 700px;
         }
         #subTap {
