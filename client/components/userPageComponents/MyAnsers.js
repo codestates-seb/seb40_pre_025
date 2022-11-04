@@ -7,17 +7,8 @@ export default function MyAnsers() {
   const [crrentPage, setCrrentPage] = useState(1);
   const pageNavRender = () => {
     const result = [];
-<<<<<<< HEAD
-<<<<<<< HEAD
-    for (let i = 1; i <= myAnsers.pageInfo.totalPages; i++) {
-=======
 
     for (let i = 1; i <= myAnsers.data.answers.pageInfo.totalPages; i++) {
->>>>>>> b1568bd76b0bbc4914ab4a8e1ee559d9b7d1a09f
-=======
-
-    for (let i = 1; i <= myAnsers.data.answers.pageInfo.totalPages; i++) {
->>>>>>> 97679563dd91f3076c1da7b8090df840bce8d7d7
       result.push(
         <div
           key={i}
@@ -62,21 +53,9 @@ export default function MyAnsers() {
       .catch((err) => console.log(err));
   }, [crrentPage]);
   return (
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <div>
-      <div className="MyAnsers">
-        {myAnsers.data === 0 ? (
-=======
     <div className="MyAnsers">
       <div>
         {myAnsers.data.answers.data.length === 0 ? (
->>>>>>> b1568bd76b0bbc4914ab4a8e1ee559d9b7d1a09f
-=======
-    <div className="MyAnsers">
-      <div>
-        {myAnsers.data.answers.data.length === 0 ? (
->>>>>>> 97679563dd91f3076c1da7b8090df840bce8d7d7
           <div id="null">답변한 내역이 없습니다.</div>
         ) : (
           myAnsers.data.answers.data.map((data) => {
