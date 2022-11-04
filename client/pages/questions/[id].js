@@ -2,38 +2,59 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-  changeInputAction,
-  resetInputAction,
-} from "../../reducers/answerReducer";
+import { changeInputAction, resetInputAction } from "../../reducers/answerReducer";
 import dummydata from "../../static/dummydata";
-
 
 export default function AskDetail() {
   // state
+  // useRouter이용해서 페이지[id]값 추출
+  const {
+    query: { id },
+  } = useRouter();
+
   const [admit, setAdmit] = useState([]);
   const [contents, setContents] = useState({});
   const [answers, setAnswers] = useState({
     answers: [],
   });
+  const [answerId, setAnswerId] = useState("");
+  const [userInput, setUserInput] = useState("");
+  const [question, setQuestion] = useState([]);
 
   //redux
   const dispatch = useDispatch();
-  const { value } = useSelector(state => state.anwserReducer);
+  const { value } = useSelector((state) => state.anwserReducer);
 
   //router
   const router = useRouter();
 
   // 리덕스 이용해서 답글 내용 저장
-  const onChangeTextarea = e => {
+  const onChangeTextarea = (e) => {
     dispatch(changeInputAction(e.target.value));
   };
 
   // 답글 추가히기
-  const postAnswer = e => {
-    setAnswers(prev => ({
+  const postAnswer = (userInput) => {
+    // 댓글이
+    async function postUserInput() {
+      const response = await fetch(`https://54.180.175.144:8080/answer/2/${id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          body: userInput,
+        }),
+      });
+      //answerId 상태로 저장(delete에서 사용하기 위해)
+      const {
+        data: { answerId },
+      } = response.json();
+      setAnswerId(answerId);
+    }
+    postUserInput();
+
+    setAnswers((prev) => ({
       ...prev,
-      answers: [...prev.answers, e],
+      answers: [...prev.answers, userInput],
     }));
 
     // 답글 추가하고 textarea글 비워주기
@@ -41,10 +62,17 @@ export default function AskDetail() {
   };
 
   // 답글 삭제하기
-  const deleteAnswer = index => {
-    setAnswers(prev => {
-      answers.answers.splice(index, 1);
+  const deleteAnswer = (answerId, index) => {
+    async function deleteAns() {
+      const response = await fetch(`http://54.180.175.144:8080/answer/${answerId}`, {
+        method: "DELETE",
+      });
+    }
+    deleteAns();
 
+    // 댓글 삭제 요청 후 상태도 같이 변경
+    setAnswers((prev) => {
+      answers.answers.splice(index, 1);
       return {
         ...prev,
         answers: answers.answers,
@@ -52,15 +80,37 @@ export default function AskDetail() {
     });
   };
   useEffect(() => {
-    const data = dummydata.filter(dummy => dummy.id === router.query.id);
+    const data = dummydata.filter((dummy) => dummy.id === router.query.id);
     setContents(data[0]);
   }, [router]);
+
+  // 구현하는중....
+  useEffect(() => {
+    async function request() {
+      const response = await fetch(`http://54.180.175.144:8080/post/${id}?page=1&size=3`, {
+        method: "GET",
+      });
+      const data = await response.json();
+      setQuestion(data.data);
+      const answerBody = data.data.answers.data.length ? data.data.answers.data.body : null;
+
+      // 댓글이 없으면 저장하지 않음
+      if (answerBody) {
+        // 댓글을 answer에 저장
+        setAnswers((prev) => ({
+          ...prev,
+          answers: [...prev.answers, ...answerBody],
+        }));
+      }
+    }
+    request();
+  }, []);
 
   return (
     <>
       <div className="answermaincontainer">
         <div>
-          <h1 className="questionTitle">{contents?.title}</h1>
+          <h1 className="questionTitle">{question.title}</h1>
           <div className="qusetionInfoContainer">
             <div className="sub-c">
               <span className="fc-light">Asked</span>
@@ -80,6 +130,7 @@ export default function AskDetail() {
         <hr className="bar" />
         <div className="questionContainer">
           <div className="questionComentBox">
+            {question.body}
             <div dangerouslySetInnerHTML={{ __html: contents?.bodyHTML }} />
           </div>
           <div className="questionUpdate"></div>
@@ -122,7 +173,7 @@ export default function AskDetail() {
             )}
             {answers.answers ? (
               answers?.answers?.map((answer, i) => (
-                <div key ={`답변: ${i}`}>
+                <div key={`답변: ${i}`}>
                   {/* 답글 구분선 */}
                   <hr className="bar" />
                   <div key={`answer: ${i}`} className="answerBox">
@@ -152,6 +203,7 @@ export default function AskDetail() {
                       setAnswers={setAnswers}
                       answer={answer}
                       deleteAnswer={deleteAnswer}
+                      answerId={answerId}
                     />
                   </div>
                 </div>
@@ -164,16 +216,9 @@ export default function AskDetail() {
         <hr className="bar" />
         <div className="editorContainer">
           <span className="editorTitle">Your Answer</span>
-          <textarea
-            value={value}
-            onChange={onChangeTextarea}
-            className="editor"
-          />
+          <textarea value={value} onChange={onChangeTextarea} className="editor" />
           <div>
-            <button
-              onClick={() => postAnswer(value)}
-              className="answerPostButton"
-            >
+            <button onClick={() => postAnswer(value)} className="answerPostButton">
               Post Your Answer
             </button>
           </div>
@@ -321,52 +366,59 @@ export default function AskDetail() {
 }
 
 // props로 index, answer = 답글 내용, setAnswers = 답글글 수정, deleteAnswer 답글삭제 함수
-function Answer({ i, answer, setAnswers, deleteAnswer }) {
+
+function Answer({ i, answer, setAnswers, deleteAnswer, answerId }) {
   //state
   const [isEdit, setIsEdit] = useState(false);
   const [value, setValue] = useState(answer);
 
-  const onChangeTextarea = e => {
+  const onChangeTextarea = (e) => {
     setValue(e.target.value);
   };
 
+  // 댓글 수정
+  const editAnswer = () => {
+    // 서버에 patch 요청으로 수정
+    async function editAns() {
+      const response = await fetch(`http://54.180.175.144:8080/answer/${answerId}`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          body: value,
+        }),
+      });
+    }
+    editAns();
+
+    // 상태도 같이 변경
+    setAnswers((prev) => {
+      prev.answers.splice(i, 1, value);
+      return {
+        ...prev,
+        answers: prev.answers,
+      };
+    });
+    setIsEdit(false);
+  };
   return (
     <div className="answerContainer">
       <div className="answer">{answer}</div>
       <button
         onClick={() => {
-          setIsEdit(prev => !prev);
+          setIsEdit((prev) => !prev);
         }}
         className="btn"
       >
         Edit
       </button>
-      <button onClick={() => deleteAnswer(i)} className="btn">
+      <button onClick={() => deleteAnswer(answerId, index)} className="btn">
         Delete
       </button>
       {/* 수정하기 클릭하면 보여주고 아닐때는 안보여주기 */}
       {isEdit ? (
         <div className="editorContainer">
-          <textarea
-            value={value}
-            onChange={onChangeTextarea}
-            className="editor"
-          />
+          <textarea value={value} onChange={onChangeTextarea} className="editor" />
           <div>
-            <button
-              onClick={() => {
-                setAnswers(prev => {
-                  prev.answers.splice(i, 1, value);
-
-                  return {
-                    ...prev,
-                    answers: prev.answers,
-                  };
-                });
-                setIsEdit(false);
-              }}
-              className="answerPostButton"
-            >
+            <button onClick={editAnswer} className="answerPostButton">
               submit
             </button>
           </div>
