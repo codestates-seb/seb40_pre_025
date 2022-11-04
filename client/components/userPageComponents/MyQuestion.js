@@ -1,17 +1,32 @@
 import Link from "next/link";
 
-export default function MyAnser({ data }) {
+export default function MyQusticon({ data }) {
   return (
-    <div className="anser">
+    <div className="qusticonBox">
       <div className="votes-status">
-        <div className="votes-list">{`${data.voteCount} votes`}</div>
-        <div className="votes-list">{`${data.readCount} views`}</div>
+        <div className="votes-list">{`${data.votes} votes`}</div>
+        <div className="votes-list plus">{`${data.ansers} ansers`}</div>
+        <div className="votes-list">{`${data.views} views`}</div>
       </div>
       <div className="qusticon">
-        <div className="content">
+        <div className="title">
           <Link href={"/questions/123123"}>
-            <a>{data.body}</a>
+            <a>{data.title}</a>
           </Link>
+        </div>
+        <div className="d-flex">
+          <div className="post-tags">
+            <Link href="">
+              <a className="tags">tags</a>
+            </Link>
+          </div>
+          <div className="d-flex">
+            <img src="/human.png" width={15} height={15}></img>
+            <Link href={""}>
+              <a className="userName">{data.author}</a>
+            </Link>
+            <div className="asked">1,339 asked 52 secs ago</div>
+          </div>
         </div>
       </div>
       <style jsx>{`
@@ -35,7 +50,7 @@ export default function MyAnser({ data }) {
           align-items: center;
           justify-content: flex-end;
         }
-        .anser {
+        .qusticonBox {
           display: flex;
           align-items: center;
           justify-content: flex-start;
@@ -64,11 +79,14 @@ export default function MyAnser({ data }) {
         }
         .votes-list {
           color: black;
+          width: 100%;
+          height: 15px;
           font-size: 0.8rem;
           margin-bottom: 0.3rem;
         }
         .plus {
           color: #2f6f44;
+          text-align: center;
           border: 1px solid #2f6f44;
           padding: 0.2rem;
         }
@@ -86,10 +104,18 @@ export default function MyAnser({ data }) {
           border-style: solid;
           border-radius: 2px;
         }
-        .content {
+        .title {
           text-align: left;
           font-weight: 500;
           margin-bottom: 1rem;
+        }
+        @media screen and (max-width: 1300px) {
+        }
+        @media screen and (max-width: 1100px) {
+        }
+        @media screen and (max-width: 700px) {
+        }
+        @media screen and (min-width: 830px) {
         }
       `}</style>
     </div>

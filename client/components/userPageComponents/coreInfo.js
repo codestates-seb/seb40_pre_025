@@ -28,6 +28,7 @@ export default function User() {
       .then((ansers) => setUserData(ansers.data))
       .catch((err) => console.log(err));
   }, []);
+  console.log(userData);
   return (
     <div id="mainbar-full">
       <div id="coreprofile">

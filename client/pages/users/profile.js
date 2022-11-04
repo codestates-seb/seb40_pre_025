@@ -1,20 +1,6 @@
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import UserIdLayout from "./User_Id_Layout";
 export default function profile() {
-  const [anserCount, setAnserCount] = useState(0);
-  const [qustionCount, setQustionCount] = useState(0);
-  useEffect(() => {
-    const headers = new Headers({
-      "Content-Type": "text/xml",
-    });
-    fetch(`http://54.180.175.144:8080/answer/user/1?page=1&size=5`, {
-      headers,
-    })
-      .then((res) => res.json())
-      .then((ansers) => setAnserCount(ansers.pageInfo.totalElements))
-      .catch((err) => console.log(err));
-  }, []);
   return (
     <div className="container">
       <div className="content">
@@ -24,7 +10,7 @@ export default function profile() {
             <label className="lable">Stats</label>
             <div className="statsBox">
               <div className="state">
-                <div className="color-B">{anserCount}</div>answers
+                <div className="color-B">1</div>answers
               </div>
               <div className="state">
                 <div className="color-B">1</div>qustions
