@@ -79,32 +79,6 @@ export default function AskContent() {
     </div>
     </div>
 
-    {/* 태그 부분 */}
-    <div className='tags-box'>
-    <div className='tags-outer'>
-      <div>
-        <div className='tags-margin'>
-          <div className='tags-content'>
-            {/* tags 제목 */}
-              <div className='tags-title'>
-                <label className='tags-name'>
-                Tags
-                <p className='tags-p'>
-                Add up to 5 tags to describe what your question is about. Start typing to see suggestions.
-                </p>
-                </label>
-                </div>
-              {/* tags 내용  */}
-              <div className='tags-body-box'>
-                <input className='tags-body' placeholder='태그를 써주세요'>
-                </input>
-              </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
   <style jsx>{`
 
   .title {
