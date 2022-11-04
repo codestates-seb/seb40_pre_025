@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 export default function MyAnser({ data }) {
+  console.log(data);
   return (
     <div className="anser">
       <div className="votes-status">
@@ -14,18 +15,15 @@ export default function MyAnser({ data }) {
           </Link>
 
           <div className="d-flex">
-            <img src="/human.png" width={15} height={15}></img>
-            <Link href={""}>
-              <a className="userName">{data.author}</a>
-            </Link>
-            <div className="asked">1,339 asked 52 secs ago</div>
+            <div className="createdAt">{`${data.createdAt.date.year}.${data.createdAt.date.month}.${data.createdAt.date.day}`}</div>
           </div>
         </div>
       </div>
       <style jsx>{`
-        .asked {
+        .createdAt {
           color: gray;
         }
+
         .userName {
           font-size: 1rem;
           color: hsl(206, 100%, 40%);
