@@ -55,7 +55,6 @@ export default function MyQusticons() {
       .then((ansers) => setMyQuestions(ansers))
       .catch((err) => console.log(err));
   }, [crrentPage]);
-  console.log(`test ${myQuestions.data.posts.data}`);
   return (
     <div className="MyQusticons">
       <div>
