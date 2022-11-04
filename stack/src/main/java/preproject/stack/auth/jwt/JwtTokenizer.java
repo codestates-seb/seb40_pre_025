@@ -33,9 +33,6 @@ public class JwtTokenizer {
     @Value("30")
     private int accessTokenExpirationMinutes;
 
-    @Getter
-    @Value("420")
-    private int refreshTokenExpirationMinutes;
 
     public String encodeBase64SecretKey(String secretKey) {
         return Encoders.BASE64.encode(secretKey.getBytes(StandardCharsets.UTF_8));
@@ -56,16 +53,7 @@ public class JwtTokenizer {
                 .compact();
     }
 
-    public String generateRefreshToken(String subject, Date expiration, String base64EncodedSecretKey) {
-        Key key = getKeyFromBase64EncodedKey(base64EncodedSecretKey);
 
-        return Jwts.builder()
-                .setSubject(subject)
-                .setIssuedAt(Calendar.getInstance().getTime())
-                .setExpiration(expiration)
-                .signWith(key)
-                .compact();
-    }
 
     public Jws<Claims> getClaims(String jws, String base64EncodedSecretKey) {
         Key key = getKeyFromBase64EncodedKey(base64EncodedSecretKey);
