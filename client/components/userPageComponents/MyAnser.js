@@ -93,7 +93,6 @@ export default function MyAnser({ data }) {
           border-radius: 2px;
         }
         .content {
-          width: 100%;
           text-align: left;
           font-weight: 500;
           margin-bottom: 1rem;

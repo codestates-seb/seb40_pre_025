@@ -23,6 +23,8 @@ export default function AskDetail() {
 
   //router
   const router = useRouter();
+  const {id} = router.query
+  console.log(id)
 
   // 리덕스 이용해서 답글 내용 저장
   const onChangeTextarea = e => {
@@ -56,11 +58,33 @@ export default function AskDetail() {
     setContents(data[0]);
   }, [router]);
 
+  const [question, setQuestion] = useState([])
+  const [answer, setAnswer] = useState([])
+
+  
+  useEffect(()=> {
+    (async () => {
+     const {data} = await (
+      await fetch(
+        `http://54.180.175.144:8080/post/${id}?page=1&size=5`
+      )
+      ).json()
+      setQuestion(data)
+      setAnswer(data.answers.data)
+      console.log(data.answers.data)
+    })()
+  }, [])
+
+
+
   return (
     <>
       <div className="answermaincontainer">
-        <div>
-          <h1 className="questionTitle">{contents?.title}</h1>
+        
+          <div>
+          <h1 className="questionTitle">
+            {question.title}
+          </h1>
           <div className="qusetionInfoContainer">
             <div className="sub-c">
               <span className="fc-light">Asked</span>
@@ -76,10 +100,16 @@ export default function AskDetail() {
               <span>{contents?.read ?? "1"}</span>
             </div>
           </div>
-        </div>
+          </div>
+      
+       
+
+
         <hr className="bar" />
         <div className="questionContainer">
           <div className="questionComentBox">
+            
+            {question.body}
             <div dangerouslySetInnerHTML={{ __html: contents?.bodyHTML }} />
           </div>
           <div className="questionUpdate"></div>
@@ -112,6 +142,7 @@ export default function AskDetail() {
                       </svg>
                     </i>
                   </div>
+                  
                   <div
                     dangerouslySetInnerHTML={{
                       __html: contents?.answer?.bodyHTML,
@@ -120,12 +151,15 @@ export default function AskDetail() {
                 </div>
               </>
             )}
+          
             {answers.answers ? (
               answers?.answers?.map((answer, i) => (
                 <div key ={`답변: ${i}`}>
                   {/* 답글 구분선 */}
+          
                   <hr className="bar" />
                   <div key={`answer: ${i}`} className="answerBox">
+                    
                     <div
                       className="iconContainer"
                       onClick={() => {
@@ -147,17 +181,22 @@ export default function AskDetail() {
                         </svg>
                       </i>
                     </div>
-                    <Answer
+                  안녕하세요
+                  {}
+                    {/* <Answer
                       i={i}
                       setAnswers={setAnswers}
                       answer={answer}
                       deleteAnswer={deleteAnswer}
-                    />
+                    /> */}
+                  
                   </div>
                 </div>
               ))
             ) : (
-              <></>
+              <>
+  
+              </>
             )}
           </div>
         </div>

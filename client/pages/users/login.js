@@ -3,7 +3,6 @@ import Google from "../../components/social/GoogleLogin";
 import Github2 from "../../components/social/Github2";
 import { useRouter } from "next/router";
 import { useState } from "react";
-
 export default function Login() {
   const [userEmail, setUserEmail] = useState("");
   const [userEmailReg, setUserEmailReg] = useState(true);

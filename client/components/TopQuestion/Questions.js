@@ -6,17 +6,20 @@ import TopHeader from "./TopHeader";
 
 
 export default function Questions() {
-  // const [movies, setMovies] = useState([])
-  // useEffect(()=> {
-  //   (async () => {
-  //    const {results} = await (
-  //     await fetch('/api/movies'
-  //     )
-  //     ).json()
-  //     setMovies(results)
-  //   })()
-  // }, [])
-  
+
+  const [question, setQuestion] = useState([])
+
+  useEffect(()=> {
+    (async () => {
+     const {data} = await (
+      await fetch(
+        `http://54.180.175.144:8080/post?page=1&size=30`
+      )
+      ).json()
+     setQuestion(data)
+    })()
+  }, [])
+
 
   return (
     <div className="top_mainbar">
@@ -28,8 +31,9 @@ export default function Questions() {
       <div id="qlist-wrapper" className="flush-left">
         <div id="question-mini-list">
           <div>
-            {agoraStatesDiscussions.map(tweet => (
-              <div key={tweet.id} className="post-main">
+            
+            { question.map(tweet => (
+              <div key={tweet.postId} className="post-main">
                 {/* 투표수, 답변수, views 일단 하드코딩  */}
                 <div className="votes-status">
                   <div className="votes-list vote">
@@ -51,7 +55,7 @@ export default function Questions() {
                   <h3 className="post-title">
                     <Link
                       href={{
-                        pathname: `/questions/${tweet.id}`,
+                        pathname: `/questions/${tweet.postId}`,
                       }}
                     >
                       <a className="post-link">{tweet.title}</a>
@@ -60,16 +64,14 @@ export default function Questions() {
                   {/* 태그, 작성자 */}
                   <div className="post-meta">
                     <div className="post-tags">
-                      <Link href="">
-                        <a className="tags">tags</a>
-                      </Link>
+                    
                     </div>
                     <div className="usercard">
                       <div className="human_img">
                         <img src="/human.png" width={15} height={15}></img>
                       </div>
                       {tweet.author}
-                      <div className="asked">1,339 asked 52 secs ago</div>
+                      <div className="asked">{new Date(tweet.createdAt).toLocaleString()}</div>
                     </div>
                   </div>
                 </div>

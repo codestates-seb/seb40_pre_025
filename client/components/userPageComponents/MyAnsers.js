@@ -12,16 +12,13 @@ export default function MyAnsers() {
       result.push(
         <div
           key={i}
-          className={Number(crrentPage) === i ? "pageNav creetPage" : "pageNav"}
+          className="pageNav"
           onClick={(e) => {
             setCrrentPage(e.target.innerText);
           }}
         >
           <span>{i}</span>
           <style jsx>{`
-            .creetPage {
-              background-color: #8080805f;
-            }
             .pageNav {
               display: flex;
               justify-content: center;
@@ -77,7 +74,6 @@ export default function MyAnsers() {
           flex-direction: column;
           justify-content: start;
           height: 450px;
-          width: 80%;
         }
         #null {
           margin-top: 40px;
