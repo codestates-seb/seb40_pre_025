@@ -1,5 +1,6 @@
 package preproject.stack.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.Setter;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import preproject.stack.answer.entity.Answer;
+import preproject.stack.audit.TimestampedUser;
 import preproject.stack.post.entity.Post;
 
 
@@ -21,7 +23,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User extends TimestampedUser {
 
     @Id @GeneratedValue
     private Long userId;
@@ -32,11 +34,12 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Answer> answers = new ArrayList<>();
 
-    private String userName;
-    private String email;
-
     @Column(length = 100)
     private String password;
+
+    private String about;
+    private String userName;
+    private String email;
 
 
     @ElementCollection(fetch = FetchType.EAGER)

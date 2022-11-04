@@ -10,7 +10,10 @@ import preproject.stack.exception.BusinessLogicException;
 import preproject.stack.exception.ExceptionCode;
 import preproject.stack.post.entity.Post;
 import preproject.stack.post.repository.PostRepository;
+import preproject.stack.user.entity.User;
+import preproject.stack.user.repository.UserRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,8 +22,12 @@ import java.util.Optional;
 public class PostService {
 
     private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
-    public Post createPost(Post post) {
+    public Post createPost(Post post,long userId) {
+        User findUser = userRepository.findByUserId(userId);
+        post.setUser(findUser);
+
         return postRepository.save(post);
     }
 
@@ -40,6 +47,10 @@ public class PostService {
         Post findPost = findVerifiedPost(postId);
         return findPost;
     }
+    public Page<Post> findUserPosts(long userId,int page, int size){
+        return postRepository.findByUser(userId,PageRequest.of(page,size,Sort.by("postId").descending()));
+
+    }
 
     public Page<Post> findPosts(int page, int size) {
         return postRepository.findAll(PageRequest.of(page, size,
@@ -56,5 +67,7 @@ public class PostService {
         Post post = optionalPost.orElseThrow(() -> new BusinessLogicException(ExceptionCode.POST_NOT_FOUND));
         return post;
     }
+
+
 
 }

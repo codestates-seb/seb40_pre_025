@@ -11,7 +11,7 @@ import preproject.stack.user.entity.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-10-28T15:36:45+0900",
+    date = "2022-11-03T17:37:16+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.14 (Oracle Corporation)"
 )
 @Component
@@ -25,6 +25,10 @@ public class UserMapperImpl implements UserMapper {
 
         User user = new User();
 
+        user.setCreatedAt( userPostDto.getCreatedAt() );
+        user.setModifiedAt( userPostDto.getModifiedAt() );
+        user.setPassword( userPostDto.getPassword() );
+        user.setAbout( userPostDto.getAbout() );
         user.setUserName( userPostDto.getUserName() );
         user.setEmail( userPostDto.getEmail() );
 
@@ -39,7 +43,10 @@ public class UserMapperImpl implements UserMapper {
 
         User user = new User();
 
+        user.setCreatedAt( userPatchDto.getCreatedAt() );
+        user.setModifiedAt( userPatchDto.getModifiedAt() );
         user.setUserId( userPatchDto.getUserId() );
+        user.setAbout( userPatchDto.getAbout() );
         user.setUserName( userPatchDto.getUserName() );
         user.setEmail( userPatchDto.getEmail() );
 
@@ -59,6 +66,9 @@ public class UserMapperImpl implements UserMapper {
         }
         userResponseDto.setEmail( user.getEmail() );
         userResponseDto.setUserName( user.getUserName() );
+        userResponseDto.setAbout( user.getAbout() );
+        userResponseDto.setCreatedAt( user.getCreatedAt() );
+        userResponseDto.setModifiedAt( user.getModifiedAt() );
 
         return userResponseDto;
     }

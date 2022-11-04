@@ -9,6 +9,8 @@ public enum ExceptionCode {
     USER_EXIST(409, "USER EXIST"),
 
 
+    ANSWER_NOT_FOUND(404,"ANSWER_NOT_FOUND"),
+
     TAG_NOT_FOUND(404,"TAG NOT FOUND"),
     POST_NOT_FOUND(404,"POST NOT FOUND");
     @Getter

@@ -44,6 +44,8 @@ public class UserService {
 
         Optional.ofNullable(user.getUserName())
                 .ifPresent(userName -> findUser.setUserName(userName));
+        Optional.ofNullable(user.getAbout())
+                .ifPresent(about -> findUser.setAbout(about));
         return userRepository.save(findUser);
     }
 
@@ -51,6 +53,10 @@ public class UserService {
     public User findUser(long userId) {
         return findVerifiedUser(userId);
 
+    }
+
+    public User findUserName(String username){
+        return userRepository.findByUserName(username);
     }
 
     //전체 유저 조회 기능
