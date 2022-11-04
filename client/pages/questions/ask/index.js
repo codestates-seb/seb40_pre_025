@@ -21,11 +21,9 @@ export default function Ask() {
               <AskContent/>
               
                 {/* 태그 달수 있는 곳 */}
-              
-                {/* 버튼부분  */}
-                <SubmissionBtn
+            
                 
-                />
+                
               </main>
             </form>
         </div>

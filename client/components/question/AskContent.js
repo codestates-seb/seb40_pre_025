@@ -1,10 +1,48 @@
-import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react'
 
 export default function AskContent() {
+  const router = useRouter();
+
+  const [title, setTitle] = useState('')
+  const [body, setBody] = useState('')
+
+  
+  const handleSubmit = (e) => {
+    console.log("안녕")
+    e.preventDefault();
+    const data = {
+      title: title,
+      body: body
+    }
+    console.log(data)
+
+  fetch(`/post/50`, {
+    method: "POST",
+    headers: {"Content-Type" : "application/json"},
+    body: JSON.stringify(data)
+  })
+  .then((res) => {
+    console.log(res)
+    // router.push("/")
+
+    // window.location.reload();
+  })
+  .catch((error)=> {
+    console.log('Error', error)
+  })
+
+  }
+
+ 
 
 
   return (
     <>
+    
+  <form onSubmit={handleSubmit}>
     <div className='title'>
     {/* Title 글씨 */}
   <div className='title-box'>
@@ -16,7 +54,7 @@ export default function AskContent() {
             <div className='title-detail'>
               <div>
                 <label className='detail-label'>
-                Be specific and imagine you’re asking a question to another person..
+                Be specific and imagine you’re asking a question to another person.
                 </label>
               </div>
 
@@ -27,7 +65,11 @@ export default function AskContent() {
            <input 
            className='title-input'
            type="text"
-           placeholder='e.g. Is there an R function for finding the index of an element in a vector?'></input>
+           placeholder='e.g. Is there an R function for finding the index of an element in a vector?'
+           value={title}
+           onChange={(e)=> setTitle(e.target.value)
+          }
+           ></input>
        </div>
      </div>
 
@@ -62,7 +104,7 @@ export default function AskContent() {
             {/* problem 제목 */}
               <div className='problem-title'>
                 <label className='title-name'>
-                What are the details of your problem??
+                What are the details of your problem?
                 <p className='problem-p'>
                 Introduce the problem and expand on what you put in the title. Minimum 20 characters.
                 </p>
@@ -70,7 +112,13 @@ export default function AskContent() {
                 </div>
               {/* problem 내용  */}
               <div className='problem-body-box'>
-              <textarea className='problem-body' placeholder='여기에 문제를 써주세요.'>
+              <textarea 
+              className='problem-body' 
+              placeholder='여기에 문제를 써주세요.'
+              value={body}
+              onChange={(e)=> setBody(e.target.value)}
+              >
+                
                 </textarea>
               </div>
           </div>
@@ -78,6 +126,28 @@ export default function AskContent() {
       </div>
     </div>
     </div>
+    
+        {/* 제출버튼 */}
+        <div className='button-box'>
+            <div className='button-list'>
+                <div className='reviewbtn'>
+                
+              <button 
+              type='submit'
+              className='s-btn nextbtn'
+              >
+                Review your queston
+                </button>
+              
+              </div>
+              <div className='reviewbtn'>
+                <Link href="/">
+              <a className='s-btn draftbtn'>Discard draft</a>
+              </Link>
+              </div>
+            </div>
+          </div>
+        </form>
 
   <style jsx>{`
 
@@ -198,7 +268,7 @@ export default function AskContent() {
       margin-bottom: -4%;
 
     }
-    img {
+    .writing-img {
    display: none;
   }
 
@@ -213,6 +283,7 @@ export default function AskContent() {
   }
 
   }
+
   .problem-box {
         border: 1px solid #e3e6e8;
         background-color: white;
@@ -306,7 +377,93 @@ export default function AskContent() {
             width: 90%;
           }
         }
+        .button-box{ 
+        margin-bottom: 5%;
+        margin-top: 4%;
+        display: flex;
+        flex-direction: column;
+        margin-left: 3%;
+        width: 100%;
       
+        }
+        .button-list {
+            display: flex;
+            width: 100%;
+        }
+        .nextbtn{
+            color: #ffffff;
+            background-color: #0a95ff;
+            box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
+            width: 13vw;
+            flex-basis: auto;
+            font-size: 0.9rem;
+            border-radius: 0.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+           outline: 0;
+           padding: 5%;
+           text-decoration: none;
+           cursor: pointer;    
+         
+
+        }
+        .nextbtn:hover{
+          background-color: #77c0f8;
+          transition: 0.5s;
+        }
+        .draftbtn{
+            color: #c22e32;
+            background-color: #00000000;
+            box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
+            width: 13vw;
+            margin-left: 25%;
+            font-size: 0.9rem;
+            border-radius: 0.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+           outline: 0;
+           padding: 5%;
+           text-decoration: none;
+            cursor: pointer;
+        }
+        .draftbtn:hover{
+          background-color: rgb(253, 238, 238);
+          transition: 0.5s;
+        }
+        @media screen and (max-width: 1280px)  {
+          .nextbtn, .draftbtn{
+            width: 17vw;
+          }
+          
+        }
+        @media screen and (max-width: 900px)  {
+          .nextbtn{
+            width: 22vw;
+          }
+          
+          .draftbtn{
+            width: 17vw;
+
+          }
+         
+          
+        }
+        @media screen and (max-width: 700px)  {
+          .nextbtn{
+            width: 29vw;
+          }
+          
+          .draftbtn{
+            width: 17vw;
+
+          }
+         
+          
+        }
 
     `}</style>
   </>
