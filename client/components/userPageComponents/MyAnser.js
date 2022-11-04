@@ -12,6 +12,14 @@ export default function MyAnser({ data }) {
           <Link href={"/questions/123123"}>
             <a>{data.body}</a>
           </Link>
+
+          <div className="d-flex">
+            <img src="/human.png" width={15} height={15}></img>
+            <Link href={""}>
+              <a className="userName">{data.author}</a>
+            </Link>
+            <div className="asked">1,339 asked 52 secs ago</div>
+          </div>
         </div>
       </div>
       <style jsx>{`
@@ -87,6 +95,7 @@ export default function MyAnser({ data }) {
           border-radius: 2px;
         }
         .content {
+          width: 100%;
           text-align: left;
           font-weight: 500;
           margin-bottom: 1rem;

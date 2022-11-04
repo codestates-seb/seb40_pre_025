@@ -1,18 +1,41 @@
 import Link from "next/link";
 import Google from "../../components/social/GoogleLogin";
 import Github2 from "../../components/social/Github2";
+import { useCookies } from "react-cookie";
+import { useRouter } from "next/router";
 import { useState } from "react";
 export default function Login() {
+  const [cookies, setCookie, removeToken] = useCookies(["name"]);
   const [userEmail, setUserEmail] = useState("");
   const [userEmailReg, setUserEmailReg] = useState(true);
   const [userPw, setUserPw] = useState("");
   const [userPwReg, setUserPwReg] = useState(true);
   const emailReg = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+  const router = useRouter();
   const validation = () => {
     emailReg.test(userEmail) ? setUserEmailReg(true) : setUserEmailReg(false);
     userPw.length > 0 ? setUserPwReg(true) : setUserPwReg(false);
     if (emailReg.test(userEmail) & (userPw.length > 0)) {
-      alert("로그인 요청");
+      const body = {
+        email: userEmail,
+        password: userPw,
+      };
+      fetch("/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+        credentials: "include",
+      })
+        .then((res) => {
+          //if(res.status===403){fetch(url?,헤더에 리프레쉬 토큰).
+          //then((rec)=>{setCookie("accessToken", res.headers.get("authorization")})
+          //.then(()=>fetch(원래 하려던 요청~)))}
+
+          setCookie("refreshToken", res.headers.get("refresh"));
+          setCookie("accessToken", res.headers.get("authorization"));
+        })
+        // .then(() => router.push("../../"))
+        .catch((err) => console.log(err));
     }
   };
   const handleClickSignUp = (e) => {
