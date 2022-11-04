@@ -2,14 +2,13 @@ import { useState, useEffect } from "react";
 import MyAnser from "./MyAnser";
 export default function MyAnsers() {
   const [myAnsers, setMyAnsers] = useState({
-    data: [],
-    pageInfo: { totalPages: 1 },
+    data: { answers: { data: [], pageInfo: { totalPages: 1 } } },
   });
   const [crrentPage, setCrrentPage] = useState(1);
   const pageNavRender = () => {
     const result = [];
 
-    for (let i = 1; i <= myAnsers.pageInfo.totalPages; i++) {
+    for (let i = 1; i <= myAnsers.data.answers.pageInfo.totalPages; i++) {
       result.push(
         <div
           key={i}
@@ -44,10 +43,10 @@ export default function MyAnsers() {
   };
   useEffect(() => {
     const headers = new Headers({
-      "Content-Type": "text/xml",
+      Authorization: localStorage.getItem("accessToken"),
     });
     fetch(
-      `http://54.180.175.144:8080/answer/user/1?page=${crrentPage}&size=5`,
+      `/answer/user/${localStorage.getItem("user")}?page=${crrentPage}&size=4`,
       {
         headers,
       }
@@ -59,10 +58,10 @@ export default function MyAnsers() {
   return (
     <div className="MyAnsers">
       <div>
-        {myAnsers.data === 0 ? (
+        {myAnsers.data.answers.data.length === 0 ? (
           <div id="null">답변한 내역이 없습니다.</div>
         ) : (
-          myAnsers.data.map((data) => {
+          myAnsers.data.answers.data.map((data) => {
             return <MyAnser key={data.answerId} data={data}></MyAnser>;
           })
         )}

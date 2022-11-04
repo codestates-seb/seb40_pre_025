@@ -1,9 +1,11 @@
 import { useState, useRef } from "react";
+import { useRouter } from "next/router";
 import SubTap from "./subTap";
 export default function saves_qustions() {
   const fileInputRef = useRef(null);
-
+  const router = useRouter();
   const [aboutText, setAboutText] = useState("");
+  const [userName, setUserName] = useState("");
   let files = "";
 
   const handleClickFileInput = (e) => {
@@ -15,11 +17,33 @@ export default function saves_qustions() {
   };
 
   const handleClickSubmit = () => {
-    const fd = new FormData();
-    fd.append("file", files[0]);
-    for (let key of fd.values()) {
-      console.log(key);
-    }
+    // const fd = new FormData();
+    // fd.append("file", files[0]);
+    // for (let key of fd.values()) {
+    //   console.log(key);
+    // }
+
+    const body =
+      userName.length === 0
+        ? {
+            about: aboutText,
+          }
+        : aboutText.length === 0
+        ? {
+            userName: userName,
+          }
+        : {
+            userName: userName,
+            about: aboutText,
+          };
+    fetch(`/user/${localStorage.getItem("user")}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+      .then(() => router.push("../profile"))
+      .then(() => location.reload())
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -53,7 +77,11 @@ export default function saves_qustions() {
             <label className="lable" form="email">
               Dispaly name
             </label>
-            <input className="input"></input>
+            <input
+              className="input"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            ></input>
           </div>
           <div className="editorbox">
             <div className="lable">About</div>
@@ -64,7 +92,6 @@ export default function saves_qustions() {
                 onChange={(e) => setAboutText(e.target.value)}
               />
             </div>
-            <div>{aboutText}</div>
           </div>
           <div className="btnBox">
             <button className="saveBtn" onClick={handleClickSubmit}>
