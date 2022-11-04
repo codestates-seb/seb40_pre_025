@@ -1,18 +1,16 @@
 import Link from "next/link";
 import Google from "../../components/social/GoogleLogin";
 import Github2 from "../../components/social/Github2";
-import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
 import { useState } from "react";
-
 export default function Login() {
-  const [cookies, setCookie, removeToken] = useCookies();
   const [userEmail, setUserEmail] = useState("");
   const [userEmailReg, setUserEmailReg] = useState(true);
   const [userPw, setUserPw] = useState("");
   const [userPwReg, setUserPwReg] = useState(true);
   const emailReg = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
   const router = useRouter();
+
   const validation = () => {
     emailReg.test(userEmail) ? setUserEmailReg(true) : setUserEmailReg(false);
     userPw.length > 0 ? setUserPwReg(true) : setUserPwReg(false);
@@ -32,13 +30,17 @@ export default function Login() {
           if (res.status === 401) {
             alert("등록된 회원이 아닙니다.");
           }
-          //if(res.status===403){fetch(url?,헤더에 리프레쉬 토큰).
-          //then((rec)=>{setCookie("accessToken", res.headers.get("authorization")})
-          //.then(()=>fetch(원래 하려던 요청~)))}
-          setCookie("refreshToken", res.headers.get("refresh"));
-          setCookie("accessToken", res.headers.get("authorization"));
+          localStorage.setItem("accessToken", res.headers.get("authorization"));
+          const base64Payload = localStorage
+            .getItem("accessToken")
+            .split(".")[1];
+          const payload = Buffer.from(base64Payload, "base64");
+          const result = payload.toString();
+
+          const userID = JSON.parse(result).userId;
+          localStorage.setItem("user", userID);
         })
-        // .then(() => router.push("../../"))
+        .then(() => router.push("../../"))
         .catch((err) => console.log(err));
     }
   };
@@ -46,6 +48,7 @@ export default function Login() {
     e.preventDefault();
     validation();
   };
+
   return (
     <div id="loginBox" className="flexItem">
       <div className="ta-center">
