@@ -13,13 +13,10 @@ export default function MyAnser({ data }) {
           <Link href={"/questions/123123"}>
             <a>{data.body}</a>
           </Link>
-<<<<<<<<< Temporary merge branch 1
-=========
 
           <div className="d-flex">
             <div className="createdAt">{`${data.createdAt.date.year}.${data.createdAt.date.month}.${data.createdAt.date.day}`}</div>
           </div>
->>>>>>>>> Temporary merge branch 2
         </div>
       </div>
       <style jsx>{`
