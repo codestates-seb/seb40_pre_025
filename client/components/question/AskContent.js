@@ -12,39 +12,57 @@ export default function AskContent() {
   const [body, setBody] = useState('')
 
   
+
+
   const handleSubmit = (e) => {
     console.log("안녕")
     e.preventDefault();
+
     const data = {
       title: title,
       body: body
     }
     console.log(data)
 
-  fetch(`/post/50`, {
-    method: "POST",
-    headers: {"Content-Type" : "application/json"},
-    body: JSON.stringify(data)
-  })
-  .then((res) => {
-    console.log(res)
-    // router.push("/")
+  // fetch(`/post/52`, {
+  //   method: "POST",
+  //   headers: {"Content-Type" : "application/json"},
+  //   body: JSON.stringify(data)
+  // })
+  // .then((res) => {
+  //   console.log(res)
+  //   // router.push("/")
+  // })
+  // .catch((error)=> {
+  //   console.log('Error', error)
+  // })
 
+  useEffect(()=> {
+    (async () => {
+     const {data} = await (
+      await fetch(
+        `/post/52`, {
+              method: "POST",
+              headers: {"Content-Type" : "application/json"},
+              body: JSON.stringify(data)
+        }
+      )
+      ).json()
+    console.log(data)
+    })()
+  }, [])
 
-  })
-  .catch((error)=> {
-    console.log('Error', error)
-  })
 
   }
 
+  
  
 
 
   return (
     
     <div>
-  <div onSubmit={handleSubmit}>
+  <div method="post">
     <div className='title'>
     {/* Title 글씨 */}
   <div className='title-box'>
@@ -137,6 +155,7 @@ export default function AskContent() {
               <button 
               type='submit'
               className='s-btn nextbtn'
+              onSubmit={handleSubmit}
               >
                 Review your queston
                 </button>

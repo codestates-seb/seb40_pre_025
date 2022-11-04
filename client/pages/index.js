@@ -1,6 +1,6 @@
 import TopQuestions from "../components/TopQuestion/TopQuestions";
-
-import { useEffect, useState } from "react";
+import TeamMemberFe from "../components/TeamMemberFe";
+import TeamMemberBe from "../components/TeamMemberBe";
 
 export default function Home() {
  
@@ -8,7 +8,7 @@ export default function Home() {
     <>
     {/* <TeamMemberFe />
     <TeamMemberBe /> */}
-      <TopQuestions/>
+      <TopQuestions />
     </>
   );
 }
