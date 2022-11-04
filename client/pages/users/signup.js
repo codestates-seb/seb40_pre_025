@@ -107,10 +107,10 @@ export default function SignUp() {
       <div id="flexItem" className="margin-T">
         <div className="socialLogin">
           <div className="socialLoginBtn">
-            <Google />
+            {/* <Google /> */}
           </div>
           <div className="socialLoginBtn">
-            <Github />
+            {/* <Github /> */}
           </div>
         </div>
         <div className="formContainer">
