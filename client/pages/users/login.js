@@ -1,10 +1,7 @@
 import Link from "next/link";
 import Google from "../../components/social/GoogleLogin";
 import Github2 from "../../components/social/Github2";
-<<<<<<< HEAD
 import { useRouter } from "next/router";
-=======
->>>>>>> 6024a6593e5c201f36ee7d1010f4a68168a01e55
 import { useState } from "react";
 export default function Login() {
   const [userEmail, setUserEmail] = useState("");
@@ -12,16 +9,12 @@ export default function Login() {
   const [userPw, setUserPw] = useState("");
   const [userPwReg, setUserPwReg] = useState(true);
   const emailReg = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
-<<<<<<< HEAD
   const router = useRouter();
 
-=======
->>>>>>> 6024a6593e5c201f36ee7d1010f4a68168a01e55
   const validation = () => {
     emailReg.test(userEmail) ? setUserEmailReg(true) : setUserEmailReg(false);
     userPw.length > 0 ? setUserPwReg(true) : setUserPwReg(false);
     if (emailReg.test(userEmail) & (userPw.length > 0)) {
-<<<<<<< HEAD
       const body = {
         email: userEmail,
         password: userPw,
@@ -49,9 +42,6 @@ export default function Login() {
         })
         .then(() => router.push("../../"))
         .catch((err) => console.log(err));
-=======
-      alert("로그인 요청");
->>>>>>> 6024a6593e5c201f36ee7d1010f4a68168a01e55
     }
   };
   const handleClickSignUp = (e) => {

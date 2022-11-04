@@ -13,13 +13,10 @@ export default function MyAnser({ data }) {
           <Link href={"/questions/123123"}>
             <a>{data.body}</a>
           </Link>
-<<<<<<< HEAD
 
           <div className="d-flex">
             <div className="createdAt">{`${data.createdAt.date.year}.${data.createdAt.date.month}.${data.createdAt.date.day}`}</div>
           </div>
-=======
->>>>>>> 6024a6593e5c201f36ee7d1010f4a68168a01e55
         </div>
       </div>
       <style jsx>{`
