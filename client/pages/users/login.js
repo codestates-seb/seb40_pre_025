@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function Login() {
-  const [cookies, setCookie, removeToken] = useCookies(["name"]);
+  const [cookies, setCookie, removeToken] = useCookies();
   const [userEmail, setUserEmail] = useState("");
   const [userEmailReg, setUserEmailReg] = useState(true);
   const [userPw, setUserPw] = useState("");
@@ -28,10 +28,13 @@ export default function Login() {
         credentials: "include",
       })
         .then((res) => {
+          console.log(res);
+          if (res.status === 401) {
+            alert("등록된 회원이 아닙니다.");
+          }
           //if(res.status===403){fetch(url?,헤더에 리프레쉬 토큰).
           //then((rec)=>{setCookie("accessToken", res.headers.get("authorization")})
           //.then(()=>fetch(원래 하려던 요청~)))}
-
           setCookie("refreshToken", res.headers.get("refresh"));
           setCookie("accessToken", res.headers.get("authorization"));
         })
