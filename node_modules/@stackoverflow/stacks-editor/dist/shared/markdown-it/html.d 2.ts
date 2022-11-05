@@ -1,0 +1,6 @@
+import MarkdownIt from "markdown-it";
+/**
+ * Parses and sanitizes all supported html_block and html_inline tokens
+ * @param md
+ */
+export declare function html(md: MarkdownIt): void;

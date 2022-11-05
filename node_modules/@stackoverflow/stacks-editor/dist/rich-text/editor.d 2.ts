@@ -1,0 +1,20 @@
+import { Node as ProseMirrorNode } from "prosemirror-model";
+import { BaseView, CommonViewOptions } from "../shared/view";
+import { LinkPreviewProvider } from "./plugins/link-preview";
+import { IExternalPluginProvider } from "../shared/editor-plugin";
+export interface RichTextOptions extends CommonViewOptions {
+    /** Array of LinkPreviewProviders to handle specific link preview urls */
+    linkPreviewProviders?: LinkPreviewProvider[];
+    codeblockOverrideLanguage?: string;
+}
+export declare class RichTextEditor extends BaseView {
+    private options;
+    private markdownSerializer;
+    private markdownParser;
+    private finalizedSchema;
+    private externalPluginProvider;
+    constructor(target: Node, content: string, pluginProvider: IExternalPluginProvider, options?: RichTextOptions);
+    static get defaultOptions(): RichTextOptions;
+    parseContent(content: string): ProseMirrorNode;
+    serializeContent(): string;
+}

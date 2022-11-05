@@ -1,0 +1,7 @@
+import { Node as ProsemirrorNode } from "prosemirror-model";
+import { NodeView } from "prosemirror-view";
+import { TagLinkOptions } from "../../shared/view";
+export declare class TagLink implements NodeView {
+    dom: HTMLElement | null;
+    constructor(node: ProsemirrorNode, options: TagLinkOptions);
+}
