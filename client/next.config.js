@@ -26,12 +26,16 @@ module.exports = {
         destination: "http://54.180.175.144:8080/post/:path",
       },
       {
+        source: "/answer/:path",
+        destination: "http://54.180.175.144:8080/answer/:path",
+      },
+      {
         source: "/answer/user/:path",
         destination: "http://54.180.175.144:8080/answer/user/:path",
       },
       {
-        source: "/auth/login",
-        destination: "http://54.180.175.144:8080/answer/auth/login",
+        source: "/auth/:path",
+        destination: "http://54.180.175.144:8080/answer/auth/:path",
       },
     ];
   },
