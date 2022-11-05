@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 
 export default function user() {
   const [user, setUser] = useState();
-  console.log(user)
   const [currentPage, setCurrentPage] = useState(1);
   const pageNavRender = () => {
     const result = [];

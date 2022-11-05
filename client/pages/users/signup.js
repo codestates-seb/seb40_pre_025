@@ -1,5 +1,5 @@
-import Github from "../../components/social/Github";
-import Google from "../../components/social/GoogleLogin";
+// import Github from "../../components/social/Github";
+// import Google from "../../components/social/GoogleLogin";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -35,11 +35,22 @@ export default function SignUp() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       })
-        .then(() => router.push("./login"))
+        .then((res) => {
+          if (res.status === 409) {
+            alert("이미 등록된 이메일 입니다.");
+            return false;
+          }
+          return true;
+        })
+        .then((ok) => {
+          if (ok) {
+            router.push("./login");
+          }
+        })
         .catch((err) => console.log(err));
     }
   };
-
+  //router.push("./login")
   const handleClickSignUp = (e) => {
     e.preventDefault();
     validation();
@@ -106,12 +117,8 @@ export default function SignUp() {
       </div>
       <div id="flexItem" className="margin-T">
         <div className="socialLogin">
-          <div className="socialLoginBtn">
-            <Google />
-          </div>
-          <div className="socialLoginBtn">
-            <Github />
-          </div>
+          <div className="socialLoginBtn">{/* <Google /> */}</div>
+          <div className="socialLoginBtn">{/* <Github /> */}</div>
         </div>
         <div className="formContainer">
           <form id="login-form" className="d-flex fd-column">
