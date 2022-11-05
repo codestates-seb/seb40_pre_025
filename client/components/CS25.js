@@ -6,9 +6,17 @@ export default function CS25() {
       <div className='masthead-image' id='master-container'>
         <div className='content center'>
             <h1 id='master'>
-                <div> Introducing </div>
-                 <div>  our pre-project.</div>
-                <div> One of members is</div>
+                <div className='content-text'>
+                  <div> Introducing </div>
+                 <div> our pre-project.</div>
+                 </div>
+                 <div className='content-text'>
+  
+                <div> One of our members</div>
+                    <div>is</div>
+                 </div>
+                    
+                    
 
                 <div id='master-container-scroller'>
                     <div className='master-container-scroller_item'>
@@ -37,7 +45,10 @@ export default function CS25() {
                     </div>
    
                 </div>
+                <div className='content-text'>
                 <div>Nice to see you</div>
+                </div>
+
             </h1>
 
         </div>
@@ -65,6 +76,13 @@ export default function CS25() {
         }
         .content {
             display: flex;
+        }
+        .content-text{
+            margin-bottom: 3%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
         }
         #master-container {
      -webkit-animation: master-container-bg 15s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
@@ -239,7 +257,7 @@ export default function CS25() {
           -webkit-transform: translateY(-132px);
           transform: translateY(-132px)
       }
-      40% {
+      41% {
           -webkit-transform: translateY(-198px);
           transform: translateY(-198px)
       }
