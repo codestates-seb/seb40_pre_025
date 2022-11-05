@@ -18,33 +18,23 @@ export default function AskContent() {
     };
     console.log(data);
 
-    ///post/${localStorage.getItem("user")}
+    // /post/${localStorage.getItem("user")}
 
-    fetch(`/post/52`, {
+    fetch(`/post/${localStorage.getItem("user")}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((res) => {
         console.log(res);
-        // router.push("/")
+        location.reload()
+        router.push("/")
+
       })
       .catch((error) => {
         console.log("Error", error);
       });
 
-    // useEffect(() => {
-    //   (async () => {
-    //     const { data } = await (
-    //       await fetch(`/post/52`, {
-    //         method: "POST",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify(data),
-    //       })
-    //     ).json();
-    //     console.log(data);
-    //   })();
-    // }, []);
   };
 
   return (

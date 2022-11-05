@@ -19,7 +19,7 @@ const Header = () => {
             </li>
             <li>
               <a href="">
-                <input type="text" placeholder="  🔍 Search..." onClick="" />
+                <input type="text" placeholder="  🔍 Search..." />
               </a>
             </li>
             <li>
@@ -35,14 +35,14 @@ const Header = () => {
           </ul>
           <style jsx>
             {`
-            .nav{
-              background: blue;
-              justify-content: center;
-            }
-            .navbar__menu{
-              flex-direction: center;
-              border: 1px solid red;
-            }
+              .nav {
+                background: blue;
+                justify-content: center;
+              }
+              .navbar__menu {
+                flex-direction: center;
+                border: 1px solid red;
+              }
               Image :hover {
                 background: rgb(221, 224, 227);
               }

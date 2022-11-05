@@ -1,5 +1,6 @@
 import Link from "next/link";
 import UserIdLayout from "./User_Id_Layout";
+import { useState, useEffect } from "react";
 export default function profile() {
   const [anserCount, setAnserCount] = useState(0);
   const [qustionCount, setQustionCount] = useState(0);
@@ -36,7 +37,7 @@ export default function profile() {
             <label className="lable">Stats</label>
             <div className="statsBox">
               <div className="state">
-                <div className="color-B">1</div>answers
+                <div className="color-B">{anserCount}</div>answers
               </div>
               <div className="state">
                 <div className="color-B">{qustionCount}</div>qustions
