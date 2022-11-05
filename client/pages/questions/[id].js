@@ -1,60 +1,42 @@
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react'
+import { changeInputAction, resetInputAction, } from "../../reducers/answerReducer";
 import { useDispatch, useSelector } from "react-redux";
 
-import { changeInputAction, resetInputAction } from "../../reducers/answerReducer";
-import dummydata from "../../static/dummydata";
+export default function answer() {
+    const [question, setQuestion] = useState([])
+    const [answer, setAnswer] = useState([])
 
-export default function AskDetail() {
-  // state
-  // useRouter이용해서 페이지[id]값 추출
-  const {
-    query: { id },
-  } = useRouter();
+    const [isEdit, setIsEdit] = useState(false);
+    const [value, setValue] = useState([]);
+    
 
-  const [admit, setAdmit] = useState([]);
-  const [contents, setContents] = useState({});
-  const [answers, setAnswers] = useState({
-    answers: [],
-  });
-  const [answerId, setAnswerId] = useState("");
-  const [userInput, setUserInput] = useState("");
-  const [question, setQuestion] = useState([]);
+    const router = useRouter();
+    const {id} = router.query
+    
 
-  //redux
-  const dispatch = useDispatch();
-  const { value } = useSelector((state) => state.anwserReducer);
-
-  //router
-  const router = useRouter();
-
-  // 리덕스 이용해서 답글 내용 저장
-  const onChangeTextarea = (e) => {
-    dispatch(changeInputAction(e.target.value));
-  };
-
-  // 답글 추가히기
-  const postAnswer = (userInput) => {
-    // 댓글이
-    async function postUserInput() {
-      const response = await fetch(`https://54.180.175.144:8080/answer/2/${id}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          body: userInput,
-        }),
+     // state
+      const [admit, setAdmit] = useState([]);
+      const [contents, setContents] = useState({});
+      const [answers, setAnswers] = useState({
+        answers: [],
       });
-      //answerId 상태로 저장(delete에서 사용하기 위해)
-      const {
-        data: { answerId },
-      } = response.json();
-      setAnswerId(answerId);
-    }
-    postUserInput();
 
-    setAnswers((prev) => ({
+      //redux
+      const dispatch = useDispatch();
+      
+
+
+      // 리덕스 이용해서 답글 내용 저장
+      const onChangeTextarea = e => {
+        dispatch(changeInputAction(e.target.value));
+      };
+
+     // 답글 추가히기
+    const postAnswer = e => {
+    setAnswers(prev => ({
       ...prev,
-      answers: [...prev.answers, userInput],
+      answers: [...prev.answers, e],
     }));
 
     // 답글 추가하고 textarea글 비워주기
@@ -62,253 +44,146 @@ export default function AskDetail() {
   };
 
   // 답글 삭제하기
-  const deleteAnswer = (answerId, index) => {
-    async function deleteAns() {
-      const response = await fetch(`http://54.180.175.144:8080/answer/${answerId}`, {
-        method: "DELETE",
-      });
-    }
-    deleteAns();
-
-    // 댓글 삭제 요청 후 상태도 같이 변경
-    setAnswers((prev) => {
+  const deleteAnswer = index => {
+    setAnswers(prev => {
       answers.answers.splice(index, 1);
+
       return {
         ...prev,
         answers: answers.answers,
       };
     });
   };
-  useEffect(() => {
-    const data = dummydata.filter((dummy) => dummy.id === router.query.id);
-    setContents(data[0]);
-  }, [router]);
+ //get 
+    useEffect(()=> {
+        (async () => {
+         const {data} = await (
+          await fetch(
+            `http://54.180.175.144:8080/post/${id}?page=1&size=5`
+          )
+          ).json()
+          setQuestion(data)
+          const [obj] = data.answers.data
 
-  // 구현하는중....
-  useEffect(() => {
-    async function request() {
-      const response = await fetch(`http://54.180.175.144:8080/post/${id}?page=1&size=3`, {
-        method: "GET",
-      });
-      const data = await response.json();
-      setQuestion(data.data);
-      const answerBody = data.data.answers.data.length ? data.data.answers.data.body : null;
+          setAnswer(obj)
+          // console.log(obj.body)
+          // console.log("body" in data)
+        })()
+      }, [])
 
-      // 댓글이 없으면 저장하지 않음
-      if (answerBody) {
-        // 댓글을 answer에 저장
-        setAnswers((prev) => ({
-          ...prev,
-          answers: [...prev.answers, ...answerBody],
-        }));
-      }
-    }
-    request();
-  }, []);
+        const onClickAddAnswer=()=>{
+          let body = {
+            body: body,
+            userId: localStorage.getItem("user")} 
+           fetch(`http://54.180.175.144:8080/answer/${localStorage.getItem("user")}/${id}`, {
+                  method: "POST",
+                  headers : new Headers({   "Content-Type": "text/xml" }),
+                  body: JSON.stringify(body),
+                
+                 })
+                .then((response) => {
+                  console.log(response)
+                  location.reload()
+                })
+
+        }
+       
 
   return (
-    <>
-      <div className="answermaincontainer">
-        <div>
-          <h1 className="questionTitle">{question.title}</h1>
-          <div className="qusetionInfoContainer">
-            <div className="sub-c">
-              <span className="fc-light">Asked</span>
-            </div>
-            <div>
-              <span className="fc-light">Vote</span>
-              {/* vote가 dummyData 존재하지 않을때 1 넣어줌 */}
-              <span>{contents?.vote ?? "1"}</span>
-            </div>
-            <div>
-              <span className="fc-light">Read</span>
-              {/* read dummyData 존재하지 않을때 1 넣어줌 */}
-              <span>{contents?.read ?? "1"}</span>
-            </div>
-          </div>
-        </div>
-        <hr className="bar" />
-        <div className="questionContainer">
-          <div className="questionComentBox">
-            {question.body}
-            <div dangerouslySetInnerHTML={{ __html: contents?.bodyHTML }} />
-          </div>
-          <div className="questionUpdate"></div>
-        </div>
-        <hr className="bar" />
-        <div className="answerContainer">
-          <h1 className="answerCount">{`Answer`}</h1>
-          <div className="answerCommentBoxs">
-            {/* contents에 answer이 null or undefined가 아니면 보여주기 */}
-            {contents?.answer && (
-              <>
-                {/* 답글 구분선 */}
-                <hr className="bar" />
-                <div className="answerBox">
-                  <div
-                    className="iconContainer"
-                    onClick={() => {
-                      // 인증글 변경 가능하게 바꿈
-                      setAdmit([0]);
-                    }}
-                  >
-                    <i>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512"
-                        style={{ fill: admit[0] === 0 ? "green" : "gray" }}
-                        className="icon"
-                      >
-                        <path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
-                      </svg>
-                    </i>
-                  </div>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: contents?.answer?.bodyHTML,
-                    }}
-                  />
-                </div>
-              </>
-            )}
-            {answers.answers ? (
-              answers?.answers?.map((answer, i) => (
-                <div key={`답변: ${i}`}>
-                  {/* 답글 구분선 */}
-                  <hr className="bar" />
-                  <div key={`answer: ${i}`} className="answerBox">
-                    <div
-                      className="iconContainer"
-                      onClick={() => {
-                        // 인증글 변경 가능하게 바꿈
-                        // 0번째는 dummydata answer
-                        setAdmit([i + 1]);
-                      }}
-                    >
-                      <i>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 512 512"
-                          style={{
-                            fill: admit[0] === i + 1 ? "green" : "gray",
-                          }}
-                          className="icon"
-                        >
-                          <path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
-                        </svg>
-                      </i>
-                    </div>
-                    <Answer
-                      i={i}
-                      setAnswers={setAnswers}
-                      answer={answer}
-                      deleteAnswer={deleteAnswer}
-                      answerId={answerId}
-                    />
-                  </div>
-                </div>
-              ))
-            ) : (
-              <></>
-            )}
-          </div>
-        </div>
-        <hr className="bar" />
-        <div className="editorContainer">
-          <span className="editorTitle">Your Answer</span>
-          <textarea value={value} onChange={onChangeTextarea} className="editor" />
-          <div>
-            <button onClick={() => postAnswer(value)} className="answerPostButton">
-              Post Your Answer
-            </button>
-          </div>
-        </div>
-      </div>
-      <style jsx>{`
-         {
-          /* isBtnClick 상태의 따라 색상이 바뀌도록 삼항 연산자로 작성. */
-        }
-        .answermaincontainer {
-          display: flex;
-          justify-content: center;
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 3%;
-        }
-        .questionTitle {
-          font-weight: 400;
-        }
+    <div>
 
-        .questionContainer {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 80%;
-        }
-        .qusetionInfoContainer {
+      <div>
+        <h1 className="questionTitle"> {question.title}</h1>
+      </div>
+
+      <div className="qusetionInfoContainer">
+            <div className="sub-c">
+              <span className="fc-light">CreatAt</span>
+            </div>
+            <div>
+              <span className="fc-light">VoteCount</span>
+            </div>
+            <div>
+              <span className="fc-light">ReadCount</span>
+
+            </div>
+          </div>
+
+      <hr className="bar" />
+      <div>
+      <h1 className="questionComentBox">{question.body}</h1>
+      </div>
+      <hr className="bar" />
+      <div>
+        <h1 className="answerCount">Answer</h1>  
+      </div>
+      <hr className="bar" />
+      <div>
+      <h1 className="questionComentBox">{answer.body}</h1>
+      </div>
+      <hr className="bar" />
+      <div>
+        <h1 className="youAnswertitle">Your Answer</h1>
+      </div>
+      <div>
+      <div className="editorContainer">
+          
+          <textarea
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            className="editor"
+          />
+          
+          <div>
+            <div
+              onClick={onClickAddAnswer}
+              className="answerPostButton"
+            >
+              Post Your Answer
+            </div>
+          </div>
+        </div>
+        </div>
+      
+      
+      <style jsx>
+        {`
+          .questionTitle{
+            font-weight: 400;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 3%;
+          }
+          .qusetionInfoContainer {
           display: flex;
           justify-content: space-between;
           width: 50%;
           margin-bottom: 40px;
         }
-        .questionComentBox {
-          width: 100%;
-          height: auto;
-        }
-
-        .questionComent {
-          font-size: 20px;
-          margin: 20px;
-        }
-        .questionUpdate {
-          display: flex;
-          justify-content: end;
-          width: 100%;
-        }
-        .bar {
-          width: 100%;
-        }
 
         .sub-c {
-          margin-right: 10px;
+          margin-right: 30px;
         }
-
         .fc-light {
           color: gray;
-          margin-right: 10px;
+          margin: 30px;
         }
 
-        .answerContainer {
-          display: flex;
-          justify-content: center;
-          align-items: flex-start;
-          flex-direction: column;
-          width: 70%;
+        .questionComentBox {
+            display: block;
+            font-size: 15px;
+            margin: 20px;
         }
         .answerCount {
-          font-weight: 300;
+          font-weight: 400;
+           display: block;
+            margin: 20px;
         }
-        .icon {
-          width: 40px;
-          cursor: pointer;
-        }
-        .answerCommentBoxs {
-          width: 550px;
-        }
-        .answerBox {
-          display: flex;
-          width: 100%;
-        }
-        .answerComment {
-          font-size: 16px;
-          margin: 10px;
-        }
-        .answerGroup {
-          display: flex;
-          flex-direction: column;
-          width: 60%;
-          margin-top: 20px;
-          margin-bottom: 20px;
+        .youAnswertitle{
+          font-size: 22px;
+          margin: 20px;
         }
         .deleteButton {
           margin-left: 10px;
@@ -332,6 +207,8 @@ export default function AskDetail() {
           height: 15rem;
           resize: none;
           margin-bottom: 10px;
+          margin-right: 30px;
+          margin-left: 30px;
         }
 
         .editorTitle {
@@ -355,113 +232,22 @@ export default function AskDetail() {
           padding: 1% 3%;
           border-radius: 7px;
           cursor: pointer;
+          margin: 20px;
+
         }
 
         .answerPostButton:hover {
           background-color: hsl(206deg 100% 40%);
         }
-      `}</style>
-    </>
-  );
-}
+       
 
-// props로 index, answer = 답글 내용, setAnswers = 답글글 수정, deleteAnswer 답글삭제 함수
-
-function Answer({ i, answer, setAnswers, deleteAnswer, answerId }) {
-  //state
-  const [isEdit, setIsEdit] = useState(false);
-  const [value, setValue] = useState(answer);
-
-  const onChangeTextarea = (e) => {
-    setValue(e.target.value);
-  };
-
-  // 댓글 수정
-  const editAnswer = () => {
-    // 서버에 patch 요청으로 수정
-    async function editAns() {
-      const response = await fetch(`http://54.180.175.144:8080/answer/${answerId}`, {
-        method: "PATCH",
-        body: JSON.stringify({
-          body: value,
-        }),
-      });
-    }
-    editAns();
-
-    // 상태도 같이 변경
-    setAnswers((prev) => {
-      prev.answers.splice(i, 1, value);
-      return {
-        ...prev,
-        answers: prev.answers,
-      };
-    });
-    setIsEdit(false);
-  };
-  return (
-    <div className="answerContainer">
-      <div className="answer">{answer}</div>
-      <button
-        onClick={() => {
-          setIsEdit((prev) => !prev);
-        }}
-        className="btn"
-      >
-        Edit
-      </button>
-      <button onClick={() => deleteAnswer(answerId, index)} className="btn">
-        Delete
-      </button>
-      {/* 수정하기 클릭하면 보여주고 아닐때는 안보여주기 */}
-      {isEdit ? (
-        <div className="editorContainer">
-          <textarea value={value} onChange={onChangeTextarea} className="editor" />
-          <div>
-            <button onClick={editAnswer} className="answerPostButton">
-              submit
-            </button>
-          </div>
-        </div>
-      ) : (
-        <></>
-      )}
-      <style jsx>{`
-         {
-          .editorContainer {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-          }
-
-          .editor {
-            width: 100%;
-            min-width: 10rem;
-            height: 15rem;
-            resize: none;
-            margin-bottom: 10px;
-          }
-          .answerContainer {
-            flex: 1;
-            padding: 3%;
-          }
-
-          .btn {
-            width: 3rem;
-            height: 2rem;
-            background-color: #67b9f3;
-            color: white;
-            border: none;
-            border-radius: 7px;
-            margin-right: 10px;
-            cursor: pointer;
-          }
-
-          .btn:hover {
-            background-color: hsl(206deg 100% 40%);
-          }
+      
+        .bar {
+          width: 95%;
         }
-      `}</style>
+          
+        `}
+      </style>
     </div>
-  );
+  )
 }

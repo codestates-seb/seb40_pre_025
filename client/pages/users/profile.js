@@ -1,10 +1,36 @@
 import Link from "next/link";
 import UserIdLayout from "./User_Id_Layout";
 export default function profile() {
+  const [anserCount, setAnserCount] = useState(0);
+  const [qustionCount, setQustionCount] = useState(0);
+  const [about, setAbout] = useState("");
+  useEffect(() => {
+    const headers = new Headers({
+      "Content-Type": "text/xml",
+    });
+    fetch(`/answer/user/${localStorage.getItem("user")}?page=1&size=5`, {
+      headers,
+    })
+      .then((res) => res.json())
+      .then((data) => setAnserCount(data.data.answers.pageInfo.totalElements))
+      .catch((err) => console.log(err));
+    fetch(`/post/user/${localStorage.getItem("user")}?page=1&size=5`, {
+      headers,
+    })
+      .then((res) => res.json())
+      .then((data) => setQustionCount(data.data.posts.pageInfo.totalElements))
+      .catch((err) => console.log(err));
+    fetch(`/user/${localStorage.getItem("user")}`, {
+      headers,
+    })
+      .then((res) => res.json())
+      .then((data) => setAbout(data.data.about))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="container">
       <div className="content">
-        {/* <CoreInfo></CoreInfo> */}
         <div id="main-content">
           <div id="states">
             <label className="lable">Stats</label>
@@ -13,14 +39,14 @@ export default function profile() {
                 <div className="color-B">1</div>answers
               </div>
               <div className="state">
-                <div className="color-B">1</div>qustions
+                <div className="color-B">{qustionCount}</div>qustions
               </div>
             </div>
           </div>
           <div id="about">
             <label className="lable">About</label>
             <div className="contentBox">
-              <div>
+              {about.length === 0 ? (
                 <div>
                   {`Your about me section is currently blank. Would you like to
                   add one? `}
@@ -28,7 +54,9 @@ export default function profile() {
                     <a>Edit profile</a>
                   </Link>
                 </div>
-              </div>
+              ) : (
+                about
+              )}
             </div>
           </div>
         </div>
@@ -89,7 +117,7 @@ export default function profile() {
             justify-content: center;
             align-items: center;
             margin-top: 5px;
-            color: hsl(210, 8%, 45%);
+            color: hsl(0, 0%, 22%);
             text-align: center;
             width: auto;
             min-width: 450px;

@@ -4,21 +4,22 @@ import agoraStatesDiscussions from "../../static/dummydata";
 import FilterBtn from "./FilterBtn";
 import TopHeader from "./TopHeader";
 
+
 export default function Questions() {
-  const [question, setQuestion] = useState([]);
 
-  useEffect(() => {
-    // 본문 내용 불러오는 로직
-    async function request() {
-      const response = await fetch("http://54.180.175.144:8080/post?page=1&size=30", {
-        method: "GET",
-      });
-      const data = await response.json();
+  const [question, setQuestion] = useState([])
 
-      setQuestion(data.data);
-    }
-    request();
-  }, []);
+  useEffect(()=> {
+    (async () => {
+     const {data} = await (
+      await fetch(
+        `http://54.180.175.144:8080/post?page=1&size=30`
+      )
+      ).json()
+     setQuestion(data)
+    })()
+  }, [])
+
 
   return (
     <div className="top_mainbar">
@@ -30,7 +31,8 @@ export default function Questions() {
       <div id="qlist-wrapper" className="flush-left">
         <div id="question-mini-list">
           <div>
-            {question.map((tweet) => (
+            
+            { question.map(tweet => (
               <div key={tweet.postId} className="post-main">
                 {/* 투표수, 답변수, views 일단 하드코딩  */}
                 <div className="votes-status">
@@ -61,7 +63,9 @@ export default function Questions() {
                   </h3>
                   {/* 태그, 작성자 */}
                   <div className="post-meta">
-                    <div className="post-tags"></div>
+                    <div className="post-tags">
+                    
+                    </div>
                     <div className="usercard">
                       <div className="human_img">
                         <img src="/human.png" width={15} height={15}></img>
@@ -82,6 +86,8 @@ export default function Questions() {
           flex-direction: column;
           padding: 1.5%;
           width: 100%;
+          
+        
         }
         .qlist-wrapper {
           width: 100%;
@@ -184,6 +190,7 @@ export default function Questions() {
           text-decoration: none; /* 링크의 밑줄 제거 */
           color: inherit;
         }
+
         @media screen and (max-width: 1300px) {
           .post-main {
             width: 100%;
