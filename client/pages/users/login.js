@@ -19,7 +19,7 @@ export default function Login() {
         email: userEmail,
         password: userPw,
       };
-      fetch("/auth/login", {
+      fetch("/auth/login/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

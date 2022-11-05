@@ -1,0 +1,9 @@
+import { Plugin } from "prosemirror-state";
+/**
+ * Dealing with selections in prosemirror is not always trivial.
+ * When you need an interactive glance into where your selection
+ * is at and how it's being updated, you can register this plugin
+ * with your editor instance and watch the current state's selection
+ * in your browser's JavaScript console.
+ */
+export declare const selectionDebugger: Plugin<void>;

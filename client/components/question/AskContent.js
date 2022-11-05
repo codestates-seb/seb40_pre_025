@@ -18,7 +18,9 @@ export default function AskContent() {
     };
     console.log(data);
 
-    fetch(`/post/56`, {
+    ///post/${localStorage.getItem("user")}
+
+    fetch(`/post/52`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

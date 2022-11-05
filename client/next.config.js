@@ -17,11 +17,15 @@ module.exports = {
       },
     ];
   },
+
 };
+
+
 // import withImages from "next-images";
 // modules.exports = withImages({
 //   webpack(config, options) {
 //     return config;
 //   },
 // });
-// export default nextConfig;
+// export default nextConfig
+module.exports = nextConfig
