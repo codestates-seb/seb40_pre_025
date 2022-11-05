@@ -1,0 +1,61 @@
+import { setAttributesOnElement, stackOverflowValidateLink } from "./utils";
+/** Describes each distinct editor type the StacksEditor handles */
+export var EditorType;
+(function (EditorType) {
+    EditorType[EditorType["RichText"] = 0] = "RichText";
+    EditorType[EditorType["Commonmark"] = 1] = "Commonmark";
+})(EditorType || (EditorType = {}));
+export const defaultParserFeatures = {
+    snippets: true,
+    html: true,
+    extraEmphasis: true,
+    tables: true,
+    tagLinks: {
+        validate: () => true,
+    },
+    validateLink: stackOverflowValidateLink,
+};
+/** Abstract class that contains shared functionality for implementing View */
+export class BaseView {
+    get document() {
+        return this.editorView.state.doc;
+    }
+    get dom() {
+        return this.editorView.dom;
+    }
+    get readonly() {
+        return !this.editorView.editable;
+    }
+    focus() {
+        var _a;
+        (_a = this.editorView) === null || _a === void 0 ? void 0 : _a.focus();
+    }
+    destroy() {
+        var _a;
+        (_a = this.editorView) === null || _a === void 0 ? void 0 : _a.destroy();
+    }
+    get content() {
+        return this.serializeContent();
+    }
+    set content(value) {
+        let tr = this.editorView.state.tr;
+        const doc = this.editorView.state.doc;
+        const newDoc = this.parseContent(value);
+        tr = tr.replaceWith(0, doc.content.size, newDoc);
+        this.editorView.dispatch(tr);
+    }
+    /**
+     * Sets all attributes on the target contenteditable element
+     * @param el The node to set the attributes on
+     * @param options The options passed to the editor
+     */
+    setTargetNodeAttributes(el, options) {
+        // add in the passed in classes
+        el.classList.add(...(options.classList || []));
+        // add some a11y attributes for screen readers
+        el.setAttribute("role", "textbox");
+        el.setAttribute("aria-multiline", "true");
+        // add the rest of the attributes passed in via options
+        setAttributesOnElement(el, options.elementAttributes || {});
+    }
+}

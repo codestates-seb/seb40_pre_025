@@ -1,0 +1,4 @@
+import { Schema } from "prosemirror-model";
+import type { Plugin } from "prosemirror-state";
+import type { CommonmarkParserFeatures } from "../shared/view";
+export declare function allKeymaps(schema: Schema, parserFeatures: CommonmarkParserFeatures): Plugin[];

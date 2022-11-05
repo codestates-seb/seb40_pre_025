@@ -11,20 +11,31 @@ export default function Layout({ children }) {
   return (
     <div className="layout-container">
       <Seo />
-      <Header></Header>
-      
+      <Header />
+
       <div className="content">
-        <div className="sideBarBox"></div>
-        {router.pathname === "/users/login" ? null : router.pathname ===
-          "/users/signup" ? null : (
-          <SideBar></SideBar>
+        <div className="sideBarBox">
+        {router.pathname === "/users/login" 
+          ? (<SideBar />)
+          : null
+        }
+        </div>
+        {router.pathname === "/users/login" 
+        ? null 
+        : router.pathname === "/users/signup" 
+        ? null 
+        : (
+          <SideBar />
         )}
         <div className="children">{children}</div>
       </div>
-      {router.pathname === "/users/login" ? null : router.pathname ===
-        "/users/signup" ? null : (
-        <Footer></Footer>
-      )}
+      {
+      router.pathname === "/users/login" 
+      ? null 
+      : router.pathname === "/users/signup" 
+      ? null 
+      : (<Footer />)
+      }
 
       <style jsx>{`
         .layout-container {

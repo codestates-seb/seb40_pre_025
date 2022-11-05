@@ -1,0 +1,29 @@
+import { DecorationSet } from "prosemirror-view";
+import { AsyncPlugin } from "../../shared/prosemirror-plugins/plugin-extensions";
+/**
+ * Interface to describe a link preview provider for registering/fetching previews from urls
+ */
+export interface LinkPreviewProvider {
+    /** A regular expression to test against a url to see if this provider should handle it */
+    domainTest: RegExp;
+    /** The async function to render the preview */
+    renderer: (url: string) => Promise<Node | null>;
+    /** Whether to update the link's text content only or do a full rich html decoration */
+    textOnly?: boolean;
+}
+interface FetchLinkPreviewResult {
+    content: Node | null;
+    isTextOnly: boolean;
+    pos: number;
+    href: string;
+}
+interface LinkPreviewState {
+    decorations: DecorationSet;
+    recentlyUpdated?: FetchLinkPreviewResult[];
+}
+/**
+ * Creates a plugin that searches the entire document for potentially previewable links
+ * and creates a widget decoration to render the link preview in.
+ */
+export declare function linkPreviewPlugin(providers: LinkPreviewProvider[]): AsyncPlugin<LinkPreviewState, FetchLinkPreviewResult[]>;
+export {};
