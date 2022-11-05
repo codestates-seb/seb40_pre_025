@@ -2,6 +2,7 @@ package preproject.stack.answer.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -51,7 +52,11 @@ public class AnswerController {
         User user = userService.findUser(userId);
         UserResponseDto userResponseDto = userMapper.userToUserResponseDto(user);
         answerResponseDto.setUserResponseDto(userResponseDto);
-        return new ResponseEntity<>(new SingleResponseDto<>(answerResponseDto),HttpStatus.CREATED);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+
+        return new ResponseEntity<>(new SingleResponseDto<>(answerResponseDto), headers, HttpStatus.CREATED);
 
     }
 
@@ -64,7 +69,10 @@ public class AnswerController {
 
         Answer response = answerService.updateAnswer(mapper.answerPatchDtoToAnswer(answerPatchDto));
 
-        return new ResponseEntity<>(mapper.answerToAnswerResponseDto(response), HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+
+        return new ResponseEntity<>(mapper.answerToAnswerResponseDto(response), headers, HttpStatus.OK);
     }
 
     // 답변 한 개 조회
@@ -74,8 +82,10 @@ public class AnswerController {
 
         AnswerUserResponseDto answer = answerService.findAnswer(answerId);
 
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
 
-        return new ResponseEntity<>(new SingleResponseDto<>(answer),HttpStatus.OK);
+        return new ResponseEntity<>(new SingleResponseDto<>(answer),headers, HttpStatus.OK);
     }
     // 자기가 작성한 답변 전체 조회
     @GetMapping("/answer/user/{user-id}")
@@ -91,7 +101,10 @@ public class AnswerController {
         User user = userService.findUser(userId);
         answerPageDto.setUserResponseDto(userMapper.userToUserResponseDto(user));
 
-        return new ResponseEntity<>(new SingleResponseDto<>(answerPageDto),HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+
+        return new ResponseEntity<>(new SingleResponseDto<>(answerPageDto),headers, HttpStatus.OK);
     }
 
     // 특정 포스트에 대한 답변만 조회, 불필요한듯?
@@ -102,8 +115,10 @@ public class AnswerController {
         Page<Answer> answers = answerService.findAnswers(postId, page - 1, size);
         List<Answer> response = answers.getContent();
 
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
 
-        return new ResponseEntity<>(new MultiResponseDto<>(response,answers),HttpStatus.OK);
+        return new ResponseEntity<>(new MultiResponseDto<>(response,answers),headers, HttpStatus.OK);
     }
 
     // 답변 삭제
@@ -114,7 +129,10 @@ public class AnswerController {
 
         answerService.deleteAnswer(answerId);
 
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+
+        return new ResponseEntity(headers,HttpStatus.NO_CONTENT);
     }
 
 

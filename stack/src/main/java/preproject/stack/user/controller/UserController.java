@@ -2,8 +2,10 @@ package preproject.stack.user.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.header.Header;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import preproject.stack.response.MultiResponseDto;
@@ -32,8 +34,12 @@ public class UserController {
     public ResponseEntity postUser(@Valid @RequestBody UserPostDto userPostDto) {
         User user = mapper.userPostDtoToUser(userPostDto);
         User response = userService.createUser(user);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+
         return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.userToUserResponseDto(response)), HttpStatus.CREATED);
+                new SingleResponseDto<>(mapper.userToUserResponseDto(response)), headers, HttpStatus.CREATED);
     }
     //회원정보 수정 핸들러
     @PatchMapping("/{user-id}")
@@ -41,8 +47,13 @@ public class UserController {
         userPatchDto.setUserId(userId);
         User user = mapper.userPatchDtoToUser(userPatchDto);
         User response = userService.updateUser(user);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+
+
         return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.userToUserResponseDto(response)), HttpStatus.OK);
+                new SingleResponseDto<>(mapper.userToUserResponseDto(response)), headers, HttpStatus.OK);
     }
     //전체회원 조회 핸들러 // 이해를 아직 못함 이부분이랑 response패키지는 jpa파트에서 좀 배껴옴
     @GetMapping
@@ -51,16 +62,24 @@ public class UserController {
         Page<User> pageUsers = userService.findUsers(page-1, size);
         List<User> users = pageUsers.getContent();
         //서비스 구현
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+
         return new ResponseEntity<>(
-                new MultiResponseDto<>(mapper.usersToUserResponseDto(users), pageUsers), HttpStatus.OK);
+                new MultiResponseDto<>(mapper.usersToUserResponseDto(users), pageUsers), headers, HttpStatus.OK);
 
     }
     //특정회원 조회 핸들러
     @GetMapping("/{user-id}")
     public ResponseEntity getUser(@PathVariable("user-id") long userId) {
         User user = userService.findUser(userId);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+
         return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.userToUserResponseDto(user)),HttpStatus.OK);
+                new SingleResponseDto<>(mapper.userToUserResponseDto(user)), headers, HttpStatus.OK);
     }
 
     //회원 삭제? 탈퇴?
@@ -68,7 +87,10 @@ public class UserController {
     public ResponseEntity deleteUser(@PathVariable("user-id") long userId) {
         userService.deleteUser(userId);
 
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+
+        return new ResponseEntity<>(headers, HttpStatus.NO_CONTENT);
     }
 
 

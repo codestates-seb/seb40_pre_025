@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -51,7 +52,11 @@ public class PostController {
         Post post = mapper.postPostDtoToPost(postPostDto);
 
         Post response = postService.createPost(post,userId);
-        return new ResponseEntity<>(mapper.postToResponseDto(response), HttpStatus.CREATED);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+
+        return new ResponseEntity<>(mapper.postToResponseDto(response), headers, HttpStatus.CREATED);
     }
 
     // 질문 수정
@@ -60,7 +65,11 @@ public class PostController {
         postPatchDto.setPostId(postId);
         Post post = mapper.postPatchDtoToPost(postPatchDto);
         Post response = postService.updatePost(post);
-        return new ResponseEntity<>(new SingleResponseDto<>(mapper.postToResponseDto(response)),HttpStatus.OK);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+
+        return new ResponseEntity<>(new SingleResponseDto<>(mapper.postToResponseDto(response)), headers, HttpStatus.OK);
 
     }
     //질문 하나와 달린 답변 노출, user-id 값은 불필요?
@@ -83,8 +92,10 @@ public class PostController {
         List<Answer> content = answers.getContent();
         postAnswerResponseDto.setAnswers(new MultiResponseDto<>(answerMapper.answersToAnswerResponseDto(content),answers));
 
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
 
-        return new ResponseEntity<>(new SingleResponseDto<>(postAnswerResponseDto),HttpStatus.OK);
+        return new ResponseEntity<>(new SingleResponseDto<>(postAnswerResponseDto), headers, HttpStatus.OK);
     }
 
 // 전체 질문 목록
@@ -94,8 +105,11 @@ public class PostController {
         Page<Post> pagePosts = postService.findPosts(page - 1, size);
         List<Post> posts = pagePosts.getContent();
 
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+
         return new ResponseEntity<>(
-                new MultiResponseDto<>(mapper.postsToPostResponseDto(posts),pagePosts),HttpStatus.OK
+                new MultiResponseDto<>(mapper.postsToPostResponseDto(posts),pagePosts), headers, HttpStatus.OK
         );
     }
 // 답변 없이 질문 내용 한개만 조회는 불필요, 질문+답변으로 대체
@@ -108,7 +122,12 @@ public class PostController {
     @DeleteMapping("/{post-id}")
     public ResponseEntity deletePost(@PathVariable("post-id") long postId){
         postService.deletePost(postId);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+
+
+        return new ResponseEntity<>(headers, HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/user/{user-id}")
@@ -125,7 +144,10 @@ public class PostController {
         User user = userService.findUser(userId);
         postUserResponseDto.setUserResponseDto(userMapper.userToUserResponseDto(user));
 
-        return new ResponseEntity<>(new SingleResponseDto<>(postUserResponseDto),HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+
+        return new ResponseEntity<>(new SingleResponseDto<>(postUserResponseDto),headers,HttpStatus.OK);
     }
 
 }
