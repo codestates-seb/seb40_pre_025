@@ -452,4 +452,3 @@ function Answer({ i, answer, setAnswers, deleteAnswer }) {
     </div>
   );
 }
-

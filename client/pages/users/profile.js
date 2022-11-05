@@ -1,5 +1,6 @@
 import Link from "next/link";
 import UserIdLayout from "./User_Id_Layout";
+import { useState,useEffect } from "react";
 export default function profile() {
   const [anserCount, setAnserCount] = useState(0);
   const [qustionCount, setQustionCount] = useState(0);
