@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 export default function profile() {
   const [anserCount, setAnserCount] = useState(0);
   const [qustionCount, setQustionCount] = useState(0);
-  const [abouts, setAbouts] = useState("");
+  const [abouts, setAbouts] = useState(null);
   useEffect(() => {
     const headers = new Headers({
       "Content-Type": "text/xml",
@@ -48,7 +48,7 @@ export default function profile() {
           <div id="about">
             <label className="lable">About</label>
             <div className="contentBox">
-              {abouts.length === 0 ? (
+              {abouts ? (
                 <div>
                   {`Your about me section is currently blank. Would you like to
                   add one? `}
