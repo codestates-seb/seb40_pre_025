@@ -1,10 +1,11 @@
 import Link from "next/link";
 import UserIdLayout from "./User_Id_Layout";
 import { useState, useEffect } from "react";
+
 export default function profile() {
   const [anserCount, setAnserCount] = useState(0);
   const [qustionCount, setQustionCount] = useState(0);
-  const [about, setAbout] = useState("");
+  const [abouts, setAbouts] = useState("");
   useEffect(() => {
     const headers = new Headers({
       "Content-Type": "text/xml",
@@ -25,7 +26,7 @@ export default function profile() {
       headers,
     })
       .then((res) => res.json())
-      .then((data) => setAbout(data.data.about))
+      .then((data) => setAbouts(data.data.about))
       .catch((err) => console.log(err));
   }, []);
 
@@ -47,7 +48,7 @@ export default function profile() {
           <div id="about">
             <label className="lable">About</label>
             <div className="contentBox">
-              {about.length === 0 ? (
+              {abouts.length === 0 ? (
                 <div>
                   {`Your about me section is currently blank. Would you like to
                   add one? `}
@@ -56,7 +57,7 @@ export default function profile() {
                   </Link>
                 </div>
               ) : (
-                about
+                abouts
               )}
             </div>
           </div>

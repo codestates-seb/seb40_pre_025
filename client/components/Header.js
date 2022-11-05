@@ -91,11 +91,13 @@ const Header2 = () => {
               cursor: pointer;
               background: rgb(19, 127, 254);
               color: rgb(255, 255, 255);
-              padding: 7px 12px 7px 12px;
+              padding: 8px 15px 8px 15px;
               border: 1px solid rgb(158, 190, 214);
               border-radius: 3px;
               box-shadow: 0.5px black;
               font-size: 10px;
+              width: 75px;
+              height: 28px;
             }
             .signup :hover {
               background: rgb(10, 93, 193);
