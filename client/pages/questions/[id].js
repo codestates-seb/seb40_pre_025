@@ -8,7 +8,6 @@ import {
 } from "../../reducers/answerReducer";
 import dummydata from "../../static/dummydata";
 
-
 export default function AskDetail() {
   // state
   const [admit, setAdmit] = useState([]);
@@ -19,21 +18,21 @@ export default function AskDetail() {
 
   //redux
   const dispatch = useDispatch();
-  const { value } = useSelector(state => state.anwserReducer);
+  const { value } = useSelector((state) => state.anwserReducer);
 
   //router
   const router = useRouter();
-  const {id} = router.query
-  console.log(id)
+  const { id } = router.query;
+  console.log(id);
 
   // 리덕스 이용해서 답글 내용 저장
-  const onChangeTextarea = e => {
+  const onChangeTextarea = (e) => {
     dispatch(changeInputAction(e.target.value));
   };
 
   // 답글 추가히기
-  const postAnswer = e => {
-    setAnswers(prev => ({
+  const postAnswer = (e) => {
+    setAnswers((prev) => ({
       ...prev,
       answers: [...prev.answers, e],
     }));
@@ -43,8 +42,8 @@ export default function AskDetail() {
   };
 
   // 답글 삭제하기
-  const deleteAnswer = index => {
-    setAnswers(prev => {
+  const deleteAnswer = (index) => {
+    setAnswers((prev) => {
       answers.answers.splice(index, 1);
 
       return {
@@ -54,37 +53,29 @@ export default function AskDetail() {
     });
   };
   useEffect(() => {
-    const data = dummydata.filter(dummy => dummy.id === router.query.id);
+    const data = dummydata.filter((dummy) => dummy.id === router.query.id);
     setContents(data[0]);
   }, [router]);
 
-  const [question, setQuestion] = useState([])
-  const [answer, setAnswer] = useState([])
+  const [question, setQuestion] = useState([]);
+  const [answer, setAnswer] = useState([]);
 
-  
-  useEffect(()=> {
+  useEffect(() => {
     (async () => {
-     const {data} = await (
-      await fetch(
-        `http://54.180.175.144:8080/post/${id}?page=1&size=5`
-      )
-      ).json()
-      setQuestion(data)
-      setAnswer(data.answers.data)
-      console.log(data.answers.data)
-    })()
-  }, [])
-
-
+      const { data } = await (
+        await fetch(`http://54.180.175.144:8080/post/${id}?page=1&size=5`)
+      ).json();
+      setQuestion(data);
+      setAnswer(data.answers.data);
+      console.log(data.answers.data);
+    })();
+  }, []);
 
   return (
     <>
       <div className="answermaincontainer">
-        
-          <div>
-          <h1 className="questionTitle">
-            {question.title}
-          </h1>
+        <div>
+          <h1 className="questionTitle">{question.title}</h1>
           <div className="qusetionInfoContainer">
             <div className="sub-c">
               <span className="fc-light">Asked</span>
@@ -100,15 +91,11 @@ export default function AskDetail() {
               <span>{contents?.read ?? "1"}</span>
             </div>
           </div>
-          </div>
-      
-       
-
+        </div>
 
         <hr className="bar" />
         <div className="questionContainer">
           <div className="questionComentBox">
-            
             {question.body}
             <div dangerouslySetInnerHTML={{ __html: contents?.bodyHTML }} />
           </div>
@@ -142,7 +129,7 @@ export default function AskDetail() {
                       </svg>
                     </i>
                   </div>
-                  
+
                   <div
                     dangerouslySetInnerHTML={{
                       __html: contents?.answer?.bodyHTML,
@@ -151,15 +138,14 @@ export default function AskDetail() {
                 </div>
               </>
             )}
-          
+
             {answers.answers ? (
               answers?.answers?.map((answer, i) => (
-                <div key ={`답변: ${i}`}>
+                <div key={`답변: ${i}`}>
                   {/* 답글 구분선 */}
-          
+
                   <hr className="bar" />
                   <div key={`answer: ${i}`} className="answerBox">
-                    
                     <div
                       className="iconContainer"
                       onClick={() => {
@@ -181,22 +167,19 @@ export default function AskDetail() {
                         </svg>
                       </i>
                     </div>
-                  안녕하세요
-                  {}
+                    안녕하세요
+                    {}
                     {/* <Answer
                       i={i}
                       setAnswers={setAnswers}
                       answer={answer}
                       deleteAnswer={deleteAnswer}
                     /> */}
-                  
                   </div>
                 </div>
               ))
             ) : (
-              <>
-  
-              </>
+              <></>
             )}
           </div>
         </div>
@@ -365,7 +348,7 @@ function Answer({ i, answer, setAnswers, deleteAnswer }) {
   const [isEdit, setIsEdit] = useState(false);
   const [value, setValue] = useState(answer);
 
-  const onChangeTextarea = e => {
+  const onChangeTextarea = (e) => {
     setValue(e.target.value);
   };
 
@@ -374,7 +357,7 @@ function Answer({ i, answer, setAnswers, deleteAnswer }) {
       <div className="answer">{answer}</div>
       <button
         onClick={() => {
-          setIsEdit(prev => !prev);
+          setIsEdit((prev) => !prev);
         }}
         className="btn"
       >
@@ -394,7 +377,7 @@ function Answer({ i, answer, setAnswers, deleteAnswer }) {
           <div>
             <button
               onClick={() => {
-                setAnswers(prev => {
+                setAnswers((prev) => {
                   prev.answers.splice(i, 1, value);
 
                   return {
@@ -414,7 +397,7 @@ function Answer({ i, answer, setAnswers, deleteAnswer }) {
         <></>
       )}
       <style jsx>{`
-          {
+         {
           .editorContainer {
             display: flex;
             flex-direction: column;
