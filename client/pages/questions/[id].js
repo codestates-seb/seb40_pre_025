@@ -71,15 +71,15 @@ export default function answer() {
         })()
       }, [])
 
-        const onClickAddAnswer=()=>{
+        const onClickAddAnswer =()=>{
           let body = {
             body: body,
-            userId: localStorage.getItem("user")} 
+            userId: localStorage.getItem("user")
+          } 
            fetch(`http://54.180.175.144:8080/answer/${localStorage.getItem("user")}/${id}`, {
                   method: "POST",
-                  headers : new Headers({   "Content-Type": "text/xml" }),
+                  headers : new Headers({"Content-Type": "text/xml" }),
                   body: JSON.stringify(body),
-                
                  })
                 .then((response) => {
                   console.log(response)
@@ -88,7 +88,7 @@ export default function answer() {
 
         }
        
-
+        useEffect(()=>{console.log(localStorage.getItem("user"))},[])
   return (
     <div>
 
@@ -146,8 +146,7 @@ export default function answer() {
         </div>
       
       
-      <style jsx>
-        {`
+      <style jsx>{`
           .questionTitle{
             font-weight: 400;
             display: flex;

@@ -1,6 +1,4 @@
 import Link from "next/link";
-// import Google from "../../components/social/GoogleLogin";
-// import Github2 from "../../components/social/Github2";
 import { useRouter } from "next/router";
 import { useState } from "react";
 export default function Login() {
@@ -19,28 +17,40 @@ export default function Login() {
         email: userEmail,
         password: userPw,
       };
+      console.log(body);
+      const headers = {
+        "Contetnt-Type": "apllication/jon",
+      };
+      console.log(headers);
       fetch("/auth/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify(body),
-        credentials: "include",
       })
         .then((res) => {
-          console.log(res);
-          if (res.status === 401) {
+          console.dir(res);
+          if (res.status !== 200) {
             alert("등록된 회원이 아닙니다.");
-          }
-          localStorage.setItem("accessToken", res.headers.get("authorization"));
-          const base64Payload = localStorage
-            .getItem("accessToken")
-            .split(".")[1];
-          const payload = Buffer.from(base64Payload, "base64");
-          const result = payload.toString();
+            return false;
+          } else {
+            localStorage.setItem(
+              "accessToken",
+              res.headers.get("authorization")
+            );
+            const base64Payload = localStorage
+              .getItem("accessToken")
+              .split(".")[1];
+            const payload = Buffer.from(base64Payload, "base64");
+            const result = payload.toString();
 
-          const userID = JSON.parse(result).userId;
-          localStorage.setItem("user", userID);
+            const userID = JSON.parse(result).userId;
+            localStorage.setItem("user", userID);
+            return true;
+          }
         })
-        .then(() => router.push("../../"))
+        .then((ok) => {
+          if (ok) router.push("../../");
+        })
         .catch((err) => console.log(err));
     }
   };
@@ -48,7 +58,6 @@ export default function Login() {
     e.preventDefault();
     validation();
   };
-
   return (
     <div id="loginBox" className="flexItem">
       <div className="ta-center">
@@ -72,12 +81,8 @@ export default function Login() {
         </div>
       </div>
       <div className="socialLogin">
-        <div className="socialLoginBtn">
-          {/* <Google /> */}
-        </div>
-        <div className="socialLoginBtn2">
-          {/* <Github2 /> */}
-        </div>
+        <div className="socialLoginBtn">{/* <Google /> */}</div>
+        <div className="socialLoginBtn2">{/* <Github2 /> */}</div>
       </div>
       <div className="formContainer">
         <form id="login-form" className="d-flex fd-column">
@@ -294,7 +299,7 @@ export default function Login() {
           align-items: center;
           justify-content: center;
           margin: 20px;
-          height: 100%;
+          height: 80vh;
         }
       `}</style>
     </div>

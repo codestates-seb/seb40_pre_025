@@ -47,7 +47,7 @@ export default function user() {
       .then((res) => res.json())
       .then((user) => setUser(user.data))
       .catch((err) => console.log(err));
-  }, [currentPage]);
+  }, []);
   
   return (
      <div className='title'>

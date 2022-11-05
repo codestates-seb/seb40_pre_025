@@ -2,6 +2,21 @@ import Link from "next/link";
 
 export default function MyAnser({ data }) {
   console.log(data);
+  const handleClickDeleteAnser = () => {
+    const headers = new Headers({
+      Authorization: localStorage.getItem("accessToken"),
+    });
+    fetch(`/answer/${data.answerId}`, {
+      method: "DELETE",
+      headers,
+    })
+      .then((res) => {
+        console.log(res);
+        location.reload();
+      })
+
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="anser">
       <div className="votes-status">
@@ -10,16 +25,30 @@ export default function MyAnser({ data }) {
       </div>
       <div className="qusticon">
         <div className="content">
-          <Link href={"/questions/123123"}>
-            <a>{data.body}</a>
-          </Link>
-
-          <div className="d-flex">
-            <div className="createdAt">{`${data.createdAt.date.year}.${data.createdAt.date.month}.${data.createdAt.date.day}`}</div>
+          <div className="body">{data.body}</div>
+          <div className="deleteAnser" onClick={handleClickDeleteAnser}>
+            <div>삭제</div>
           </div>
+        </div>
+        <div className="d-flex">
+          <div className="createdAt">{`${data.createdAt.date.year}.${data.createdAt.date.month}.${data.createdAt.date.day}`}</div>
         </div>
       </div>
       <style jsx>{`
+        .deleteAnser {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 40px;
+          height: 25px;
+          color: rgb(255, 128, 128);
+          border: 1.5px solid rgb(255, 128, 128);
+          border-radius: 10px;
+        }
+        .deleteAnser:hover {
+          background-color: rgba(255, 197, 197, 0.502);
+          cursor: pointer;
+        }
         .createdAt {
           color: gray;
         }
@@ -30,7 +59,7 @@ export default function MyAnser({ data }) {
           text-decoration: none;
           margin-right: 10px;
         }
-        a {
+        .body {
           font-size: 1.2rem;
           color: hsl(206, 100%, 40%);
           text-decoration: none;
@@ -93,9 +122,12 @@ export default function MyAnser({ data }) {
           border-radius: 2px;
         }
         .content {
+          display: flex;
+          justify-content: space-between;
           text-align: left;
           font-weight: 500;
           margin-bottom: 1rem;
+          width: 100%;
         }
       `}</style>
     </div>

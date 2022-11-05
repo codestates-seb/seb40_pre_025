@@ -1,7 +1,9 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
 export default function SideBar() {
   return (
+    
     <div className="sidebar">
       <div className="home">
         <a href="/">
@@ -11,9 +13,6 @@ export default function SideBar() {
       <br />
       <div className="qusetions">
         <a href="../questions/ask">Qusetions</a>
-      </div>
-      <div className="tags">
-        <a href="../users/[id]/profile">Tags</a>
       </div>
       <div className="users">
         <a href="/users/user">Users</a>
@@ -47,6 +46,7 @@ export default function SideBar() {
           a :hover {
             color: black;
           }
+          .mypage:active,
           .home:active,
           .qusetions:active,
           .tags:active,
@@ -55,6 +55,8 @@ export default function SideBar() {
             background: rgb(237, 239, 240);
             border-right: 3px solid rgb(239, 109, 29);
           }
+
+          .mypage:hover,
           .home:hover,
           .qusetions:hover,
           .tags:hover,

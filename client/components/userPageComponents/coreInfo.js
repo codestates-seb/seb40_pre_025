@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 export default function User() {
-  const [userData, setUserData] = useState("");
+  const [userData, setUserData] = useState({ userName: "" });
   const tapMenuList = ["Profile", "Saves", "Setting"];
   const router = useRouter();
   const isCurrent =
@@ -25,7 +25,10 @@ export default function User() {
       headers,
     })
       .then((res) => res.json())
-      .then((ansers) => setUserData(ansers.data))
+      .then((ansers) => {
+        console.log(ansers);
+        setUserData(ansers.data);
+      })
       .catch((err) => console.log(err));
   }, []);
   console.log(userData);
