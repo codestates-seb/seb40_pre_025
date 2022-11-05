@@ -73,6 +73,7 @@ export default function MyAnsers() {
           display: flex;
           flex-direction: column;
           justify-content: start;
+          width: 80%;
           height: 450px;
         }
         #null {

@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import Seo from "./TopQuestion/Seo";
 import SideBar from "./SideBar";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -10,20 +11,31 @@ export default function Layout({ children }) {
   return (
     <div className="layout-container">
       <Seo />
-      <Header></Header>
+      <Header />
 
       <div className="content">
-        <div className="sideBarBox"></div>
-        {router.pathname === "/users/login" ? null : router.pathname ===
-          "/users/signup" ? null : (
-          <SideBar></SideBar>
+        <div className="sideBarBox">
+        {router.pathname === "/users/login" 
+          ? (<SideBar />)
+          : null
+        }
+        </div>
+        {router.pathname === "/users/login" 
+        ? null 
+        : router.pathname === "/users/signup" 
+        ? null 
+        : (
+          <SideBar />
         )}
         <div className="children">{children}</div>
       </div>
-      {router.pathname === "/users/login" ? null : router.pathname ===
-        "/users/signup" ? null : (
-        <Footer></Footer>
-      )}
+      {
+      router.pathname === "/users/login" 
+      ? null 
+      : router.pathname === "/users/signup" 
+      ? null 
+      : (<Footer />)
+      }
 
       <style jsx>{`
         .layout-container {

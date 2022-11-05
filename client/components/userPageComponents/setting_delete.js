@@ -1,9 +1,31 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import SubTap from "./subTap";
 export default function saves_qustions() {
+  const router = useRouter();
   const [isCheck, setIsCheck] = useState(false);
   const handleClickCheckBox = () => {
     setIsCheck(!isCheck);
+  };
+  const handleClickDeleteUser = () => {
+    const chack = prompt("계정을 삭제하겠습니다. 를 입력해주세요.");
+    const chackMessage = "계정을 삭제하겠습니다.";
+    if (chack === chackMessage) {
+      const headers = new Headers({
+        Authorization: localStorage.getItem("accessToken"),
+      });
+      fetch(`/user/${localStorage.getItem("user")}`, {
+        method: "DELETE",
+        headers,
+      })
+        .then((res) => {
+          console.log(res);
+          localStorage.removeItem("accessToken");
+          localStorage.removeItem("user");
+        })
+        .then(() => router.push("../../../"))
+        .catch((err) => console.log(err));
+    }
   };
   return (
     <div id="main-content">
@@ -38,27 +60,29 @@ export default function saves_qustions() {
             individual profiles.
           </p>
 
-          <form className="" action="" method="post">
-            <fieldset className="check">
-              <div className="d-flex">
-                <div className="">
-                  <input
-                    className=""
-                    type="checkbox"
-                    onClick={handleClickCheckBox}
-                  />
-                </div>
-                <label className="" form="delete-terms">
-                  I have read the information stated above and understand the
-                  implications of having my profile deleted. I wish to proceed
-                  with the deletion of my profile.
-                </label>
+          <fieldset className="check">
+            <div className="d-flex">
+              <div className="">
+                <input
+                  className=""
+                  type="checkbox"
+                  onClick={handleClickCheckBox}
+                />
               </div>
-            </fieldset>
-            <button className={isCheck ? "onCheck" : "offCheck"} disabled="">
-              Delete profile
-            </button>
-          </form>
+              <label className="" form="delete-terms">
+                I have read the information stated above and understand the
+                implications of having my profile deleted. I wish to proceed
+                with the deletion of my profile.
+              </label>
+            </div>
+          </fieldset>
+          <button
+            className={isCheck ? "onCheck" : "offCheck"}
+            disabled=""
+            onClick={handleClickDeleteUser}
+          >
+            Delete profile
+          </button>
         </div>
       </div>
       <style jsx>{`

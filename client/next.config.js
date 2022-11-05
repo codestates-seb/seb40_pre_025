@@ -26,12 +26,16 @@ module.exports = {
         destination: "http://54.180.175.144:8080/post/:path",
       },
       {
+        source: "/answer/:path",
+        destination: "http://54.180.175.144:8080/answer/:path",
+      },
+      {
         source: "/answer/user/:path",
         destination: "http://54.180.175.144:8080/answer/user/:path",
       },
       {
         source: "/auth/login",
-        destination: "http://54.180.175.144:8080/answer/auth/login",
+        destination: "http://54.180.175.144:8080/auth/login",
       },
     ];
   },
@@ -39,11 +43,4 @@ module.exports = {
 };
 
 
-// import withImages from "next-images";
-// modules.exports = withImages({
-//   webpack(config, options) {
-//     return config;
-//   },
-// });
-// export default nextConfig
-module.exports = nextConfig
+

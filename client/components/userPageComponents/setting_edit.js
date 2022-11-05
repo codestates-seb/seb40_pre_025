@@ -97,7 +97,6 @@ export default function saves_qustions() {
             <button className="saveBtn" onClick={handleClickSubmit}>
               Save profile
             </button>
-            <button className="cancelBtn">Cancel</button>
           </div>
         </div>
       </div>

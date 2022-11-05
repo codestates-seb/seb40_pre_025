@@ -1,6 +1,4 @@
 import Link from "next/link";
-// import Google from "../../components/social/GoogleLogin";
-// import Github2 from "../../components/social/Github2";
 import { useRouter } from "next/router";
 import { useState } from "react";
 export default function Login() {
@@ -20,13 +18,17 @@ export default function Login() {
         password: userPw,
       };
       console.log(body);
+      const headers = {
+        "Contetnt-Type": "apllication/jon",
+      };
+      console.log(headers);
       fetch("/auth/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify(body),
       })
         .then((res) => {
-          console.log(res);
+          console.dir(res);
           if (res.status !== 200) {
             alert("등록된 회원이 아닙니다.");
             return false;
@@ -297,7 +299,7 @@ export default function Login() {
           align-items: center;
           justify-content: center;
           margin: 20px;
-          height: 100%;
+          height: 80vh;
         }
       `}</style>
     </div>
