@@ -34,8 +34,8 @@ module.exports = {
         destination: "http://54.180.175.144:8080/answer/user/:path",
       },
       {
-        source: "/auth/:path",
-        destination: "http://54.180.175.144:8080/answer/auth/:path",
+        source: "/auth/login",
+        destination: "http://54.180.175.144:8080/auth/login",
       },
     ];
   },

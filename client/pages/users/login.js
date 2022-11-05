@@ -28,7 +28,7 @@ export default function Login() {
         body: JSON.stringify(body),
       })
         .then((res) => {
-          console.log(res);
+          console.dir(res);
           if (res.status !== 200) {
             alert("등록된 회원이 아닙니다.");
             return false;
