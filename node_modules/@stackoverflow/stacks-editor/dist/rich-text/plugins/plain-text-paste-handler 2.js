@@ -1,0 +1,33 @@
+import { Plugin } from "prosemirror-state";
+export const plainTextPasteHandler = new Plugin({
+    props: {
+        handlePaste(view, event, slice) {
+            var _a, _b;
+            // user is only pasting plain text, so don't process
+            if (!((_a = event.clipboardData) === null || _a === void 0 ? void 0 : _a.getData("text/html"))) {
+                return false;
+            }
+            let textNode = slice.content.firstChild;
+            // content might be a paragraph with a single text node
+            if (((_b = textNode === null || textNode === void 0 ? void 0 : textNode.type) === null || _b === void 0 ? void 0 : _b.name) === "paragraph" &&
+                textNode.childCount === 1) {
+                textNode = textNode.firstChild;
+            }
+            // if the pasted content is not plain text, don't process
+            if (!textNode ||
+                textNode.type.name !== "text" ||
+                textNode.marks.length) {
+                return false;
+            }
+            // check if we're pasting into a node with marks to avoid unnecessary capturing
+            const { selection } = view.state;
+            const insertLocation = selection.$from.nodeBefore;
+            if (!(insertLocation === null || insertLocation === void 0 ? void 0 : insertLocation.marks.length)) {
+                return false;
+            }
+            // finally, insert the text with *marks inherited*
+            view.dispatch(view.state.tr.replaceSelectionWith(textNode, true));
+            return true;
+        },
+    },
+});

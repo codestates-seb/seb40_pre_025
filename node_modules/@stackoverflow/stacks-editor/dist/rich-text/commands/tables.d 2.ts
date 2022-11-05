@@ -1,0 +1,16 @@
+import { Schema } from "prosemirror-model";
+import { EditorState, Transaction, Selection } from "prosemirror-state";
+export declare function inTable(schema: Schema, selection: Selection): boolean;
+export declare const exitBlockCommand: import("prosemirror-state").Command;
+export declare function moveSelectionAfterTableCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+export declare function moveSelectionBeforeTableCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+export declare function insertTableRowBeforeCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+export declare function insertTableRowAfterCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+export declare function insertTableColumnAfterCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+export declare function insertTableColumnBeforeCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+export declare function removeRowCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+export declare function removeColumnCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+export declare function removeTableContentCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+export declare function moveToPreviousCellCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+export declare function moveToNextCellCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+export declare function insertRichTextTableCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;

@@ -1,14 +1,14 @@
 import React from "react";
 import Image from 'next/image';
 
-const Header = () => {
+const Header2 = () => {
   return <div className="header">
     <header>
     <nav>
     <ul>
     <li><a href="/"><Image src="/images/s.png" alt="stackoverflow" width="150" height="30"/></a></li>
     <li><a href=""><input type="text" placeholder="  🔍 Search..." onClick=""  /></a></li>
-    <li><a href="/users/login"><Image src="/images/user.png" alt="stackoverflow" width="20" height="20"/></a></li>
+    <a href="/users/profile"><img src={`https://picsum.photos/seed/picsum/200/200`} alt="image" width="27" height="27" className="image"/></a>
     <li><a href="/users/signup"><button className="logout">Log out</button></a></li>
     </ul>
     <style jsx>
@@ -62,4 +62,4 @@ const Header = () => {
   </div>;
 };
 
-export default Header;
+export default Header2;

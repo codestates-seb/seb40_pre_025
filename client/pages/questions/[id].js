@@ -76,19 +76,26 @@ export default function answer() {
             body: body,
             userId: localStorage.getItem("user")
           } 
-           fetch(`http://54.180.175.144:8080/answer/${localStorage.getItem("user")}/${id}`, {
+            fetch(`http://54.180.175.144:8080/answer/${localStorage.getItem("user")}/${id}`, {
                   method: "POST",
                   headers : new Headers({"Content-Type": "text/xml" }),
                   body: JSON.stringify(body),
-                 })
+                  })
                 .then((response) => {
                   console.log(response)
                   location.reload()
                 })
-
         }
+        
        
+       
+        
+
+
         useEffect(()=>{console.log(localStorage.getItem("user"))},[])
+
+
+
   return (
     <div>
 
@@ -250,3 +257,4 @@ export default function answer() {
     </div>
   )
 }
+//dasdasdas

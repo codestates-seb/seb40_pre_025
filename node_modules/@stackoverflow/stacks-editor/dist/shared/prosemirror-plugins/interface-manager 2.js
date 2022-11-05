@@ -1,0 +1,246 @@
+import { dispatchEditorEvent } from "../utils";
+import { StatefulPlugin, StatefulPluginKey } from "./plugin-extensions";
+/**
+ * The central plugin key where all show/hideInterface requests come into.
+ * This should *never* be exported. Any functionality that wants to use this must inherit from
+ * @see {@link ManagedInterfaceKey} and use its show/hideInterface methods.
+ */
+class MainInterfaceManagerKey extends StatefulPluginKey {
+    constructor() {
+        super("interface-manager");
+    }
+    /**
+     * Shows the interface for the plugin referenced by the passed key
+     * @param view The current editor view
+     * @param toShow The key of the plugin to show
+     * @param data Any data to attach to the transaction's metadata
+     * @returns true if the interface was shown, false if there was no state change
+     */
+    showInterfaceTr(viewState, toShow, data) {
+        // even though the TS types forbid this, it could still be passed in
+        if (data && "shouldShow" in data) {
+            delete data["shouldShow"];
+        }
+        const state = Object.assign(Object.assign({}, toShow.getState(viewState)), data);
+        // check validity
+        if (!this.checkIfValid(state, true)) {
+            return null;
+        }
+        // hide existing
+        let tr = this.hideCurrentInterfaceTr(viewState) || viewState.tr;
+        // dispatch cancelable event and return early if canceled
+        if (this.dispatchCancelableEvent(viewState, `${toShow.name}-show`, state)) {
+            return null;
+        }
+        // dispatch transaction for managed plugin
+        tr = toShow.setMeta(tr, Object.assign(Object.assign({}, state), { shouldShow: true }));
+        // set metadata for this plugin
+        const { containerGetter, dom } = this.getState(viewState);
+        tr = this.setMeta(tr, {
+            dom,
+            currentlyShown: toShow,
+            containerGetter,
+        });
+        return tr;
+    }
+    /**
+     * Hides the interface for the plugin referenced by the passed key
+     * @param view The current editor view
+     * @param toHide The key of the plugin to show
+     * @param data Any data to attach to the transaction's metadata
+     * @returns true if the interface was hidden, false if there was no state change
+     */
+    hideInterfaceTr(viewState, toHide, data) {
+        // even though the TS types forbid this, it could still be passed in
+        if (data && "shouldShow" in data) {
+            delete data["shouldShow"];
+        }
+        const state = Object.assign(Object.assign({}, toHide.getState(viewState)), data);
+        // check validity
+        if (!this.checkIfValid(state, false)) {
+            return null;
+        }
+        // dispatch cancelable event and return early if canceled
+        if (this.dispatchCancelableEvent(viewState, `${toHide.name}-hide`, state)) {
+            return null;
+        }
+        // dispatch transaction for managed plugin
+        let tr = viewState.tr;
+        tr = toHide.setMeta(tr, Object.assign(Object.assign({}, state), { shouldShow: false }));
+        // set metadata for this plugin
+        const { containerGetter, dom } = this.getState(viewState);
+        tr = this.setMeta(tr, {
+            dom,
+            currentlyShown: null,
+            containerGetter,
+        });
+        return tr;
+    }
+    hideCurrentInterfaceTr(viewState) {
+        const { currentlyShown } = this.getState(viewState);
+        if (!currentlyShown) {
+            return null;
+        }
+        return this.hideInterfaceTr(viewState, currentlyShown, {
+            shouldShow: false,
+        });
+    }
+    /**
+     * Checks if the the requested state change is valid
+     * @param state The current plugin state
+     * @param checkingIsShown Whether the state is being checked for being shown
+     */
+    checkIfValid(state, checkingIsShown) {
+        // check if the state we're expecting is set
+        if (checkingIsShown) {
+            // already visible, don't dispatch the event
+            return !("shouldShow" in state) || !state.shouldShow;
+        }
+        else {
+            // already hidden, don't dispatch the event
+            return state.shouldShow;
+        }
+    }
+    /**
+     * Dispatches an event to the editor view's DOM that can be canceled
+     * @param state The current editor state
+     * @param eventName The unprefixed name of the event to dispatch
+     * @param data The current plugin state
+     */
+    dispatchCancelableEvent(state, eventName, data) {
+        const dom = this.getState(state).dom;
+        return !dispatchEditorEvent(dom, eventName, data);
+    }
+}
+/** Singleton instance of @see {@link MainInterfaceManagerKey} */
+const MAIN_INTERFACE_MANAGER_KEY = new MainInterfaceManagerKey();
+/**
+ * Public PluginKey implementation for plugins that want to expose an interface.
+ * Contains helper methods for showing/hiding the interface that ensure that the manager
+ * handles the state changes across all interface-enabled plugins.
+ */
+export class ManagedInterfaceKey extends StatefulPluginKey {
+    constructor(name) {
+        super(name);
+        this.name = name;
+    }
+    /**
+     * Gets the container element that the plugin's interface should be rendered into
+     * @param view The current editor view
+     */
+    getContainer(view) {
+        return MAIN_INTERFACE_MANAGER_KEY.getState(view.state).containerGetter(view);
+    }
+    /**
+     * Shows the interface for this plugin, optionally overriding the metadata passed to the transaction
+     * @param view The current editor view
+     * @param data Optional data to attach to the transaction's metadata
+     * @returns True if the interface was shown, false if there was no state change
+     */
+    showInterfaceTr(state, data) {
+        return MAIN_INTERFACE_MANAGER_KEY.showInterfaceTr(state, this, data);
+    }
+    /**
+     * Hides the interface for this plugin, optionally overriding the metadata passed to the transaction
+     * @param view The current editor view
+     * @param data Optional data to attach to the transaction's metadata
+     * @returns True if the interface was hidden, false if there was no state change
+     */
+    hideInterfaceTr(state, data) {
+        return MAIN_INTERFACE_MANAGER_KEY.hideInterfaceTr(state, this, data);
+    }
+}
+/**
+ * Main plugin for coordinating the use of the interface container for all interface-enabled plugins.
+ * This plugin is *required* for any interface-enabled plugin to work. This plugin also adds a listener to hide the interface
+ * if the ESC key is pressed or if the text editor gains focus.
+ * @param containerGetter The method for getting the container element for the interface; falls back to the editor view's DOM's parentElement if not provided
+ */
+export function interfaceManagerPlugin(containerGetter) {
+    containerGetter =
+        containerGetter ||
+            function (view) {
+                return view.dom.parentElement;
+            };
+    return new StatefulPlugin({
+        key: MAIN_INTERFACE_MANAGER_KEY,
+        state: {
+            init: () => ({
+                dom: null,
+                currentlyShown: null,
+                containerGetter,
+            }),
+            apply(tr, value) {
+                return Object.assign(Object.assign({}, value), this.getMeta(tr));
+            },
+        },
+        props: {
+            handleKeyDown: (view, event) => {
+                // if the ESC key is pressed, then hide the interface
+                if (event.key === "Escape") {
+                    const tr = MAIN_INTERFACE_MANAGER_KEY.hideCurrentInterfaceTr(view.state);
+                    if (tr) {
+                        view.dispatch(tr);
+                    }
+                }
+                // don't stop the event from propagating
+                return false;
+            },
+            handleClick(view) {
+                // if the editor is clicked, then hide the interface
+                const tr = MAIN_INTERFACE_MANAGER_KEY.hideCurrentInterfaceTr(view.state);
+                if (tr) {
+                    view.dispatch(tr);
+                }
+                return false;
+            },
+        },
+        view: (editorView) => {
+            editorView.dispatch(MAIN_INTERFACE_MANAGER_KEY.setMeta(editorView.state.tr, {
+                dom: editorView.dom,
+                currentlyShown: null,
+                containerGetter,
+            }));
+            return {};
+        },
+    });
+}
+/**
+ * PluginView that ensures that the build/destroyInterface methods are called only at the appropriate times.
+ * **WARNING**: The plugin that uses this must also ensure that it forwards the `shouldShow` value from any
+ * apply transaction's metadata to the plugin's state. Failing to do so will result in the interface never being shown.
+ */
+export class PluginInterfaceView {
+    constructor(key) {
+        this.key = key;
+        this.isShown = false;
+    }
+    /**
+     * Pre-implemented update override that ensures that the interface is shown/hidden appropriately.
+     * If you need to do additional work, you should override this method, making sure to call `super.update(view)`
+     * in the overridden method _after_ the additional setup has been done.
+     * @param view The current editor view
+     */
+    update(view) {
+        const { shouldShow } = this.key.getState(view.state);
+        // only show/hide if the state has changed
+        if (this.isShown && !shouldShow) {
+            // hide the interface
+            this.isShown = false;
+            this.destroyInterface(this.key.getContainer(view));
+        }
+        else if (!this.isShown && shouldShow) {
+            // show the interface
+            this.isShown = true;
+            this.buildInterface(this.key.getContainer(view));
+        }
+    }
+    /** Helper wrapper around this key's @see {@link ManagedInterfaceKey.showInterface} */
+    tryShowInterfaceTr(state, data) {
+        return this.key.showInterfaceTr(state, data);
+    }
+    /** Helper wrapper around this key's @see {@link ManagedInterfaceKey.hideInterface} */
+    tryHideInterfaceTr(state, data) {
+        return this.key.hideInterfaceTr(state, data);
+    }
+}

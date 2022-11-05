@@ -1,6 +1,6 @@
 import React from "react";
-// import CS25 from '../../components/CS25'
+import CS25 from '../../components/CS25'
 
 export default function cs25() {
-  return <div>{/* <CS25/> */}</div>;
+  return <div><CS25/></div>;
 }

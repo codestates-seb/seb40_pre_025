@@ -1,7 +1,26 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Image from "next/image";
+import Header2 from "./Header2";
 
-const Header2 = () => {
+export default function Top() {
+  const [login, setLogin] = useState(false);
+
+  useEffect(()=>{
+    if(localStorage.getItem("accessToken") !== ""){
+      setLogin(true)
+      } else {
+        setLogin(false)
+      }
+  },[])
+
+  return (
+    <>
+    {login ? <Header2 /> : <Header/> }
+    </>
+  );
+}
+
+let Header = () => {
   return (
     <header>
       <div className="center border-B start">
@@ -146,4 +165,5 @@ const Header2 = () => {
   );
 };
 
-export default Header2;
+
+
