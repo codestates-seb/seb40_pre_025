@@ -8,7 +8,7 @@ import TopHeader from "./TopHeader";
 export default function Questions() {
 
   const [question, setQuestion] = useState([])
-
+  const [date, setDate] = useState([])
   useEffect(()=> {
     (async () => {
      const {data} = await (
@@ -17,6 +17,10 @@ export default function Questions() {
       )
       ).json()
      setQuestion(data)
+     const [obj] = data
+     const newObj = obj.createdAt
+     setDate(newObj)
+     console.log(newObj.date)
     })()
   }, [])
 
@@ -71,7 +75,7 @@ export default function Questions() {
                         <img src="/human.png" width={15} height={15}></img>
                       </div>
                       {tweet.author}
-                      <div className="asked">{new Date(tweet.createdAt).toLocaleString()}</div>
+                      <div className="asked">{`${date.date.year}년 ${date.date.month}월 ${date.date.day}일 `}</div>
                     </div>
                   </div>
                 </div>

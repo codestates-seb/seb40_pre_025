@@ -1,0 +1,5 @@
+import MarkdownIt from "markdown-it";
+/**
+ * Searches for and marks tight lists with a "tight" attribute
+ */
+export declare function tight_list(md: MarkdownIt): void;

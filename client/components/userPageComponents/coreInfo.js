@@ -25,7 +25,10 @@ export default function User() {
       headers,
     })
       .then((res) => res.json())
-      .then((ansers) => setUserData(ansers.data))
+      .then((ansers) => {
+        console.log(ansers);
+        setUserData(ansers.data);
+      })
       .catch((err) => console.log(err));
   }, []);
   console.log(userData);

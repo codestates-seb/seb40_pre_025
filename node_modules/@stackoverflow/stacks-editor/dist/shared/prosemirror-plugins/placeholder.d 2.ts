@@ -1,0 +1,3 @@
+import { Plugin } from "prosemirror-state";
+/** Plugin that adds placeholder text to the editor when it's empty */
+export declare function placeholderPlugin(placeholder: string): Plugin;

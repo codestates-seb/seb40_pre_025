@@ -1,0 +1,8 @@
+import { DOMParser, Node as ProseMirrorNode, ParseOptions, ParseRule, Schema } from "prosemirror-model";
+/** Parses out a Prosemirror document from a code (markdown) string */
+export declare class CodeStringParser extends DOMParser {
+    static schemaRules: (schema: Schema) => ParseRule[];
+    parseCode(content: string, options?: ParseOptions): ProseMirrorNode;
+    static fromSchema(schema: Schema): CodeStringParser;
+    static toString(node: ProseMirrorNode): string;
+}

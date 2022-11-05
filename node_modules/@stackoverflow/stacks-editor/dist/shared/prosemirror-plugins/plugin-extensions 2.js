@@ -1,0 +1,109 @@
+import { Plugin, PluginKey, } from "prosemirror-state";
+import { log } from "../logger";
+export class StatefulPluginKey extends PluginKey {
+    constructor(name) {
+        super(name);
+    }
+    /** @inheritdoc */
+    get(state) {
+        return super.get(state);
+    }
+    setMeta(tr, data) {
+        return tr.setMeta(this, data);
+    }
+}
+export class StatefulPlugin extends Plugin {
+    constructor(spec) {
+        super(spec);
+    }
+    get transactionKey() {
+        return this.spec.key;
+    }
+    getMeta(tr) {
+        return tr.getMeta(this.transactionKey);
+    }
+}
+export class AsyncPluginKey extends StatefulPluginKey {
+    constructor(name) {
+        super(name);
+    }
+    /** @inheritdoc */
+    setMeta(tr, data) {
+        const wrappedData = {
+            callbackData: null,
+            state: data,
+        };
+        return tr.setMeta(this, wrappedData);
+    }
+    setCallbackData(tr, data) {
+        const wrappedData = {
+            callbackData: data,
+            state: null,
+        };
+        return tr.setMeta(this, wrappedData);
+    }
+    dispatchCallbackData(view, data) {
+        const tr = this.setCallbackData(view.state.tr, data);
+        view.updateState(view.state.apply(tr));
+        return tr;
+    }
+}
+class AsyncViewHandler {
+    constructor(view, transactionKey, callback) {
+        this.callback = callback;
+        this.transactionKey = transactionKey;
+        // go ahead and call this first to initialize the plugin
+        this.attachCallback(view, null);
+    }
+    // on document update, call the callback again
+    update(view, prevState) {
+        // if the doc didn't change, don't update
+        if (view.state.doc.eq(prevState.doc)) {
+            return;
+        }
+        // attach a new callback to this instance
+        this.attachCallback(view, prevState);
+    }
+    destroy() {
+        // do nothing, let the plugin clean itself up
+    }
+    attachCallback(view, prevState) {
+        const promiseId = (this.inProgressPromise = Math.random());
+        this.callback(view, prevState)
+            .then((data) => {
+            // if another promise has been initialized before this one finished, cancel
+            if (promiseId !== this.inProgressPromise) {
+                log("AsyncViewHandler attachCallback", "cancelling promise update due to another callback taking its place");
+                return;
+            }
+            this.inProgressPromise = null;
+            // let the document know this callback has finished
+            this.transactionKey.dispatchCallbackData(view, data);
+        })
+            // on error, don't dispatch, just clear
+            .catch(() => {
+            this.inProgressPromise = null;
+        });
+    }
+}
+/**
+ * Shortcut wrapper for a plugin with async functionality;
+ * Overrides the spec's `view` property to manually handle async functionality
+ */
+export class AsyncPlugin extends StatefulPlugin {
+    constructor(spec) {
+        spec.view = (view) => {
+            return new AsyncViewHandler(view, spec.key, spec.asyncCallback);
+        };
+        super(spec);
+    }
+    /** @inheritdoc */
+    getMeta(tr) {
+        const metadata = tr.getMeta(this.transactionKey);
+        return metadata === null || metadata === void 0 ? void 0 : metadata.state;
+    }
+    getCallbackData(tr) {
+        const metadata = tr.getMeta(this.transactionKey);
+        return metadata === null || metadata === void 0 ? void 0 : metadata.callbackData;
+    }
+}
