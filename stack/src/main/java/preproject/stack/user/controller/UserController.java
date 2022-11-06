@@ -35,11 +35,8 @@ public class UserController {
         User user = mapper.userPostDtoToUser(userPostDto);
         User response = userService.createUser(user);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Access-Control-Allow-Origin", "*");
-
         return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.userToUserResponseDto(response)), headers, HttpStatus.CREATED);
+                new SingleResponseDto<>(mapper.userToUserResponseDto(response)), HttpStatus.CREATED);
     }
     //회원정보 수정 핸들러
     @PatchMapping("/{user-id}")
@@ -48,12 +45,8 @@ public class UserController {
         User user = mapper.userPatchDtoToUser(userPatchDto);
         User response = userService.updateUser(user);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Access-Control-Allow-Origin", "*");
-
-
         return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.userToUserResponseDto(response)), headers, HttpStatus.OK);
+                new SingleResponseDto<>(mapper.userToUserResponseDto(response)), HttpStatus.OK);
     }
     //전체회원 조회 핸들러 // 이해를 아직 못함 이부분이랑 response패키지는 jpa파트에서 좀 배껴옴
     @GetMapping
@@ -62,12 +55,8 @@ public class UserController {
         Page<User> pageUsers = userService.findUsers(page-1, size);
         List<User> users = pageUsers.getContent();
         //서비스 구현
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Access-Control-Allow-Origin", "*");
-
-        return new ResponseEntity<>(
-                new MultiResponseDto<>(mapper.usersToUserResponseDto(users), pageUsers), headers, HttpStatus.OK);
+     return new ResponseEntity<>(
+                new MultiResponseDto<>(mapper.usersToUserResponseDto(users), pageUsers), HttpStatus.OK);
 
     }
     //특정회원 조회 핸들러
@@ -75,11 +64,8 @@ public class UserController {
     public ResponseEntity getUser(@PathVariable("user-id") long userId) {
         User user = userService.findUser(userId);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Access-Control-Allow-Origin", "*");
-
         return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.userToUserResponseDto(user)), headers, HttpStatus.OK);
+                new SingleResponseDto<>(mapper.userToUserResponseDto(user)), HttpStatus.OK);
     }
 
     //회원 삭제? 탈퇴?
@@ -87,10 +73,7 @@ public class UserController {
     public ResponseEntity deleteUser(@PathVariable("user-id") long userId) {
         userService.deleteUser(userId);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Access-Control-Allow-Origin", "*");
-
-        return new ResponseEntity<>(headers, HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 

@@ -53,10 +53,7 @@ public class AnswerController {
         UserResponseDto userResponseDto = userMapper.userToUserResponseDto(user);
         answerResponseDto.setUserResponseDto(userResponseDto);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Access-Control-Allow-Origin", "*");
-
-        return new ResponseEntity<>(new SingleResponseDto<>(answerResponseDto), headers, HttpStatus.CREATED);
+        return new ResponseEntity<>(new SingleResponseDto<>(answerResponseDto), HttpStatus.CREATED);
 
     }
 
@@ -69,10 +66,7 @@ public class AnswerController {
 
         Answer response = answerService.updateAnswer(mapper.answerPatchDtoToAnswer(answerPatchDto));
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Access-Control-Allow-Origin", "*");
-
-        return new ResponseEntity<>(mapper.answerToAnswerResponseDto(response), headers, HttpStatus.OK);
+        return new ResponseEntity<>(mapper.answerToAnswerResponseDto(response), HttpStatus.OK);
     }
 
     // 답변 한 개 조회
@@ -82,10 +76,7 @@ public class AnswerController {
 
         AnswerUserResponseDto answer = answerService.findAnswer(answerId);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Access-Control-Allow-Origin", "*");
-
-        return new ResponseEntity<>(new SingleResponseDto<>(answer),headers, HttpStatus.OK);
+        return new ResponseEntity<>(new SingleResponseDto<>(answer),HttpStatus.OK);
     }
     // 자기가 작성한 답변 전체 조회
     @GetMapping("/answer/user/{user-id}")
@@ -101,10 +92,7 @@ public class AnswerController {
         User user = userService.findUser(userId);
         answerPageDto.setUserResponseDto(userMapper.userToUserResponseDto(user));
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Access-Control-Allow-Origin", "*");
-
-        return new ResponseEntity<>(new SingleResponseDto<>(answerPageDto),headers, HttpStatus.OK);
+        return new ResponseEntity<>(new SingleResponseDto<>(answerPageDto), HttpStatus.OK);
     }
 
     // 특정 포스트에 대한 답변만 조회, 불필요한듯?
@@ -115,10 +103,7 @@ public class AnswerController {
         Page<Answer> answers = answerService.findAnswers(postId, page - 1, size);
         List<Answer> response = answers.getContent();
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Access-Control-Allow-Origin", "*");
-
-        return new ResponseEntity<>(new MultiResponseDto<>(response,answers),headers, HttpStatus.OK);
+        return new ResponseEntity<>(new MultiResponseDto<>(response,answers), HttpStatus.OK);
     }
 
     // 답변 삭제
@@ -129,10 +114,7 @@ public class AnswerController {
 
         answerService.deleteAnswer(answerId);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Access-Control-Allow-Origin", "*");
-
-        return new ResponseEntity(headers,HttpStatus.NO_CONTENT);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
 
