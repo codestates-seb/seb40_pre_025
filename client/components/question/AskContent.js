@@ -96,7 +96,7 @@ export default function AskContent() {
               <li className="writing-list">
                 <div className="writing-body idea">
                   You might find that you have a better idea of your title after
-                  writing out the rest of the question.
+                  writing out the rest of the question..
                 </div>
               </li>
             </div>
