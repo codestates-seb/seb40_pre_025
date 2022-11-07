@@ -23,7 +23,6 @@ var style_default = /*#__PURE__*/__webpack_require__.n(style_);
 var external_react_ = __webpack_require__(6689);
 // EXTERNAL MODULE: ./node_modules/next/image.js
 var next_image = __webpack_require__(5675);
-var image_default = /*#__PURE__*/__webpack_require__.n(next_image);
 // EXTERNAL MODULE: external "react/jsx-runtime"
 var jsx_runtime_ = __webpack_require__(997);
 ;// CONCATENATED MODULE: ./components/Header2.js
@@ -51,11 +50,12 @@ const Header2 = () => {
             children: /*#__PURE__*/_jsx("a", {
               href: "/",
               className: "jsx-4068127630",
-              children: /*#__PURE__*/_jsx(Image, {
+              children: /*#__PURE__*/_jsx("img", {
                 src: "/images/s.png",
                 alt: "stackoverflow",
                 width: "150",
-                height: "30"
+                height: "30",
+                className: "jsx-4068127630"
               })
             })
           }), /*#__PURE__*/_jsx("li", {
@@ -133,73 +133,73 @@ function Header() {
 
   return /*#__PURE__*/jsx_runtime_.jsx("header", {
     children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-      className: "jsx-3349892717" + " " + "center border-B start",
+      className: "jsx-3167426344" + " " + "center border-B start",
       children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-        className: "jsx-3349892717" + " " + "grid",
+        className: "jsx-3167426344" + " " + "grid",
         children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
-          className: "jsx-3349892717" + " " + "center",
+          className: "jsx-3167426344" + " " + "center",
           children: /*#__PURE__*/jsx_runtime_.jsx("a", {
             href: "/",
-            className: "jsx-3349892717",
-            children: /*#__PURE__*/jsx_runtime_.jsx((image_default()), {
+            className: "jsx-3167426344",
+            children: /*#__PURE__*/jsx_runtime_.jsx("img", {
               src: "/images/s.png",
               alt: "stackoverflow",
               width: "150",
-              height: "30"
+              height: "30",
+              className: "jsx-3167426344"
             })
           })
         }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-          className: "jsx-3349892717" + " " + "center w100",
+          className: "jsx-3167426344" + " " + "center w100",
           children: /*#__PURE__*/jsx_runtime_.jsx("input", {
             type: "text",
             placeholder: "  \uD83D\uDD0D Search...",
-            className: "jsx-3349892717"
+            className: "jsx-3167426344"
           })
         }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-          className: "jsx-3349892717" + " " + "center",
+          className: "jsx-3167426344" + " " + "center",
           children: !login ? /*#__PURE__*/(0,jsx_runtime_.jsxs)(jsx_runtime_.Fragment, {
             children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
               href: "/users/login",
-              className: "jsx-3349892717",
+              className: "jsx-3167426344",
               children: /*#__PURE__*/jsx_runtime_.jsx("button", {
-                className: "jsx-3349892717" + " " + "login",
+                className: "jsx-3167426344" + " " + "login",
                 children: "Log in"
               })
             }), /*#__PURE__*/jsx_runtime_.jsx("a", {
               href: "/users/signup",
-              className: "jsx-3349892717",
+              className: "jsx-3167426344",
               children: /*#__PURE__*/jsx_runtime_.jsx("button", {
-                className: "jsx-3349892717" + " " + "signup",
+                className: "jsx-3167426344" + " " + "signup",
                 children: "Sign up"
               })
             })]
           }) : /*#__PURE__*/(0,jsx_runtime_.jsxs)(jsx_runtime_.Fragment, {
             children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
-              className: "jsx-3349892717" + " " + "person",
+              className: "jsx-3167426344" + " " + "person",
               children: /*#__PURE__*/jsx_runtime_.jsx("img", {
                 src: `https://picsum.photos/seed/picsum/200/200`,
                 alt: "image",
-                className: "jsx-3349892717" + " " + "people"
+                className: "jsx-3167426344" + " " + "people"
               })
             }), /*#__PURE__*/jsx_runtime_.jsx("a", {
               href: "/",
-              className: "jsx-3349892717",
+              className: "jsx-3167426344",
               children: /*#__PURE__*/jsx_runtime_.jsx("button", {
                 onClick: onClickLogOut,
-                className: "jsx-3349892717" + " " + "logout",
+                className: "jsx-3167426344" + " " + "logout",
                 children: "Log out"
               })
             })]
           })
         })]
       }), /*#__PURE__*/jsx_runtime_.jsx((style_default()), {
-        id: "3349892717",
-        children: [".logout.jsx-3349892717{cursor:pointer;background:rgb(218,232,241);color:rgb(45,95,139);padding:7px 12px 7px 12px;border:1px solid rgb(158,190,214);border-radius:3px;box-shadow:0.5px black;font-size:10px;margin-left:10px;}", ".logout.jsx-3349892717:hover{background:rgb(164,201,229);color:rgb(19,60,92);border:1px solid rgb(83,138,179);}", ".people.jsx-3349892717{width:100%;height:100%;}", ".person.jsx-3349892717{width:27px;height:27px;}", ".border-B.jsx-3349892717{box-shadow:1px 1px 10px 1px rgb(228,228,228);}", ".modal.jsx-3349892717{background:white;border:1px solid grey;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}", ".div.jsx-3349892717{-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}", ".divbar__menu.jsx-3349892717{-webkit-flex-direction:center;-ms-flex-direction:center;flex-direction:center;}", ".grid.jsx-3349892717{display:grid;min-width:1380px;width:70%;grid-template-columns:25% 50% 25%;}", ".w100.jsx-3349892717{width:100%;}", "button.jsx-3349892717{width:60px;}", ".center.jsx-3349892717{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}", "Image.jsx-3349892717:hover{background:rgb(221,224,227);}", "input.jsx-3349892717:focus{border-color:#0982f0;}", ".login.jsx-3349892717{cursor:pointer;background:rgb(218,232,241);color:rgb(45,95,139);padding:7px 12px 7px 12px;border:1px solid rgb(158,190,214);border-radius:3px;box-shadow:0.5px black;font-size:10px;margin-right:5px;}", ".login.jsx-3349892717:hover{background:rgb(164,201,229);color:rgb(19,60,92);border:1px solid rgb(83,138,179);}", ".signup.jsx-3349892717{cursor:pointer;background:rgb(19,127,254);color:rgb(255,255,255);padding:8px 15px 8px 15px;border:1px solid rgb(158,190,214);border-radius:3px;box-shadow:0.5px black;font-size:10px;width:75px;height:28px;}", ".signup.jsx-3349892717:hover{background:rgb(10,93,193);color:rgb(255,255,255);border:1px solid rgb(0,81,190);}", "input.jsx-3349892717{width:100%;min-width:200px;height:25px;font-size:13px;margin-left:60px;margin-right:50px;}", "header.jsx-3349892717{background:rgb(246,248,247);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin:0px 80.5px 0px 80.5px;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:-webkit-sticky;position:sticky;top:0;}", "div.jsx-3349892717{background:rgb(246,248,247);list-style-type:none;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:0;height:3.2rem;}", "@media screen and (max-width:760px){.divbar__menu.jsx-3349892717{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}input.jsx-3349892717{width:800px;}input.jsx-3349892717{display:none;}}"]
+        id: "3167426344",
+        children: [".logout.jsx-3167426344{cursor:pointer;background:rgb(218,232,241);color:rgb(45,95,139);padding:7px 12px 7px 12px;border:1px solid rgb(158,190,214);border-radius:3px;box-shadow:0.5px black;font-size:10px;margin-left:10px;}", ".logout.jsx-3167426344:hover{background:rgb(164,201,229);color:rgb(19,60,92);border:1px solid rgb(83,138,179);}", ".people.jsx-3167426344{width:100%;height:100%;}", ".person.jsx-3167426344{width:27px;height:27px;}", ".border-B.jsx-3167426344{box-shadow:1px 1px 10px 1px rgb(228,228,228);}", ".modal.jsx-3167426344{background:white;border:1px solid grey;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}", ".div.jsx-3167426344{-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}", ".divbar__menu.jsx-3167426344{-webkit-flex-direction:center;-ms-flex-direction:center;flex-direction:center;}", ".grid.jsx-3167426344{display:grid;min-width:1380px;width:70%;grid-template-columns:25% 50% 25%;}", ".w100.jsx-3167426344{width:100%;}", "button.jsx-3167426344{width:60px;}", ".center.jsx-3167426344{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}", "Image.jsx-3167426344:hover{background:rgb(221,224,227);}", "input.jsx-3167426344:focus{border-color:#0982f0;}", ".login.jsx-3167426344{cursor:pointer;background:rgb(218,232,241);color:rgb(45,95,139);padding:7px 12px 7px 12px;border:1px solid rgb(158,190,214);border-radius:3px;box-shadow:0.5px black;font-size:10px;margin-right:5px;}", ".login.jsx-3167426344:hover{background:rgb(164,201,229);color:rgb(19,60,92);border:1px solid rgb(83,138,179);}", ".signup.jsx-3167426344{cursor:pointer;background:rgb(19,127,254);color:rgb(255,255,255);padding:8px 15px 8px 15px;border:1px solid rgb(158,190,214);border-radius:3px;box-shadow:0.5px black;font-size:10px;width:75px;height:28px;}", ".signup.jsx-3167426344:hover{background:rgb(10,93,193);color:rgb(255,255,255);border:1px solid rgb(0,81,190);}", "input.jsx-3167426344{width:100%;min-width:200px;height:25px;font-size:13px;margin-left:60px;margin-right:50px;}", "header.jsx-3167426344{background:rgb(246,248,247);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin:0px 80.5px 0px 80.5px;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:-webkit-sticky;position:sticky;top:0;}", "div.jsx-3167426344{background:rgb(246,248,247);list-style-type:none;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:0;height:3.2rem;}", "@media screen and (max-width:760px){.divbar__menu.jsx-3167426344{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}input.jsx-3167426344{width:800px;}input.jsx-3167426344{display:none;}}"]
       })]
     })
   });
 }
-;
 ;// CONCATENATED MODULE: ./components/Footer.js
 
 

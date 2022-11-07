@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Header2 from "./Header2";
 
-
-
-export default function Header(){
-
+export default function Header() {
   const [login, setLogin] = useState(false);
   useEffect(() => {
     if (localStorage.getItem("accessToken") !== null) {
@@ -26,7 +23,7 @@ export default function Header(){
         <div className="grid">
           <div className="center">
             <a href="/">
-              <Image
+              <img
                 src="/images/s.png"
                 alt="stackoverflow"
                 width="150"
@@ -38,60 +35,59 @@ export default function Header(){
             <input type="text" placeholder="  🔍 Search..." />
           </div>
           <div className="center">
-          {  !login 
-          ? 
-          <>
-          <a href="/users/login">
-              <button className="login">Log in</button>
-          </a>
-          <a href="/users/signup">
-              <button className="signup">Sign up</button>
-          </a>
-          </>
-          : 
-          <>
-          <div className="person">
-              <img
-                src={`https://picsum.photos/seed/picsum/200/200`}
-                alt="image"
-                className="people"
-              />
-            </div>
-          <a href="/">
-            <button onClick={onClickLogOut} className="logout">
-              Log out
-            </button>
-          </a>
-          </>
-            }
+            {!login ? (
+              <>
+                <a href="/users/login">
+                  <button className="login">Log in</button>
+                </a>
+                <a href="/users/signup">
+                  <button className="signup">Sign up</button>
+                </a>
+              </>
+            ) : (
+              <>
+                <div className="person">
+                  <img
+                    src={`https://picsum.photos/seed/picsum/200/200`}
+                    alt="image"
+                    className="people"
+                  />
+                </div>
+                <a href="/">
+                  <button onClick={onClickLogOut} className="logout">
+                    Log out
+                  </button>
+                </a>
+              </>
+            )}
           </div>
         </div>
         <style jsx>
           {`
-          .logout {
-                cursor: pointer;
-                background: rgb(218, 232, 241);
-                color: rgb(45, 95, 139);
-                padding: 7px 12px 7px 12px;
-                border: 1px solid rgb(158, 190, 214);
-                border-radius: 3px;
-                box-shadow: 0.5px black;
-                font-size: 10px;
-                margin-left: 10px;
-              }
-              .logout :hover {
+            .logout {
+              cursor: pointer;
+              background: rgb(218, 232, 241);
+              color: rgb(45, 95, 139);
+              padding: 7px 12px 7px 12px;
+              border: 1px solid rgb(158, 190, 214);
+              border-radius: 3px;
+              box-shadow: 0.5px black;
+              font-size: 10px;
+              margin-left: 10px;
+            }
+            .logout :hover {
               background: rgb(164, 201, 229);
               color: rgb(19, 60, 92);
               border: 1px solid rgb(83, 138, 179);
             }
-          .people{
-            width: 100%;
-            height: 100%;
-          }
-          .person{
-            width: 27px;
-            height: 27px;
-          }
+            .people {
+              width: 100%;
+              height: 100%;
+            }
+            .person {
+              width: 27px;
+              height: 27px;
+            }
             .border-B {
               box-shadow: 1px 1px 10px 1px rgb(228, 228, 228);
             }
@@ -203,4 +199,4 @@ export default function Header(){
       </div>
     </header>
   );
-};
+}

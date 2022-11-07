@@ -61,7 +61,7 @@ export default function examples() {
               onClick={renderProps.onClick}
               disabled={renderProps.disabled}
             >
-              <Image
+              <img
                 className="image"
                 src="/images/google.png"
                 alt="google"

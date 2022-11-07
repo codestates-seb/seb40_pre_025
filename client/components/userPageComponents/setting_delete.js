@@ -14,7 +14,7 @@ export default function saves_qustions() {
       const headers = new Headers({
         Authorization: localStorage.getItem("accessToken"),
       });
-      fetch(`/user/${localStorage.getItem("user")}`, {
+      fetch(`http://54.180.175.144:8080/user/${localStorage.getItem("user")}`, {
         method: "DELETE",
         headers,
       })

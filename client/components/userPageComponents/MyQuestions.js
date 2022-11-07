@@ -46,7 +46,9 @@ export default function MyQusticons() {
       Authorization: localStorage.getItem("accessToken"),
     });
     fetch(
-      `/post/user/${localStorage.getItem("user")}?page=${crrentPage}&size=4`,
+      `http://54.180.175.144:8080/post/user/${localStorage.getItem(
+        "user"
+      )}?page=${crrentPage}&size=4`,
       {
         headers,
       }

@@ -13,7 +13,7 @@ const Header2 = () => {
           <div className="grid">
             <li>
               <a href="/">
-                <Image
+                <img
                   src="/images/s.png"
                   alt="stackoverflow"
                   width="150"
@@ -27,22 +27,22 @@ const Header2 = () => {
               </a>
             </li>
             <div className="btn2">
-            <a href="/users/profile">
-              <img
-                src={`https://picsum.photos/seed/picsum/200/200`}
-                alt="image"
-                width="27"
-                height="27"
-                className="image"
-              />
-            </a>
-            <li>
-              <a href="/">
-                <button onClick={onClickLogOut} className="logout">
-                  Log out
-                </button>
+              <a href="/users/profile">
+                <img
+                  src={`https://picsum.photos/seed/picsum/200/200`}
+                  alt="image"
+                  width="27"
+                  height="27"
+                  className="image"
+                />
               </a>
-            </li>
+              <li>
+                <a href="/">
+                  <button onClick={onClickLogOut} className="logout">
+                    Log out
+                  </button>
+                </a>
+              </li>
             </div>
           </div>
           <style jsx>

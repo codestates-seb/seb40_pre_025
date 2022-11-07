@@ -6,7 +6,7 @@ export default function MyQusticon({ data }) {
     const headers = new Headers({
       Authorization: localStorage.getItem("accessToken"),
     });
-    fetch(`/post/${data.postId}`, {
+    fetch(`http://54.180.175.144:8080/post/${data.postId}`, {
       method: "DELETE",
       headers,
     })

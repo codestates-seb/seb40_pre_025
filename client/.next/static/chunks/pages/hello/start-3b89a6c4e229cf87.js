@@ -1,1 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[840],{5362:function(n,_,u){(window.__NEXT_P=window.__NEXT_P||[]).push(["/hello/start",function(){return u(1424)}])}},function(n){n.O(0,[579,424,774,888,179],(function(){return _=5362,n(n.s=_);var _}));var _=n.O();_N_E=_}]);

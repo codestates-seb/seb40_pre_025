@@ -22,7 +22,7 @@ export default function Login() {
         "Contetnt-Type": "apllication/jon",
       };
       console.log(headers);
-      fetch("/auth/login", {
+      fetch("http://54.180.175.144:8080/auth/login", {
         method: "POST",
         headers,
         body: JSON.stringify(body),

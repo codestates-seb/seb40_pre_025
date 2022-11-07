@@ -356,7 +356,7 @@ function normalizeSrc(src) {
   return src[0] === '/' ? src.slice(1) : src;
 }
 
-const configEnv = {"deviceSizes":[640,750,828,1080,1200,1920,2048,3840],"imageSizes":[16,32,48,64,96,128,256,384],"path":"/_next/image","loader":"default","dangerouslyAllowSVG":false,"unoptimized":false};
+const configEnv = {"deviceSizes":[640,750,828,1080,1200,1920,2048,3840],"imageSizes":[16,32,48,64,96,128,256,384],"path":"","loader":"akamai","dangerouslyAllowSVG":false,"unoptimized":false};
 const loadedImageURLs = new Set();
 const allImgs = new Map();
 let perfObserver;
@@ -702,7 +702,7 @@ if ((typeof exports.default === 'function' || typeof exports.default === 'object
 /***/ 5675:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__(8566)
+/* unused reexport */ __webpack_require__(8566)
 
 
 /***/ })

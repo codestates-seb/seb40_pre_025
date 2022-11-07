@@ -9,7 +9,9 @@ export default function Questions() {
   const [date, setDate] = useState([]);
   useEffect(() => {
     (async () => {
-      const { data } = await (await fetch(`/post?page=1&size=30`)).json();
+      const { data } = await (
+        await fetch(`http://54.180.175.144:8080/post?page=1&size=30`)
+      ).json();
       setQuestion(data);
       const [obj] = data;
       const newObj = obj.createdAt;

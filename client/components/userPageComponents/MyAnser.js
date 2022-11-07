@@ -6,7 +6,7 @@ export default function MyAnser({ data }) {
     const headers = new Headers({
       Authorization: localStorage.getItem("accessToken"),
     });
-    fetch(`/answer/${data.answerId}`, {
+    fetch(`http://54.180.175.144:8080/answer/${data.answerId}`, {
       method: "DELETE",
       headers,
     })

@@ -20,28 +20,26 @@ export default function AskContent() {
 
     // /post/${localStorage.getItem("user")}
 
-    fetch(`/post/${localStorage.getItem("user")}`, {
+    fetch(`http://54.180.175.144:8080/post/${localStorage.getItem("user")}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((res) => {
-        if(title === '') {
-          alert('Title을 써주세요 ')
+        if (title === "") {
+          alert("Title을 써주세요 ");
           return false;
-        } 
-        if(body === '') {
-          alert('problem을 써주세요')
-          return false
+        }
+        if (body === "") {
+          alert("problem을 써주세요");
+          return false;
         }
         console.log(res);
-        router.push("/")
-
+        router.push("/");
       })
       .catch((error) => {
         console.log("Error", error);
       });
-
   };
 
   return (
@@ -138,10 +136,7 @@ export default function AskContent() {
         <div className="button-box">
           <div className="button-list">
             <div className="reviewbtn">
-              <div
-                className="s-btn nextbtn"
-                onClick={handleSubmit}
-              >
+              <div className="s-btn nextbtn" onClick={handleSubmit}>
                 Review your queston
               </div>
             </div>
@@ -155,7 +150,7 @@ export default function AskContent() {
       </div>
 
       <style jsx>{`
-        main{
+        main {
           display: flex;
         }
         .title {
@@ -296,8 +291,6 @@ export default function AskContent() {
         }
         .problem-outer {
           margin: 3% 3% 3% 3%;
-
-
         }
         .problem-title {
           margin-bottom: 1.5%;
@@ -327,7 +320,6 @@ export default function AskContent() {
         }
 
         @media screen and (max-width: 1340px) {
-       
         }
 
         .tags-box {

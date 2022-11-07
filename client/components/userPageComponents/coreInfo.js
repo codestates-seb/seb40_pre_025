@@ -21,7 +21,7 @@ export default function User() {
     const headers = new Headers({
       "Content-Type": "text/xml",
     });
-    fetch(`/user/${localStorage.getItem("user")}`, {
+    fetch(`http://54.180.175.144:8080/user/${localStorage.getItem("user")}`, {
       headers,
     })
       .then((res) => res.json())

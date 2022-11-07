@@ -10,19 +10,29 @@ export default function profile() {
     const headers = new Headers({
       "Content-Type": "text/xml",
     });
-    fetch(`/answer/user/${localStorage.getItem("user")}?page=1&size=5`, {
-      headers,
-    })
+    fetch(
+      `http://54.180.175.144:8080/answer/user/${localStorage.getItem(
+        "user"
+      )}?page=1&size=5`,
+      {
+        headers,
+      }
+    )
       .then((res) => res.json())
       .then((data) => setAnserCount(data.data.answers.pageInfo.totalElements))
       .catch((err) => console.log(err));
-    fetch(`/post/user/${localStorage.getItem("user")}?page=1&size=5`, {
-      headers,
-    })
+    fetch(
+      `http://54.180.175.144:8080/post/user/${localStorage.getItem(
+        "user"
+      )}?page=1&size=5`,
+      {
+        headers,
+      }
+    )
       .then((res) => res.json())
       .then((data) => setQustionCount(data.data.posts.pageInfo.totalElements))
       .catch((err) => console.log(err));
-    fetch(`/user/${localStorage.getItem("user")}`, {
+    fetch(`http://54.180.175.144:8080/user/${localStorage.getItem("user")}`, {
       headers,
     })
       .then((res) => res.json())
