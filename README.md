@@ -22,8 +22,7 @@
       <td align="center"><a href="https://github.com/MinSeongKiim"><img src="https://avatars.githubusercontent.com/u/55015415?v=4" width="100px;" alt=""/><br /><sub><b>FE 팀원 : 김민성</b></sub></a><br /></td>
      <tr/>
       <td align="center"><a href="https://github.com/jaybknd"><img src="https://avatars.githubusercontent.com/u/107941815?v=4" width="100px;" alt=""/><br /><sub><b>BE 부팀장 : 김정민</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/hyojoonm"><img src="https://user-images.githubusercontent.com/105473305/200236648-77290e72-29c8-4882-abf2-eaa672e79563.png
-" width="100px;" alt=""/><br /><sub><b>BE 팀원 : 김효준</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/hyojoonm"><img src="https://avatars.githubusercontent.com/u/107922900?v=4" width="100px;" alt=""/><br /><sub><b>BE 팀원 : 김효준</b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/junohheo"><img src="https://avatars.githubusercontent.com/u/107922900?v=4" width="100px;" alt=""/><br /><sub><b>BE 팀원 : 허준오</b></sub></a><br /></td>
     </tr>
   </tbody>
