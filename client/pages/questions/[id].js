@@ -51,7 +51,7 @@ export default function answer() {
                   console.log(response)
                   location.reload()
                 })
-        }
+        };
         
        
        
