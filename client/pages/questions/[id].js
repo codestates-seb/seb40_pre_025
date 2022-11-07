@@ -70,13 +70,13 @@ export default function answer() {
 
       <div className="qusetionInfoContainer">
             <div className="sub-c">
-              <span className="fc-light">CreatAt</span>
+              <span className="fc-light"></span>
             </div>
             <div>
-              <span className="fc-light">VoteCount</span>
+              <span className="fc-light"></span>
             </div>
             <div>
-              <span className="fc-light">ReadCount</span>
+              <span className="fc-light"></span>
 
             </div>
           </div>
@@ -89,7 +89,7 @@ export default function answer() {
       <div>
         <h1 className="answerCount">Answer</h1>  
       </div>
-      <hr className="bar" />
+     
       <div>
       <div className="questionComentBox">{question ? question.answers.data.map((el)=> {
         
@@ -139,18 +139,12 @@ export default function answer() {
           margin-bottom: 40px;
         }
 
-        .sub-c {
-          margin-right: 30px;
-        }
-        .fc-light {
-          color: gray;
-          margin: 30px;
-        }
+        
 
         .questionComentBox {
             display: block;
             font-size: 15px;
-            margin: 20px;
+            margin: 5%;
         }
         .answerCount {
           font-weight: 400;
@@ -161,18 +155,10 @@ export default function answer() {
           font-size: 22px;
           margin: 20px;
         }
-        .deleteButton {
-          margin-left: 10px;
-        }
-
-        .iconContainer {
-          display: flex;
-          justify-content: start;
-          width: auto;
-        }
         .answerCss {
           padding: 2%;
           border-bottom: 1px dashed gray;
+          width: 80%;
         }
 
         .editorContainer {
@@ -182,7 +168,7 @@ export default function answer() {
         }
 
         .editor {
-          width: 100%;
+          width: 80%;
           min-width: 10rem;
           height: 15rem;
           resize: none;
@@ -198,7 +184,7 @@ export default function answer() {
         .answerPostButtonContainer {
           display: flex;
           justify-content: start;
-          width: 60%;
+          width: 5%;
           margin-top: 30px;
         }
 
@@ -206,7 +192,7 @@ export default function answer() {
           font-size: 24px;
           font-weight: 400;
           color: white;
-          width: auto;
+          width: 12%;
           border: solid #67b9f3 1px;
           background-color: #67b9f3;
           padding: 1% 3%;
@@ -231,4 +217,3 @@ export default function answer() {
     </div>
   )
 }
-//dasdasdas
