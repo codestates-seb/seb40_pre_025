@@ -1,9 +1,6 @@
 # 📍 Team 25 - Pre Project
 ![](https://t1.daumcdn.net/cfile/tistory/9933A13359EAC02836)
 
-## 🖥 기능 구현 화면
-![vllo 2](https://user-images.githubusercontent.com/102123710/200273500-b32afe3e-e595-426b-9b2d-c3925574a6d6.GIF)
-
 ---
 
 ## 🏪 팀명
@@ -48,6 +45,11 @@
 
 ## 🗓 프로젝트 기간
 2022.10.20 ~ 2022.11.07
+
+---
+
+## 🖥 기능 구현 화면
+![vllo 2](https://user-images.githubusercontent.com/102123710/200273500-b32afe3e-e595-426b-9b2d-c3925574a6d6.GIF)
 
 ---
 
