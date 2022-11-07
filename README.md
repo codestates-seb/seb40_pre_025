@@ -9,6 +9,8 @@
 <br />
 <br />
 
+---
+
 ## 👨‍👩‍👧‍👦 팀원 소개
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -31,16 +33,19 @@
 <br />
 <br />
 
+---
+
 ## ⚙️ 기술 스택
 ### ✔️Frond-end
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/Css-1572B6?style=for-the-badge&logo=Css&logoColor=white"><img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=purple"><img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white">
 ### ✔️Back-end
 <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=green"><img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=yellow"><img src="https://img.shields.io/badge/My SQL-white?style=for-the-badge&logo=#4479A1&logoColor=white"><img src="https://img.shields.io/badge/H2 Database-004088?style=for-the-badge"> 
 
+---
 
 ## ✍🏻 기능 구현
 ### ✔️Frond-end
-**CRUD **
+**CRUD**
 1. `질문` 작성/조회/수정/삭제
 2. `답변` 작성/조회/수정/삭제/채택
 3. `JWT`- 회원가입/로그인/로그아웃
