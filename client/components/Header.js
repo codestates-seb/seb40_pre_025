@@ -1,23 +1,23 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Header2 from "./Header2";
 
 export default function Top() {
   const [login, setLogin] = useState(false);
+  const onClickLogOut = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("user");
+  };
 
-  useEffect(()=>{
-    if(localStorage.getItem("accessToken") !== ""){
-      setLogin(true)
-      } else {
-        setLogin(false)
-      }
-  },[])
+  useEffect(() => {
+    if (localStorage.getItem("accessToken") !== null) {
+      setLogin(true);
+    } else {
+      setLogin(false);
+    }
+  });
 
-  return (
-    <>
-    {login ? <Header2 /> : <Header/> }
-    </>
-  );
+  return <>{login ? <Header2 /> : <Header />}</>;
 }
 
 let Header = () => {
@@ -164,6 +164,3 @@ let Header = () => {
     </header>
   );
 };
-
-
-
