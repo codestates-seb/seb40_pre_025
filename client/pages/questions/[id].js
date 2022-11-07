@@ -3,54 +3,59 @@ import React, { useEffect, useState } from 'react'
 
 
 export default function answer() {
-    const [question, setQuestion] = useState({title:""})
+    const [question, setQuestion] = useState({title:"",body:""})
     const [answer, setAnswer] = useState({body:""})
+
     const [value, setValue] = useState([]);
     
 
     const router = useRouter();
-    const {id} = router.query;
-  
-  
+    // console.log(router.query)
+    const {id} = router.query
+    const idNum = Number(id)
+    console.log(idNum)
+    
+
  //get 
     useEffect(()=> {
         (async () => {
          const {data} = await (
           await fetch(
-            `http://54.180.175.144:8080/post/${id}?page=1&size=5`
+            `http://54.180.175.144:8080/post/${idNum}?page=1&size=5`
           )
           ).json()
           setQuestion(data)
-          const [obj] = data.answer.data
-
+          console.log(data)
+          const [obj] = data.answers.data
+            // console.log(data.title)
           setAnswer(obj)
           // console.log(obj.body)
           // console.log("body" in data)
         })()
-      }, [])
+      }, [id])
 
         const onClickAddAnswer =()=>{
           let body = {
             body: body,
             userId: localStorage.getItem("user")
           } 
-            fetch(`http://54.180.175.144:8080/answer/${localStorage.getItem("user")}/${id}`, {
+            fetch(`http://54.180.175.144:8080/answer/${localStorage.getItem("user")}/${idNum}`, {
                   method: "POST",
                   headers : new Headers({"Content-Type": "text/xml" }),
                   body: JSON.stringify(body),
                   })
                 .then((response) => {
                   console.log(response)
-                  location.reload()
+                  // location.reload()
                 })
-        }
+        };
         
        
        
         
 
 
-        useEffect(()=>{console.log(localStorage.getItem("user"))},[])
+        // useEffect(()=>{console.log(localStorage.getItem("user"))},[])
 
 
 
@@ -84,7 +89,7 @@ export default function answer() {
       </div>
       <hr className="bar" />
       <div>
-      <h1 className="questionComentBox">{answer.body}</h1>
+      {/* <h1 className="questionComentBox">{answer.body}</h1> */}
       </div>
       <hr className="bar" />
       <div>

@@ -4,10 +4,6 @@ import Header2 from "./Header2";
 
 export default function Top() {
   const [login, setLogin] = useState(false);
-  const onClickLogOut = () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("user");
-  };
 
   useEffect(() => {
     if (localStorage.getItem("accessToken") !== null) {
@@ -51,6 +47,12 @@ let Header = () => {
           {`
             .border-B {
               box-shadow: 1px 1px 10px 1px rgb(228, 228, 228);
+            }
+            .modal {
+              background: white;
+              border: 1px solid grey;
+              display: flex;
+              flex-direction: row;
             }
             .div {
               justify-content: center;
@@ -104,11 +106,13 @@ let Header = () => {
               cursor: pointer;
               background: rgb(19, 127, 254);
               color: rgb(255, 255, 255);
-              padding: 7px 12px 7px 12px;
+              padding: 8px 15px 8px 15px;
               border: 1px solid rgb(158, 190, 214);
               border-radius: 3px;
               box-shadow: 0.5px black;
               font-size: 10px;
+              width: 75px;
+              height: 28px;
             }
             .signup :hover {
               background: rgb(10, 93, 193);

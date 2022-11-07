@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 export default function AskContent() {
-  // const router = useRouter();
+  const router = useRouter();
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -26,8 +26,15 @@ export default function AskContent() {
       body: JSON.stringify(data),
     })
       .then((res) => {
+        if(title === '') {
+          alert('Title을 써주세요 ')
+          return false;
+        } 
+        if(body === '') {
+          alert('problem을 써주세요')
+          return false
+        }
         console.log(res);
-        location.reload()
         router.push("/")
 
       })
@@ -52,7 +59,7 @@ export default function AskContent() {
                   <div>
                     <label className="detail-label">
                       Be specific and imagine you’re asking a question to
-                      another person..
+                      another person.
                     </label>
                   </div>
                 </div>
@@ -132,7 +139,6 @@ export default function AskContent() {
           <div className="button-list">
             <div className="reviewbtn">
               <div
-                type="submit"
                 className="s-btn nextbtn"
                 onClick={handleSubmit}
               >
