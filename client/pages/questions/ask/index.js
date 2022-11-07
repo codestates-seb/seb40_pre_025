@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import AskNotice from '../../../components/question/AskNotice'
-import SubmissionBtn from '../../../components/question/SubmissionBtn'
 import AskSeo from '../../../components/question/AskSeo'
 import AskContent from '../../../components/question/AskContent'
 
