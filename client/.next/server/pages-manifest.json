@@ -1,0 +1,22 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/api/form": "pages/api/form.js",
+  "/hello/start": "pages/hello/start.html",
+  "/hello/cs25": "pages/hello/cs25.html",
+  "/hello/test": "pages/hello/test.html",
+  "/": "pages/index.html",
+  "/questions/[id]": "pages/questions/[id].html",
+  "/users/User_Id_Layout": "pages/users/User_Id_Layout.html",
+  "/users/login": "pages/users/login.html",
+  "/users/profile": "pages/users/profile.html",
+  "/users/saves/ansers": "pages/users/saves/ansers.html",
+  "/users/setting/delete": "pages/users/setting/delete.html",
+  "/users/saves/qustions": "pages/users/saves/qustions.html",
+  "/users/setting/edit": "pages/users/setting/edit.html",
+  "/users/user": "pages/users/user.html",
+  "/users/signup": "pages/users/signup.html",
+  "/questions/ask": "pages/questions/ask.html",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}
