@@ -4,26 +4,19 @@ import agoraStatesDiscussions from "../../static/dummydata";
 import FilterBtn from "./FilterBtn";
 import TopHeader from "./TopHeader";
 
-
 export default function Questions() {
-
-  const [question, setQuestion] = useState([])
-  const [date, setDate] = useState([])
-  useEffect(()=> {
+  const [question, setQuestion] = useState([]);
+  const [date, setDate] = useState([]);
+  useEffect(() => {
     (async () => {
-     const {data} = await (
-      await fetch(
-        `http://54.180.175.144:8080/post?page=1&size=30`
-      )
-      ).json()
-     setQuestion(data)
-     const [obj] = data
-     const newObj = obj.createdAt
-     setDate(newObj)
-     console.log(newObj.date)
-    })()
-  }, [])
-
+      const { data } = await (await fetch(`/post?page=1&size=30`)).json();
+      setQuestion(data);
+      const [obj] = data;
+      const newObj = obj.createdAt;
+      setDate(newObj);
+      console.log(newObj.date);
+    })();
+  }, []);
 
   return (
     <div className="top_mainbar">
@@ -35,8 +28,7 @@ export default function Questions() {
       <div id="qlist-wrapper" className="flush-left">
         <div id="question-mini-list">
           <div>
-            
-            { question.map(tweet => (
+            {question.map((tweet) => (
               <div key={tweet.postId} className="post-main">
                 {/* 투표수, 답변수, views 일단 하드코딩  */}
                 <div className="votes-status">
@@ -67,9 +59,7 @@ export default function Questions() {
                   </h3>
                   {/* 태그, 작성자 */}
                   <div className="post-meta">
-                    <div className="post-tags">
-                    
-                    </div>
+                    <div className="post-tags"></div>
                     <div className="usercard">
                       <div className="human_img">
                         <img src="/human.png" width={15} height={15}></img>
@@ -90,8 +80,6 @@ export default function Questions() {
           flex-direction: column;
           padding: 1.5%;
           width: 100%;
-          
-        
         }
         .qlist-wrapper {
           width: 100%;

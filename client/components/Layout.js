@@ -8,6 +8,16 @@ import { useEffect, useState } from "react";
 export default function Layout({ children }) {
   const router = useRouter();
   console.log(router.pathname);
+  const [login, setLogin] = useState(false);
+
+  useEffect(() => {
+    console.log("a");
+    if (localStorage.getItem("accessToken") !== null) {
+      setLogin(true);
+    } else {
+      setLogin(false);
+    }
+  });
   return (
     <div className="layout-container">
       <Seo />
@@ -15,27 +25,18 @@ export default function Layout({ children }) {
 
       <div className="content">
         <div className="sideBarBox">
-        {router.pathname === "/users/login" 
-          ? (<SideBar />)
-          : null
-        }
+          {router.pathname === "/users/login" ? <SideBar /> : null}
         </div>
-        {router.pathname === "/users/login" 
-        ? null 
-        : router.pathname === "/users/signup" 
-        ? null 
-        : (
+        {router.pathname === "/users/login" ? null : router.pathname ===
+          "/users/signup" ? null : login ? (
           <SideBar />
-        )}
+        ) : null}
         <div className="children">{children}</div>
       </div>
-      {
-      router.pathname === "/users/login" 
-      ? null 
-      : router.pathname === "/users/signup" 
-      ? null 
-      : (<Footer />)
-      }
+      {router.pathname === "/users/login" ? null : router.pathname ===
+        "/users/signup" ? null : (
+        <Footer />
+      )}
 
       <style jsx>{`
         .layout-container {

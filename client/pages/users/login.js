@@ -111,6 +111,7 @@ export default function Login() {
             </div>
             <input
               className={userPwReg ? "input" : "failed"}
+              type="password"
               onChange={(e) => setUserPw(e.target.value)}
             ></input>
             <div className="failedWord">
