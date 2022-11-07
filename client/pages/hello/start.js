@@ -22,6 +22,12 @@ export default function Hello() {
             </div>
           </div>
           <div className="imgBox">
+            <img className="img" src="https://ifh.cc/g/NCP6pm.png"></img>
+            <div className="labelBox">
+              <label>Css</label>
+            </div>
+          </div>
+          <div className="imgBox">
             <img className="img" src="https://ifh.cc/g/ARPrnt.png"></img>
             <div className="labelBox">
               <label>React</label>
