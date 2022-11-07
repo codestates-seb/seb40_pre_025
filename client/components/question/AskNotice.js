@@ -52,12 +52,13 @@ export default function Notice() {
       }
       .writing {
         display: flex;
+        width: 100%;
       }
       .notice {
         background: rgb(224, 238, 248);
         border: 1px solid rgb(156, 181, 250);
         border-radius: 3px;
-        width: 70%;
+        width: 65%;
         height: 40%;
         display: flex;
         flex-direction: column;
