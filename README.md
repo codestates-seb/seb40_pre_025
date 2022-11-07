@@ -2,6 +2,10 @@
 ![](https://t1.daumcdn.net/cfile/tistory/9933A13359EAC02836)
 
 ---
+## 🖥 작동 화면
+![vllo 2](https://user-images.githubusercontent.com/102123710/200273500-b32afe3e-e595-426b-9b2d-c3925574a6d6.GIF)
+
+---
 
 ## 🏪 팀명
 ![cs25](https://user-images.githubusercontent.com/102123710/199809893-99135005-f7a2-4b17-a59b-726045f197f4.png)
@@ -63,8 +67,5 @@
 </ul>
 
 
----
 
-## 🖥 작동 화면
-![vllo 2](https://user-images.githubusercontent.com/102123710/200273500-b32afe3e-e595-426b-9b2d-c3925574a6d6.GIF)
 
