@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react'
 
 
 export default function answer() {
-    const [question, setQuestion] = useState({title:"",body:""})
-    const [answer, setAnswer] = useState({body:""})
+  // 프리랜더 하기 전에 그 값과 똑같이 처음 선언하는 것이 중요!! 
+    const [question, setQuestion] = useState({title:"",body:"",answers:{data:[]}})
+    const [answer, setAnswer] = useState([])
 
     const [value, setValue] = useState([]);
     
@@ -25,35 +26,36 @@ export default function answer() {
           )
           ).json()
           setQuestion(data)
-          console.log(data)
-          const [obj] = data.answers.data
+          // setAnswer(data.answers.data)
+          // const obj = data.answers.data
             // console.log(data.title)
-          setAnswer(obj)
-          // console.log(obj.body)
+          // setAnswer(data.answers)
+          // console.log(obj)
+// console.log(data.answers.data)
+        
           // console.log("body" in data)
         })()
       }, [id])
 
         const onClickAddAnswer =()=>{
           let body = {
-            body: body,
+            body: value,
             userId: localStorage.getItem("user")
           } 
             fetch(`http://54.180.175.144:8080/answer/${localStorage.getItem("user")}/${idNum}`, {
                   method: "POST",
-                  headers : new Headers({"Content-Type": "text/xml" }),
+                  headers : new Headers({"Content-Type": "application/json" }),
                   body: JSON.stringify(body),
                   })
                 .then((response) => {
                   console.log(response)
-                  // location.reload()
+                  location.reload()
                 })
         };
         
        
        
-        
-
+        console.log(question)
 
         // useEffect(()=>{console.log(localStorage.getItem("user"))},[])
 
@@ -63,7 +65,7 @@ export default function answer() {
     <div>
 
       <div>
-        <h1 className="questionTitle"> {question.title}</h1>
+        <h1 className="questionTitle"> {question ? question.title : null}</h1>
       </div>
 
       <div className="qusetionInfoContainer">
@@ -81,7 +83,7 @@ export default function answer() {
 
       <hr className="bar" />
       <div>
-      <h1 className="questionComentBox">{question.body}</h1>
+      <h1 className="questionComentBox">{question? question.body:null}</h1>
       </div>
       <hr className="bar" />
       <div>
@@ -89,7 +91,12 @@ export default function answer() {
       </div>
       <hr className="bar" />
       <div>
-      {/* <h1 className="questionComentBox">{answer.body}</h1> */}
+      <div className="questionComentBox">{question ? question.answers.data.map((el)=> {
+        
+          return <div className='answerCss'>
+            {el ? el.body : "a"}
+          </div>
+      }) : null}</div>
       </div>
       <hr className="bar" />
       <div>
@@ -162,6 +169,10 @@ export default function answer() {
           display: flex;
           justify-content: start;
           width: auto;
+        }
+        .answerCss {
+          padding: 2%;
+          border-bottom: 1px dashed gray;
         }
 
         .editorContainer {
