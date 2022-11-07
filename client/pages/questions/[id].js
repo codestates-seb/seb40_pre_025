@@ -1,59 +1,17 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
-import { changeInputAction, resetInputAction, } from "../../reducers/answerReducer";
-import { useDispatch, useSelector } from "react-redux";
+
 
 export default function answer() {
-    const [question, setQuestion] = useState([])
-    const [answer, setAnswer] = useState([])
-
-    const [isEdit, setIsEdit] = useState(false);
+    const [question, setQuestion] = useState({title:""})
+    const [answer, setAnswer] = useState({body:""})
     const [value, setValue] = useState([]);
     
 
     const router = useRouter();
-    const {id} = router.query
-    
-
-     // state
-      const [admit, setAdmit] = useState([]);
-      const [contents, setContents] = useState({});
-      const [answers, setAnswers] = useState({
-        answers: [],
-      });
-
-      //redux
-      const dispatch = useDispatch();
-      
-
-
-      // 리덕스 이용해서 답글 내용 저장
-      const onChangeTextarea = e => {
-        dispatch(changeInputAction(e.target.value));
-      };
-
-     // 답글 추가히기
-    const postAnswer = e => {
-    setAnswers(prev => ({
-      ...prev,
-      answers: [...prev.answers, e],
-    }));
-
-    // 답글 추가하고 textarea글 비워주기
-    dispatch(resetInputAction());
-  };
-
-  // 답글 삭제하기
-  const deleteAnswer = index => {
-    setAnswers(prev => {
-      answers.answers.splice(index, 1);
-
-      return {
-        ...prev,
-        answers: answers.answers,
-      };
-    });
-  };
+    const {id} = router.query;
+  
+  
  //get 
     useEffect(()=> {
         (async () => {
@@ -63,7 +21,7 @@ export default function answer() {
           )
           ).json()
           setQuestion(data)
-          const [obj] = data.answers.data
+          const [obj] = data.answer.data
 
           setAnswer(obj)
           // console.log(obj.body)
