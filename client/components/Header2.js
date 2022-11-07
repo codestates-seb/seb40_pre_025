@@ -84,6 +84,7 @@ const Header2 = () => {
                 display: flex;
                 margin: 0px 80.5px 0px 80.5px;
                 align-items: center;
+           
                 position: sticky;
                 top: 0;
 }
@@ -99,6 +100,7 @@ const Header2 = () => {
               }
               nav {
                 background: rgb(246, 248, 247);
+                
 
               }
               @media screen and (max-width: 760px) {
