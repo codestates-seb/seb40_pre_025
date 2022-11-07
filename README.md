@@ -63,4 +63,8 @@
 </ul>
 
 
+---
+
+## 🖥 작동 화면
+![vllo 2](https://user-images.githubusercontent.com/102123710/200273500-b32afe3e-e595-426b-9b2d-c3925574a6d6.GIF)
 
