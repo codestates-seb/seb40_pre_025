@@ -35,10 +35,22 @@
 ### ✔️Frond-end
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/Css-1572B6?style=for-the-badge&logo=Css&logoColor=white"><img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=purple"><img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white">
 ### ✔️Back-end
-<img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=green"><img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=yellow"><img src="https://img.shields.io/badge/My SQL-white?style=for-the-badge&logo=#4479A1&logoColor=white"><img src="https://img.shields.io/badge/H2 Database-004088?style=for-the-badge"><img src="https://img.shields.io/badge/Spring Data JPA-0ABF53?style=for-the-badge">
+<img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=green"><img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=yellow"><img src="https://img.shields.io/badge/My SQL-white?style=for-the-badge&logo=#4479A1&logoColor=white"><img src="https://img.shields.io/badge/H2 Database-004088?style=for-the-badge"> 
 
 
-## ⚙️ 
+## ✍🏻 기능 구현
+### ✔️Frond-end
+**CRUD **
+1. `질문` 작성/조회/수정/삭제
+2. `답변` 작성/조회/수정/삭제/채택
+3. `JWT`- 회원가입/로그인/로그아웃
+4. `소셜 Oauth 2.0` - github,google 로그인/로그아웃
+5. `마이페이지` - 회원정보 수정/삭제/나의 게시글 및 댓글 조회/삭제
+6. `전체회원페이지` - 전체 회원 조회
+7. `회원탈퇴`
+<br />
+
+### ✔️Back-end
 <li>JWT/Spring Security - 로그인 및 API 인증에 적용</li> 
 <li>H2/MySQL - 데이터 입력과 출력을 메모리 DB 사용</li> 
 <li>AWS EC2/S3 - 프론트/백엔드 애플리케이션 배포</li> 
