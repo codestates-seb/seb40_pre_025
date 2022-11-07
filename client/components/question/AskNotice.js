@@ -84,7 +84,7 @@ export default function Notice() {
       }
       @media screen and (max-width: 1340px) {
         .notice {
-          width: 90%;
+          width: 65%;
         }
 
       }

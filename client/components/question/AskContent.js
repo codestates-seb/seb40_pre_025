@@ -168,7 +168,7 @@ export default function AskContent() {
           border: 1px solid #e3e6e8;
           width: 72%;
           background-color: #ffffff;
-          padding-top: 1.5%;
+          padding-top: 2.5%;
           padding-left: 1.5%;
           border-radius: 3px;
           padding-bottom: 2%;
@@ -234,22 +234,23 @@ export default function AskContent() {
           align-items: center;
           justify-content: center;
           padding-right: 2%;
+          padding: 2%;
           flex-wrap: wrap;
         }
         .idea {
           margin-left: 23%;
           margin-top: -4%;
         }
-        @media screen and (max-width: 1340px) {
+        @media screen and (max-width: 1460px) {
           .title {
             display: flex;
             flex-direction: column-reverse;
           }
           .title-box {
-            width: 93%;
+            width: 72%;
           }
           .writing-box {
-            width: 93%;
+            width: 73%;
             margin-bottom: 3%;
           }
           .writing-name {
@@ -326,9 +327,7 @@ export default function AskContent() {
         }
 
         @media screen and (max-width: 1340px) {
-          .problem-box {
-            width: 90%;
-          }
+       
         }
 
         .tags-box {
