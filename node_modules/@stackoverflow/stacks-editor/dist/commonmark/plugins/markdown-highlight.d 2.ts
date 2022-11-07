@@ -1,0 +1,6 @@
+import { CommonmarkParserFeatures } from "../../shared/view";
+/**
+ * Plugin that highlights markdown syntax using {@link @lezer/highlight}.
+ * @param parserFeatures The additional parser features to add syntax highlighting for
+ */
+export declare function markdownHighlightPlugin(parserFeatures: CommonmarkParserFeatures): import("prosemirror-state").Plugin<import("prosemirror-lezer").HighlightPluginState>;

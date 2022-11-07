@@ -1,0 +1,10 @@
+import { MarkSpec, NodeSpec } from "prosemirror-model";
+/** The complete schema spec used by the rich-text editor */
+export declare const richTextSchemaSpec: {
+    nodes: {
+        [name: string]: NodeSpec;
+    };
+    marks: {
+        [name: string]: MarkSpec;
+    };
+};

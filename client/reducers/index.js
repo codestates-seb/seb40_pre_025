@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { HYDRATE } from "next-redux-wrapper";
 import initialReducer from "./initialReducer";
+import anwserReducer from "./answerReducer";
 
 const rootReducer = (state, action) => {
   switch (action.type) {
@@ -8,7 +9,7 @@ const rootReducer = (state, action) => {
       return action.payload;
 
     default:
-      return combineReducers({ initialReducer })(state, action);
+      return combineReducers({ initialReducer, anwserReducer })(state, action);
   }
 };
 export default rootReducer;

@@ -1,0 +1,19 @@
+import { Plugin } from "prosemirror-state";
+import { EditorView } from "prosemirror-view";
+import type { CommonmarkOptions } from "../editor";
+/**
+ * Returns true if the markdown preview is currently visible
+ * @param view The current editor view
+ */
+export declare function previewIsVisible(view: EditorView): boolean;
+/**
+ * Toggles the preview on/off based on the passed parameters
+ * @param view The current editor view
+ * @param isShown Whether the preview should be visible
+ */
+export declare function togglePreviewVisibility(view: EditorView, isShown: boolean): void;
+/**
+ * Plugin that renders the editor's markdown content directly and displays it in a preview element
+ * @param previewOptions The preview options passed to the commonmark editor
+ */
+export declare function createPreviewPlugin(previewOptions: CommonmarkOptions["preview"]): Plugin;

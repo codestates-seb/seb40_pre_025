@@ -1,0 +1,131 @@
+import { EditorState, Transaction } from "prosemirror-state";
+import { DecorationSet, EditorView } from "prosemirror-view";
+import { ManagedInterfaceKey, PluginInterfaceView } from "../../shared/prosemirror-plugins/interface-manager";
+import { StatefulPlugin } from "../../shared/prosemirror-plugins/plugin-extensions";
+import { CommonmarkParserFeatures } from "../../shared/view";
+/**
+ * PluginView for @see linkEditorPlugin
+ * @internal Exported for testing
+ */
+export declare class LinkEditor extends PluginInterfaceView<LinkEditorPluginState, LinkEditorPluginKey> {
+    private validateLink;
+    private viewContainer;
+    private get hrefInput();
+    private get textInput();
+    private get saveBtn();
+    private get hrefError();
+    constructor(view: EditorView, validateLink: CommonmarkParserFeatures["validateLink"]);
+    protected key: LinkEditorPluginKey;
+    validate(href: string): boolean;
+    showValidationError(errorMessage: string): void;
+    hideValidationError(): void;
+    resetEditor(): void;
+    handleSave(view: EditorView): void;
+    update(view: EditorView): void;
+    destroy(): void;
+    buildInterface(container: Element): void;
+    destroyInterface(container: Element): void;
+}
+/** Represents the link-editor plugin's state */
+interface LinkEditorPluginState {
+    url?: string;
+    text?: string;
+    visible: boolean;
+    shouldShow: boolean;
+    forceHideTooltip?: boolean;
+    linkTooltip: LinkTooltip;
+    decorations: DecorationSet;
+}
+/**
+ * Custom PluginKey with additional methods for interacting with a LinkTooltip
+ */
+declare class LinkEditorPluginKey extends ManagedInterfaceKey<LinkEditorPluginState> {
+    constructor();
+    /**
+     * Force the link tooltip to hide - useful e.g. when the entire editor is losing
+     * focus and we want to make sure the tooltip disappears, too
+     */
+    forceHideTooltipTr(state: EditorState): Transaction;
+}
+/** Manages the decorations necessary for drawing the link editor tooltip */
+declare class LinkTooltip {
+    private content;
+    private href;
+    private removeListener;
+    private editListener;
+    private get editButton();
+    private get removeButton();
+    private get link();
+    constructor(state: EditorState);
+    /**
+     * Binds both a mousedown and selective keydown listener to replace the purposefully missing "click" event
+     * @param element The element to bind the events to
+     * @param callback The callback to run on mousedown/keydown
+     */
+    private bindElementInteraction;
+    /**
+     * Updates the internal state / tooltip visuals based on the current editor state
+     * @param state the current state of the editor
+     */
+    private update;
+    /**
+     * Gets the tooltip decoration from a new PluginState.apply call
+     * @param value The existing LinkTooltipState (with forceHideTooltip potentially set)
+     * @param newState The state after the transaction
+     */
+    getDecorations(value: LinkEditorPluginState, newState: EditorState): DecorationSet;
+    /**
+     * Returns true if the focus event caused something in the content to be focused
+     * @param e The dispatched focus event
+     */
+    hasFocus(e: FocusEvent): boolean;
+    /**
+     * Find out if the current selection contains a link mark
+     * @param state The current editor state
+     */
+    private isLink;
+    /**
+     * Expand the current selection to contain the entire link mark.
+     * This allows us to remove the link mark from the entire link in the document
+     * if the user didn't explicitly select a region to be toggled.
+     */
+    private expandSelection;
+    /**
+     * Gets the positions immediately before and after a link mark in the current selection
+     * @param state
+     */
+    private linkAround;
+    /**
+     * Finds all marks in the current selection
+     * @param state The current editor state
+     */
+    private findMarksInSelection;
+    /**
+     * Updates apply/delete button events with the current editor view
+     * @param view The current editor view
+     */
+    private updateEventListeners;
+}
+/**
+ * A plugin view that shows a tooltip when selecting a link in rich-text mode.
+ * The tooltip shows the href attribute of the selected link and allows removing
+ * the link mark from the document. Clicking on the tooltip's edit button will launch
+ * a plugin view that allows editing the link's href and text.
+ *
+ * Note: This is not a _NodeView_ because when dealing with links, we're dealing with
+ * _marks_, not _nodes_.
+ */
+export declare const linkEditorPlugin: (features: CommonmarkParserFeatures) => StatefulPlugin<LinkEditorPluginState>;
+/**
+ * Dispatches a transaction to show the link editor with the given url and text filled in
+ * @param view The current editor view
+ * @param url The value to prefill the url input with
+ * @param text The value to prefill the text input with
+ */
+export declare function showLinkEditor(view: EditorView, url?: string, text?: string): void;
+/**
+ * Dispatches a transaction to hide the link editor
+ * @param view The current editor view
+ */
+export declare function hideLinkEditor(view: EditorView): void;
+export {};

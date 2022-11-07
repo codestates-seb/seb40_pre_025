@@ -1,0 +1,2 @@
+import { Schema } from "prosemirror-model";
+export declare const commonmarkSchema: Schema<"code_block" | "text" | "doc", never>;

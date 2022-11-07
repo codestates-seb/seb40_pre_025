@@ -1,0 +1,9 @@
+import { Transaction } from "prosemirror-state";
+/**
+ * Returns a transaction that inserts a new paragraph if there is no node after the cursor.
+ * This is useful for when inserting block nodes, since the cursor cannot be placed after those blocks at the end of a document.
+ * This makes document navigation much more intuitive for end users.
+ * @param tr The most recent transaction to the document
+ * @param cursorOffset TODO HACK The offset of where the cursor is vs where the inserted node is
+ */
+export declare function insertParagraphIfAtDocEnd(tr: Transaction, cursorOffset?: number): Transaction;

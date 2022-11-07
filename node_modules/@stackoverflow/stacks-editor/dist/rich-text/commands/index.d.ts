@@ -1,0 +1,97 @@
+import { MarkType, NodeType } from "prosemirror-model";
+import { Command, EditorState, Transaction } from "prosemirror-state";
+import { EditorView } from "prosemirror-view";
+import type { TagLinkOptions } from "../../shared/view";
+export * from "./tables";
+/**
+ * Builds a command which wraps/unwraps the current selection with the passed in node type
+ * @param nodeType the type of node to wrap the selection in
+ * @returns A command to toggle the wrapper node
+ * Commands are functions that take a state and an optional
+ * transaction dispatch function and...
+ *
+ *  - determine whether they apply to this state
+ *  - if not, return false
+ *  - if `dispatch` was passed, perform their effect, possibly by
+ *    passing a transaction to `dispatch`
+ *  - return true
+ */
+export declare function toggleWrapIn(nodeType: NodeType): Command;
+/**
+ * Creates a command that toggles the NodeType of the current node to the passed type
+ * @param nodeType The type to toggle to
+ * @param attrs? A key-value map of attributes that must be present on this node for it to be toggled off
+ */
+export declare function toggleBlockType(nodeType: NodeType, attrs?: {
+    [key: string]: unknown;
+}): (state: EditorState, dispatch: (tr: Transaction) => void) => boolean;
+/**
+ * Creates a command that toggles heading and cycles through heading levels
+ * @param attrs? A key-value map of attributes that must be present on this node for it to be toggled off
+ * @internal
+ */
+export declare function toggleHeadingLevel(attrs?: {
+    [key: string]: unknown;
+}): (state: EditorState, dispatch: (tr: Transaction) => void) => boolean;
+/**
+ * Indents selected line(s) within a code block
+ * @param state The current editor state
+ * @param dispatch The dispatch function to use
+ * @internal
+ */
+export declare function indentCodeBlockLinesCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+/**
+ * Unindents selected line(s) within a code block if able
+ * @param state The current editor state
+ * @param dispatch The dispatch function to use
+ * @internal
+ */
+export declare function unindentCodeBlockLinesCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+/**
+ * Creates a command that toggles tagLink formatting for a node
+ * @param options The passed TagLinkOptions
+ * @param isMetaTag Whether the tag to be created is a meta tag or not
+ */
+export declare function toggleTagLinkCommand(options: TagLinkOptions, isMetaTag: boolean): (state: EditorState, dispatch?: (tr: Transaction) => void) => boolean;
+/**
+ * Creates a command that inserts a horizontal rule node
+ * @param state The current editor state
+ * @param dispatch The dispatch function to use
+ */
+export declare function insertRichTextHorizontalRuleCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;
+/**
+ * Opens the image uploader pane
+ * @param state The current editor state
+ * @param dispatch The dispatch function to use
+ * @param view The current editor view
+ */
+export declare function insertRichTextImageCommand(state: EditorState, dispatch: (tr: Transaction) => void, view: EditorView): boolean;
+/**
+ * Inserts a link into the document and opens the link edit tooltip at the cursor
+ * @param state The current editor state
+ * @param dispatch The dispatch function to use
+ * @param view The current editor view
+ */
+export declare function insertRichTextLinkCommand(state: EditorState, dispatch: (tr: Transaction) => void, view: EditorView): boolean;
+/**
+ * Creates an `active` method that returns true if the current selection is/contained in the current block type
+ * @param nodeType The type of the node to check for
+ * @param attrs? A key-value map of attributes that must be present on this node
+ * @internal TODO TESTS
+ */
+export declare function nodeTypeActive(nodeType: NodeType, attrs?: {
+    [key: string]: unknown;
+}): (state: EditorState) => boolean;
+/**
+ * Creates an `active` method that returns true of the current selection has the passed mark
+ * @param mark The mark to check for
+ * @internal TODO TESTS
+ */
+export declare function markActive(mark: MarkType): (state: EditorState) => boolean;
+/**
+ * Exits an inclusive mark that has been marked as exitable by toggling the mark type
+ * and optionally adding a trailing space if the mark is at the end of the document
+ * @param state The current editor state
+ * @param dispatch The dispatch function to use
+ */
+export declare function exitInclusiveMarkCommand(state: EditorState, dispatch: (tr: Transaction) => void): boolean;

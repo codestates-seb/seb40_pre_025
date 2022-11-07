@@ -1,0 +1,4 @@
+import { Plugin } from "prosemirror-state";
+import { CommonmarkParserFeatures } from "../../shared/view";
+/** Plugin that detects if a URL is being pasted in and automatically formats it as a link */
+export declare const linkPasteHandler: (features: CommonmarkParserFeatures) => Plugin<any>;

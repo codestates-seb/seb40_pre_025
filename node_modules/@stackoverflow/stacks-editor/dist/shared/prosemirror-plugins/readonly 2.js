@@ -1,0 +1,42 @@
+import { Plugin, PluginKey } from "prosemirror-state";
+// TODO document
+const READ_ONLY_KEY = new PluginKey(readonlyPlugin.name);
+// TODO document
+export function editableCheck(state) {
+    return !READ_ONLY_KEY.getState(state);
+}
+/**
+ * Toggles the stored `readonly` plugin state
+ * @param isReadonly Whether to toggle readonly on or not
+ */
+export function toggleReadonly(isReadonly, state, dispatch) {
+    const isCurrentlyRO = READ_ONLY_KEY.getState(state);
+    // if the state already matches the expected result, return
+    if (isCurrentlyRO === isReadonly) {
+        return false;
+    }
+    let tr = state.tr.setMeta(READ_ONLY_KEY, isReadonly);
+    tr = tr.setMeta("addToHistory", false);
+    if (dispatch) {
+        dispatch(tr);
+    }
+    return true;
+}
+// TODO document
+export function readonlyPlugin() {
+    return new Plugin({
+        key: READ_ONLY_KEY,
+        state: {
+            init() {
+                return false;
+            },
+            apply(tr, value) {
+                const meta = tr.getMeta(READ_ONLY_KEY);
+                if (typeof meta === "undefined") {
+                    return value;
+                }
+                return meta;
+            },
+        },
+    });
+}
