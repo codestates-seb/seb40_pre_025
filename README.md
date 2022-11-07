@@ -40,16 +40,25 @@
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/Css-1572B6?style=for-the-badge&logo=Css&logoColor=white"><img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=purple"><img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white">
 ### ✔️Back-end
 <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=green"><img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=yellow"><img src="https://img.shields.io/badge/My SQL-white?style=for-the-badge&logo=#4479A1&logoColor=white"><img src="https://img.shields.io/badge/H2 Database-004088?style=for-the-badge"> 
+<br />
+<br />
+<br />
 
 ---
 
 ## 🗓 프로젝트 기간
 2022.10.20 ~ 2022.11.07
+<br />
+<br />
+<br />
 
 ---
 
 ## 🖥 기능 구현 화면
 ![vllo 2](https://user-images.githubusercontent.com/102123710/200273500-b32afe3e-e595-426b-9b2d-c3925574a6d6.GIF)
+<br />
+<br />
+<br />
 
 ---
 
