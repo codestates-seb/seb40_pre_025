@@ -26,7 +26,7 @@ const subTap = () => {
                 ? "Edit"
                 : router.pathname === `/users/setting/delete`
                 ? "Edite"
-                : "Qustions"}
+                : "Questions"}
             </div>
           </a>
         </Link>
@@ -51,7 +51,7 @@ const subTap = () => {
                 ? "Delete"
                 : router.pathname === `/users/setting/delete`
                 ? "Delete"
-                : "Ansers"}
+                : "Answers"}
             </div>
           </a>
         </Link>

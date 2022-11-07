@@ -5,7 +5,7 @@ export default function saves_qustions() {
     <div id="main-content">
       <SubTap></SubTap>
       <div id="ansers">
-        <label className="lable">My Ansers</label>
+        <label className="lable">My Answers</label>
         <div className="contentBox">
           <MyAnsers></MyAnsers>
         </div>

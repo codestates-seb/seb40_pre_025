@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 export default function profile() {
   const [anserCount, setAnserCount] = useState(0);
   const [qustionCount, setQustionCount] = useState(0);
-  const [abouts, setAbouts] = useState(null);
+  const [abouts, setAbouts] = useState([]);
   useEffect(() => {
     const headers = new Headers({
       "Content-Type": "text/xml",
@@ -41,14 +41,14 @@ export default function profile() {
                 <div className="color-B">{anserCount}</div>answers
               </div>
               <div className="state">
-                <div className="color-B">{qustionCount}</div>qustions
+                <div className="color-B">{qustionCount}</div>questions
               </div>
             </div>
           </div>
           <div id="about">
             <label className="lable">About</label>
             <div className="contentBox">
-              {abouts ? (
+              {abouts === "" ? (
                 <div>
                   {`Your about me section is currently blank. Would you like to
                   add one? `}
