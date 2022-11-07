@@ -1,4 +1,6 @@
 import TeamMemberFe from "../../components/TeamMemberFe";
+import TeamMemberBe from "../../components/TeamMemberBe";
+import CS25 from "../../components/CS25";
 export default function Hello() {
   return (
     <div className="mainContant">
@@ -8,9 +10,7 @@ export default function Hello() {
         </div>
       </div>
       <div id="introductionBox">
-        <div>
-          Introducing our pre-project. One of members is beomjoon in CS25
-        </div>
+        <CS25></CS25>
       </div>
       <div className="d-f-c f-d stackBox">
         <div className="title">Front End</div>
@@ -64,8 +64,22 @@ export default function Hello() {
           </div>
         </div>
       </div>
-      <TeamMemberFe></TeamMemberFe>
+      <div id="TeamMemberFe">
+        <TeamMemberFe></TeamMemberFe>
+      </div>
+      <div id="TeamMemberBe">
+        <TeamMemberBe></TeamMemberBe>
+      </div>
       <style jsx>{`
+        #TeamMemberFe {
+          margin: 10%;
+        }
+        #TeamMemberBe {
+          display: flex;
+          justify-content: flex-end;
+          margin-right: 10%;
+          margin-bottom: 10%;
+        }
         .labelBox {
           margin-top: 30px;
           display: flex;
@@ -132,9 +146,8 @@ export default function Hello() {
           display: flex;
           justify-content: center;
           align-items: center;
-          height: 200px;
+          height: auto;
           margin: 40px;
-          background-color: aqua;
         }
         .title {
           color: aliceblue;
