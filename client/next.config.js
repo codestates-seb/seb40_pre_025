@@ -7,6 +7,10 @@ const nextConfig = {
 
 module.exports = {
   reactStrictMode: true,
+  images: {
+    loader: "akamai",
+    path: "",
+  },
   async rewrites() {
     return [
       {
@@ -39,8 +43,4 @@ module.exports = {
       },
     ];
   },
-
 };
-
-
-
