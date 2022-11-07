@@ -1,89 +1,52 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
-import { changeInputAction, resetInputAction, } from "../../reducers/answerReducer";
-import { useDispatch, useSelector } from "react-redux";
+
 
 export default function answer() {
-    const [question, setQuestion] = useState([])
-    const [answer, setAnswer] = useState([])
+    const [question, setQuestion] = useState({title:"",body:""})
+    const [answer, setAnswer] = useState({body:""})
 
-    const [isEdit, setIsEdit] = useState(false);
     const [value, setValue] = useState([]);
     
 
     const router = useRouter();
+    // console.log(router.query)
     const {id} = router.query
+    const idNum = Number(id)
+    console.log(idNum)
     
 
-     // state
-      const [admit, setAdmit] = useState([]);
-      const [contents, setContents] = useState({});
-      const [answers, setAnswers] = useState({
-        answers: [],
-      });
-
-      //redux
-      const dispatch = useDispatch();
-      
-
-
-      // 리덕스 이용해서 답글 내용 저장
-      const onChangeTextarea = e => {
-        dispatch(changeInputAction(e.target.value));
-      };
-
-     // 답글 추가히기
-    const postAnswer = e => {
-    setAnswers(prev => ({
-      ...prev,
-      answers: [...prev.answers, e],
-    }));
-
-    // 답글 추가하고 textarea글 비워주기
-    dispatch(resetInputAction());
-  };
-
-  // 답글 삭제하기
-  const deleteAnswer = index => {
-    setAnswers(prev => {
-      answers.answers.splice(index, 1);
-
-      return {
-        ...prev,
-        answers: answers.answers,
-      };
-    });
-  };
  //get 
     useEffect(()=> {
         (async () => {
          const {data} = await (
           await fetch(
-            `http://54.180.175.144:8080/post/${id}?page=1&size=5`
+            `http://54.180.175.144:8080/post/${idNum}?page=1&size=5`
           )
           ).json()
           setQuestion(data)
+          console.log(data)
           const [obj] = data.answers.data
-
+            // console.log(data.title)
           setAnswer(obj)
           // console.log(obj.body)
           // console.log("body" in data)
         })()
-      }, [])
+      }, [id])
 
         const onClickAddAnswer =()=>{
           let body = {
             body: body,
             userId: localStorage.getItem("user")
           } 
-            fetch(`http://54.180.175.144:8080/answer/${localStorage.getItem("user")}/${id}`, {
+            fetch(`http://54.180.175.144:8080/answer/${localStorage.getItem("user")}/${idNum}`, {
                   method: "POST",
                   headers : new Headers({"Content-Type": "text/xml" }),
                   body: JSON.stringify(body),
                   })
                 .then((response) => {
                   console.log(response)
-                  location.reload()
+                  // location.reload()
                 })
         }
         
@@ -92,7 +55,7 @@ export default function answer() {
         
 
 
-        useEffect(()=>{console.log(localStorage.getItem("user"))},[])
+        // useEffect(()=>{console.log(localStorage.getItem("user"))},[])
 
 
 
@@ -126,7 +89,7 @@ export default function answer() {
       </div>
       <hr className="bar" />
       <div>
-      <h1 className="questionComentBox">{answer.body}</h1>
+      {/* <h1 className="questionComentBox">{answer.body}</h1> */}
       </div>
       <hr className="bar" />
       <div>
