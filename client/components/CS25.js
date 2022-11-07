@@ -10,7 +10,7 @@ export default function CS25() {
               <div> Introducing </div>
               <div> our pre-project.</div>
             </div>
-            <div className="content-text">
+            <div className="content-text2">
               <div> One of our members</div>
               <div>is</div>
             </div>
@@ -25,8 +25,8 @@ export default function CS25() {
               <div className="master-container-scroller_item">편범준</div>
               <div className="master-container-scroller_item">김정민</div>
             </div>
-            <div className="content-text">
-              <div>Nice to see you</div>
+            <div className="content-text3">
+              <div>Nice to see you !</div>
             </div>
           </h1>
         </div>
@@ -54,7 +54,19 @@ export default function CS25() {
           display: flex;
         }
         .content-text {
-          margin-bottom: 3%;
+          margin-bottom: 8%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .content-text2 {
+          margin-bottom: 5%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .content-text3 {
+          margin-top: 7%;
           display: flex;
           flex-direction: column;
           align-items: center;

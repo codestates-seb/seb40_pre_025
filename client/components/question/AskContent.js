@@ -155,6 +155,9 @@ export default function AskContent() {
       </div>
 
       <style jsx>{`
+        main{
+          display: flex;
+        }
         .title {
           display: flex;
           justify-content: space-between;
@@ -284,7 +287,7 @@ export default function AskContent() {
         .problem-box {
           border: 1px solid #e3e6e8;
           background-color: white;
-          width: 70%;
+          width: 71%;
           height: 100%;
           margin-top: 2.5%;
           border-radius: 3px;
@@ -292,6 +295,8 @@ export default function AskContent() {
         }
         .problem-outer {
           margin: 3% 3% 3% 3%;
+
+
         }
         .problem-title {
           margin-bottom: 1.5%;

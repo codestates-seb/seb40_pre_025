@@ -30,7 +30,6 @@ export default function Ask() {
       <style jsx>{`
        
       .ask_container {
-        width: 100vw;
         overflow-x: hidden;
         background-color: rgb(248, 249, 249);
    
