@@ -43,4 +43,13 @@ module.exports = {
       },
     ];
   },
+  exportPathMap: async function (
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return {
+      "/": { page: "/" },
+      "/users/login": { page: "/users/login" },
+    };
+  },
 };
