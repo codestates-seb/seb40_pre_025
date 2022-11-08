@@ -3,6 +3,15 @@
 
 ---
 
+## 🖥 기능 구현 화면
+![vllo 2](https://user-images.githubusercontent.com/102123710/200273500-b32afe3e-e595-426b-9b2d-c3925574a6d6.GIF)
+<br />
+<br />
+<br />
+* 배포 링크 : http://stack-client.s3-website.ap-northeast-2.amazonaws.com/
+
+---
+
 ## 🏪 팀명
 ![cs25](https://user-images.githubusercontent.com/102123710/199809893-99135005-f7a2-4b17-a59b-726045f197f4.png)
 <br />
@@ -54,13 +63,6 @@
 
 ---
 
-## 🖥 기능 구현 화면
-![vllo 2](https://user-images.githubusercontent.com/102123710/200273500-b32afe3e-e595-426b-9b2d-c3925574a6d6.GIF)
-<br />
-<br />
-<br />
-* 배포 링크 : http://stack-client.s3-website.ap-northeast-2.amazonaws.com/
----
 
 ## ✍🏻 기능 구현
 ### ✔️Frond-end
