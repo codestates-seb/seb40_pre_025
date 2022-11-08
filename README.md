@@ -59,7 +59,7 @@
 <br />
 <br />
 <br />
-
+배포 링크 : http://stack-client.s3-website.ap-northeast-2.amazonaws.com/
 ---
 
 ## ✍🏻 기능 구현
